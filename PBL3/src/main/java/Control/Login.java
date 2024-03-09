@@ -22,7 +22,6 @@ public class Login extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/html;charset=UTF-8");
-		
 		resp.sendRedirect("login.html");
 	}
 	
@@ -32,18 +31,16 @@ public class Login extends HttpServlet{
 		
 		String name = req.getParameter("username");
 		String password = req.getParameter("password");
-		
 		try {
 			int ID = DAO.getIDDangNhap(name, password);
-			
 			Cookie cookie = new Cookie("username", name);
 			cookie.setMaxAge(30);
 			resp.addCookie(cookie);
-			resp.sendRedirect("/PBL3/welcome");
+			resp.sendRedirect("/PBL3/index.html");
 
 		} catch (Exception e) {
 			System.out.println("Khong tim thay tai khoan");
-			resp.sendRedirect("/PBL3/login");
+			resp.sendRedirect("/PBL3/welcome");
 		}
 	}
 

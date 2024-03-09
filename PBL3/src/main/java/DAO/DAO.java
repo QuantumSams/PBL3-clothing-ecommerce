@@ -30,8 +30,6 @@ public class DAO {
 		{
 			throw new Exception("khong tim thay ID nguoi dung");
 		}
-		
-		
 		try{
 			rs.close();
 			stmt.close();
