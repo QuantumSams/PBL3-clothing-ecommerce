@@ -17,7 +17,7 @@ public class JDBC_Unit {
 			c = DriverManager.getConnection(url, username, password);
 			
 		}catch(SQLException e) {
-			System.out.println("khong the ket noi !!");
+			System.out.println("khong the ket noi server!!" + e);
 		}
 		return c; 
 	}

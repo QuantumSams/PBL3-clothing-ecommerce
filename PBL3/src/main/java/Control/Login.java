@@ -36,11 +36,12 @@ public class Login extends HttpServlet{
 			Cookie cookie = new Cookie("username", name);
 			cookie.setMaxAge(30);
 			resp.addCookie(cookie);
-			resp.sendRedirect("/PBL3/index.html");
-
-		} catch (Exception e) {
-			System.out.println("Khong tim thay tai khoan");
+			System.out.println("Dang nhap thanh cong");
 			resp.sendRedirect("/PBL3/welcome");
+			
+		} catch (Exception e) {
+			System.out.println(e);
+			resp.sendRedirect("/PBL3/index.html");
 		}
 	}
 

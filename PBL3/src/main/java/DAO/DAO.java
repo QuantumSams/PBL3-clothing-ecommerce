@@ -28,6 +28,7 @@ public class DAO {
 			ID = rs.getInt("id"); // lay thong tin cua cot
 		}catch(Exception e)
 		{
+			System.out.println("khong tim thay ID nguoi dung");
 			throw new Exception("khong tim thay ID nguoi dung");
 		}
 		try{
