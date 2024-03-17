@@ -33,6 +33,7 @@ public class SignUp extends HttpServlet {
 		}
 		else {
 			if(!DAO.checkAccount(email, phoneNumber)) {
+				pass = Encode.toSHA1(pass);
 				DAO.signUP(phoneNumber, email, pass,fullname);
 				response.sendRedirect("login.jsp");
 				

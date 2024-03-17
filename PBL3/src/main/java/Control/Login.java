@@ -6,7 +6,6 @@ import java.io.IOException;
 import DAO.DAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -32,6 +31,7 @@ public class Login extends HttpServlet{
 		resp.setContentType("text/html;charset=UTF-8");
 		String user = req.getParameter("username");
 		String password = req.getParameter("password");
+		password = Encode.toSHA1(password);
 		Account acc = DAO.login(user, password);
 			if(acc == null) {
 				req.setAttribute("message1", "Sai tài khoản hoặc mật khẩu");
