@@ -1,4 +1,7 @@
+<%@page import="jakarta.servlet.http.HttpSession"%>
+<%@page import="Entity.Account"%>
 <%@ page contentType="text/html; charset=UTF-8"  %>
+
 <%@ taglib prefix="c" uri ="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -24,7 +27,15 @@
                 </div>
                 <hr class="hrbar">
                 <div class="side-bar">
-
+               
+				<img src="img/anh_nguoi_dung/c8aa46847e122a7ff5399bc48bffcf25.jpg" width="200px"/>
+			<form method = "post" action="fileuploadservlet" enctype="multipart/form-data">
+			<input type="file" name="file"/> 
+			<button type = "submit">Upload</button>
+			
+			
+			</form>
+					
                 </div>
             </div>
             <hr class= "center">
@@ -33,28 +44,54 @@
                     <h5>
                         Chỉnh sửa thông tin
                     </h5>
+                    <button class = "modify btn btn-success" id = "modify" onclick = "modifyInforDisable()" >Chỉnh sửa</button>
                 </div>
                 <hr> 
-                <div class="mainInfor">
+                <form action="modifyInfor" method = "post">
+                 <div class="mainInfor">
                     <div class="rightleft">
-                        <h5>Họ và tên: ${sessionScope.acc.fullName }</h5>
+                    
+                    	<h5>Họ và tên:</h5>
+                    	<input class = "infor" name = "fullName" type = "text" required="required" value = "${sessionScope.acc.fullName}" disabled="disabled"> </input>
+						<h5>ID tài khoản: </h5>
+           				 <input class = "infor" name = "id" type = "text" value = "${sessionScope.acc.id }" disabled="disabled">
                         <c:if test = "${sessionScope.acc.gender == 1}">
     					<h5>Giới tính: Nam</h5>
    						 </c:if>
     					<c:if test = "${sessionScope.acc.gender == 0}">
     					<h5>Giới tính: Nữ</h5>
     					</c:if>
-                        <h5>Ngày sinh: ${sessionScope.acc.birth }</h5>
-                        <h5> Địa chỉ: ${sessionScope.acc.address }</h5>
+                        <h5>Ngày sinh: </h5>
+                        <input class = "infor" name = "birth" type = "date" value = "${sessionScope.acc.birth}" disabled="disabled"> </input>
+                        <h5> Địa chỉ: </h5>
+                        <input class = "infor" name = "address" type = "text" value = "${sessionScope.acc.address }" disabled="disabled"> </input>
                     </div>
                     <div class="rightright">
-                        <h5>Email: ${sessionScope.acc.email }</h5>
-                        <h5>Số điện thoại: ${sessionScope.acc.phoneNumber }</h5>
-                        <h5>ID tài khoản: ${sessionScope.acc.id }</h5>
+                        <h5>Email: </h5>
+                        <input class = "infor" name = "email" type = "text" required="required" value = "${sessionScope.acc.email }" disabled="disabled"> </input>
+                        <h5>Số điện thoại:</h5>
+                        <input class = "infor" name = "phoneNumber" type = "text" required="required" value = "${sessionScope.acc.phoneNumber }" disabled="disabled"> </input>
+                        
                     </div>
-                </div>   
+               	 </div>
+               	 <div class = "buttonS">
+               	  <button class = "btn btn-success" id = "target" type = "submit" disabled="disabled" >Lưu thay đổi</button>   
+               	 </div>
+                </form>
+                <a class = "back" href = "index.jsp"><button class = "btn btn-success" >Quay về trang chủ </button></a>
             </div>
         </div>
     </div>
 </body>
+<script type="text/javascript">
+  function modifyInforDisable() {
+    var inputElements = document.querySelectorAll(".infor");
+    inputElements.forEach(function(inputElement) {
+      inputElement.disabled = !inputElement.disabled;
+    });
+  }
+  document.getElementById("modify").addEventListener("click", function () {
+    document.getElementById("target").disabled = !document.getElementById("target").disabled; // Vô hiệu hóa nút đích
+  });
+</script>
 </html>

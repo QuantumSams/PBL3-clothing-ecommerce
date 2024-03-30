@@ -12,7 +12,7 @@ public class JDBC_Unit {
 			Class.forName("com.mysql.jdbc.Driver");
 			
 			// thay doi localhost o day
-			String url = "jdbc:mySQL://localhost:3306/pbl3";
+			String url = "jdbc:mySQL://localhost:3306/pbl";
 			String username = "root";
 			String password = "";
 			c = DriverManager.getConnection(url, username, password);

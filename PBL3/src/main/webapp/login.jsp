@@ -25,9 +25,9 @@
                 <form action="SignUp" method = "post">
                     <h1>Tạo tài khoản</h1>
                     <span>Email hoặc số điện thoại</span>
-                    <input type="text" placeholder="Email" name = "email" required>
+                    <input type ="email"  placeholder="Email" name = "email" required>
                     <input type="text" placeholder="Họ và tên" name = "fullname" required>
-                    <input type="text" placeholder="Phone Number" name = "phoneNumber" required>
+                    <input type="number" placeholder="Phone Number" name = "phoneNumber" required>
                     <input type="password" placeholder="Password" name = "password" required>
                     <input type="password" placeholder="Repeat Password" name = "repassword" required>
                     <button type = "submit">Đăng ký</button> 

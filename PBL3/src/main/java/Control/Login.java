@@ -40,7 +40,7 @@ public class Login extends HttpServlet{
 			}
 			else {
 				HttpSession session = req.getSession();
-				session.setAttribute("acc", acc );
+				session.setAttribute("acc", acc);
 				System.out.print("OK");
 				resp.sendRedirect("index.jsp");
 			}

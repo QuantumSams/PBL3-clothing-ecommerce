@@ -12,66 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <div class="header">
-        <nav class="navbar navbar-expand-sm">
-            <div class="container-fluid">
-                <a href="index.jsp"><img src="img/logoicqon.png" width = 100; alt=""></a>
-            </div>
-            <div class="container-fluid">
-                <ul class="navbar-nav">
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Nữ</a>
-                    <ul class="dropdown">
-                        <li><a href="#">Áo thun</a></li>
-                        <li><a href="#">áo ấm</a></li>
-                        <li><a href="#">Áo vest</a></li>
-                        <li><a href="#">Áo len</a></li>
-                    </ul>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">nam</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Trẻ em</a>
-                  </li>
-                </ul>
-              </div>
-              <div class="container-fluid">
-                <div class="search">
-                    <form class = "d-flex">
-                        <input class="form-control me 2 " type="search">
-                        <button class="btn btn-outline-infor"><i class="fa-solid fa-magnifying-glass" style="color: #000000;"></i></button>
-                    </form>
-                </div>
-              </div>
-              <div class="container-fluid">
-                <ul class="navbar-nav">
-                    <c:if test = "${sessionScope.acc == null}">
-                        <li class="nav-item">
-                            <a href="login.jsp" class="nav-link"><i class="fa-solid fa-user" style="color: #000000;"></i></a>
-                        </li>
-                    </c:if>
-                    <c:if test = "${sessionScope.acc != null }">
-                    	<li class = "nav-item">
-                    		<a href = "userInfor.jsp" class = "nav-link">Hello ${sessionScope.acc.fullName}</a>
-                    	</li>
-                    </c:if>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#"><i class="fa-solid fa-heart" style="color: #000000;"></i></a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="" class="nav-link"><i class="fa-solid fa-cart-shopping" style="color: #000000;"></i></i></a>
-                    </li>
-                    <c:if test = "${sessionScope.acc != null }">
-                    	<li class = "nav-item">
-                    		<a href = "logout" class = "nav-link">Log out</a>
-                    	</li>
-                    </c:if>
-                  </ul>
-                </div>
-              </div>
-        </nav>
-
+    <jsp:include page="header.jsp"></jsp:include>
     <div id="demo" class="carousel slide" data-bs-ride="carousel">
 
         <div class="carousel-indicators">
@@ -97,7 +38,148 @@
             <span class = "btn-right"><i class="fa-solid fa-chevron-right"></i></span>
         </button>
         </div>
+        
+    <div class = main-items>
+        <div class="card" style="width:250px">
+            <img class="card-img-top" src="img/ao-thun-in-hinh-theo-yeu-cau.jpg" alt="Card image">
+            <div class="card-body">
+                <h6>NAM</h6>
+                <h5 class="card-title" style ="font-weight: bold;" ><a href ="product.jsp">Áo parky chống UV bỏ túi(Dáng 3D) (Chống nắng)</a></h4>
+                <p class="card-text">Sản phẩm được làm từ chất liệu tái chế</p>
+                <h4 style = "font-weight: bold;">980.000VNĐ</h4>
+                <div class="star">
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <p style = "text-decoration: underline">(79)</p>
+                </div>
+            </div>
+        </div>
+        <div class="card" style="width:250px">
+            <img class="card-img-top" src="img/ao-thun-in-hinh-theo-yeu-cau.jpg" alt="Card image">
+            <div class="card-body">
+                <h6>NAM</h6>
+                <h5 class="card-title" style ="font-weight: bold;" >Áo parky chống UV bỏ túi(Dáng 3D) (Chống nắng)</h4>
+                <p class="card-text">Sản phẩm được làm từ chất liệu tái chế</p>
+                <h4 style = "font-weight: bold;">980.000VNĐ</h4>
+                <div class="star">
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <p style = "text-decoration: underline">(79)</p>
+                </div>
+            </div>
+        </div>
+        <div class="card" style="width:250px">
+            <img class="card-img-top" src="img/ao-thun-in-hinh-theo-yeu-cau.jpg" alt="Card image">
+            <div class="card-body">
+                <h6>NAM</h6>
+                <h5 class="card-title" style ="font-weight: bold;" >Áo parky chống UV bỏ túi(Dáng 3D) (Chống nắng)</h4>
+                <p class="card-text">Sản phẩm được làm từ chất liệu tái chế</p>
+                <h4 style = "font-weight: bold;">980.000VNĐ</h4>
+                <div class="star">
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <p style = "text-decoration: underline">(79)</p>
+                </div>
+            </div>
+        </div>
+        <div class="card" style="width:250px">
+            <img class="card-img-top" src="img/ao-thun-in-hinh-theo-yeu-cau.jpg" alt="Card image">
+            <div class="card-body">
+                <h6>NAM</h6>
+                <h5 class="card-title" style ="font-weight: bold;" >Áo parky chống UV bỏ túi(Dáng 3D) (Chống nắng)</h4>
+                <p class="card-text">Sản phẩm được làm từ chất liệu tái chế</p>
+                <h4 style = "font-weight: bold;">980.000VNĐ</h4>
+                <div class="star">
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <p style = "text-decoration: underline">(79)</p>
+                </div>
+            </div>
+        </div>
+        <div class="card" style="width:250px">
+            <img class="card-img-top" src="img/ao-thun-in-hinh-theo-yeu-cau.jpg" alt="Card image">
+            <div class="card-body">
+                <h6>NAM</h6>
+                <h5 class="card-title" style ="font-weight: bold;" >Áo parky chống UV bỏ túi(Dáng 3D) (Chống nắng)</h4>
+                <p class="card-text">Sản phẩm được làm từ chất liệu tái chế</p>
+                <h4 style = "font-weight: bold;">980.000VNĐ</h4>
+                <div class="star">
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <p style = "text-decoration: underline">(79)</p>
+                </div>
+            </div>
+        </div>
+        <div class="card" style="width:250px">
+            <img class="card-img-top" src="img/ao-thun-in-hinh-theo-yeu-cau.jpg" alt="Card image">
+            <div class="card-body">
+                <h6>NAM</h6>
+                <h5 class="card-title" style ="font-weight: bold;" >Áo parky chống UV bỏ túi(Dáng 3D) (Chống nắng)</h4>
+                <p class="card-text">Sản phẩm được làm từ chất liệu tái chế</p>
+                <h4 style = "font-weight: bold;">980.000VNĐ</h4>
+                <div class="star">
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <p style = "text-decoration: underline">(79)</p>
+                </div>
+            </div>
+        </div>
+        <div class="card" style="width:250px">
+            <img class="card-img-top" src="img/ao-thun-in-hinh-theo-yeu-cau.jpg" alt="Card image">
+            <div class="card-body">
+                <h6>NAM</h6>
+                <h5 class="card-title" style ="font-weight: bold;" >Áo parky chống UV bỏ túi(Dáng 3D) (Chống nắng)</h4>
+                <p class="card-text">Sản phẩm được làm từ chất liệu tái chế</p>
+                <h4 style = "font-weight: bold;">980.000VNĐ</h4>
+                <div class="star">
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <p style = "text-decoration: underline">(79)</p>
+                </div>
+            </div>
+        </div>
+        <div class="card" style="width:250px">
+            <img class="card-img-top" src="img/ao-thun-in-hinh-theo-yeu-cau.jpg" alt="Card image">
+            <div class="card-body">
+                <h6>NAM</h6>
+                <h5 class="card-title" style ="font-weight: bold;" >Áo parky chống UV bỏ túi(Dáng 3D) (Chống nắng)</h4>
+                <p class="card-text">Sản phẩm được làm từ chất liệu tái chế</p>
+                <h4 style = "font-weight: bold;">980.000VNĐ</h4>
+                <div class="star">
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <p class = "number-report" style = "text-decoration: underline;">(79)</p>
+                </div>
+            </div>
+        </div>
+
     </div>
+</body>
+    
 </body>
 <script>
     var myCarousel = document.querySelector('#myCarousel')

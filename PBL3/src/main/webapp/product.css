@@ -1,0 +1,103 @@
+.container{
+    margin-top:20px;
+    margin-left: 100px;
+}
+.imageItems{
+    width: 100%;
+    height: 100vh;
+}
+.inforItems{
+    width: 85%;
+    height: 100vh;
+}
+.top{
+    width: 100%;
+    height: 65%;
+
+}
+.bottom{
+    width: 100%;
+    height: 35%;
+}
+.left{
+    width:25%;
+    height: 100%;
+
+}
+.top{
+    display: flex;
+}
+.describe{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 20px 20px 20px;
+}
+.Price-star{
+    display: flex;
+    justify-content: space-between;
+}
+.fa-star{
+    transform: translateY(5.5px);
+}
+.star{
+    display: flex;
+    gap:5px;
+}
+.square{
+    width: 50px;
+    height: 50px;
+    border: 2px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.box{
+    display: flex;
+    gap:10px;
+    
+}
+.box1{
+    background-color: black;
+}
+.box2{
+    background-color: blue;
+}
+.box3{
+    background-color: blueviolet;
+}
+a{
+    color: black;
+}
+.size{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.buttonS{
+    margin-top: 20px;
+    height: 50px;
+    width: 100%;
+    border: thin 0.1px;
+    background-color: white;
+}
+.form-select{
+    width: 20%;
+}
+.cart{
+    margin-top: 50px;
+    width: 100%;
+    height: 50px;
+    background-color: red;
+    color: white;
+    font-size: large;
+    border: none;
+}
+.addAndSearch{
+    margin-top: 20px;
+    display: flex;
+    gap:10px;
+}
+.buttonA{
+    width: 50%;
+    background-color: white;
+}

@@ -52,3 +52,20 @@
     width: 48%;
     height: 100px;
 }
+.setting{
+	display: flex;
+	justify-content: space-between;
+}
+.buttonS{
+	transform: translateY(400px);
+	display:flex;
+}
+.back{
+	position:relative;
+	display:flex;
+	text-decoration: none;
+	transform: translate(200px, 362px);
+}
+.block-infor{
+	display: flex;
+}

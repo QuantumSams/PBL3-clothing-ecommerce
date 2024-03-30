@@ -29,4 +29,14 @@
     <servlet-name>SignUp</servlet-name>
     <url-pattern>/SignUp</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>modifyInfor</display-name>
+    <servlet-name>modifyInfor</servlet-name>
+    <servlet-class>Control.modifyInfor</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>modifyInfor</servlet-name>
+    <url-pattern>/modifyInfor</url-pattern>
+  </servlet-mapping>
 </web-app>

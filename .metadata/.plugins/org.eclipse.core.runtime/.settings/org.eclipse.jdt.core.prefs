@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
+org.eclipse.jdt.core.builder.resourceCopyExclusionFilter=
 org.eclipse.jdt.core.classpathVariable.ECLIPSE_HOME=D\:/Eclipse_JEE/eclipse/
 org.eclipse.jdt.core.classpathVariable.JRE_LIB=D\:/Eclipse_JEE/eclipse/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.9.v20231028-0858/jre/lib/jrt-fs.jar
 org.eclipse.jdt.core.classpathVariable.JRE_SRC=D\:/Eclipse_JEE/eclipse/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.9.v20231028-0858/jre/lib/src.zip

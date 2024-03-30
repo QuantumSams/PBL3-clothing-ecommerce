@@ -2,13 +2,13 @@ package Entity;
 
 public class Account {
 		private int id;
-		private String userName;
 		private String fullName;
 		private int gender;
 		private String address;
 		private String birth;
 		private String phoneNumber;
 		private String email;
+		private String image;
 
 		public String getPhoneNumber() {
 			return phoneNumber;
@@ -22,17 +22,17 @@ public class Account {
 		public void setEmail(String email) {
 			this.email = email;
 		}
-		public Account(int id, String userName, String fullName, int gender, String birth, String address
-				,String phoneNumber, String email) {
+		public Account(int id,String fullName, int gender, String birth, String address
+				,String phoneNumber, String email, String image) {
 			super();
 			this.id = id;
-			this.userName = userName;
 			this.fullName = fullName;
 			this.gender = gender;
 			this.address = address;
 			this.birth = birth;
 			this.phoneNumber = phoneNumber;
 			this.email = email;
+			this.image = image;
 		}
 		public int getId() {
 			return id;
@@ -40,12 +40,7 @@ public class Account {
 		public void setId(int id) {
 			this.id = id;
 		}
-		public String getUserName() {
-			return userName;
-		}
-		public void setUserName(String userName) {
-			this.userName = userName;
-		}
+		
 		public String getFullName() {
 			return fullName;
 		}
@@ -70,6 +65,13 @@ public class Account {
 		public void setBirth(String birth) {
 			this.birth = birth;
 		}
+		public String getImage() {
+			return image;
+		}
+		public void setImage(String image) {
+			this.image = image;
+		}
+		
 		
 		
 }
