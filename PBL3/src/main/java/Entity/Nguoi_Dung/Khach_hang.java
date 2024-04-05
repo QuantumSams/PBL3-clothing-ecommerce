@@ -14,8 +14,6 @@ public class Khach_hang extends Nguoi_dung{
 				phan_quyen_nguoi_dung);
 	}
 	
-	
-
 	public void them_vao_gio_hang(int id_chi_tiet_san_pham) {
 		
 	}

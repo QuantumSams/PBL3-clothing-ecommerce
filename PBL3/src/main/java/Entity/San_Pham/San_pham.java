@@ -84,6 +84,15 @@ public class San_pham implements Thong_tin{
 		this.thon_tin_chi_tiet_san_phan = thon_tin_chi_tiet_san_phan;
 	}
 
+	
+	
+	@Override
+	public String toString() {
+		return "San_pham [id_san_pham=" + id_san_pham + ", id_danh_muc_san_pham=" + id_danh_muc_san_pham
+				+ ", ten_san_pham=" + ten_san_pham + ", ten_nhan_hang=" + ten_nhan_hang + ", thong_tin_chung="
+				+ thong_tin_chung + "]";
+	}
+
 	@Override
 	public void them_thong_tin() {
 		// TODO Auto-generated method stub

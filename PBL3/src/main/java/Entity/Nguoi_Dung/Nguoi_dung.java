@@ -17,7 +17,6 @@ public abstract class Nguoi_dung implements Thong_tin{
 	
 	public Nguoi_dung(int id_nguoi_dung, String ho_ten, boolean gioi_tinh, Date ngay_sinhDate, String dia_chi,
 			String anh_dai_dien, String so_dien_thoai, String email, String phan_quyen_nguoi_dung) {
-		
 		this.id_nguoi_dung = id_nguoi_dung;
 		this.ho_ten = ho_ten;
 		this.gioi_tinh = gioi_tinh;

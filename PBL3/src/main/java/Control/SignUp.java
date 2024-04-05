@@ -11,9 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Date;
 
-import DAO.DAO;
 import DAO.DAO_Nguoi_dung;
-import Entity.Account;
 import java.util.Random;
 /**
  * Servlet implementation class SignUp

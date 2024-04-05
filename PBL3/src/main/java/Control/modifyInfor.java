@@ -1,16 +1,14 @@
 package Control;
 
+import java.io.IOException;
+
+import DAO.DAO_Nguoi_dung;
+import Entity.Nguoi_Dung.Khach_hang;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-
-import java.io.IOException;
-
-import Entity.Account;
-import DAO.DAO;
 public class modifyInfor extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -41,15 +39,20 @@ public class modifyInfor extends HttpServlet {
 		String fullName = request.getParameter("fullName");
 		String email = request.getParameter("email");
 		String birth = request.getParameter("birth");
-		String image = request.getParameter("image");;
+		String image = request.getParameter("image");
 		HttpSession session = request.getSession();
-		Account acc = (Account)session.getAttribute("acc");
-		acc.setPhoneNumber(phoneNumber);
-		acc.setAddress(address);
-		acc.setBirth(birth);
-		acc.setFullName(fullName);
+		// thay doi account thanh nguoi_dung
+		Khach_hang acc = (Khach_hang)session.getAttribute("acc");
+		acc.setSo_dien_thoai(phoneNumber);
+		acc.setDia_chi(address);
+		//acc.setNgay_sinh(new Date(birth));
+		acc.setHo_ten(fullName);
 		acc.setEmail(email);
-		DAO.updateInfor(id, fullName, 1, birth, address, image);
+		try {
+			DAO_Nguoi_dung.cap_nhat_tai_khoan(acc);
+		} catch (Exception e) {
+			System.out.println("Khong the cap nhat tai khona nguoi dung");
+		}
 		session.setAttribute("acc",acc);
 		
 		request.getRequestDispatcher("userInfor.jsp").forward(request, response);

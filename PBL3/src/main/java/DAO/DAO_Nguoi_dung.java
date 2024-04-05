@@ -194,6 +194,8 @@ Connection connection = null;
 												phan_quyen_nguoi_dung
 												);
 			}
+			
+			
 		}catch(Exception e){
 			System.out.println(e);
 			throw(e);
@@ -204,5 +206,39 @@ Connection connection = null;
 		return nguoi_dung;
 	}
 	
-	
+	public static void cap_nhat_tai_khoan(Nguoi_dung nguoi_dung) throws Exception {
+		Connection connection = null;
+		
+		try {
+		
+			connection = JDBC_Unit.getConnection();
+			PreparedStatement preparedStatement = null;
+		    
+			String sql = 	"UPDATE thong_tin_dang_nhap SET so_dien_thoai = ?, email = ? WHERE id = ?;";
+		
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1, nguoi_dung.getSo_dien_thoai());
+			preparedStatement.setString(2, nguoi_dung.getEmail());
+			preparedStatement.setInt(3, nguoi_dung.getId_nguoi_dung());
+			preparedStatement.execute();
+			
+			String sql1 = 	"UPDATE thong_tin_nguoi_dung SET ho_ten = ?, gioi_tinh = ?, ngay_sinh = ?, dia_chi = ?, anh_dai_dien = ? WHERE id = ?;";
+			
+			preparedStatement = connection.prepareStatement(sql1);
+			preparedStatement.setString(1, nguoi_dung.getSo_dien_thoai());
+			preparedStatement.setBoolean(2, nguoi_dung.isGioi_tinh());
+			preparedStatement.setDate(3, nguoi_dung.getNgay_sinh());
+			preparedStatement.setString(4, nguoi_dung.getDia_chi());
+			preparedStatement.setString(5, nguoi_dung.getAnh_dai_dien());
+			preparedStatement.setInt(6, nguoi_dung.getId_nguoi_dung());
+			preparedStatement.execute();
+			
+			System.out.println("cap nhat thong tin nguoi dung thanh cong");
+		}catch(Exception e){
+			System.out.println(e);
+			throw(e);
+		}finally {
+			JDBC_Unit.closeConnection(connection);
+		}
+	}
 }

@@ -3,7 +3,6 @@ package Control;
 import java.io.IOException;
 
 
-import DAO.DAO;
 import DAO.DAO_Nguoi_dung;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -11,7 +10,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import Entity.Account;
 import Entity.Nguoi_Dung.Nguoi_dung;
 
 @WebServlet(urlPatterns= {"/login"})

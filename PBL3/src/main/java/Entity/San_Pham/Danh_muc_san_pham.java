@@ -54,6 +54,14 @@ public class Danh_muc_san_pham implements Thong_tin{
 		this.ten_danh_muc_san_pham = ten_danh_muc_san_pham;
 	}
 
+	
+
+	@Override
+	public String toString() {
+		return "Danh_muc_san_pham [id_danh_muc_san_pham=" + id_danh_muc_san_pham + ", ten_loai_san_pham="
+				+ ten_loai_san_pham + ", ten_doi_tuong_khach_hang=" + ten_doi_tuong_khach_hang
+				+ ", ten_danh_muc_san_pham=" + ten_danh_muc_san_pham + "]";
+	}
 
 	@Override
 	public void them_thong_tin() {

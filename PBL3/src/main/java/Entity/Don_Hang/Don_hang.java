@@ -1,6 +1,7 @@
 package Entity.Don_Hang;
 
-import java.util.Date;
+
+import java.sql.Date;
 
 import Entity.Thong_tin;
 

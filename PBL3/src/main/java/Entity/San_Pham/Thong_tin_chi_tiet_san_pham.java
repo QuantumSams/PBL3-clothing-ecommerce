@@ -14,12 +14,13 @@ public class Thong_tin_chi_tiet_san_pham implements Thong_tin{
 	protected Mau_sac mau_sac_san_pham;
 	protected Size kich_thuoc_san_pham;
 	protected Chat_lieu chat_lieu_san_pham;
+	protected float gia_tien;
 	protected List<String> anh_chi_tiet;
 	protected String thong_tin_chi_tiet;
 	
 	public Thong_tin_chi_tiet_san_pham(int id_thong_tin_chi_tiet_san_pham, int id_san_pham, int so_luong_trong_kho,
-			Mau_sac mau_sac_san_pham, Size kich_thuoc_san_pham, Chat_lieu chat_lieu_san_pham, List<String> anh_chi_tiet,
-			String thong_tin_chi_tiet) {
+			Mau_sac mau_sac_san_pham, Size kich_thuoc_san_pham, Chat_lieu chat_lieu_san_pham, float gia_tien,
+			List<String> anh_chi_tiet, String thong_tin_chi_tiet) {
 		super();
 		this.id_thong_tin_chi_tiet_san_pham = id_thong_tin_chi_tiet_san_pham;
 		this.id_san_pham = id_san_pham;
@@ -27,7 +28,80 @@ public class Thong_tin_chi_tiet_san_pham implements Thong_tin{
 		this.mau_sac_san_pham = mau_sac_san_pham;
 		this.kich_thuoc_san_pham = kich_thuoc_san_pham;
 		this.chat_lieu_san_pham = chat_lieu_san_pham;
+		this.gia_tien = gia_tien;
 		this.anh_chi_tiet = anh_chi_tiet;
+		this.thong_tin_chi_tiet = thong_tin_chi_tiet;
+	}
+
+	public float getGia_tien() {
+		return gia_tien;
+	}
+
+	public void setGia_tien(float gia_tien) {
+		this.gia_tien = gia_tien;
+	}
+
+	public int getId_thong_tin_chi_tiet_san_pham() {
+		return id_thong_tin_chi_tiet_san_pham;
+	}
+
+	public void setId_thong_tin_chi_tiet_san_pham(int id_thong_tin_chi_tiet_san_pham) {
+		this.id_thong_tin_chi_tiet_san_pham = id_thong_tin_chi_tiet_san_pham;
+	}
+
+	public int getId_san_pham() {
+		return id_san_pham;
+	}
+
+	public void setId_san_pham(int id_san_pham) {
+		this.id_san_pham = id_san_pham;
+	}
+
+	public int getSo_luong_trong_kho() {
+		return so_luong_trong_kho;
+	}
+
+	public void setSo_luong_trong_kho(int so_luong_trong_kho) {
+		this.so_luong_trong_kho = so_luong_trong_kho;
+	}
+
+	public Mau_sac getMau_sac_san_pham() {
+		return mau_sac_san_pham;
+	}
+
+	public void setMau_sac_san_pham(Mau_sac mau_sac_san_pham) {
+		this.mau_sac_san_pham = mau_sac_san_pham;
+	}
+
+	public Size getKich_thuoc_san_pham() {
+		return kich_thuoc_san_pham;
+	}
+
+	public void setKich_thuoc_san_pham(Size kich_thuoc_san_pham) {
+		this.kich_thuoc_san_pham = kich_thuoc_san_pham;
+	}
+
+	public Chat_lieu getChat_lieu_san_pham() {
+		return chat_lieu_san_pham;
+	}
+
+	public void setChat_lieu_san_pham(Chat_lieu chat_lieu_san_pham) {
+		this.chat_lieu_san_pham = chat_lieu_san_pham;
+	}
+
+	public List<String> getAnh_chi_tiet() {
+		return anh_chi_tiet;
+	}
+
+	public void setAnh_chi_tiet(List<String> anh_chi_tiet) {
+		this.anh_chi_tiet = anh_chi_tiet;
+	}
+
+	public String getThong_tin_chi_tiet() {
+		return thong_tin_chi_tiet;
+	}
+
+	public void setThong_tin_chi_tiet(String thong_tin_chi_tiet) {
 		this.thong_tin_chi_tiet = thong_tin_chi_tiet;
 	}
 

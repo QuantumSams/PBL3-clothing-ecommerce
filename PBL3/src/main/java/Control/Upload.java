@@ -7,8 +7,7 @@ import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 
-import DAO.DAO;
-import Entity.Account;
+import Entity.Nguoi_Dung.Nguoi_dung;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.ServletOutputStream;
 import jakarta.servlet.annotation.MultipartConfig;
@@ -41,14 +40,13 @@ public class Upload extends HttpServlet{
 		
 		Part filePath = req.getPart("file");
 		HttpSession session = req.getSession();
-		Account acc = (Account)session.getAttribute("acc");
-		String id = Integer.toString(acc.getId());
+		Nguoi_dung acc = (Nguoi_dung)session.getAttribute("acc");
+		String id = Integer.toString(acc.getId_nguoi_dung());
 		System.out.println("ID: " + id);
-		try {
-			DAO.UploadBLOB(filePath, id);
-		} catch (ClassNotFoundException e) {
-			System.out.println("loi");
-		}
+		/*
+		 * try { //DAO.UploadBLOB(filePath, id); } catch (ClassNotFoundException e) {
+		 * System.out.println("loi"); }
+		 */
 		
 		session.setAttribute("id", id);
 		req.getRequestDispatcher("userInfor.jsp").forward(req, resp);;
