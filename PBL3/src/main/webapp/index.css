@@ -13,7 +13,7 @@ body{
     background-color: white;
 }	
 .header{
-    margin-top: 10px;
+
 }
 .nav-link{
     color: black;
@@ -67,4 +67,7 @@ ul li:hover ul.dropdown{
 .nav-item:hover{
 
 	color: orange;	
+}
+.header{
+	position: fixed;
 }

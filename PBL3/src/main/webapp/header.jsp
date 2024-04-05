@@ -1,12 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri ="http://java.sun.com/jsp/jstl/core" %>
     <link rel="stylesheet" href="index.css">
-<div class="header">
+<div class="header" style ="position: fixed; width:100%; z-index:99; background-color: white;" >
         <nav class="navbar navbar-expand-sm">
             <div class="col-1 center">
-                
             </div>
             <div class="col-3 center">
                 <ul class="navbar-nav">
@@ -45,7 +43,7 @@
                     </c:if>
                     <c:if test = "${sessionScope.acc != null }">
                     	<li class = "nav-item">
-                    		<a href = "userInfor.jsp" class = "nav-link">Hello ${sessionScope.acc.fullName}</a>
+                    		<a href = "userInfor.jsp" class = "nav-link">Hello ${sessionScope.acc.ho_ten}</a>
                     	</li>
                     </c:if>
                     <li class="nav-item">

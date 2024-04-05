@@ -23,7 +23,7 @@
                     <a href="">
                         <i class="fa-solid fa-user"></i>
                     </a>
-                    <h5>${sessionScope.acc.fullName }</h5>
+                    <h5>${sessionScope.acc.ho_ten }</h5>
                 </div>
                 <hr class="hrbar">
                 <div class="side-bar">
@@ -52,25 +52,25 @@
                     <div class="rightleft">
                     
                     	<h5>Họ và tên:</h5>
-                    	<input class = "infor" name = "fullName" type = "text" required="required" value = "${sessionScope.acc.fullName}" disabled="disabled"> </input>
+                    	<input class = "infor" name = "fullName" type = "text" required="required" value = "${sessionScope.acc.ho_ten}" disabled="disabled"> </input>
 						<h5>ID tài khoản: </h5>
-           				 <input class = "infor" name = "id" type = "text" value = "${sessionScope.acc.id }" disabled="disabled">
-                        <c:if test = "${sessionScope.acc.gender == 1}">
+           				 <input class = "infor" name = "id" type = "text" value = "${sessionScope.acc.id_nguoi_dung }" disabled="disabled">
+                        <%-- <c:if test = "${sessionScope.acc.gioi_tinh == 1}">
     					<h5>Giới tính: Nam</h5>
    						 </c:if>
-    					<c:if test = "${sessionScope.acc.gender == 0}">
+    					<c:if test = "${sessionScope.acc.gioi_tinh == 0}">
     					<h5>Giới tính: Nữ</h5>
     					</c:if>
-                        <h5>Ngày sinh: </h5>
-                        <input class = "infor" name = "birth" type = "date" value = "${sessionScope.acc.birth}" disabled="disabled"> </input>
+                        <h5>Ngày sinh: </h5> --%>
+                        <input class = "infor" name = "birth" type = "date" value = "${sessionScope.acc.ngay_sinh}" disabled="disabled"> </input>
                         <h5> Địa chỉ: </h5>
-                        <input class = "infor" name = "address" type = "text" value = "${sessionScope.acc.address }" disabled="disabled"> </input>
+                        <input class = "infor" name = "address" type = "text" value = "${sessionScope.acc.dia_chi }" disabled="disabled"> </input>
                     </div>
-                    <div class="rightright">
+                     <div class="rightright">
                         <h5>Email: </h5>
                         <input class = "infor" name = "email" type = "text" required="required" value = "${sessionScope.acc.email }" disabled="disabled"> </input>
                         <h5>Số điện thoại:</h5>
-                        <input class = "infor" name = "phoneNumber" type = "text" required="required" value = "${sessionScope.acc.phoneNumber }" disabled="disabled"> </input>
+                        <input class = "infor" name = "phoneNumber" type = "text" required="required" value = "${sessionScope.acc.so_dien_thoai }" disabled="disabled"> </input>
                         
                     </div>
                	 </div>
