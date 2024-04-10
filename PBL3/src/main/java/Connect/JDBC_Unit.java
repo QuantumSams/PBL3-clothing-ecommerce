@@ -9,8 +9,8 @@ public class JDBC_Unit {
 		Connection c = null;
 		
 		try {
-			
-			String url = "jdbc:mySQL://localhost:3306/pbl";
+			Class.forName("com.mysql.jdbc.Driver");
+			String url = "jdbc:mySQL://localhost:3306/pbl3";
 			String username = "root";
 			String password = "";
 			
@@ -18,6 +18,10 @@ public class JDBC_Unit {
 			
 			System.out.println("Ket noi thanh cong co so du lieu: " + c);
 			
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		
 		}catch(SQLException e) {
 			System.out.println("khong the ket noi co so du lieu!! : " + e);
 			throw(e);

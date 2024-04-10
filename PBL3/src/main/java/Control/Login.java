@@ -44,12 +44,12 @@ public class Login extends HttpServlet{
 		if(acc == null) {
 				req.setAttribute("message1", "Sai tài khoản hoặc mật khẩu");
 				req.getRequestDispatcher("login.jsp").forward(req, resp);
-				System.out.print("OKK");
+				System.out.println("Đăng nhập không thành công");
 			}
 			else {
 				HttpSession session = req.getSession();
 				session.setAttribute("acc", acc);
-				System.out.print("OK");
+				System.out.println("Đăng nhập thành công");
 				resp.sendRedirect("index.jsp");
 			}
 		}

@@ -93,7 +93,7 @@ public class DAO_Nguoi_dung {
 			preparedStatement.setInt(1, nguoi_dung.getId_nguoi_dung());
 			preparedStatement.setString(2, nguoi_dung.getHo_ten());
 			preparedStatement.setBoolean(3, nguoi_dung.isGioi_tinh());
-			preparedStatement.setDate(4, nguoi_dung.getNgay_sinh());
+			preparedStatement.setString(4, nguoi_dung.getNgay_sinh());
 			preparedStatement.setString(5, nguoi_dung.getDia_chi());
 			preparedStatement.setString(6, nguoi_dung.getAnh_dai_dien()); 
 			preparedStatement.execute();
@@ -164,7 +164,7 @@ Connection connection = null;
 				nguoi_dung = new Chu_cua_hang(	rs.getInt("id"),
 												rs.getString("ho_ten"), 
 												rs.getBoolean("gioi_tinh"), 
-												rs.getDate("ngay_sinh"), 
+												rs.getString("ngay_sinh"), 
 												rs.getString("dia_chi"), 
 												rs.getString("anh_dai_dien"), 
 												rs.getString("so_dien_thoai"), 
@@ -175,7 +175,7 @@ Connection connection = null;
 				nguoi_dung = new Nhan_vien(		rs.getInt("id"),
 												rs.getString("ho_ten"), 
 												rs.getBoolean("gioi_tinh"), 
-												rs.getDate("ngay_sinh"), 
+												rs.getString("ngay_sinh"), 
 												rs.getString("dia_chi"), 
 												rs.getString("anh_dai_dien"), 
 												rs.getString("so_dien_thoai"), 
@@ -186,7 +186,7 @@ Connection connection = null;
 				nguoi_dung = new Khach_hang(	rs.getInt("id"),
 												rs.getString("ho_ten"), 
 												rs.getBoolean("gioi_tinh"), 
-												rs.getDate("ngay_sinh"), 
+												rs.getString("ngay_sinh"), 
 												rs.getString("dia_chi"), 
 												rs.getString("anh_dai_dien"), 
 												rs.getString("so_dien_thoai"), 
@@ -225,9 +225,9 @@ Connection connection = null;
 			String sql1 = 	"UPDATE thong_tin_nguoi_dung SET ho_ten = ?, gioi_tinh = ?, ngay_sinh = ?, dia_chi = ?, anh_dai_dien = ? WHERE id = ?;";
 			
 			preparedStatement = connection.prepareStatement(sql1);
-			preparedStatement.setString(1, nguoi_dung.getSo_dien_thoai());
+			preparedStatement.setString(1, nguoi_dung.getHo_ten());
 			preparedStatement.setBoolean(2, nguoi_dung.isGioi_tinh());
-			preparedStatement.setDate(3, nguoi_dung.getNgay_sinh());
+			preparedStatement.setString(3, nguoi_dung.getNgay_sinh());
 			preparedStatement.setString(4, nguoi_dung.getDia_chi());
 			preparedStatement.setString(5, nguoi_dung.getAnh_dai_dien());
 			preparedStatement.setInt(6, nguoi_dung.getId_nguoi_dung());

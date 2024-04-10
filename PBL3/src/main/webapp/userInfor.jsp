@@ -1,5 +1,5 @@
 <%@page import="jakarta.servlet.http.HttpSession"%>
-<%@page import="Entity.Account"%>
+
 <%@ page contentType="text/html; charset=UTF-8"  %>
 
 <%@ taglib prefix="c" uri ="http://java.sun.com/jsp/jstl/core" %>
@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="userInfor.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-</head>
+
 <title>Information</title>
 </head>
 <body>
@@ -28,10 +28,10 @@
                 <hr class="hrbar">
                 <div class="side-bar">
                
-				<img src="img/anh_nguoi_dung/c8aa46847e122a7ff5399bc48bffcf25.jpg" width="200px"/>
+				<img src="img\anh_nguoi_dung\aa.png" width = 200px/>
 			<form method = "post" action="fileuploadservlet" enctype="multipart/form-data">
-			<input type="file" name="file"/> 
-			<button type = "submit">Upload</button>
+			<input id = "ajaxfile" type="file" name="file"/> 
+			<button type = "submit" onclick = "uploadFile()">Upload</button>
 			
 			
 			</form>
@@ -93,5 +93,15 @@
   document.getElementById("modify").addEventListener("click", function () {
     document.getElementById("target").disabled = !document.getElementById("target").disabled; // Vô hiệu hóa nút đích
   });
+  
+  async function uploadFile(){
+	 let formData = new FormData();
+	 formData.append("file",ajaxfile.file[0]);
+	 await fetch('fileuploadservlet',{
+		 method: "POST",
+		 body: formData
+	 });
+	 alert('The file upload thanh cong');
+  }
 </script>
 </html>

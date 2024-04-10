@@ -40,7 +40,7 @@ public class SignUp extends HttpServlet {
 			try {
 				int id = new Random().nextInt(1000);
 
-				Khach_hang khhang = new Khach_hang(id,fullname,true ,new Date(0),null, null, phoneNumber, email,Phan_quyen_nguoi_dung.KHACH_HANG.toString() );
+				Khach_hang khhang = new Khach_hang(id,fullname,true ,null,null, null, phoneNumber, email,Phan_quyen_nguoi_dung.KHACH_HANG.toString() );
 				DAO_Nguoi_dung.tao_tai_khoan(khhang, Encode.toSHA1(pass));
 				response.sendRedirect("login.jsp");
 			}

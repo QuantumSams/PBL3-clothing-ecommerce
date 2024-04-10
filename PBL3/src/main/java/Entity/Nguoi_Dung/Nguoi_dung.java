@@ -8,14 +8,14 @@ public abstract class Nguoi_dung implements Thong_tin{
 	protected int id_nguoi_dung;
 	protected String ho_ten;
 	protected boolean gioi_tinh;
-	protected Date ngay_sinh;
+	protected String ngay_sinh;
 	protected String dia_chi;
 	protected String anh_dai_dien;
 	protected String so_dien_thoai;
 	protected String email;
 	protected String phan_quyen_nguoi_dung;
 	
-	public Nguoi_dung(int id_nguoi_dung, String ho_ten, boolean gioi_tinh, Date ngay_sinhDate, String dia_chi,
+	public Nguoi_dung(int id_nguoi_dung, String ho_ten, boolean gioi_tinh, String ngay_sinhDate, String dia_chi,
 			String anh_dai_dien, String so_dien_thoai, String email, String phan_quyen_nguoi_dung) {
 		this.id_nguoi_dung = id_nguoi_dung;
 		this.ho_ten = ho_ten;
@@ -45,10 +45,10 @@ public abstract class Nguoi_dung implements Thong_tin{
 	public void setGioi_tinh(boolean gioi_tinh) {
 		this.gioi_tinh = gioi_tinh;
 	}
-	public Date getNgay_sinh() {
+	public String getNgay_sinh() {
 		return ngay_sinh;
 	}
-	public void setNgay_sinh(Date ngay_sinhDate) {
+	public void setNgay_sinh(String ngay_sinhDate) {
 		this.ngay_sinh = ngay_sinhDate;
 	}
 	public String getDia_chi() {

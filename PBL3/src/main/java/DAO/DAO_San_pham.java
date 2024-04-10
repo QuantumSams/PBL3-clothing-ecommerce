@@ -130,13 +130,14 @@ public class DAO_San_pham {
 			connection = JDBC_Unit.getConnection();
 			PreparedStatement preparedStatement = null;
 			
-			String sql1 = "INSERT INTO thong_tin_chung_cua_san_pham VALUES (?, ?, ?, ?, ?);";
+			String sql1 = "INSERT INTO thong_tin_chung_cua_san_pham VALUES (?, ?, ?, ?, ?, ?);";
 			preparedStatement = connection.prepareStatement(sql1);
 			preparedStatement.setInt(1, san_pham.getId_san_pham());
 			preparedStatement.setString(2, san_pham.getTen_san_pham());
 			preparedStatement.setString(3, san_pham.getTen_nhan_hang());
-			preparedStatement.setString(4, san_pham.getThong_tin_chung());
-			preparedStatement.setInt(5, san_pham.getId_danh_muc_san_pham());
+			preparedStatement.setString(4, san_pham.getChat_lieu());
+			preparedStatement.setString(5, san_pham.getThong_tin_chung());
+			preparedStatement.setInt(6, san_pham.getId_danh_muc_san_pham());
 			preparedStatement.execute();
 			
 			for(String duong_dan : san_pham.getAnh_san_pham()){
@@ -166,13 +167,14 @@ public class DAO_San_pham {
 			connection = JDBC_Unit.getConnection();
 			PreparedStatement preparedStatement = null;
 			
-			String sql1 = "UPDATE thong_tin_chung_cua_san_pham SET ten_san_pham = ?, ten_nhan_hang = ?, thong_tin_chung = ?, id_danh_muc_san_pham = ? WHERE id_san_pham = ?";
+			String sql1 = "UPDATE thong_tin_chung_cua_san_pham SET ten_san_pham = ?, ten_nhan_hang = ?, ten_chat_lieu = ?, thong_tin_chung = ?, id_danh_muc_san_pham = ? WHERE id_san_pham = ?";
 			preparedStatement = connection.prepareStatement(sql1);
 			preparedStatement.setString(1, san_pham.getTen_san_pham());
 			preparedStatement.setString(2, san_pham.getTen_nhan_hang());
-			preparedStatement.setString(3, san_pham.getThong_tin_chung());
-			preparedStatement.setInt(4, san_pham.getId_danh_muc_san_pham());
-			preparedStatement.setInt(5, san_pham.getId_san_pham());
+			preparedStatement.setString(3, san_pham.getChat_lieu());
+			preparedStatement.setString(4, san_pham.getThong_tin_chung());
+			preparedStatement.setInt(5, san_pham.getId_danh_muc_san_pham());
+			preparedStatement.setInt(6, san_pham.getId_san_pham());
 			preparedStatement.execute();
 			
 			System.out.println("them san pham thanh cong!!");
@@ -279,6 +281,7 @@ public class DAO_San_pham {
 									rs.getInt("id_danh_muc_san_pham"),
 									rs.getString("ten_san_pham"),  
 									rs.getString("ten_nhan_hang"),
+									rs.getString("ten_chat_lieu"),
 									rs.getString("thong_tin_chung"),
 									ls_duong_dan, 
 									null);
@@ -302,16 +305,15 @@ public class DAO_San_pham {
 			PreparedStatement preparedStatement = null;
 			
 			
-			String sql1 = "INSERT INTO thong_tin_chi_tiet_san_pham VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+			String sql1 = "INSERT INTO thong_tin_chi_tiet_san_pham VALUES (?, ?, ?, ?, ?, ?, ?);";
 			preparedStatement = connection.prepareStatement(sql1);
 			preparedStatement.setInt(1, chi_tiet_san_pham.getId_thong_tin_chi_tiet_san_pham());
 			preparedStatement.setInt(2, chi_tiet_san_pham.getId_san_pham());
 			preparedStatement.setInt(3, chi_tiet_san_pham.getSo_luong_trong_kho());
 			preparedStatement.setInt(4, chi_tiet_san_pham.getMau_sac_san_pham().getId_mau_sac());
 			preparedStatement.setInt(5, chi_tiet_san_pham.getKich_thuoc_san_pham().getId_size());
-			preparedStatement.setInt(6, chi_tiet_san_pham.getChat_lieu_san_pham().getId_chat_lieu());
-			preparedStatement.setFloat(7, chi_tiet_san_pham.getGia_tien());
-			preparedStatement.setString(8, chi_tiet_san_pham.getThong_tin_chi_tiet());
+			preparedStatement.setFloat(6, chi_tiet_san_pham.getGia_tien());
+			preparedStatement.setString(7, chi_tiet_san_pham.getThong_tin_chi_tiet());
 			preparedStatement.execute();
 			
 			System.out.println("them chi tiet san pham thanh cong!!");
@@ -337,7 +339,6 @@ public class DAO_San_pham {
 					+ "so_luong_trong_kho = ?, "
 					+ "id_mau_sac = ?, "
 					+ "id_size = ?, "
-					+ "id_chat_lieu = ?, "
 					+ "gia_tien = ?, "
 					+ "thong_tin_chi_tiet = ?"
 					+ " WHERE id_thong_tin_chi_tiet_san_pham = ?;";
@@ -345,7 +346,6 @@ public class DAO_San_pham {
 			preparedStatement.setInt(1, chi_tiet_san_pham.getSo_luong_trong_kho());
 			preparedStatement.setInt(2, chi_tiet_san_pham.getMau_sac_san_pham().getId_mau_sac());
 			preparedStatement.setInt(3, chi_tiet_san_pham.getKich_thuoc_san_pham().getId_size());
-			preparedStatement.setInt(4, chi_tiet_san_pham.getChat_lieu_san_pham().getId_chat_lieu());
 			preparedStatement.setFloat(5, chi_tiet_san_pham.getGia_tien());
 			preparedStatement.setString(6, chi_tiet_san_pham.getThong_tin_chi_tiet());
 			preparedStatement.setInt(7, chi_tiet_san_pham.getId_thong_tin_chi_tiet_san_pham());
@@ -457,7 +457,6 @@ public class DAO_San_pham {
 														rs.getInt("so_luong_trong_kho"),
 														DAO_Thuoc_tinh_san_pham.lay_mau_sac(rs.getInt("id_san_pham")),
 														DAO_Thuoc_tinh_san_pham.lay_size(rs.getInt("id_san_pham")),
-														DAO_Thuoc_tinh_san_pham.lay_chat_lieu(rs.getInt("id_san_pham")),
 														rs.getFloat("id_san_pham"),
 														ls_duong_dan_anh, 
 														rs.getString("thong_tin_chi_tiet"));

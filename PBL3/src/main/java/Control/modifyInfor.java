@@ -37,6 +37,7 @@ public class modifyInfor extends HttpServlet {
 		String phoneNumber =  request.getParameter("phoneNumber");
 		String address = request.getParameter("address");
 		String fullName = request.getParameter("fullName");
+		System.out.println(fullName);
 		String email = request.getParameter("email");
 		String birth = request.getParameter("birth");
 		String image = request.getParameter("image");
@@ -45,7 +46,7 @@ public class modifyInfor extends HttpServlet {
 		Khach_hang acc = (Khach_hang)session.getAttribute("acc");
 		acc.setSo_dien_thoai(phoneNumber);
 		acc.setDia_chi(address);
-		//acc.setNgay_sinh(new Date(birth));
+		acc.setNgay_sinh(birth);
 		acc.setHo_ten(fullName);
 		acc.setEmail(email);
 		try {
