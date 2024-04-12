@@ -33,6 +33,10 @@ public class Don_hang implements Thong_tin{
 		this.trang_thai_don_hang = trang_thai_don_hang;
 	}
 	
+	public Don_hang() {
+		
+	}
+	
 	public void xoa_don_hang() {
 		
 	}

@@ -11,6 +11,10 @@ public class Size implements Thong_tin{
 		this.ten_size = ten_size;
 	}
 	
+	public Size() {
+		
+	}
+	
 	public int getId_size() {
 		return id_size;
 	}

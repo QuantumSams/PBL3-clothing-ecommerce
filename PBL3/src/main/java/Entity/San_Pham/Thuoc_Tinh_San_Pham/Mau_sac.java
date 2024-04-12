@@ -14,6 +14,10 @@ public class Mau_sac implements Thong_tin{
 		this.anh_mau_sac = anh_mau_sac;
 	}
 	
+	public Mau_sac() {
+		
+	}
+		
 	public int getId_mau_sac() {
 		return id_mau_sac;
 	}

@@ -7,7 +7,7 @@
     <meta http–equiv=“Content-Type” content=“text/html; charset=UTF-8”>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="Crud.css">
+    <link rel="stylesheet" type="text/css" href="./Crud.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -205,82 +205,7 @@
             </div>
             
     </div>
+    <script src="./Crud.js"></script>
 </body>
-<script>
-    const imageUpload = document.getElementById('image-upload');
-    const previewImage = document.getElementById('preview-image');
-    imageUpload.addEventListener('change', function(event) {
-    const file = event.target.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            previewImage.src = e.target.result;
-        };
-        reader.readAsDataURL(file);
-    }
-});
-    function addItem(i) {
-        const list = document.getElementById(i);
-        const newItem = document.createElement("div");
-        const newInput = document.createElement("input");
-        const newButton = document.createElement("button");
-        newButton.textContent = "X";
-        var j = "#"+i;
-        newButton.onclick = removeItem(j);
-        newItem.appendChild(newInput);
-        newItem.appendChild(newButton);
-        newItem.className = "inputSize";
-        list.appendChild(newItem);
-    }
-    function acceptChange(i,j){
-        const btn = document.getElementsByClassName(i);
-        const form = document.querySelector(j);
-        if(form.style.display == "none"){
-            btn.textContent = "Hoàn tất";
-            form.style.display = "block";
-        }
-        else{
-
-            const inputElements = document.querySelectorAll("#itemListSize input");
-            const inputValues = Array.from(inputElements).map(input => input.value);
-            for(let i = 0; i<inputValues.length; ++i){
-                
-            }
-            btn.textContent = "Chỉnh sửa";
-            form.style.display = "none";
-        }
-    }
-    function removeItem(i){
-        const list = document.querySelector(i);
-        list.addEventListener("click", function(event) {
-        if (event.target.tagName === "BUTTON") {
-            list.removeChild(event.target.parentNode);
-        }
-    });
-    }
-    function createTable(){
-        const inputElements1 = document.querySelectorAll("#itemListSize input");
-        const inputColor = Array.from(inputElements1).map(input => input.value);
-        const inputElements2 = document.querySelectorAll("#itemListColor input");
-        const inputSize = Array.from(inputElements2).map(input => input.value);
-        var count = 0;
-        console.log(inputColor);
-        console.log(inputSize);
-        var table = document.getElementById('myTable');
-        table.innerHTML = "";
-        for(var i = 0; i<inputColor.length; i++){
-            for(var j = 0; j< inputSize.length; j++){
-            	count=count+1;
-                var row = `<tr>
-                    <td>${count}</td>
-                    <td>${inputColor[i] +" "+ inputSize[j]}</td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    </tr>`
-                    
-                }table.innerHTML +=row;
-            }
-    }
-</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </html>
