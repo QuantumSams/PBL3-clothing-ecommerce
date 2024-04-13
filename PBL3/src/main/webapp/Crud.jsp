@@ -263,22 +263,22 @@
         const inputColor = Array.from(inputElements1).map(input => input.value);
         const inputElements2 = document.querySelectorAll("#itemListColor input");
         const inputSize = Array.from(inputElements2).map(input => input.value);
-        var count = 0;
+        let count = 0;
         console.log(inputColor);
         console.log(inputSize);
         var table = document.getElementById('myTable');
         table.innerHTML = "";
-        for(var i = 0; i<inputColor.length; i++){
-            for(var j = 0; j< inputSize.length; j++){
-            	count=count+1;
-                var row = `<tr>
-                    <td>${count}</td>
-                    <td>${inputColor[i] +" "+ inputSize[j]}</td>
+        for(let i = 0; i<inputColor.length; i++){
+            for(let j = 0; j< inputSize.length; j++){
+            	console.log(inputColor[i] + " " + inputSize[j]);
+                let row = `<tr>
+                    <td>$count</td>
+                    <td>${inputColor[i]} ${inputSize[j]}</td>
                     <td><input type="text"></td>
                     <td><input type="text"></td>
                     </tr>`
-                    
-                }table.innerHTML +=row;
+                	table.innerHTML +=row;
+                }
             }
     }
 </script>
