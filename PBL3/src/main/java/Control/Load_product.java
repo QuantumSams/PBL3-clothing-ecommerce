@@ -38,7 +38,10 @@ public class Load_product extends HttpServlet{
 		l.add(new Mau_sac(3, "Màu vàng", "Đường dẫn đến ảnh màu vàng"));
 		l.add(new Mau_sac(4, "Màu tím", "Đường dẫn đến ảnh màu tím"));
 		
-		
+		for(Mau_sac s : l)
+		{
+			System.out.println(s.toString());
+		}
 		
 		req.setAttribute("mau_sac", l);
 		

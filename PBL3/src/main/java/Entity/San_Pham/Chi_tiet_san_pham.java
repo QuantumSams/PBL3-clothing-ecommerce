@@ -6,7 +6,7 @@ import Entity.Thong_tin;
 import Entity.San_Pham.Thuoc_Tinh_San_Pham.Mau_sac;
 import Entity.San_Pham.Thuoc_Tinh_San_Pham.Size;
 
-public class Thong_tin_chi_tiet_san_pham implements Thong_tin{
+public class Chi_tiet_san_pham implements Thong_tin{
 	protected int id_thong_tin_chi_tiet_san_pham;
 	protected int id_san_pham;
 	protected int so_luong_trong_kho;
@@ -16,7 +16,7 @@ public class Thong_tin_chi_tiet_san_pham implements Thong_tin{
 	protected List<String> anh_chi_tiet;
 	protected String thong_tin_chi_tiet;
 	
-	public Thong_tin_chi_tiet_san_pham(int id_thong_tin_chi_tiet_san_pham, int id_san_pham, int so_luong_trong_kho,
+	public Chi_tiet_san_pham(int id_thong_tin_chi_tiet_san_pham, int id_san_pham, int so_luong_trong_kho,
 			Mau_sac mau_sac_san_pham, Size kich_thuoc_san_pham, float gia_tien,
 			List<String> anh_chi_tiet, String thong_tin_chi_tiet) {
 		super();

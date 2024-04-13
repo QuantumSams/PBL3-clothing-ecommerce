@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri ="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -104,8 +106,11 @@
                                     <button class ="btn1" onclick = "acceptChange('btn1','.editColor')">Chỉnh sửa</button>
                                 </div>
                                 <div class = "editColor">
+                                            	
+                                            <c:forEach var="item" items="${mau_sac}">
+                                            	<input type="text" value = '${item.ten_mau}'/>
+                                            </c:forEach>
                                         <ul id="itemListColor">
-                                            
                                         </ul>
                                       <button onclick="addItem('itemListColor')">Add</button>
                                 </div>

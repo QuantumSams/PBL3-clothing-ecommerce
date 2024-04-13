@@ -1,9 +1,10 @@
-package Mapper;
+package Mapper.Thuoc_tinh_san_pham;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import Entity.San_Pham.Thuoc_Tinh_San_Pham.Mau_sac;
+import Mapper.RowMapper;
 
 public class Mau_sac_Mapper implements RowMapper<Mau_sac>{
 

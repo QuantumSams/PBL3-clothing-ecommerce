@@ -46,6 +46,7 @@
                     		<a href = "userInfor.jsp" class = "nav-link">Hello ${sessionScope.acc.ho_ten}</a>
                     	</li>
                     </c:if>
+                    
                     <li class="nav-item">
                       <a class="nav-link" href="#"><i class="fa-solid fa-heart" style="color: #000000;"></i></a>
                     </li>

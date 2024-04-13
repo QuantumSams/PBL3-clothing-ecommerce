@@ -29,6 +29,7 @@ public class AbstractDao implements GenericDAO{
 			while (resultSet.next()) {
 				results.add(rowMapper.mapRow(resultSet));
 			}
+			
 			return results;
 		} catch (SQLException e) {
 			return null;
@@ -90,6 +91,7 @@ public class AbstractDao implements GenericDAO{
 		ResultSet resultSet = null;
 		try {
 			int id = 0;
+			
 			connection = JDBC_Unit.getConnection();
 			connection.setAutoCommit(false);
 			statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -161,7 +163,7 @@ public class AbstractDao implements GenericDAO{
 		}
 	}
 	
-	private void setParameter(PreparedStatement statement, Object... parameters) {
+	protected void setParameter(PreparedStatement statement, Object... parameters) {
 		try {
 			for (int i = 0; i < parameters.length; i++) {
 				Object parameter = parameters[i];
@@ -172,6 +174,8 @@ public class AbstractDao implements GenericDAO{
 					statement.setString(index, (String) parameter);
 				} else if (parameter instanceof Integer) {
 					statement.setInt(index, (Integer) parameter);
+				} else if (parameter instanceof Boolean) {
+					statement.setBoolean(index, (Boolean) parameter);
 				} else if (parameter instanceof Date) {
 					statement.setDate(index, (Date) parameter);
 				}

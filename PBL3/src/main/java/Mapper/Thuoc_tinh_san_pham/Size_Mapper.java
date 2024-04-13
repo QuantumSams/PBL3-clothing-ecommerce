@@ -1,9 +1,10 @@
-package Mapper;
+package Mapper.Thuoc_tinh_san_pham;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import Entity.San_Pham.Thuoc_Tinh_San_Pham.Size;
+import Mapper.RowMapper;
 
 public class Size_Mapper implements RowMapper<Size>{
 

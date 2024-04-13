@@ -28,14 +28,12 @@
                 <hr class="hrbar">
                 <div class="side-bar">
                
-				<img src="img\anh_nguoi_dung\aa.png" width = 200px/>
+				
 			<form method = "post" action="fileuploadservlet" enctype="multipart/form-data">
+			<img src="img/anh_nguoi_dung/12.png" width = 200px/>
 			<input id = "ajaxfile" type="file" name="file"/> 
 			<button type = "submit" onclick = "uploadFile()">Upload</button>
-			
-			
 			</form>
-					
                 </div>
             </div>
             <hr class= "center">
@@ -71,7 +69,7 @@
                         <input class = "infor" name = "email" type = "text" required="required" value = "${sessionScope.acc.email }" disabled="disabled"> </input>
                         <h5>Số điện thoại:</h5>
                         <input class = "infor" name = "phoneNumber" type = "text" required="required" value = "${sessionScope.acc.so_dien_thoai }" disabled="disabled"> </input>
-                        
+                        <input value = "${sessionScope.acc.anh_dai_dien }">
                     </div>
                	 </div>
                	 <div class = "buttonS">
@@ -103,5 +101,6 @@
 	 });
 	 alert('The file upload thanh cong');
   }
+  console.log($sessionScope.acc);
 </script>
 </html>

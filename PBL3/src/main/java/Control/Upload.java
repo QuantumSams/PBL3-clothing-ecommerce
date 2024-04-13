@@ -7,8 +7,7 @@ import java.io.InputStream;
 import java.io.File;
 import javax.imageio.ImageIO;
 
-
-import DAO.DAO_Nguoi_dung;
+import DAO.AbstractDao;
 import Entity.Nguoi_Dung.Nguoi_dung;
 import jakarta.security.auth.message.callback.PrivateKeyCallback.Request;
 import jakarta.servlet.ServletException;
@@ -69,7 +68,7 @@ public class Upload extends HttpServlet{
 //		req.getRequestDispatcher("userInfor.jsp").forward(req, resp);;
 //	}
 	 protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String uploadDir = "D:\\PBL3-3\\PBL3-clothing-ecommerce\\PBL3\\src\\main\\webapp\\img\\anh_nguoi_dung";
+        String uploadDir = "img/anh_nguoi_dung";
 
         // Tạo thư mục nếu nó không tồn tại
         File directory = new File(uploadDir);
@@ -89,7 +88,9 @@ public class Upload extends HttpServlet{
 		acc.setAnh_dai_dien("img/anh_nguoi_dung" + File.separator + fileName);
 		request.setAttribute("acc", acc);
 		try {
-			DAO_Nguoi_dung.cap_nhat_tai_khoan(acc);
+			String sql2 = "UPDATE thong_tin_nguoi_dung SET anh_dai_dien = ? WHERE id = ?;";
+			
+			new AbstractDao().update(sql2, acc.getAnh_dai_dien(), acc.getId_nguoi_dung());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
