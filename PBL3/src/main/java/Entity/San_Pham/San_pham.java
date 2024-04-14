@@ -13,12 +13,12 @@ public class San_pham implements Thong_tin{
 	private String chat_lieu;
 	private String thong_tin_chung;
 	private List<String> anh_san_pham;
-	private List<Thong_tin_chi_tiet_san_pham> thon_tin_chi_tiet_san_phan;
+	private List<Chi_tiet_san_pham> thon_tin_chi_tiet_san_phan;
 	
 	
 	public San_pham(int id_san_pham, int id_danh_muc_san_pham, String ten_san_pham, String ten_nhan_hang,
 			String chat_lieu, String thong_tin_chung, List<String> anh_san_pham,
-			List<Thong_tin_chi_tiet_san_pham> thon_tin_chi_tiet_san_phan) {
+			List<Chi_tiet_san_pham> thon_tin_chi_tiet_san_phan) {
 		super();
 		this.id_san_pham = id_san_pham;
 		this.id_danh_muc_san_pham = id_danh_muc_san_pham;
@@ -89,11 +89,11 @@ public class San_pham implements Thong_tin{
 		this.anh_san_pham = anh_san_pham;
 	}
 
-	public List<Thong_tin_chi_tiet_san_pham> getThon_tin_chi_tiet_san_phan() {
+	public List<Chi_tiet_san_pham> getThon_tin_chi_tiet_san_phan() {
 		return thon_tin_chi_tiet_san_phan;
 	}
 
-	public void setThon_tin_chi_tiet_san_phan(List<Thong_tin_chi_tiet_san_pham> thon_tin_chi_tiet_san_phan) {
+	public void setThon_tin_chi_tiet_san_phan(List<Chi_tiet_san_pham> thon_tin_chi_tiet_san_phan) {
 		this.thon_tin_chi_tiet_san_phan = thon_tin_chi_tiet_san_phan;
 	}
 
@@ -128,7 +128,7 @@ public class San_pham implements Thong_tin{
 		
 	}
 	
-	public List<Thong_tin_chi_tiet_san_pham> lay_thong_tin_chi_tiet_san_pham() {
+	public List<Chi_tiet_san_pham> lay_thong_tin_chi_tiet_san_pham() {
 		return null;
 	}
 

@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Date;
 
-import DAO.DAO_Nguoi_dung;
+import DAO.AbstractDao;
 import java.util.Random;
 /**
  * Servlet implementation class SignUp
@@ -27,12 +27,12 @@ public class SignUp extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html; charset=UTF-8");
 		String email = request.getParameter("email");
-		String pass = request.getParameter("password");
+		String passWord = request.getParameter("password");
 		String fullname = request.getParameter("fullname");
 		String phoneNumber = request.getParameter("phoneNumber");
 		String repass = request.getParameter("repassword");
 		
-		if(!pass.equals(repass)) {
+		if(!passWord.equals(repass)) {
 			request.setAttribute("message2", "Mật khẩu không trùng khớp");
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		}
@@ -40,8 +40,11 @@ public class SignUp extends HttpServlet {
 			try {
 				int id = new Random().nextInt(1000);
 
-				Khach_hang khhang = new Khach_hang(id,fullname,true ,null,null, null, phoneNumber, email,Phan_quyen_nguoi_dung.KHACH_HANG.toString() );
-				DAO_Nguoi_dung.tao_tai_khoan(khhang, Encode.toSHA1(pass));
+				String query1 = "INSERT INTO thong_tin_dang_nhap VALUES (?, ?, ?, ?, ?);";
+				String query2 = "INSERT INTO thong_tin_nguoi_dung VALUES (?, ?, ?, ?, ?, ?)";
+				
+				new AbstractDao().insert(query1, id, phoneNumber, email, Encode.toSHA1(passWord), 1);
+				new AbstractDao().insert(query2, id, fullname, 1, new Date(0), "", "");
 				response.sendRedirect("login.jsp");
 			}
 			catch(Exception e){
