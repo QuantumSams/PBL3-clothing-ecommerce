@@ -19,7 +19,8 @@
     <div class="mainBody">
         <div class="sideBar col-2">
             
-        </div>
+        </div>	
+        <form>
         <div class="addProduct">
             <div class="header">
                 <div class="block">
@@ -27,7 +28,7 @@
                         <h2>Thêm sản phẩm mới</h2>
                     </div>
                     <div class="listButton">
-                        <button class = "add button1">
+                        <button type = "submit" class = "add button1">
                             Lưu
                         </button>
                         <button class = "Cancel button1">
@@ -125,6 +126,9 @@
                                     <button class ="btn2" onclick = "acceptChange('btn2', '.editSize')">Chỉnh sửa</button>
                                 </div>
                                 <div class = "editSize">
+                                 			<c:forEach var="item" items="${size}">
+                                            	<input type="text" value = '${item.ten_size}'/>
+                                            </c:forEach>
                                         <ul id="itemListSize">
                                             
                                         </ul>
@@ -164,55 +168,37 @@
                             <h5>Danh mục hàng</h5>
                             <h6>Đối tượng</h6>
                             <Select>
-                                <Option>
-                                    Nam
-                                </Option>
-                                <Option>
-                                    Nữ
-                                </Option>
-                                <Option>
-                                    Trẻ em
-                                </Option>
-                                <Option>
-                                    Người già
-                                </Option> 
-                            </Select>
-                            <h6>Tên danh mục</h6>
-                            <Select>
-                                <Option>
-                                    Áo
-                                </Option>
-                                <Option>
-                                    Quần
-                                </Option>
-                                <Option>
-                                    Giày
-                                </Option>
-                                <Option>
-                                    Thắt lưng
-                                </Option> 
+                            	
+                            	<c:forEach var="item" items="${doi_tuong_khach_hang}">
+                            		<Option>
+                            		${item}
+										
+									</Option>
+                                </c:forEach>
+                                
                             </Select>
                             <h6>Tên loại sản phẩm</h6>
                             <Select>
-                                <Option>
-                                    Áo cố tròn
-                                </Option>
-                                <Option>
-                                    Áo cổ vuông
-                                </Option>
-                                <Option>
-                                    Quần sịp
-                                </Option>
-                                <Option>
-                                    Quần dài
-                                </Option> 
+                                <c:forEach var="item" items="${ten_loai_san_pham}">
+                            		<Option>
+                            			${item}	
+									</Option>
+                                </c:forEach>
+                            </Select>
+                            <h6>Tên danh mục sản phẩm</h6>
+                            <Select>
+                                <c:forEach var="item" items="${ten_danh_muc_san_pham}">
+                            		<Option>
+                            			${item}	
+									</Option>
+                                </c:forEach>
                             </Select>
                         </div>
                     </div>
                 </div>
             </div>
-            
     </div>
+    </form>
     <script src="./Crud.js"></script>
 </body>
 
