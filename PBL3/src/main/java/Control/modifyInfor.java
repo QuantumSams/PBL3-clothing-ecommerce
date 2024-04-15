@@ -40,15 +40,14 @@ public class modifyInfor extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		int id = Integer.parseInt(request.getParameter("id"));
-		String phoneNumber =  request.getParameter("phoneNumber");
+		String phoneNumber =  request.getParameter("phone");
 		String address = request.getParameter("address");
-		String fullName = request.getParameter("fullName");
-		System.out.println(fullName);
+		String fullName = request.getParameter("name");
 		String email = request.getParameter("email");
 		String birth = request.getParameter("birth");
 		String image = request.getParameter("image");
 		HttpSession session = request.getSession();
-		
+		System.out.println(image);
 		// thay doi account thanh nguoi_dung
 		Khach_hang acc = (Khach_hang)session.getAttribute("acc");
 		acc.setSo_dien_thoai(phoneNumber);
