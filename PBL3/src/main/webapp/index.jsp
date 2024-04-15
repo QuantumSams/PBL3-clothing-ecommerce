@@ -40,6 +40,27 @@
         </div>
         
     <div class = main-items>
+    
+    	<c:forEach var="item" items="${san_pham}">
+                 <div class="card" style="width:250px">
+            <img class="card-img-top" src="${item.anh_san_pham[0]}" alt="Card image">
+            	<div class="card-body">
+                	<h6>${item.danh_muc_san_pham}</h6>
+                	<h5 class="card-title" style ="font-weight: bold;" ><a href ="product.jsp">${item.ten_san_pham}</a></h4>
+                	<p class="card-text">${item.ten_nhan_hang}</p>
+                	<h4 style = "font-weight: bold;">980.000VNĐ</h4>
+                	<div class="star">
+                    	<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    	<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    	<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    	<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    	<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    	<p style = "text-decoration: underline">(79)</p>
+                	</div>
+            	</div>
+        	</div>                        	  
+		</c:forEach>
+    
         <div class="card" style="width:250px">
             <img class="card-img-top" src="img/ao-thun-in-hinh-theo-yeu-cau.jpg" alt="Card image">
             <div class="card-body">

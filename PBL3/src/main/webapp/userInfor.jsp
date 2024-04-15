@@ -1,5 +1,6 @@
 <%@page import="jakarta.servlet.http.HttpSession"%>
-<%@ page contentType="text/html; charset=UTF-8"  %>
+<%@page import="java.util.Base64"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"  %>
 <%@ taglib prefix="c" uri ="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,6 +18,7 @@
                 Chỉnh sửa thông tin người dùng
             </h3>
         </div>
+        <form action="infor" method="post">
         <div class="card overflow-hidden">
             <div class="form" style="display: flex;">
                 <div class="sidebar col-md-3 pt-0">
@@ -31,10 +33,14 @@
                     <div class="tab-content">
                         <div class = "tab-pane fade active show" id = "account-general">
                             <div class="cardImage card-body">
-                                <img src="386644391_1615327005662931_6147334074894597765_n.jpg" alt="" class = "d-block ui-w-80">
+                            
+                                <img id="img" src="${sessionScope.acc.anh_dai_dien}" alt="" class = "d-block ui-w-80">
                                 
                             </div>
                             <div class="mainInfor card-body">
+                            	
+                            	<input type="file"  id="fileInput" name="file"/>
+                            
                                 <div class="name form">
                                     <label for="" class="form-label">Tên</label>
                                     <input type="text" class="form-control"  value = "${sessionScope.acc.ho_ten}" name="name">
@@ -90,9 +96,10 @@
             </div>
         </div>
         <div class="text-right mt-3">
-            <button type="button" class="btn btn-primary">Save changes</button>&nbsp;
-            <button type="button" class="btn btn-default">Cancel</button>
+        	<button type="button" class="btn btn-primary">Save changes</button>&nbsp;
+         	<button type="button" class="btn btn-default">Cancel</button>
         </div>
+        </form>
     </div>
 </body>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
@@ -101,6 +108,25 @@
     <script type="text/javascript"></script>
 
 <script type="text/javascript">
+
+	const fileInput = document.getElementById('fileInput');
+	const imgElement = document.getElementById('img');
+
+	fileInput.addEventListener('change', function(event) {
+  		const file = event.target.files[0];
+
+  		if (file) {
+    		const reader = new FileReader();
+
+    		reader.onload = function(event) {
+      		imgElement.src = event.target.result;
+    		};
+
+    		reader.readAsDataURL(file);
+  		}
+	}); 
+
+
   function modifyInforDisable() {
     var inputElements = document.querySelectorAll(".infor");
     inputElements.forEach(function(inputElement) {

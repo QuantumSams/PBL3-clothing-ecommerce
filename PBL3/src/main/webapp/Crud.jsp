@@ -20,7 +20,7 @@
         <div class="sideBar col-2">
             
         </div>	
-        <form>
+        
         <div class="addProduct">
             <div class="header">
                 <div class="block">
@@ -109,11 +109,11 @@
                                 </div>
                                 <div class = "editColor">
                                         <ul id="itemListColor">
-                                         <c:forEach var="item" items="${mau_sac}">
-                                         	<div class ="inputSize">
-                                         		<input class = " " type="text" value = '${item.ten_mau}'/>
-                                            	<button class = "deleteItem" onclick = "removeItem('#itemListColor')">X</button>
-                                         	</div>  
+                                         	<c:forEach var="item" items="${mau_sac}">
+                                         		<div class ="inputSize">
+                                         			<input class = " " type="text" value = '${item.ten_mau}'/>
+                                            		<button class = "deleteItem" onclick = "removeItem('#itemListColor')">X</button>
+                                         		</div>  
                                             </c:forEach>
                                         </ul>
                                       <button onclick="addItem('itemListColor')">Add</button>
@@ -198,7 +198,6 @@
                 </div>
             </div>
     </div>
-    </form>
     <script src="./Crud.js"></script>
 </body>
 

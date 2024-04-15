@@ -13,10 +13,12 @@ public class San_pham_Mapper implements RowMapper<San_pham>{
 	@Override
 	public San_pham mapRow(ResultSet rs) {
 		try {
-			San_pham san_pham = new San_pham(rs.getInt("id_san_pham"),
-										rs.getInt("id_danh_muc_san_pham"),
+			San_pham san_pham = new San_pham(
+										rs.getInt("id_san_pham"),
+										rs.getString("ten_danh_muc_san_pham"),
 										rs.getString("ten_san_pham"),  
 										rs.getString("ten_nhan_hang"),
+										rs.getString("ten_chat_lieu"),
 										rs.getString("thong_tin_chung"),
 										rs.getString("thong_tin_chi_tiet"),
 										new ArrayList<String>(), 

@@ -54,15 +54,6 @@ public class Load_product extends HttpServlet{
 				+ "WHERE ten_loai_san_pham = ?";
 		List<String> list_danh_muc_san_pham = new Danh_muc_DAO().GetItem(sql, "Quần");
 		
-		for(Mau_sac s : list_mau_sac)
-		{
-			System.out.println(s.toString());
-		}
-		
-		for(String s1 : list_dtkh) {
-			System.out.println(s1);
-		}
-		
 		req.setAttribute("mau_sac", list_mau_sac);
 		req.setAttribute("size", list_size);
 		req.setAttribute("doi_tuong_khach_hang", list_dtkh);
