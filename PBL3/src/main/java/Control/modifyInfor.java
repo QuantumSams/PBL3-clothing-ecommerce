@@ -74,7 +74,8 @@ public class modifyInfor extends HttpServlet {
 	        System.out.println("Cập nhật thành công");
 	        
 		} catch (Exception e) {
-			System.out.println("Khong the cap nhat tai khona nguoi dung");
+			System.out.println("Khong the cap nhat tai khoan nguoi dung");
+			System.out.println(e);
 		}
 		
 		session.setAttribute("acc",acc);

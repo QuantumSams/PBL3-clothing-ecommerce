@@ -18,11 +18,9 @@
                 Chỉnh sửa thông tin người dùng
             </h3>
         </div>
-<<<<<<< HEAD
-        <form action="modifyInfor" method="post">
-=======
-        <form action="infor" method="post">
->>>>>>> refs/heads/Giap
+
+        <form action="modifyInfor" method="post" enctype="multipart/form-data">
+
         <div class="card overflow-hidden">
             <div class="form" style="display: flex;">
                 <div class="sidebar col-md-3 pt-0">
@@ -38,14 +36,9 @@
                     <div class="tab-content">
                         <div class = "tab-pane fade active show" id = "account-general">
                             <div class="cardImage card-body">
-                            
-<<<<<<< HEAD
+ 
                                 <img id="img" src="${sessionScope.acc.anh_dai_dien}" alt="" class = "d-block ui-w-80" name = "image">
-                            
-=======
-                                <img id="img" src="${sessionScope.acc.anh_dai_dien}" alt="" class = "d-block ui-w-80">
-                                
->>>>>>> refs/heads/Giap
+
                             </div>
                             <div class="mainInfor card-body">
                             	
@@ -111,18 +104,14 @@
         </div> 
         
         <div class="text-right mt-3">
-<<<<<<< HEAD
+
         	<input value = "Save" type = "submit"/>
-=======
-        	<button type="button" class="btn btn-primary">Save changes</button>&nbsp;
->>>>>>> refs/heads/Giap
+
          	<button type="button" class="btn btn-default">Cancel</button>
         </div>
-<<<<<<< HEAD
+
        </form>
-=======
-        </form>
->>>>>>> refs/heads/Giap
+
     </div>
 </body>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
@@ -150,19 +139,16 @@
 	}); 
 
 
-<<<<<<< HEAD
- /*  function modifyInforDisable() {
-=======
+/*
   function modifyInforDisable() {
->>>>>>> refs/heads/Giap
-    var inputElements = document.querySelectorAll(".infor");
+	var inputElements = document.querySelectorAll(".infor");
     inputElements.forEach(function(inputElement) {
       inputElement.disabled = !inputElement.disabled;
     });
   }
   document.getElementById("modify").addEventListener("click", function () {
     document.getElementById("target").disabled = !document.getElementById("target").disabled; // Vô hiệu hóa nút đích
-  }); */
+  }); 
   
   async function uploadFile(){
 	 let formData = new FormData();
@@ -174,5 +160,6 @@
 	 alert('The file upload thanh cong');
   }
   console.log($sessionScope.acc);
+  */
 </script>
 </html>
