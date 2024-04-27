@@ -9,7 +9,6 @@ import java.util.List;
 
 import Connect.JDBC_Unit;
 import DAO.AbstractDao;
-import DAO.getList_DAO;
 import Entity.San_Pham.San_pham;
 import Mapper.San_Pham.San_pham_Mapper;
 

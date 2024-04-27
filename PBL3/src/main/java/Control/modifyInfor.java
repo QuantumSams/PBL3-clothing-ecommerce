@@ -28,8 +28,17 @@ public class modifyInfor extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		response.setContentType("text/html;charset=UTF-8");
+		
+		UpdateInfor(request);
+		request.getRequestDispatcher("userInfor.jsp").forward(request, response);
+
+	}
+	
+	private void UpdateInfor(HttpServletRequest request) throws IOException, ServletException {
+
+		System.out.println("Bat dau cap nhat nguoi dung");
 		int id = Integer.parseInt(request.getParameter("id"));
 		String phoneNumber =  request.getParameter("phone");
 		String address = request.getParameter("address");
@@ -44,9 +53,8 @@ public class modifyInfor extends HttpServlet {
         String fileName = filePart.getSubmittedFileName();
         String imagePath = "img/anh_nguoi_dung/" + fileName;
         
+        // thay doi account thanh nguoi_dung
 		HttpSession session = request.getSession();
-		System.out.println(image);
-		// thay doi account thanh nguoi_dung
 		Khach_hang acc = (Khach_hang)session.getAttribute("acc");
 		acc.setSo_dien_thoai(phoneNumber);
 		acc.setDia_chi(address);
@@ -60,6 +68,8 @@ public class modifyInfor extends HttpServlet {
 		} catch (ParseException e) {
 			System.out.println("khong chuyen duoc sang Date");
 		}
+        
+        
 		try {
 			String sql1 = "UPDATE thong_tin_dang_nhap SET so_dien_thoai = ?, email = ? WHERE id = ?;";
 			String sql2 = "UPDATE thong_tin_nguoi_dung SET ho_ten = ?, gioi_tinh = ?, ngay_sinh = ?, dia_chi = ?, anh_dai_dien = ? WHERE id = ?;";
@@ -80,7 +90,6 @@ public class modifyInfor extends HttpServlet {
 		
 		session.setAttribute("acc",acc);
 		
-		request.getRequestDispatcher("userInfor.jsp").forward(request, response);
 	}
 
 }

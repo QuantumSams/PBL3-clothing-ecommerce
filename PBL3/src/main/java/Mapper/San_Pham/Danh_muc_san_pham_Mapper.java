@@ -13,8 +13,7 @@ public class Danh_muc_san_pham_Mapper implements RowMapper<Danh_muc_san_pham>{
 		try {
 			Danh_muc_san_pham danh_muc = new Danh_muc_san_pham(	
 													rs.getInt("id_danh_muc_san_pham"),
-													rs.getString("ten_loai_san_pham"),
-													rs.getString("ten_doi_tuong_khach_hang"),
+													rs.getInt("parent_id"),
 													rs.getString("ten_danh_muc_san_pham")
 													);
 			

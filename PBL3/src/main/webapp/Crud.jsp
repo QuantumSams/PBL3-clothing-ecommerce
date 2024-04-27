@@ -167,29 +167,29 @@
                         <div class="form">
                             <h5>Danh mục hàng</h5>
                             <h6>Đối tượng</h6>
-                            <Select>
-                            	
+                            <Select id="Doi_tuong_khach_hang">
                             	<c:forEach var="item" items="${doi_tuong_khach_hang}">
                             		<Option>
-                            		${item}
+                            		${item.category}
 										
 									</Option>
                                 </c:forEach>
-                                
+                               
                             </Select>
+                            
                             <h6>Tên loại sản phẩm</h6>
-                            <Select>
+                            <Select id="Loai_san_pham">
                                 <c:forEach var="item" items="${ten_loai_san_pham}">
                             		<Option>
-                            			${item}	
+                            			${item.category}	
 									</Option>
                                 </c:forEach>
                             </Select>
                             <h6>Tên danh mục sản phẩm</h6>
-                            <Select>
+                            <Select id="Danh_muc">
                                 <c:forEach var="item" items="${ten_danh_muc_san_pham}">
                             		<Option>
-                            			${item}	
+                            			${item.category}	
 									</Option>
                                 </c:forEach>
                             </Select>
@@ -200,6 +200,31 @@
     </div>
     <script src="./Crud.js"></script>
 </body>
+
+<script>
+$(document).ready(function(){
+	 $("#Doi_tuong_khach_hang").change(function(){
+		  
+	    $.ajax({
+	      url: "GetDataServlet", // URL of your Servlet
+	      type: "POST",
+	      data: {
+	    	  id: $("#category").val()
+	      },
+	      dataType: 'json',
+	      success: function(data) {
+	    	  let chuoi = "";
+	    	  data.forEach(function(item){
+	    		  chuoi += '<Option>'+item.category+'</Option>';
+	    	  })
+	    	  
+	    	  $("#Loai_san_pham").html(chuoi);
+	      }
+	    });
+	  });
+	});
+
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </html>

@@ -37,8 +37,8 @@
                         <div class = "tab-pane fade active show" id = "account-general">
                             <div class="cardImage card-body">
  
-                                <img id="img" src="${sessionScope.acc.anh_dai_dien}" alt="" class = "d-block ui-w-80" name = "image">
-
+                                <img id="img" src="img/anh_nguoi_dung/komi.jpg" alt="Card image" class = "d-block ui-w-80" name = "image">
+ 								<img src="${sessionScope.acc.anh_dai_dien}" alt="Card image" class = "d-block ui-w-80">
                             </div>
                             <div class="mainInfor card-body">
                             	
@@ -139,7 +139,7 @@
 	}); 
 
 
-/*
+
   function modifyInforDisable() {
 	var inputElements = document.querySelectorAll(".infor");
     inputElements.forEach(function(inputElement) {
@@ -160,6 +160,6 @@
 	 alert('The file upload thanh cong');
   }
   console.log($sessionScope.acc);
-  */
+  
 </script>
 </html>

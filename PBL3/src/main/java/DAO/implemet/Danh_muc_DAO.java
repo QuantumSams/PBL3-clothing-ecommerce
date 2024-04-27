@@ -9,8 +9,20 @@ import java.util.List;
 
 import Connect.JDBC_Unit;
 import DAO.AbstractDao;
+import Entity.San_Pham.Danh_muc_san_pham;
+import Mapper.RowMapper;
+import Mapper.San_Pham.Danh_muc_san_pham_Mapper;
+import Mapper.San_Pham.San_pham_Mapper;
 
 public class Danh_muc_DAO extends AbstractDao{
+	
+	public List<Danh_muc_san_pham> LayTatCaDanhMuc(){
+		
+		String Query = "SELECT * FROM danh_muc_san_pham";
+		List<Danh_muc_san_pham> list = query(Query, new Danh_muc_san_pham_Mapper());
+		return list;
+		
+	}
 	
 	public List<String> GetItem(String query, Object... parameters){
 		List<String> results = new ArrayList<>();
