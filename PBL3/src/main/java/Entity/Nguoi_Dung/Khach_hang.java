@@ -34,19 +34,5 @@ public class Khach_hang extends Nguoi_dung{
 		
 	}
 	
-	@Override
-	public void cap_nhat_thong_tin() {
-		
-	}
-
-	@Override
-	public void xoa_thong_tin() {
-		
-	}
-
-	@Override
-	public void them_thong_tin() {
-		
-	}
 
 }

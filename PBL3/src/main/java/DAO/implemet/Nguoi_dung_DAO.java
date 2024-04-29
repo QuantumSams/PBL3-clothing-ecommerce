@@ -1,5 +1,6 @@
 package DAO.implemet;
 
+import java.sql.Date;
 import java.util.List;
 
 import DAO.AbstractDao;
@@ -25,4 +26,21 @@ public class Nguoi_dung_DAO extends AbstractDao {
 		else return null;
 	}
 	
+	public void Dang_ky(Nguoi_dung nguoi_dung) {	
+		String query1 = "INSERT INTO thong_tin_dang_nhap VALUES (?, ?, ?, ?, ?);";
+		String query2 = "INSERT INTO thong_tin_nguoi_dung VALUES (?, ?, ?, ?, ?, ?)";
+		
+		new AbstractDao().insert(query1, nguoi_dung.getId_nguoi_dung(), nguoi_dung.getSo_dien_thoai(), nguoi_dung.getEmail(), nguoi_dung.getPassword(), 1);
+		new AbstractDao().insert(query2, nguoi_dung.getId_nguoi_dung(), nguoi_dung.getHo_ten(), nguoi_dung.isGioi_tinh(), nguoi_dung.getNgay_sinh(), nguoi_dung.getDia_chi(), nguoi_dung.getAnh_dai_dien());
+	}
+	
+	
+	public void Update_thong_tin(Nguoi_dung nguoi_dung) {
+		String sql1 = "UPDATE thong_tin_dang_nhap SET so_dien_thoai = ?, email = ? WHERE id = ?;";
+		String sql2 = "UPDATE thong_tin_nguoi_dung SET ho_ten = ?, gioi_tinh = ?, ngay_sinh = ?, dia_chi = ?, anh_dai_dien = ? WHERE id = ?;";
+		
+		new AbstractDao().update(sql1, nguoi_dung.getSo_dien_thoai(), nguoi_dung.getEmail(), nguoi_dung.getId_nguoi_dung());
+		new AbstractDao().update(sql2, nguoi_dung.getHo_ten(), nguoi_dung.isGioi_tinh(), nguoi_dung.getNgay_sinh(), nguoi_dung.getDia_chi() , nguoi_dung.getAnh_dai_dien(), nguoi_dung.getId_nguoi_dung());
+	
+	}
 }

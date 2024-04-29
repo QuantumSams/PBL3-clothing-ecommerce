@@ -17,5 +17,9 @@ public class San_pham_Service {
 		return san_pham_DAO.getList_San_Pham();
 	}
 	
+	public void add_san_pham(San_pham san_pham) {
+		new San_pham_DAO().add_san_pham(san_pham);
+	}
+	
 	
 }

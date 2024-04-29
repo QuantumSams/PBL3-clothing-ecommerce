@@ -7,6 +7,7 @@ import Entity.Thong_tin;
 public class San_pham{
 
 	private int id_san_pham;
+	private int id_danh_muc_san_pham;
 	private String danh_muc_san_pham;
 	private String ten_san_pham;
 	private String ten_nhan_hang;
@@ -106,15 +107,6 @@ public class San_pham{
 		this.thon_tin_chi_tiet_san_phan = thon_tin_chi_tiet_san_phan;
 	}
 
-	
-	
-	@Override
-	public String toString() {
-		return "San_pham [id_san_pham=" + id_san_pham + ", id_danh_muc_san_pham=" + danh_muc_san_pham
-				+ ", ten_san_pham=" + ten_san_pham + ", ten_nhan_hang=" + ten_nhan_hang + ", thong_tin_chung="
-				+ thong_tin_chung + "]";
-	}
-	
 	public void gan_danh_muc_san_pham(int id_danh_muc_san_pham) {
 		
 	}
@@ -122,5 +114,22 @@ public class San_pham{
 	public List<Chi_tiet_san_pham> lay_thong_tin_chi_tiet_san_pham() {
 		return null;
 	}
+	
+	public int getId_danh_muc_san_pham() {
+		return id_danh_muc_san_pham;
+	}
 
+	public void setId_danh_muc_san_pham(int id_danh_muc_san_pham) {
+		this.id_danh_muc_san_pham = id_danh_muc_san_pham;
+	}
+
+	@Override
+	public String toString() {
+		return "San_pham [id_san_pham=" + id_san_pham + ", danh_muc_san_pham=" + danh_muc_san_pham + ", ten_san_pham="
+				+ ten_san_pham + ", ten_nhan_hang=" + ten_nhan_hang + ", chat_lieu=" + chat_lieu + ", thong_tin_chung="
+				+ thong_tin_chung + ", thong_tin_chi_tiet=" + thong_tin_chi_tiet + ", anh_san_pham=" + anh_san_pham
+				+ ", thon_tin_chi_tiet_san_phan=" + thon_tin_chi_tiet_san_phan + "]";
+	}
+
+	
 }

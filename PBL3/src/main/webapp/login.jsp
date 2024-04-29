@@ -22,7 +22,7 @@
     <div class="footer">
         <div class="container" id = "container">
             <div class="form- sign-up">
-                <form action="SignUp" method = "post">
+                <form action="sign_up" method = "post">
                     <h1>Tạo tài khoản</h1>
                     <span>Email hoặc số điện thoại</span>
                     <input type ="email"  placeholder="Email" name = "email" required>

@@ -19,7 +19,7 @@
             </h3>
         </div>
 
-        <form action="modifyInfor" method="post" enctype="multipart/form-data">
+        <form action="modify_Infor" method="post" enctype="multipart/form-data">
 
         <div class="card overflow-hidden">
             <div class="form" style="display: flex;">

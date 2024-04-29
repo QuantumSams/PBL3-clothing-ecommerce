@@ -14,6 +14,19 @@ import Mapper.San_Pham.San_pham_Mapper;
 
 public class San_pham_DAO extends AbstractDao {
 	
+	public void add_san_pham(San_pham san_pham) {
+		String query = "INSERT INTO san_pham VALUES (?, ?, ?, ?, ?, ?, ?)";
+		
+		new AbstractDao().insert(query, san_pham.getId_san_pham(), 
+										san_pham.getTen_san_pham(),
+										san_pham.getTen_nhan_hang(),
+										san_pham.getChat_lieu(),
+										san_pham.getThong_tin_chung(),
+										san_pham.getThong_tin_chi_tiet(),
+										san_pham.getId_danh_muc_san_pham());
+		
+	}
+	
 	public List<String> get_anh_san_pham(String query, Object... parameters) {
 		Connection connection = null;
 		PreparedStatement statement = null;

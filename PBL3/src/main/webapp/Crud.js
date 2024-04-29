@@ -1,3 +1,67 @@
+$(document).ready(function(){
+	 $("#button_add_product").click(function(){
+		$.ajax({
+	      url: "add_product", // URL of your Servlet
+	      type: "POST",
+	      dataType: 'json',
+	      data: {
+			id_danh_muc: 	$("#Danh_muc").val(),
+			ten_mat_hang: 	$("#ten_mat_hang").val(),
+			mo_ta: 			$("#mo_ta").val(),
+			thong_tin_chi_tiet: $("#thong_tin_chi_tiet").val(),
+			thuong_hieu: 	$("#thuong_hieu").val(),
+			chat_lieu: 		$("#chat_lieu").val(),
+		  },
+	      success: function(data) {
+			//alert("Bạn đã click vào button!");
+	      }
+	   });
+	});
+});
+
+$(document).ready(function(){
+	 $("#Doi_tuong_khach_hang").change(function(){
+		$.ajax({
+	      url: "load_category", // URL of your Servlet
+	      type: "POST",
+	      dataType: 'json',
+	      data: {
+			danh_muc: $("#Doi_tuong_khach_hang").val()
+		  },
+	      success: function(data) {
+	    	  let chuoi = "";
+	    	  data.forEach(function(item){
+	    		  chuoi += '<Option value="'+item.id+'">'+item.category+'</Option>';
+	    	  })
+	    	  
+	    	  $("#Loai_san_pham").html(chuoi);
+	      }
+	   });
+	});
+});
+
+
+$(document).ready(function(){
+	 $("#Loai_san_pham").change(function(){
+		$.ajax({
+	      url: "load_category", // URL of your Servlet
+	      type: "POST",
+	      dataType: 'json',
+	      data: {
+			danh_muc: $("#Loai_san_pham").val()
+		  },
+	      success: function(data) {
+	    	  let chuoi = "";
+	    	  data.forEach(function(item){
+	    		  chuoi += '<Option value="'+item.id+'">'+item.category+'</Option>';
+	    	  })
+	    	  
+	    	  $("#Danh_muc").html(chuoi);
+	      }
+	   });
+	});
+});
+
 
     const imageUpload = document.getElementById('image-upload');
     const previewImage = document.getElementById('preview-image');

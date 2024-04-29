@@ -4,9 +4,13 @@ import java.io.IOException;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Random;
 
 import DAO.AbstractDao;
+import DAO.implemet.Nguoi_dung_DAO;
 import Entity.Nguoi_Dung.Khach_hang;
+import Entity.Nguoi_Dung.Nguoi_dung;
+import Service.Nguoi_Dung.Nguoi_dung_Service;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
@@ -16,36 +20,60 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.http.Part;
 
-@WebServlet(name = "Infor", urlPatterns = {"/infor"})
-
+@WebServlet(urlPatterns= {"/modify_Infor", "/order", "/add_cart"})
 @MultipartConfig(
 		fileSizeThreshold = 512 * 512 * 10,
 		maxFileSize = 1024 *  1024 * 10,
 		maxRequestSize = 1024 * 1024 * 100
 		)
+public class ClientController extends HttpServlet{
 
-public class modifyInfor extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-    
+	private static final long serialVersionUID = -15287231039588276L;
+	
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		response.setContentType("text/html;charset=UTF-8");
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String action = req.getServletPath();
 		
-		UpdateInfor(request);
-		request.getRequestDispatcher("userInfor.jsp").forward(request, response);
-
+		if(action != null && action.equals("/modify_Infor")) {
+			UpdateInfor(req);
+			req.getRequestDispatcher("userInfor.jsp").forward(req, resp);
+		}
+		else if(action != null && action.equals("/order")) {
+		}
+		else if(action != null && action.equals("/add_cart")) {
+		}
+		
 	}
 	
 	private void UpdateInfor(HttpServletRequest request) throws IOException, ServletException {
-
-		System.out.println("Bat dau cap nhat nguoi dung");
-		int id = Integer.parseInt(request.getParameter("id"));
+		
+		HttpSession session = request.getSession();
+		Nguoi_dung acc = (Nguoi_dung)session.getAttribute("acc");
+		
+		Nguoi_dung tmp = getNewInfor(request);
+		  
+		try {
+			new Nguoi_dung_Service().Update(tmp, request);
+	        System.out.println("Cập nhật thành công");
+			session.setAttribute("acc",tmp);  
+		} catch (Exception e) {
+			System.out.println("Khong the cap nhat tai khoan nguoi dung");
+			System.out.println(e);
+			session.setAttribute("acc",acc);
+		}
+	}
+	
+	public Nguoi_dung getNewInfor(HttpServletRequest request) throws IOException, ServletException {
+		HttpSession session = request.getSession();
+		Nguoi_dung acc = (Nguoi_dung)session.getAttribute("acc");
+		
 		String phoneNumber =  request.getParameter("phone");
 		String address = request.getParameter("address");
 		String fullName = request.getParameter("name");
 		String email = request.getParameter("email");
 		String birth = request.getParameter("birth");
 		String image = request.getParameter("image");
+		System.out.println("Bat dau cap nhat nguoi dung");
 		
 		//Đường dẫn ảnh
 		String path = "D:\\Language Program\\Java_web\\PBL3-clothing-ecommerce\\PBL3\\src\\main\\webapp\\img\\anh_nguoi_dung\\";
@@ -54,8 +82,6 @@ public class modifyInfor extends HttpServlet {
         String imagePath = "img/anh_nguoi_dung/" + fileName;
         
         // thay doi account thanh nguoi_dung
-		HttpSession session = request.getSession();
-		Khach_hang acc = (Khach_hang)session.getAttribute("acc");
 		acc.setSo_dien_thoai(phoneNumber);
 		acc.setDia_chi(address);
 		acc.setHo_ten(fullName);
@@ -69,27 +95,7 @@ public class modifyInfor extends HttpServlet {
 			System.out.println("khong chuyen duoc sang Date");
 		}
         
-        
-		try {
-			String sql1 = "UPDATE thong_tin_dang_nhap SET so_dien_thoai = ?, email = ? WHERE id = ?;";
-			String sql2 = "UPDATE thong_tin_nguoi_dung SET ho_ten = ?, gioi_tinh = ?, ngay_sinh = ?, dia_chi = ?, anh_dai_dien = ? WHERE id = ?;";
-			
-			new AbstractDao().update(sql1, acc.getSo_dien_thoai(), acc.getEmail(), acc.getId_nguoi_dung());
-			new AbstractDao().update(sql2, acc.getHo_ten(), acc.isGioi_tinh(), acc.getNgay_sinh(), acc.getDia_chi() , acc.getAnh_dai_dien(), acc.getId_nguoi_dung());
-		
-	        for(Part part : request.getParts()) {
-	        	part.write(path + fileName);
-	        	// sử dụng đường dẫn tương đối vì không bt làm sao để dùng đường dẫn tương đối
-	        }
-	        System.out.println("Cập nhật thành công");
-	        
-		} catch (Exception e) {
-			System.out.println("Khong the cap nhat tai khoan nguoi dung");
-			System.out.println(e);
-		}
-		
-		session.setAttribute("acc",acc);
-		
+		return acc;
 	}
-
+	
 }

@@ -17,21 +17,5 @@ public class Nhan_vien extends Nguoi_dung{
 	public void huy_hoa_don(int id_hoa_don) {
 		
 	}
-	
-	@Override
-	public void cap_nhat_thong_tin() {
-		
-	}
-
-	@Override
-	public void xoa_thong_tin() {
-		
-	}
-
-	@Override
-	public void them_thong_tin() {
-		// TODO Auto-generated method stub
-		
-	}
 
 }

@@ -26,20 +26,5 @@ public class Chu_cua_hang extends Nguoi_dung{
 	public void them_danh_muc_nhan_vien() {
 		
 	}
-	
-	@Override
-	public void cap_nhat_thong_tin() {
-		
-	}
-
-	@Override
-	public void xoa_thong_tin() {
-		
-	}
-
-	@Override
-	public void them_thong_tin() {
-		
-	}
 
 }

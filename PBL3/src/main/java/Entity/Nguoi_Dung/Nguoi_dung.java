@@ -4,7 +4,7 @@ import java.sql.Date;
 
 import Entity.Thong_tin;
 
-public abstract class Nguoi_dung implements Thong_tin{
+public class Nguoi_dung {
 	protected int id_nguoi_dung;
 	protected String ho_ten;
 	protected boolean gioi_tinh;
@@ -14,6 +14,11 @@ public abstract class Nguoi_dung implements Thong_tin{
 	protected String so_dien_thoai;
 	protected String email;
 	protected String phan_quyen_nguoi_dung;
+	protected String password;
+	
+	public Nguoi_dung() {
+		
+	}
 	
 	public Nguoi_dung(int id_nguoi_dung, String ho_ten, boolean gioi_tinh, Date ngay_sinhDate, String dia_chi,
 			String anh_dai_dien, String so_dien_thoai, String email, String phan_quyen_nguoi_dung) {
@@ -81,7 +86,12 @@ public abstract class Nguoi_dung implements Thong_tin{
 	public void setPhan_quyen_nguoi_dung(String phan_quyen_nguoi_dung) {
 		this.phan_quyen_nguoi_dung = phan_quyen_nguoi_dung;
 	}
-	
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	@Override
 	public String toString() {
 		return "Nguoi_dung [id_nguoi_dung=" + id_nguoi_dung + ", ho_ten=" + ho_ten + ", gioi_tinh=" + gioi_tinh

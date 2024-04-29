@@ -13,6 +13,7 @@ public class Danh_muc_Service {
 	public Danh_muc_Service() {
 		danh_muc_DAO = new Danh_muc_DAO();
 		tree_danh_muc = new Tree();
+		LayTatCaDanhMuc();
 	}
 	
 	public void LayTatCaDanhMuc() {
@@ -29,4 +30,11 @@ public class Danh_muc_Service {
 		return tree_danh_muc.getChild(danh_muc_san_pham);
 	}
 	
+	public List<Danh_muc_san_pham> Lay_danh_muc_con(int id){
+		return tree_danh_muc.getChild(id);
+	}
+	
+	public Danh_muc_san_pham getDanh_muc_Id(int id) {
+		return tree_danh_muc.getDanhMucByID(id);
+	}
 }
