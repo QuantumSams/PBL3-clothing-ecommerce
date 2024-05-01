@@ -2,13 +2,23 @@ package Service.Nguoi_Dung;
 
 import java.io.IOException;
 import java.security.MessageDigest;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 import org.apache.tomcat.util.codec.binary.Base64;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import DAO.implemet.Nguoi_dung_DAO;
 import Entity.Nguoi_Dung.Nguoi_dung;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.http.Part;
 
 public class Nguoi_dung_Service {
@@ -18,14 +28,124 @@ public class Nguoi_dung_Service {
 		nguoidung_DAO = new Nguoi_dung_DAO();
 	}
 	
-	public Nguoi_dung LayTaiKhoan(String user, String password) {
+	public String Login(HttpServletRequest req, HttpServletResponse resp) throws Exception {
+		resp.setContentType("text/html;charset=UTF-8");
+		String user = req.getParameter("username");
+		String password = req.getParameter("password");
+		
 		password = toSHA1(password);
-		return nguoidung_DAO.Dang_nhap(user, password);
+		Nguoi_dung acc = nguoidung_DAO.Dang_nhap(user, password);
+		if(acc == null) throw new Exception("Sai tài khoản hoặc mật khẩu");
+		
+		HttpSession session = req.getSession();
+		session.setAttribute("acc", acc);
+		return acc.getPhan_quyen_nguoi_dung();
+	}	
+	
+	public void logout(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		resp.setContentType("text/html;charset=UTF-8");
+		HttpSession session = req.getSession();
+		session.removeAttribute("acc");
 	}
 	
-	public void Dang_ky(Nguoi_dung nguoi_dung) {
-		nguoi_dung.setPassword(toSHA1(nguoi_dung.getPassword()));
-		new Nguoi_dung_DAO().Dang_ky(nguoi_dung);
+
+	public void Sign_up(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String email = req.getParameter("email");
+		String passWord = req.getParameter("passWord");
+		String fullname = req.getParameter("fullname");
+		String phoneNumber = req.getParameter("phoneNumber");
+		String repass = req.getParameter("repassword");
+		
+		System.out.println(email);
+		System.out.println(passWord);
+		System.out.println(fullname);
+		System.out.println(phoneNumber);
+		System.out.println(repass);
+		
+		if(!passWord.equals(repass)) {
+			System.out.println(passWord + "  " + repass);
+			postJson(resp, "Mật khẩu không trùng khớp");
+		}
+		else {
+			try {
+				int id = new Random().nextInt(1000);
+
+				Nguoi_dung nguoi_dung = new Nguoi_dung(id, fullname, true, new Date(0), "", "", phoneNumber, email, "KHACH_HANG");
+				nguoi_dung.setPassword(passWord);
+				if(nguoidung_DAO.count_email(nguoi_dung.getEmail()) > 0) throw new Exception("Email bị trùng");
+				if(nguoidung_DAO.count_so_dien_thoai(nguoi_dung.getSo_dien_thoai()) > 0) throw new Exception("Số điện thoại bị trùng");
+				
+				nguoi_dung.setPassword(toSHA1(nguoi_dung.getPassword()));
+				new Nguoi_dung_DAO().Dang_ky(nguoi_dung);
+				
+				postJson(resp, "Tạo tài khoản thành công");
+			}
+			catch(Exception e){
+				postJson(resp, e.getMessage());
+			}
+			
+		}
+	}
+	
+	private void postJson( HttpServletResponse resp, String message) throws IOException {
+		ObjectMapper mapper = new ObjectMapper();
+	    String json = mapper.writeValueAsString(message);
+	    resp.setContentType("application/json");
+	    resp.setCharacterEncoding("UTF-8");
+	    resp.getWriter().write(json);
+	}
+	
+	public void UpdateInfor(HttpServletRequest request) throws IOException, ServletException {
+		
+		HttpSession session = request.getSession();
+		Nguoi_dung acc = (Nguoi_dung)session.getAttribute("acc");
+		
+		Nguoi_dung tmp = getNewInfor(request);
+		  
+		try {
+			new Nguoi_dung_Service().Update(tmp, request);
+	        System.out.println("Cập nhật thành công");
+			session.setAttribute("acc",tmp);  
+		} catch (Exception e) {
+			System.out.println("Khong the cap nhat tai khoan nguoi dung");
+			System.out.println(e);
+			session.setAttribute("acc",acc);
+		}
+	}
+	
+	public Nguoi_dung getNewInfor(HttpServletRequest request) throws IOException, ServletException {
+		HttpSession session = request.getSession();
+		Nguoi_dung acc = (Nguoi_dung)session.getAttribute("acc");
+		
+		String phoneNumber =  request.getParameter("phone");
+		String address = request.getParameter("address");
+		String fullName = request.getParameter("name");
+		String email = request.getParameter("email");
+		String birth = request.getParameter("birth");
+		String image = request.getParameter("image");
+		System.out.println("Bat dau cap nhat nguoi dung");
+		
+		//Đường dẫn ảnh
+		String path = "D:\\Language Program\\Java_web\\PBL3-clothing-ecommerce\\PBL3\\src\\main\\webapp\\img\\anh_nguoi_dung\\";
+		Part filePart = request.getPart("file");
+        String fileName = filePart.getSubmittedFileName();
+        String imagePath = "img/anh_nguoi_dung/" + fileName;
+        
+        // thay doi account thanh nguoi_dung
+		acc.setSo_dien_thoai(phoneNumber);
+		acc.setDia_chi(address);
+		acc.setHo_ten(fullName);
+		acc.setEmail(email);
+		acc.setAnh_dai_dien(imagePath);
+		
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd"); // Định dạng chuỗi ngày tháng
+        try {
+			acc.setNgay_sinh(new Date(formatter.parse(birth).getTime()));
+		} catch (ParseException e) {
+			System.out.println("khong chuyen duoc sang Date");
+		}
+        
+		return acc;
 	}
 	
 	public void Update(Nguoi_dung nguoi_dung, HttpServletRequest request) throws IOException, ServletException {
@@ -35,6 +155,26 @@ public class Nguoi_dung_Service {
 		Part filePart = request.getPart("file");
 		String fileName = filePart.getSubmittedFileName();
 		filePart.write(path + fileName);
+	}
+	
+	public void load_nhan_vien_by_json(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		String search = req.getParameter("name_nhan_vien");
+		
+		List<Nguoi_dung> list = nguoidung_DAO.SearchNhanVien(search);
+		
+		ObjectMapper mapper = new ObjectMapper();
+	    String json = mapper.writeValueAsString(list);
+	    resp.setContentType("application/json");
+	    resp.setCharacterEncoding("UTF-8");
+	    resp.getWriter().write(json);
+	}
+	
+	public void load_nhan_vien_by_session(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		List<Nguoi_dung> list = nguoidung_DAO.GetNhanVien();
+		System.out.println(list.get(0).getAnh_dai_dien());
+		System.out.println(list.size());
+		HttpSession session = req.getSession();
+		session.setAttribute("nhan_vien", list);
 	}
 	
 	public static String toSHA1(String str) {

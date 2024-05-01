@@ -2,8 +2,6 @@ package Entity.San_Pham;
 
 import java.util.List;
 
-import Entity.Thong_tin;
-
 public class Danh_muc_san_pham{
 	
 	private int id;

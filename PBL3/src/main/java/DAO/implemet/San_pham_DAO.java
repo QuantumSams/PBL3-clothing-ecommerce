@@ -87,4 +87,21 @@ public class San_pham_DAO extends AbstractDao {
 		}
 		return list_san_pham;
 	}
+	
+	public List<San_pham> getList_San_Pham(String Search){
+		
+		String query = "SELECT id_san_pham, danh_muc_san_pham.ten_danh_muc_san_pham, ten_san_pham, ten_nhan_hang, ten_chat_lieu, thong_tin_chung, thong_tin_chi_tiet "
+							+ "FROM san_pham INNER JOIN  danh_muc_san_pham ON san_pham.id_danh_muc_san_pham = danh_muc_san_pham.id_danh_muc_san_pham WHERE ten_san_pham LIKE '%"+Search+"%'";
+		
+		List<San_pham> list_san_pham = new AbstractDao().query(query, new San_pham_Mapper());
+		
+		query = "select duong_dan_anh from anh_san_pham where id_san_pham = ?";
+		List<String> list = null;
+		
+		for(int i = 0; i < list_san_pham.size(); ++i) {
+			list = get_anh_san_pham(query, list_san_pham.get(i).getId_san_pham());
+			list_san_pham.get(i).setAnh_san_pham(list);
+		}
+		return list_san_pham;
+	}
 }

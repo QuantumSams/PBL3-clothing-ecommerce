@@ -15,9 +15,6 @@ public class JDBC_Unit {
 			String password = "";
 			
 			c = DriverManager.getConnection(url, username, password);
-			
-			System.out.println("Ket noi thanh cong co so du lieu: " + c);
-			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

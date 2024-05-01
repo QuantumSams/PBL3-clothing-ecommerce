@@ -2,11 +2,10 @@ package Entity.San_Pham;
 
 import java.util.List;
 
-import Entity.Thong_tin;
 import Entity.San_Pham.Thuoc_Tinh_San_Pham.Mau_sac;
 import Entity.San_Pham.Thuoc_Tinh_San_Pham.Size;
 
-public class Chi_tiet_san_pham implements Thong_tin{
+public class Chi_tiet_san_pham{
 	protected int id_thong_tin_chi_tiet_san_pham;
 	protected int id_san_pham;
 	protected int so_luong_trong_kho;
@@ -92,27 +91,5 @@ public class Chi_tiet_san_pham implements Thong_tin{
 
 	public void setThong_tin_chi_tiet(String thong_tin_chi_tiet) {
 		this.thong_tin_chi_tiet = thong_tin_chi_tiet;
-	}
-
-	@Override
-	public void them_thong_tin() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void cap_nhat_thong_tin() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void xoa_thong_tin() {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	public San_pham Lay_thong_tin_chung_san_pham() {
-		return null;
 	}
 }

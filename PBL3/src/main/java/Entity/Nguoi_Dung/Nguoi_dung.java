@@ -2,8 +2,6 @@ package Entity.Nguoi_Dung;
 
 import java.sql.Date;
 
-import Entity.Thong_tin;
-
 public class Nguoi_dung {
 	protected int id_nguoi_dung;
 	protected String ho_ten;

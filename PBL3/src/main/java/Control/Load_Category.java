@@ -23,19 +23,6 @@ public class Load_Category extends HttpServlet{
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Danh_muc_Service danhmuc = new Danh_muc_Service();
-		
-		int id  = Integer.parseInt(req.getParameter("danh_muc"));
-		
-		List<Danh_muc_san_pham> list = danhmuc.Lay_danh_muc_con(id);
-		
-	    ObjectMapper mapper = new ObjectMapper();
-	    String json = mapper.writeValueAsString(list);
-	    
-	    System.out.println("" + json);
-	   
-	    resp.setContentType("application/json");
-	    resp.setCharacterEncoding("UTF-8");
-	    resp.getWriter().write(json);
+		new Danh_muc_Service().load_category_by_json(req, resp);
 	}
 }

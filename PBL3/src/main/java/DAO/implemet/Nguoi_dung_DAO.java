@@ -41,6 +41,33 @@ public class Nguoi_dung_DAO extends AbstractDao {
 		
 		new AbstractDao().update(sql1, nguoi_dung.getSo_dien_thoai(), nguoi_dung.getEmail(), nguoi_dung.getId_nguoi_dung());
 		new AbstractDao().update(sql2, nguoi_dung.getHo_ten(), nguoi_dung.isGioi_tinh(), nguoi_dung.getNgay_sinh(), nguoi_dung.getDia_chi() , nguoi_dung.getAnh_dai_dien(), nguoi_dung.getId_nguoi_dung());
+	}
 	
+	public int count_email(String email) {
+		String query = "SELECT COUNT(email) FROM thong_tin_dang_nhap WHERE email = ?";
+		return new AbstractDao().count(query, email);
+	}
+	
+	public int count_so_dien_thoai(String so_dien_thoat) {
+		String query = "SELECT COUNT(so_dien_thoai) FROM thong_tin_dang_nhap WHERE so_dien_thoai = ?";
+		return new AbstractDao().count(query, so_dien_thoat);
+	}
+	
+	public List<Nguoi_dung> GetNhanVien(){
+		String sql = 	" SELECT thong_tin_dang_nhap.id, ho_ten, gioi_tinh, ngay_sinh, dia_chi, anh_dai_dien, thong_tin_dang_nhap.so_dien_thoai, thong_tin_dang_nhap.email, phan_quyen_nguoi_dung.ten_phan_quyen"
+						+ " FROM thong_tin_nguoi_dung" 
+						+ " INNER JOIN thong_tin_dang_nhap ON thong_tin_nguoi_dung.id = thong_tin_dang_nhap.id"
+						+ " INNER JOIN phan_quyen_nguoi_dung ON phan_quyen_nguoi_dung.id = thong_tin_dang_nhap.id_phan_quyen_nguoi_dung"
+						+ " WHERE id_phan_quyen_nguoi_dung = 2 ";
+		return new AbstractDao().query(sql, new Nguoi_dung_Mapper());
+	}
+	
+	public List<Nguoi_dung> SearchNhanVien(String search){
+		String sql = 	" SELECT thong_tin_dang_nhap.id, ho_ten, gioi_tinh, ngay_sinh, dia_chi, anh_dai_dien, thong_tin_dang_nhap.so_dien_thoai, thong_tin_dang_nhap.email, phan_quyen_nguoi_dung.ten_phan_quyen"
+						+ " FROM thong_tin_nguoi_dung" 
+						+ " INNER JOIN thong_tin_dang_nhap ON thong_tin_nguoi_dung.id = thong_tin_dang_nhap.id"
+						+ " INNER JOIN phan_quyen_nguoi_dung ON phan_quyen_nguoi_dung.id = thong_tin_dang_nhap.id_phan_quyen_nguoi_dung"
+						+ " WHERE id_phan_quyen_nguoi_dung = 2 AND ho_ten LIKE '%"+search+"%'";
+		return new AbstractDao().query(sql, new Nguoi_dung_Mapper());
 	}
 }

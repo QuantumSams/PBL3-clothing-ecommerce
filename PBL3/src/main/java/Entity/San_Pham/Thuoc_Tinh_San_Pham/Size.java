@@ -1,8 +1,6 @@
 package Entity.San_Pham.Thuoc_Tinh_San_Pham;
 
-import Entity.Thong_tin;
-
-public class Size implements Thong_tin{
+public class Size{
 	private int id_size;
 	private String ten_size;
 	public Size(int id_size, String ten_size) {
@@ -29,21 +27,5 @@ public class Size implements Thong_tin{
 
 	public void setTen_size(String ten_size) {
 		this.ten_size = ten_size;
-	}
-
-	@Override
-	public void them_thong_tin() {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void cap_nhat_thong_tin() {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void xoa_thong_tin() {
-		// TODO Auto-generated method stub
-		
 	}
 }

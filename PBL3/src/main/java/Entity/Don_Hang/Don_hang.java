@@ -1,11 +1,8 @@
 package Entity.Don_Hang;
 
-
 import java.sql.Date;
 
-import Entity.Thong_tin;
-
-public class Don_hang implements Thong_tin{
+public class Don_hang{
 	protected int id_hoa_don;
 	protected int id_thong_tin_chi_tiet_san_pham;
 	protected int so_luong;
@@ -121,24 +118,4 @@ public class Don_hang implements Thong_tin{
 	public void setTrang_thai_don_hang(String trang_thai_don_hang) {
 		this.trang_thai_don_hang = trang_thai_don_hang;
 	}
-
-	@Override
-	public void them_thong_tin() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void cap_nhat_thong_tin() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void xoa_thong_tin() {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	
 }
