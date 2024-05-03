@@ -1,7 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+  <%@page contentType="text/html" pageEncoding="UTF-8"%>
   <head>
-    <meta charset="utf-8" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
@@ -36,9 +41,19 @@
       </div>
     </nav>
 
-    <div class="container">
+    <div class="container p-3">
+      <div
+        class="container-fluid p-0 pb-4 d-flex align-items-center justify-content-between"
+      >
+        <h3 class="fw-bold">Quản lý thông tin cá nhân</h3>
+        <button class="btn btn-dark">
+          <i class="bi bi-pencil-square"></i>
+          Chỉnh sửa thông tin
+        </button>
+      </div>
+
       <div class="row justify-content-center">
-        <div class="col-lg-8" style="border: 1px solid black">
+        <div class="col-lg-8">
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Card title</h5>
@@ -52,7 +67,7 @@
             </div>
           </div>
         </div>
-        <div class="col-sm-4" style="border: 1px solid black">
+        <div class="col-lg-4">
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Card title</h5>
