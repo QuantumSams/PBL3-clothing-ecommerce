@@ -23,7 +23,8 @@
 
   <body>
     <nav class="navbar bg-light bg-body-tertiary">
-      <div class="container-fluid d-flex align-items-center">
+      <div class="container">
+        <div class="container-fluid d-flex align-items-center">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb m-0 p-0 bg-transparent">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -39,8 +40,9 @@
           />
         </form>
       </div>
-    </nav>
-
+      </div>
+    
+  </nav>
     <div class="container p-3">
       <div
         class="container-fluid p-0 pb-4 d-flex align-items-center justify-content-between"
