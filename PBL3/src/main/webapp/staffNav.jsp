@@ -56,14 +56,24 @@
         <div class="col-lg-8 col-sm-12">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
+              <h4 class="card-title pb-1">Thông tin cá nhân</h5>
+                <dl class="row pb-1">
+                  <dt class="col-sm-8">Họ và tên</dt>
+                  <dd class="col-sm-4">Nguyễn Văn A</dd>
+                </dl>
+                <dl class="row pb-1">
+                  <dt class="col-sm-8">Giới tính</dt>
+                  <dd class="col-sm-4">Nam</dd>
+                </dl>
+                <dl class="row pb-1">
+                  <dt class="col-sm-8">Số điện thoại</dt>
+                  <dd class="col-sm-4">0934 123 456</dd>
+                </dl>
+                <dl class="row pb-1">
+                  <dt class="col-sm-8">Địa chỉ</dt>
+                  <dd class="col-sm-4">Thanh Khê, Đà Nẵng</dd>
+                </dl>
               </p>
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
             </div>
           </div>
         </div>
