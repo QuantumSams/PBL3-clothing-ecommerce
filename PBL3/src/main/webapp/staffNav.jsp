@@ -18,8 +18,8 @@
         <div class="container-fluid d-flex align-items-center">
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb m-0 p-0 bg-transparent">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Library</li>
+              <li class="breadcrumb-item"><a href="#">Cá nhân</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Cá nhân</li>
             </ol>
           </nav>
           <form class="d-flex" role="search">
