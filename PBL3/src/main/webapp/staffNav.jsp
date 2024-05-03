@@ -53,7 +53,7 @@
       </div>
 
       <div class="row justify-content-center">
-        <div class="col-lg-8">
+        <div class="col-lg-8 col-sm-12">
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Card title</h5>
@@ -67,7 +67,7 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-4 col-sm-12">
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Card title</h5>
