@@ -54,27 +54,53 @@
 
       <div class="row justify-content-center">
         <div class="col-lg-8 col-sm-12">
-          <div class="card">
+          <div class="row-100">
+            <div class="card mb-4">
             <div class="card-body">
               <h4 class="card-title pb-1">Thông tin cá nhân</h5>
                 <dl class="row pb-1">
-                  <dt class="col-sm-8">Họ và tên</dt>
-                  <dd class="col-sm-4">Nguyễn Văn A</dd>
+                  <dt class="col-sm-7">Họ và tên</dt>
+                  <dd class="col-sm-5">Nguyễn Văn A</dd>
                 </dl>
                 <dl class="row pb-1">
-                  <dt class="col-sm-8">Giới tính</dt>
-                  <dd class="col-sm-4">Nam</dd>
+                  <dt class="col-sm-7">Giới tính</dt>
+                  <dd class="col-sm-5">Nam</dd>
                 </dl>
                 <dl class="row pb-1">
-                  <dt class="col-sm-8">Số điện thoại</dt>
-                  <dd class="col-sm-4">0934 123 456</dd>
+                  <dt class="col-sm-7">Số điện thoại</dt>
+                  <dd class="col-sm-5">0934 123 456</dd>
                 </dl>
                 <dl class="row pb-1">
-                  <dt class="col-sm-8">Địa chỉ</dt>
-                  <dd class="col-sm-4">Thanh Khê, Đà Nẵng</dd>
+                  <dt class="col-sm-7">Địa chỉ</dt>
+                  <dd class="col-sm-5">Thanh Khê, Đà Nẵng</dd>
                 </dl>
               </p>
             </div>
+          </div>
+          </div>
+          <div class="row-100">
+            <div class="card">
+            <div class="card-body">
+              <h4 class="card-title pb-1">Thông tin cá nhân</h5>
+                <dl class="row pb-1">
+                  <dt class="col-sm-7">Họ và tên</dt>
+                  <dd class="col-sm-5">Nguyễn Văn A</dd>
+                </dl>
+                <dl class="row pb-1">
+                  <dt class="col-sm-7">Giới tính</dt>
+                  <dd class="col-sm-5">Nam</dd>
+                </dl>
+                <dl class="row pb-1">
+                  <dt class="col-sm-7">Số điện thoại</dt>
+                  <dd class="col-sm-5">0934 123 456</dd>
+                </dl>
+                <dl class="row pb-1">
+                  <dt class="col-sm-7">Địa chỉ</dt>
+                  <dd class="col-sm-5">Thanh Khê, Đà Nẵng</dd>
+                </dl>
+              </p>
+            </div>
+          </div>
           </div>
         </div>
         <div class="col-lg-4 col-sm-12">
@@ -86,12 +112,21 @@
                 Some quick example text to build on the card title and make up
                 the bulk of the card's content.
               </p>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
               <a href="#" class="card-link">Card link</a>
               <a href="#" class="card-link">Another link</a>
             </div>
           </div>
         </div>
       </div>
+
     </div>
   </body>
 </html>
