@@ -14,7 +14,7 @@
 
   <body>
     <nav class="navbar bg-light bg-body-tertiary">
-      <div class="container">
+      <div class="container p-0">
         <div class="container-fluid d-flex align-items-center">
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb m-0 p-0 bg-transparent">
