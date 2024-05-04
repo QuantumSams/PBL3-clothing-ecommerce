@@ -9,11 +9,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
 
-    <title>Hello, world!</title>
+    <title>Quản lý thông tin cá nhân</title>
   </head>
 
-  <body>
-    <nav class="navbar bg-light bg-body-tertiary">
+  <body class="pt-5">
+    <nav class="navbar fixed-top bg-light bg-body-tertiary align-self-start">
       <div class="container p-0">
         <div class="container-fluid d-flex align-items-center">
           <nav aria-label="breadcrumb">
@@ -29,8 +29,8 @@
       </div>
 
     </nav>
-    <div class="container p-3">
-      <div class="container-fluid p-0 pb-4 d-flex align-items-center justify-content-between">
+    <div class="container p-2">
+      <div class="container-fluid px-0 py-4 d-flex align-items-center justify-content-between">
         <h3 class="fw-bold">Quản lý thông tin cá nhân</h3>
         <button class="btn btn-dark">
           <i class="bi bi-pencil-square"></i>
