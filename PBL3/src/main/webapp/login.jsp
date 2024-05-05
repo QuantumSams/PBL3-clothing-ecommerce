@@ -26,7 +26,7 @@
     <div class="footer">
         <div class="container" id = "container">
             <div class="form- sign-up">
-            
+            	
             		<h1>Tạo tài khoản</h1>
                     <span>Email hoặc số điện thoại</span>
                     <input id="email" type ="email"  placeholder="Email" name = "email" required>
@@ -35,8 +35,8 @@
                     <input id="passWord" type="password" placeholder="Password" name = "password" required>
                     <input id="repassword" type="password" placeholder="Repeat Password" name = "repassword" required>
                     <button id="dang_ky" type = "submit">Đăng ký</button> 
-                    <p   id="message2" style = "color: red"></p>
-                   
+                    <p id="message2" style = "color: red"></p>
+                  
             </div>
             <div class="form- sign-in">
                 <form action="login" method = "post">
@@ -45,7 +45,7 @@
                     <input type="password" placeholder="Password" name = "password" required>
                     <a href="">Quên mật khẩu? </a>
                     <button type = "submit">Đăng nhập</button>
-  					<p style = "color: red">${message1}</p>
+  					<p style = "color: red"></p>
                 </form>    
             </div>
             <div class="container-toggle">
@@ -94,7 +94,7 @@
        					repassword: 	$("#repassword").val(),
        		  		},
        	      		success: function(data) {
-       					alert(data);
+       	      			$("#message2").html(data);
        	      		}
        	   		});
        		});

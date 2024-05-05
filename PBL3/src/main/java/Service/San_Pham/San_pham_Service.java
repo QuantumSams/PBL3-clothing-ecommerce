@@ -18,6 +18,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.Part;
 
 public class San_pham_Service {
 	
@@ -88,7 +89,7 @@ public class San_pham_Service {
 		req.setAttribute("ten_danh_muc_san_pham", list_danh_muc_san_pham);
 	}
 	
-	public void add_product(HttpServletRequest req, HttpServletResponse resp) {
+	public void add_product(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		int id_danh_muc = Integer.parseInt(req.getParameter("id_danh_muc"));
 		
 		Danh_muc_san_pham danh_muc = new Danh_muc_Service().getDanh_muc_Id(id_danh_muc);
@@ -106,5 +107,35 @@ public class San_pham_Service {
 		System.out.println(san_pham.toString());
 		san_pham.setId_danh_muc_san_pham(id_danh_muc);
 		new San_pham_Service().add_san_pham(san_pham);
+	}
+	
+	public void add_image(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+		List<Part> parts = (List<Part>) req.getParts();
+        
+        for (Part part : parts) {
+            if (part.getName().equals("images[]") && part.getContentType() != null) {
+                String fileName = part.getSubmittedFileName();
+                System.out.println(fileName);
+            }
+        }
+	}
+	
+	public List<String> lay_anh_san_pham(HttpServletRequest req) throws IOException, ServletException{
+		Part part = req.getPart("images[]");
+		List<String> list_anh = new ArrayList<String>();
+		
+		while (part != null) {
+			String path = "D:\\Language Program\\Java_web\\PBL3-clothing-ecommerce\\PBL3\\src\\main\\webapp\\img\\anh_san_pham\\";
+			Part filePart = part;
+	        String fileName = filePart.getSubmittedFileName();
+	        String imagePath = "img/anh_san_pham/" + fileName;
+	        filePart.write(path + fileName);
+	        list_anh.add(imagePath);
+	        System.out.println(imagePath);
+            // Get next part
+            part = req.getPart("images[]");
+        }
+		
+		return list_anh;
 	}
 }

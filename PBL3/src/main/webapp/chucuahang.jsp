@@ -107,7 +107,10 @@
                             <table class = "content-table">
                                 <thead>
                                     <tr>
+                                    	<th>Ảnh</th>
                                         <th>Tên sản phẩm</th>
+                                        <th>Size</th>
+                                        <th>Màu</th>
                                         <th>Sẵn hàng</th>
                                         <th>Đã bán</th>
                                         <th>Cập nhật lần cuối</th>
@@ -115,49 +118,73 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><img src="386644391_1615327005662931_6147334074894597765_n.jpg" width="50px" alt="">Tên sản phẩm 1</td>
+                                    	<td><img src="386644391_1615327005662931_6147334074894597765_n.jpg" width="50px" alt=""></td>
+                                        <td>Tên sản phẩm 1</td>
+                                        <td>XL</td>
+                                        <td>Đỏ</td>
                                         <td>100</td>
                                         <td>99</td>
                                         <td>22/04/2024</td>
                                     </tr>
                                     <tr>
-                                        <td><img src="386644391_1615327005662931_6147334074894597765_n.jpg" width="50px" alt="">Tên sản phẩm 1</td>
+                                        <td><img src="386644391_1615327005662931_6147334074894597765_n.jpg" width="50px" alt=""></td>
+                                        <td>Tên sản phẩm 1</td>
+                                        <td>XL</td>
+                                        <td>Đỏ</td>
                                         <td>100</td>
                                         <td>99</td>
                                         <td>22/04/2024</td>
                                     </tr>
                                     <tr>
-                                        <td><img src="386644391_1615327005662931_6147334074894597765_n.jpg" width="50px" alt="">Tên sản phẩm 1</td>
+                                        <td><img src="386644391_1615327005662931_6147334074894597765_n.jpg" width="50px" alt=""></td>
+                                        <td>Tên sản phẩm 1</td>
+                                        <td>XL</td>
+                                        <td>Đỏ</td>
                                         <td>100</td>
                                         <td>99</td>
                                         <td>22/04/2024</td>
                                     </tr>
                                     <tr>
-                                        <td><img src="386644391_1615327005662931_6147334074894597765_n.jpg" width="50px" alt="">Tên sản phẩm 1</td>
+                                        <td><img src="386644391_1615327005662931_6147334074894597765_n.jpg" width="50px" alt=""></td>
+                                        <td>Tên sản phẩm 1</td>
+                                        <td>XL</td>
+                                        <td>Đỏ</td>
                                         <td>100</td>
                                         <td>99</td>
                                         <td>22/04/2024</td>
                                     </tr>
                                     <tr>
-                                        <td><img src="386644391_1615327005662931_6147334074894597765_n.jpg" width="50px" alt="">Tên sản phẩm 1</td>
+                                        <td><img src="386644391_1615327005662931_6147334074894597765_n.jpg" width="50px" alt=""></td>
+                                        <td>Tên sản phẩm 1</td>
+                                        <td>XL</td>
+                                        <td>Đỏ</td>
                                         <td>100</td>
                                         <td>99</td>
                                         <td>22/04/2024</td>
                                     </tr>
                                     <tr>
-                                        <td><img src="386644391_1615327005662931_6147334074894597765_n.jpg" width="50px" alt="">Tên sản phẩm 1</td>
+                                        <td><img src="386644391_1615327005662931_6147334074894597765_n.jpg" width="50px" alt=""></td>
+                                        <td>Tên sản phẩm 1</td>
+                                        <td>XL</td>
+                                        <td>Đỏ</td>
                                         <td>100</td>
                                         <td>99</td>
                                         <td>22/04/2024</td>
                                     </tr>
                                     <tr>
-                                        <td><img src="386644391_1615327005662931_6147334074894597765_n.jpg" width="50px" alt="">Tên sản phẩm 1</td>
+                                        <td><img src="386644391_1615327005662931_6147334074894597765_n.jpg" width="50px" alt=""></td>
+                                        <td>Tên sản phẩm 1</td>
+                                        <td>XL</td>
+                                        <td>Đỏ</td>
                                         <td>100</td>
                                         <td>99</td>
                                         <td>22/04/2024</td>
                                     </tr>
                                     <tr>
-                                        <td><img src="386644391_1615327005662931_6147334074894597765_n.jpg" width="50px" alt="">Tên sản phẩm 1</td>
+                                        <td><img src="386644391_1615327005662931_6147334074894597765_n.jpg" width="50px" alt=""></td>
+                                        <td>Tên sản phẩm 1</td>
+                                        <td>XL</td>
+                                        <td>Đỏ</td>
                                         <td>100</td>
                                         <td>99</td>
                                         <td>22/04/2024</td>
@@ -203,40 +230,27 @@
                                 <tbody id="nhan_vien">
                                 	<c:forEach var='item' items='${nhan_vien}'>
 	                                	<tr>
-	                                		<td><img src="${item.anh_dai_dien}" width="50px" alt=""></td>
-	                                        <td>${item.ho_ten}</td>
-	                                     	<td>
-	                                        	<c:if test="${item.gioi_tinh == true}">
-									                Nam
-									            </c:if>
-									            <c:if test="${item.gioi_tinh != true}">
-									                Nữ
-									            </c:if>
-	                                        </td>
-	                                        <td>${item.so_dien_thoai}</td>
-	                                        <td><button class = "buttonSearch">Chi tiết</button></td>
+	                                		<form action='thong_tin_nhan_vien' method='get'>
+		                                		<td><img src="${item.anh_dai_dien}" width="50px" alt=""></td>
+		                                        <td>${item.ho_ten}</td>
+		                                     	<td>
+		                                        	<c:if test="${item.gioi_tinh == true}">
+										                Nam
+										            </c:if>
+										            <c:if test="${item.gioi_tinh != true}">
+										                Nữ
+										            </c:if>
+		                                        </td>
+		                                        <td>${item.so_dien_thoai}</td>
+		                                        <input type="hidden" name='id' value="${item.id_nguoi_dung}">
+		                                        <td><button class = "buttonSearch">Chi tiết</button></td>
+	                                        </form>
 	                                    </tr>
                                 	</c:forEach>
                                 </tbody>
                             </table>
                         </div>
                       
-                    </div>
-                    <div class="card popup">
-                        <div class="header1">
-                            <div class="backForward">
-                                <button><</button>
-                                <div class="Name">
-                                    <h6>Nhân viên</h6>
-                                    <h5>Nguyễn Văn A</h5>
-                                </div>
-                            </div>
-                            <div class="ModifyInfor" style = "transform: translateX(-10%);">
-                                <button class="add"><i class="fa-solid fa-book"></i>Chỉnh sửa thông tin</button>
-                            </div>
-                        </div>
-    
-                        
                     </div>
                     </div> 
                 </div>

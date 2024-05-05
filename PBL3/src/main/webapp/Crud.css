@@ -100,11 +100,13 @@ Select{
     margin-top: 10px;
 }
 .upload-container {
-    width: 300px;
-    margin: 20px auto;
+    width: 100%;
     text-align: center;
-    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
     align-items: center;
+    justify-content: center;
 }
 .imageItems{
     height: auto;
@@ -148,4 +150,79 @@ Select{
 }
 .editColor{
     display: none;
+}
+
+.upload-container img{
+	width: 100px;
+	height: 100px;
+	object-fit: cover;
+	position: relative;
+}
+
+.upload-container .img_element{
+	position: relative;
+}
+
+.upload-container .img_element div{
+	position: absolute;
+	bottom: 0;
+	padding: 5px;
+	background-color: #fff;
+	color: #000;
+	z-index: 1;
+	opacity: 0.3;
+	
+}
+
+.upload-container .img_element .btnXoa{
+	left:  0;
+}
+
+.upload-container .img_element .btnPreview{
+	right: 0;
+}
+
+.upload-container .img_element div:hover{
+	background-color: #000;
+	color: #fff;
+	cursor: pointer;
+	opacity: 1;
+}
+
+
+.upload-container label{
+	width: 100px;
+	height: 100px;
+	padding: 25px;
+	border: 1px dashed #000;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.overlay img{
+	opacity: 1;
+	width: 50%;
+	height: auto;
+	object-fit: cover;
+}
+
+.table td{
+	vertical-align: middle;
+	text-align: center;
+	border: 1px solid #000;
+}
+
+.table th{
+	text-align: center;
 }

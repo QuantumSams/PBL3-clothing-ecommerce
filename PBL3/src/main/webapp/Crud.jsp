@@ -62,32 +62,11 @@
                     <div class="imageItems">
                         <div class="form">
                             <h5>Ảnh</h5>
-                            <div class="upload-container">
-                                <img id="img" alt="Card image" class = "d-block ui-w-80" name = "image">
-                                <input type="file"  id="fileInput" name="file" multiple/>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="price">
-                        <div class="form">
-                            <h5>Giá</h5>
-                            <div class="priceSet" style = "display: flex;">
-                                <div class = "blockPrice" >
-                                    <h6>Giá bán: </h6>
-                                    <input type="text" style = "width: 50%;" >
-                                </div>
-                                <div class = "blockPrice">
-                                    <h6>Giá khuyến mãi:</h6>
-                                    <input type="text" style = "width: 50%;">
-                                </div>
-                            </div>
-                            <div style = "margin-top: 30px;">
-                                <h6>Giá nhập vào:</h6>
-                                <input type="text" style = "width: 40%;">
-                            </div>
-                            <div style = "margin-top: 30px;">
-                                <h6>Số lượng hàng đã nhập</h6>
-                                <input type="text">
+                            <div class="upload-container" id="div_anh">
+                                <input  style="display: none;" type="file"  id="fileInput" name="file" multiple/>
+                               	<label for="fileInput">
+                               		<i class="fa-solid fa-plus"></i>
+                               	</label>
                             </div>
                         </div>
                     </div>
@@ -105,7 +84,7 @@
                                     <button class ="btn1" onclick = "acceptChange('btn1','.editColor')">Chỉnh sửa</button>
                                 	<Select id="itemListMau_sac">
                                             <c:forEach var="item" items="${mau_sac}">
-                                            	<option>
+                                            	<option >
                                             		${item.ten_mau}
                                             	</option>
                                             </c:forEach>
@@ -148,19 +127,18 @@
                                      </ul> 
                                      <button onclick="addItem('itemListSize')">Add</button>
                                 </div>
-                                
                             </div>
                         </div>
                     </div>
                     <button onclick = "createTable()">OK</button>
-                    <div class="table">
+                    <div class="Jtable">
                         <table class="table">
                             <thead>
                               <tr>
                                 <th scope="col">STT</th>
                                 <th scope="col">Chủng loại</th>
                                 <th scope="col">Giá</th>
-                                <th scope="col">Số lượng</th>
+                                <th scope="col">Ảnh</th>
                               </tr>
                             </thead>
                             <tbody id = "myTable">
@@ -211,8 +189,7 @@
                 </div>
             </div>
     </div>
-    
-    <script src="./Crud.js"></script>
+    <script defer src="./Crud.js"></script>
     <script src="./Crud_Image.js"></script>
 </body>
 

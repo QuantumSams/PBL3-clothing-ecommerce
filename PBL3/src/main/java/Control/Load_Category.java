@@ -16,9 +16,6 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet(urlPatterns= {"/load_category"})
 public class Load_Category extends HttpServlet{
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 4L;
 
 	@Override

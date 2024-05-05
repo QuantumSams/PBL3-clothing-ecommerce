@@ -9,7 +9,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import Connect.JDBC_Unit;
+import DataStructures.Pair;
 import Mapper.RowMapper;
 
 public class AbstractDao implements GenericDAO{
@@ -28,6 +30,43 @@ public class AbstractDao implements GenericDAO{
 			resultSet = statement.executeQuery();
 			while (resultSet.next()) {
 				results.add(rowMapper.mapRow(resultSet));
+			}
+			
+			return results;
+		} catch (SQLException e) {
+			return null;
+		} finally {
+			try {
+				if (connection != null) {
+					connection.close();
+				}
+				if (statement != null) {
+					statement.close();
+				}
+				if (resultSet != null) {
+					resultSet.close();
+				}
+			} catch (SQLException e) {
+				return null;
+			}
+		}
+	}
+	
+	public <T, U> List<Pair<T, U>> query(String sql, Object... parameters) {
+		List<Pair<T, U>> results = new ArrayList<>();
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		try {
+			connection = JDBC_Unit.getConnection();
+			statement = connection.prepareStatement(sql);
+			setParameter(statement, parameters);
+			resultSet = statement.executeQuery();
+			while (resultSet.next()) {
+				T Key = (T)resultSet.getObject(1);
+				U Value = (U)resultSet.getObject(2);
+				
+				results.add(new Pair<T, U>(Key, Value));
 			}
 			
 			return results;

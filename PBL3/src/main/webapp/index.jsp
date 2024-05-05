@@ -40,7 +40,6 @@
         </div>
         
     <div class = main-items>
-    
     	<c:forEach var="item" items="${san_pham}">
                  <div class="card" style="width:250px">
             <img class="card-img-top" src="${item.anh_san_pham[0]}" alt="Card image">

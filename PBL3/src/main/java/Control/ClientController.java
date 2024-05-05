@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns= {"/modify_Infor", "/order", "/add_cart"})
+@WebServlet(urlPatterns= {"/update_password", "/modify_Infor", "/order", "/add_cart"})
 @MultipartConfig(
 		fileSizeThreshold = 512 * 512 * 10,
 		maxFileSize = 1024 *  1024 * 10,
@@ -28,6 +28,9 @@ public class ClientController extends HttpServlet{
 		if(action != null && action.equals("/modify_Infor")) {
 			nguoi_dung_Service.UpdateInfor(req);
 			req.getRequestDispatcher("userInfor.jsp").forward(req, resp);
+		}
+		else if(action != null && action.equals("/update_password")) {
+			nguoi_dung_Service.Update_password(req, resp);
 		}
 		else if(action != null && action.equals("/order")) {
 		}

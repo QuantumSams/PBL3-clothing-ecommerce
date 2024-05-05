@@ -43,7 +43,6 @@ public class Danh_muc_Service {
 	public void LayTatCaDanhMuc() {
 		List<Danh_muc_san_pham> list = danh_muc_DAO.LayTatCaDanhMuc();
 		tree_danh_muc.add(list);
-		System.out.println(tree_danh_muc.toString());
 	}
 	
 	public List<Danh_muc_san_pham> Lay_danh_muc_con(){

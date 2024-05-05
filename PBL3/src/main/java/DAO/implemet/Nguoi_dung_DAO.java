@@ -14,11 +14,15 @@ public class Nguoi_dung_DAO extends AbstractDao {
 		
 		int id = new AbstractDao().count(sql1, user, user, password);
 		
+		return Get_by_ID(id);
+	}
+	
+	public Nguoi_dung Get_by_ID(int id) {
 		String sql2 = 	" SELECT thong_tin_dang_nhap.id, ho_ten, gioi_tinh, ngay_sinh, dia_chi, anh_dai_dien, thong_tin_dang_nhap.so_dien_thoai, thong_tin_dang_nhap.email, phan_quyen_nguoi_dung.ten_phan_quyen"
-						+ " FROM thong_tin_nguoi_dung" 
-						+ " INNER JOIN thong_tin_dang_nhap ON thong_tin_nguoi_dung.id = thong_tin_dang_nhap.id"
-						+ " INNER JOIN phan_quyen_nguoi_dung ON phan_quyen_nguoi_dung.id = thong_tin_dang_nhap.id_phan_quyen_nguoi_dung"
-						+ " WHERE thong_tin_dang_nhap.id = ? ";
+				+ " FROM thong_tin_nguoi_dung" 
+				+ " INNER JOIN thong_tin_dang_nhap ON thong_tin_nguoi_dung.id = thong_tin_dang_nhap.id"
+				+ " INNER JOIN phan_quyen_nguoi_dung ON phan_quyen_nguoi_dung.id = thong_tin_dang_nhap.id_phan_quyen_nguoi_dung"
+				+ " WHERE thong_tin_dang_nhap.id = ? ";
 		List<Nguoi_dung> l = new AbstractDao().query(sql2, new Nguoi_dung_Mapper(), id);
 		
 		if(l.size() != 0)
@@ -34,6 +38,10 @@ public class Nguoi_dung_DAO extends AbstractDao {
 		new AbstractDao().insert(query2, nguoi_dung.getId_nguoi_dung(), nguoi_dung.getHo_ten(), nguoi_dung.isGioi_tinh(), nguoi_dung.getNgay_sinh(), nguoi_dung.getDia_chi(), nguoi_dung.getAnh_dai_dien());
 	}
 	
+	public void update_password(int id, String new_password) {
+		String query = " UPDATE thong_tin_dang_nhap SET mat_khau = ? WHERE id = ?";
+		new AbstractDao().update(query, new_password, id);
+	}
 	
 	public void Update_thong_tin(Nguoi_dung nguoi_dung) {
 		String sql1 = "UPDATE thong_tin_dang_nhap SET so_dien_thoai = ?, email = ? WHERE id = ?;";
