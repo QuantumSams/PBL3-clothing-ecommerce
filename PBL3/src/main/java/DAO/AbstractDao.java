@@ -9,7 +9,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import Connect.JDBC_Unit;
 import DataStructures.Pair;
 import Mapper.RowMapper;
@@ -63,7 +62,9 @@ public class AbstractDao implements GenericDAO{
 			setParameter(statement, parameters);
 			resultSet = statement.executeQuery();
 			while (resultSet.next()) {
+				@SuppressWarnings("unchecked")
 				T Key = (T)resultSet.getObject(1);
+				@SuppressWarnings("unchecked")
 				U Value = (U)resultSet.getObject(2);
 				
 				results.add(new Pair<T, U>(Key, Value));

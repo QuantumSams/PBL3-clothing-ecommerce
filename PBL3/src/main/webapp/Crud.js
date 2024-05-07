@@ -1,20 +1,41 @@
 $(document).ready(function(){
 		 $("#button_add_product").click(function(){
-			
-				uploadImages();
+				let data = [];
+				
+				const images = document.querySelectorAll('#div_anh img');
+
+				let imageSrc = [];
+				images.forEach((image) => {
+					imageSrc.push(image.src.split(",")[1])
+				});
+				 
+				console.log(imageSrc);
+				
+				console.log(JSON.stringify(imageSrc));
+						
+				data.push({
+					id_danh_muc: 	$("#Danh_muc").val(),
+					ten_mat_hang: 	$("#ten_mat_hang").val(),
+					mo_ta: 			$("#mo_ta").val(),
+					thong_tin_chi_tiet: $("#thong_tin_chi_tiet").val(),
+					thuong_hieu: 	$("#thuong_hieu").val(),
+					chat_lieu: 		$("#chat_lieu").val(),
+					images: 		imageSrc
+				});
 						
 				$.ajax({
 				      url: "add_product", // URL of your Servlet
 				      type: "POST",
 				      dataType: 'json',
-				      data: {
-							id_danh_muc: 	$("#Danh_muc").val(),
+				      data: 
+							/*id_danh_muc: 	$("#Danh_muc").val(),
 							ten_mat_hang: 	$("#ten_mat_hang").val(),
 							mo_ta: 			$("#mo_ta").val(),
 							thong_tin_chi_tiet: $("#thong_tin_chi_tiet").val(),
 							thuong_hieu: 	$("#thuong_hieu").val(),
-							chat_lieu: 		$("#chat_lieu").val(),
-					  },
+							chat_lieu: 		$("#chat_lieu").val(),*/
+							 JSON.stringify(data),
+					 
 				      success: function(data) {
 						//alert("Thêm sản phẩm thành công!");
 				      }
@@ -139,8 +160,8 @@ function addImage(input) {
         reader.readAsDataURL(file);
     }
 }
-function addImageItems(input, i) {
-    const file = input.files[0];
+function addImageItems(linput) {
+    const file = linput.files[0];
     if (file) {
         const reader = new FileReader();
         reader.onloadend = function(e) {	
@@ -155,7 +176,7 @@ function addImageItems(input, i) {
 					<i class="fa-solid fa-search"></i>
 				</div>		
 			`
-			document.querySelectorAll('.item-images')[i].appendChild(imgElement);
+			linput.parentElement.appendChild(imgElement);
         };
         reader.readAsDataURL(file);
     }
@@ -198,16 +219,17 @@ function addImageItems(input, i) {
         input.innerHTML = `<input type = "text" >`;
         var img = newRow.insertCell();
         img.innerHTML = `
-        <div class = "item-images">
-        <input  style="display: none;" type="file" id="imageInput" name="file" multiple/>
-                               	<label for="imageInput">
+        <div class = "item-images item-images${count}">
+        <input onchange="addImageItems(this)" style="display: none;" type="file" id="imageInput${count}" name="file" multiple/>
+                               	<label for="imageInput${count}">
                                	<i class="fa-solid fa-plus"></i>
       		 </label>
 		</div>`;
-            const imageContainer = document.querySelector(".item-images");
-        	imageContainer.querySelector('#imageInput').addEventListener('change', (e) => {
-				addImageItems(e.target, count -1)
-			});  
+/*            const imageContainer = document
+            .querySelector(`.item-images${count}`)
+            .querySelector('#imageInput').addEventListener('change', (e) => {
+				addImageItems(e.target)
+			});  */
       }
     
     

@@ -56,11 +56,6 @@ public class AdminController extends HttpServlet{
 			san_pham_Service.add_product(req, resp);
 		}
 		
-		else if(action != null && action.equals("/add_image")) {
-			System.out.println("aoishdoiahsdoihaidhiash");
-			san_pham_Service.add_image(req, resp);
-		}
-		
 		else if(action != null && action.equals("/")) {
 			
 		}

@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import Connect.JDBC_Unit;
 import DAO.AbstractDao;
@@ -17,13 +18,20 @@ public class San_pham_DAO extends AbstractDao {
 	public void add_san_pham(San_pham san_pham) {
 		String query = "INSERT INTO san_pham VALUES (?, ?, ?, ?, ?, ?, ?)";
 		
-		new AbstractDao().insert(query, san_pham.getId_san_pham(), 
-										san_pham.getTen_san_pham(),
-										san_pham.getTen_nhan_hang(),
-										san_pham.getChat_lieu(),
-										san_pham.getThong_tin_chung(),
-										san_pham.getThong_tin_chi_tiet(),
-										san_pham.getId_danh_muc_san_pham());
+		insert(query, 	san_pham.getId_san_pham(), 
+						san_pham.getTen_san_pham(),
+						san_pham.getTen_nhan_hang(),
+						san_pham.getChat_lieu(),
+						san_pham.getThong_tin_chung(),
+						san_pham.getThong_tin_chi_tiet(),
+						san_pham.getId_danh_muc_san_pham());
+		
+		for(int i = 0; i < san_pham.getAnh_san_pham().size(); ++i) {
+			int id = new Random().nextInt(100000);
+			query = "INSERT INTO anh_san_pham VALUES (?, ?, ?)";
+			
+			insert(query, id, san_pham.getId_san_pham(), san_pham.getAnh_san_pham().get(i));
+		}
 		
 	}
 	

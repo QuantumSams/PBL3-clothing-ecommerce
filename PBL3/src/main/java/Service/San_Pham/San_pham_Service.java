@@ -1,8 +1,14 @@
 package Service.San_Pham;
 
+import java.io.BufferedReader;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -90,34 +96,61 @@ public class San_pham_Service {
 	}
 	
 	public void add_product(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-		int id_danh_muc = Integer.parseInt(req.getParameter("id_danh_muc"));
+		ObjectMapper objectMapper = new ObjectMapper();
+		BufferedReader reader = req.getReader();
 		
+		List<Map<String, Object>> data = objectMapper.readValue(reader, List.class);
+		List<String> imageStrings = (ArrayList<String>) data.get(0).get("images") ;
+
+		int id_danh_muc = Integer.parseInt((String) data.get(0).get("id_danh_muc"));
 		Danh_muc_san_pham danh_muc = new Danh_muc_Service().getDanh_muc_Id(id_danh_muc);
 		
-		String ten_mat_hang = req.getParameter("ten_mat_hang");
-		String mo_ta = req.getParameter("mo_ta");
-		String thong_tin_chi_tiet = req.getParameter("thong_tin_chi_tiet");
-		String thuong_hieu = req.getParameter("thuong_hieu");
-		String chat_lieu = req.getParameter("chat_lieu");
+		int id_san_pham = new Random().nextInt(1000000);		
 		
-		List<String> fileanh = new ArrayList<>();
+		String ten_mat_hang = (String) data.get(0).get("ten_mat_hang") ;
+		String mo_ta = (String) data.get(0).get("mo_ta") ;
+		String thong_tin_chi_tiet = (String) data.get(0).get("thong_tin_chi_tiet") ;
+		String thuong_hieu = (String) data.get(0).get("thuong_hieu") ;
+		String chat_lieu = (String) data.get(0).get("chat_lieu") ;
 		
-		int id_san_pham = new Random().nextInt();
+		List<String> fileanh = add_image(imageStrings, id_san_pham);
+		
 		San_pham san_pham = new San_pham(id_san_pham, danh_muc.getCategory(), ten_mat_hang, thuong_hieu, chat_lieu, mo_ta, thong_tin_chi_tiet, fileanh, null);
 		System.out.println(san_pham.toString());
 		san_pham.setId_danh_muc_san_pham(id_danh_muc);
+		san_pham.setAnh_san_pham(fileanh);
 		new San_pham_Service().add_san_pham(san_pham);
+		
 	}
 	
-	public void add_image(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-		List<Part> parts = (List<Part>) req.getParts();
-        
-        for (Part part : parts) {
-            if (part.getName().equals("images[]") && part.getContentType() != null) {
-                String fileName = part.getSubmittedFileName();
-                System.out.println(fileName);
-            }
-        }
+	public List<String> add_image(List<String> imageStrings, int id_san_pham) throws IOException, ServletException {
+		
+		List<String> list_path = new ArrayList<>();
+		
+		
+		
+		for(int i = 0; i < imageStrings.size(); ++i) {
+			 byte[] data1 = Base64.getDecoder().decode(imageStrings.get(i));
+			 
+			 String path = "img/anh_san_pham/" + id_san_pham + "_" + i + ".png";
+			 
+			 image(data1, id_san_pham + "_" + i);
+			 
+			 list_path.add(path);												
+		}
+		return list_path;
+	}
+	
+	public void image(byte[] data1, String name_image) {
+		String root = "D:/Language Program/Java_web/PBL3-clothing-ecommerce/PBL3/src/main/webapp/";
+		String path = root + "img/anh_san_pham/" + name_image + ".png";
+		
+		try (FileOutputStream fos = new FileOutputStream(path)) {
+			fos.write(data1);
+			System.out.println("Image saved successfully to: " + path);
+	    } catch (IOException e) {
+	    	e.printStackTrace();
+	    }
 	}
 	
 	public List<String> lay_anh_san_pham(HttpServletRequest req) throws IOException, ServletException{
