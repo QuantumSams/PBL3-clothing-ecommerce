@@ -35,8 +35,8 @@
                     <input id="passWord" type="password" placeholder="Password" name = "password" required>
                     <input id="repassword" type="password" placeholder="Repeat Password" name = "repassword" required>
                     <button id="dang_ky" type = "submit">Đăng ký</button> 
-                    <p id="message2" style = "color: red"></p>
-                  
+                    <p id="message2" style = "color: green"></p>
+                
             </div>
             <div class="form- sign-in">
                 <form action="login" method = "post">
