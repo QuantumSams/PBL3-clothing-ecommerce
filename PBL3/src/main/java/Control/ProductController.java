@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = {"/get_product_by_ajax"})
+@WebServlet(urlPatterns = {"/get_product_by_ajax", "/load_product"})
 public class ProductController extends HttpServlet {
 
 	private static final long serialVersionUID = -886812143546363698L;
@@ -21,6 +21,11 @@ public class ProductController extends HttpServlet {
 		
 		if(action.equals("/get_product_by_ajax")) {
 			san_pham_Service.search_product_by_json(req, resp);
+		}
+		
+		if(action.equals("/load_product")) {
+			san_pham_Service.load_product(req, resp);
+			req.getRequestDispatcher("product.jsp").forward(req, resp);
 		}
 	}
 

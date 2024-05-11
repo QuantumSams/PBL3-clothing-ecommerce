@@ -3,8 +3,6 @@ package Service.San_Pham;
 import java.io.BufferedReader;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
@@ -15,6 +13,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import DAO.implemet.San_pham_DAO;
 import Entity.San_Pham.Danh_muc_san_pham;
+import Entity.San_Pham.Muc_san_pham;
 import Entity.San_Pham.San_pham;
 import Entity.San_Pham.Thuoc_Tinh_San_Pham.Mau_sac;
 import Entity.San_Pham.Thuoc_Tinh_San_Pham.Size;
@@ -45,7 +44,7 @@ public class San_pham_Service {
 	public void add_san_pham(San_pham san_pham) {
 		new San_pham_DAO().add_san_pham(san_pham);
 	}
-
+	
 	public void load_product_by_session(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		List<San_pham> list_san_pham = new San_pham_Service().LayTatCaSanPham();
@@ -62,6 +61,19 @@ public class San_pham_Service {
 	    resp.setContentType("application/json");
 	    resp.setCharacterEncoding("UTF-8");
 	    resp.getWriter().write(json);
+	}
+	
+	public void load_product(HttpServletRequest req, HttpServletResponse resp) {
+		String id = req.getParameter("id_san_pham");
+		San_pham san_pham = san_pham_DAO.getProduct_by_ID(id);
+		System.out.println(san_pham.getGia_tien() + " " + san_pham.getMuc_san_pham().size());
+		for(Muc_san_pham muc_san_pham : san_pham.getMuc_san_pham()) {
+			System.out.println(muc_san_pham.getAnh_chi_tiet() + muc_san_pham.getGia_tien());
+		}
+		HttpSession session = req.getSession();
+		session.setAttribute("product", san_pham);
+		
+		
 	}
 	
 	public void search_product_by_json(HttpServletRequest req, HttpServletResponse resp) throws IOException {
@@ -115,11 +127,14 @@ public class San_pham_Service {
 		
 		List<String> fileanh = add_image(imageStrings, id_san_pham);
 		
-		San_pham san_pham = new San_pham(id_san_pham, danh_muc.getCategory(), ten_mat_hang, thuong_hieu, chat_lieu, mo_ta, thong_tin_chi_tiet, fileanh, null);
+		
+		List<Muc_san_pham> list_muc_san_pham = null;
+		
+		San_pham san_pham = new San_pham(id_san_pham, danh_muc.getCategory(), ten_mat_hang, thuong_hieu, chat_lieu, mo_ta, thong_tin_chi_tiet, fileanh, list_muc_san_pham);
 		System.out.println(san_pham.toString());
 		san_pham.setId_danh_muc_san_pham(id_danh_muc);
 		san_pham.setAnh_san_pham(fileanh);
-		new San_pham_Service().add_san_pham(san_pham);
+		san_pham_DAO.add_san_pham(san_pham);
 		
 	}
 	

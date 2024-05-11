@@ -3,16 +3,13 @@ $(document).ready(function(){
 				let data = [];
 				
 				const images = document.querySelectorAll('#div_anh img');
-
 				let imageSrc = [];
 				images.forEach((image) => {
 					imageSrc.push(image.src.split(",")[1])
 				});
-				 
 				console.log(imageSrc);
-				
 				console.log(JSON.stringify(imageSrc));
-						
+				
 				data.push({
 					id_danh_muc: 	$("#Danh_muc").val(),
 					ten_mat_hang: 	$("#ten_mat_hang").val(),
@@ -22,18 +19,12 @@ $(document).ready(function(){
 					chat_lieu: 		$("#chat_lieu").val(),
 					images: 		imageSrc
 				});
-						
+					
 				$.ajax({
 				      url: "add_product", // URL of your Servlet
 				      type: "POST",
 				      dataType: 'json',
 				      data: 
-							/*id_danh_muc: 	$("#Danh_muc").val(),
-							ten_mat_hang: 	$("#ten_mat_hang").val(),
-							mo_ta: 			$("#mo_ta").val(),
-							thong_tin_chi_tiet: $("#thong_tin_chi_tiet").val(),
-							thuong_hieu: 	$("#thuong_hieu").val(),
-							chat_lieu: 		$("#chat_lieu").val(),*/
 							 JSON.stringify(data),
 					 
 				      success: function(data) {
@@ -212,6 +203,7 @@ function addImageItems(linput) {
         count=count+1;
         var newRow = table.insertRow();
         var stt = newRow.insertCell();
+        
         stt.innerHTML = count;
         var name = newRow.insertCell();
         name.innerHTML = selectedOptionSize.value +"  "+ selectedOptionColor.value;
