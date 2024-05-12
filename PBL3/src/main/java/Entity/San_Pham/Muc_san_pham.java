@@ -2,12 +2,14 @@ package Entity.San_Pham;
 
 import java.util.List;
 
+import DAO.implemet.San_pham_DAO;
 import Entity.San_Pham.Thuoc_Tinh_San_Pham.Mau_sac;
 import Entity.San_Pham.Thuoc_Tinh_San_Pham.Size;
 
 public class Muc_san_pham{
 	protected int id_muc_san_pham;
 	protected int id_san_pham;
+	protected String ten_san_pham;
 	protected int so_luong_trong_kho;
 	protected Mau_sac mau_sac_san_pham;
 	protected Size kich_thuoc_san_pham;
@@ -26,7 +28,7 @@ public class Muc_san_pham{
 		this.gia_tien = gia_tien;
 		this.anh_chi_tiet = anh_chi_tiet;
 	}
-
+	
 	public int getGia_tien() {
 		return gia_tien;
 	}
@@ -81,6 +83,19 @@ public class Muc_san_pham{
 
 	public void setAnh_chi_tiet(String anh_chi_tiet) {
 		this.anh_chi_tiet = anh_chi_tiet;
+	}
+
+	public void get_ten_san_pham() {
+		ten_san_pham = new San_pham_DAO().getProduct_by_ID(Integer.toString(getId_san_pham())).getTen_san_pham();
+	}
+	
+	
+	public String getTen_san_pham() {
+		return ten_san_pham;
+	}
+
+	public void setTen_san_pham(String ten_san_pham) {
+		this.ten_san_pham = ten_san_pham;
 	}
 
 	@Override

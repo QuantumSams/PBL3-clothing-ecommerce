@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
 <jsp:include page="header.jsp"></jsp:include>
@@ -32,45 +33,22 @@
                         </tr>
                     </thead>
                    <tbody>
-                    <tr>
-                        <td>
-                            <div class="name">
-                                <h5>Áo sơ mi bỏ túi chống nắng UV  (3D cut)</h5>
-                            </div>
-                            <div class="color">
-                                    <h5>Nâu/S</h5>
-                            </div>
-                        </td>
-                        <td>1</td>
-                        <td class = "priceItems">100.000</td>
+                   
+                   	<c:forEach var="item" items="${list_san_pham_mua}">
+                    	<tr>
+	                        <td>
+	                            <div class="name">
+	                                <h5>${item.key.ten_san_pham}</h5>
+	                            </div>
+	                            <div class="color">
+	                                    <h5>${item.key.mau_sac_san_pham.ten_mau} / ${item.key.kich_thuoc_san_pham.ten_size}</h5>
+	                            </div>
+	                        </td>
+	                        <td>${item.value}</td>
+	                        <td class = "priceItems">${item.key.gia_tien}</td>
                         
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="name">
-                                <h5>Áo sơ mi bỏ túi chống nắng UV  (3D cut)</h5>
-                            </div>
-                            <div class="color">
-                                    <h5>Nâu/S</h5>
-                            </div>
-                        </td>
-                        <td>2</td>
-                        <td class = "priceItems" >100.000</td>
-                        
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="name">
-                                <h5>Áo sơ mi bỏ túi chống nắng UV  (3D cut)</h5>
-                            </div>
-                            <div class="color">
-                                    <h5>Nâu/S</h5>
-                            </div>
-                        </td>
-                        <td>3</td>
-                        <td class = "priceItems" >100.001</td>
-                        
-                    </tr>
+                    	</tr>          	  
+					</c:forEach>
                    </tbody>
                     
                 </table>
@@ -104,15 +82,15 @@
                 </div>
                 <div class="User">
                     <h5>Họ tên người nhận</h5>
-                    <h5>Nguyễn Văn A</h5>
+                    <h5>${khach_hang.ho_ten}</h5>
                 </div>
                 <div class="User">
                     <h5>Số điện thoại giao hàng</h5>
-                    <h5>0905 123 456</h5>
+                    <h5>${don_hang.so_dien_thoai}</h5>
                 </div>
                 <div class="User">
                     <h5>Địa chỉ giao hàng</h5>
-                    <h5>31 Ba Đình, phường Thạch Trang, quận Hải Châu, Thành phố Đà Nẵng</h5>
+                    <h5>${don_hang.dia_chi_giao_dich}</h5>
                 </div>
             </div>
             <div class="note">
@@ -123,11 +101,11 @@
                 </div>
                 <div class="User">
                     <h5>Đặt vào lúc</h5>
-                    <h5>07/05/2004</h5>
+                    <h5>${don_hang.ngay_gio_dat_don_hang}</h5>
                 </div>
                 <div class="User">
                     <h5>Nhận vào lúc</h5>
-                    <h5>-</h5>
+                    <h5>${don_hang.ngay_gio_nhan_don_hang}</h5>
                 </div>
                 <div class="User">
                     <h5>Nhân viên xác nhận lúc</h5>
@@ -135,14 +113,14 @@
                 </div>
                 <div class="User">
                     <h5>Trạng thái</h5>
-                    <h5><button type="button" class="btn btn-success">Thành công</button></h5>
+                    <h5><button type="button" class="btn btn-success">${don_hang.trang_thai_don_hang}</button></h5>
                 </div>
             </div>
             <div class="note">
-                <h4>Ghi chú đơn hàng</h4>
+                <h4>Ghi chú</h4>
                 <h5 style = "display: flex; align-items: center; justify-content: center; margin-top: 5%;">Chỉ giao vào giờ hành chính</h5>
             </div>
-            <button class="chinhsua xacnhan huy">Xác nhận thanh toán</button>
+            <button id="xac_nhan_don" class="chinhsua xacnhan huy">Xác nhận thanh toán</button>
         </div>
       
        </div>
@@ -151,7 +129,23 @@
 </body>
 <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
 <script>
-    
+$(document).ready(function(){
+	 $("#xac_nhan_don").click(function(){
+			$.ajax({
+			      url: "nhan_duoc_don_hang", // URL of your Servlet
+			      type: "POST",
+			      dataType: 'json',
+			      
+			      success: function(data) {
+					alert("Thêm sản phẩm thành công!");
+			      },
+			      error: function(data) {
+						alert("Thêm sản phẩm thất bại!");
+					}
+		   });
+	});
+});
+
     
     
   </script> 

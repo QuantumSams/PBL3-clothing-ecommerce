@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"  %>
+<%@ taglib prefix="c" uri ="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +9,7 @@
     <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
     <div class="payment">
@@ -28,45 +30,22 @@
                         </tr>
                     </thead>
                    <tbody>
-                    <tr>
-                        <td>
-                            <div class="name">
-                                <h5>Áo sơ mi bỏ túi chống nắng UV  (3D cut)</h5>
-                            </div>
-                            <div class="color">
-                                    <h5>Nâu/S</h5>
-                            </div>
-                        </td>
-                        <td>1</td>
-                        <td class = "priceItems">100.000</td>
-                        <td><Button class = "btnXoa" onclick="deleteR(this)"><i class="fa-solid fa-trash"></i></Button></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="name">
-                                <h5>Áo sơ mi bỏ túi chống nắng UV  (3D cut)</h5>
-                            </div>
-                            <div class="color">
-                                    <h5>Nâu/S</h5>
-                            </div>
-                        </td>
-                        <td>2</td>
-                        <td class = "priceItems" >100.000</td>
-                        <td><Button class = "btnXoa" onclick="deleteR(this)"><i class="fa-solid fa-trash"></i></Button></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="name">
-                                <h5>Áo sơ mi bỏ túi chống nắng UV  (3D cut)</h5>
-                            </div>
-                            <div class="color">
-                                    <h5>Nâu/S</h5>
-                            </div>
-                        </td>
-                        <td>3</td>
-                        <td class = "priceItems" >100.001</td>
-                        <td><Button class = "btnXoa" onclick="deleteR(this)"><i class="fa-solid fa-trash"></i></Button></td>
-                    </tr>
+                   <input text="hidden" id="muc_san_pham" value="${muc_san_pham}" />
+                   	<c:forEach var="item" items="${muc_san_pham}">
+                    	<tr>
+	                        <td>
+	                            <div class="name">
+	                                <h5>${item.ten_san_pham}</h5>
+	                            </div>
+	                            <div class="color">
+	                                    <h5>${item.mau_sac_san_pham.ten_mau} / ${item.kich_thuoc_san_pham.ten_size}</h5>
+	                            </div>
+	                        </td>
+	                        <td>${item.so_luong_trong_kho}</td>
+	                        <td class = "priceItems">${item.gia_tien}</td>
+	                        <td><Button class = "btnXoa" onclick="deleteR(this)"><i class="fa-solid fa-trash"></i></Button></td>
+                    	</tr>          	  
+					</c:forEach>
                    </tbody>
                     
                 </table>
@@ -97,32 +76,61 @@
                     <h4>Thông tin người nhận</h4>
                     <button class = "chinhsua">Chỉnh sửa</button>
                 </div>
-                <div class="User">
+                <div  class="User">
+                	<input type="hidden" id="id_nguoi_dung" value="${acc.id_nguoi_dung}" />
                     <h5>Họ tên người nhận</h5>
-                    <h5>Nguyễn Văn A</h5>
+                    <h5>${acc.ho_ten}</h5>
                 </div>
                 <div class="User">
                     <h5>Số điện thoại giao hàng</h5>
-                    <input class = "inf" type="text" value="0905 123 456" disabled >
+                    <input  id="so_dien_thoai" class = "inf" type="text" value="${acc.so_dien_thoai}" disabled >
                 </div>
                 <div class="User">
                     <h5>Địa chỉ giao hàng</h5>
-                    <input  class = "inf" type="text" disabled  value = "31 Ba Đình, phường Thạch Trang, quận Hải Châu, Thành phố Đà Nẵng">
+                    <input  id="dia_chi" class = "inf" type="text" disabled  value = "${acc.dia_chi}">
                 </div>
             </div>
             <div class="note">
                 <h4>Ghi chú đơn hàng</h4>
-                <textarea name="" id="" placeholder="Nhập thông tin ghi chú tại đây" ></textarea>
+                <textarea name="" id="ghi_chu" placeholder="Nhập thông tin ghi chú tại đây" ></textarea>
             </div>
-            <button class="chinhsua xacnhan">Xác nhận thanh toán</button>
+            <button id="add_order" class="chinhsua xacnhan">Xác nhận thanh toán</button>
         </div>
       
        </div>
       
     </div>
 </body>
-<script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+
 <script>
+
+$(document).ready(function(){
+	 $("#add_order").click(function(){
+			
+		 	
+			$.ajax({
+			      url: "create_order", // URL of your Servlet
+			      type: "POST",
+			      dataType: 'json',
+			      data: {
+			    	  id_khach_hang:  	$("#id_nguoi_dung").val(),
+			    	  muc_san_pham: 	JSON.stringify(jsonString),
+			    	  so_dien_thoai: 	$("#so_dien_thoai").val(),
+			    	  dia_chi: 			$("#dia_chi").val(),
+			    	  ghi_chu: 			$("#ghi_chu").val(),
+			    	  tong_tien: 		$("#thanhtien").text(),
+			      },
+			
+			      success: function(data) {
+					alert("Thêm sản phẩm thành công!");
+			      },
+			      error: function(data) {
+						alert("Thêm sản phẩm thất bại!");
+					}
+		   });
+	});
+});
+
     function deleteR(button) {
       var row = button.parentNode.parentNode;
       var table = document.getElementById('table');

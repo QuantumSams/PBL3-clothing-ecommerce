@@ -145,6 +145,16 @@ public class San_pham_DAO extends AbstractDao {
 		return query(query, new Muc_san_pham_Mapper(), id);
 	}
 	
+	public Muc_san_pham getMuc_san_pham(int id) {
+		String query = 	"SELECT muc_san_pham.id_muc_san_pham, id_san_pham, so_luong_trong_kho, muc_san_pham.id_mau_sac, ten_mau, mau_sac.duong_dan_anh, muc_san_pham.id_size, ten_size,  anh_muc_san_pham.duong_dan_anh AS anh_muc, gia_tien \r\n"
+						+ "FROM muc_san_pham \r\n"
+						+ "INNER JOIN mau_sac ON muc_san_pham.id_mau_sac = mau_sac.id_mau_sac\r\n"
+						+ "INNER JOIN size ON muc_san_pham.id_size = size.id_size\r\n"
+						+ "INNER JOIN anh_muc_san_pham ON anh_muc_san_pham.id_muc_san_pham = muc_san_pham.id_muc_san_pham WHERE muc_san_pham.id_muc_san_pham = ?";
+
+		return query(query, new Muc_san_pham_Mapper(), id).get(0);
+	}
+	
 	public San_pham getProduct_by_ID(String id) {
 		String query = "SELECT id_san_pham, danh_muc_san_pham.ten_danh_muc_san_pham, ten_san_pham, ten_nhan_hang, ten_chat_lieu, thong_tin_chung, thong_tin_chi_tiet "
 				+ "FROM san_pham INNER JOIN  danh_muc_san_pham ON san_pham.id_danh_muc_san_pham = danh_muc_san_pham.id_danh_muc_san_pham WHERE id_san_pham = ?";

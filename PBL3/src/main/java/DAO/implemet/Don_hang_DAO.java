@@ -1,5 +1,6 @@
 package DAO.implemet;
 
+import java.sql.Date;
 import java.util.List;
 
 import DAO.AbstractDao;
@@ -10,13 +11,15 @@ import Mapper.Don_Hang.Don_hang_Mapper;
 public class Don_hang_DAO extends AbstractDao{
 
 	public void add_order(Don_hang don_hang) {
-		String query = "INSERT INTO don_hang VALUES (?, ?, ?, null, ?, ?, ?, ?)";
+		String query = "INSERT INTO don_hang VALUES (?, ?, ?, null, ?, ?, ?, ?, ?, ?)";
 		insert(query, don_hang.getId_hoa_don(),
 										don_hang.getTong_tien(), 
 										don_hang.getId_khach_hang(),
+										don_hang.getSo_dien_thoai(),
 										don_hang.getDia_chi_giao_dich(), 
 										don_hang.getNgay_gio_dat_don_hang(),
 										don_hang.getNgay_gio_nhan_don_hang(),
+										don_hang.getGhi_chu(),
 										don_hang.getTrang_thai_don_hang());
 		
 		for(Pair<Integer, Integer> muc_san_pham : don_hang.getList_muc_san_pham()) {
@@ -55,6 +58,18 @@ public class Don_hang_DAO extends AbstractDao{
 		String query = "UPDATE don_hang SET tong_tien = ?, id_khach_hang = ?, id_nhan_vien = ? , ngay_gio_dat = ?, ngay_gio_nhan = ?, trang_thai_don_hang = ? WHERE id_don_hang = ?";
 	
 		update(query, don_hang.getTong_tien(), don_hang.getId_khach_hang(), don_hang.getId_nhan_vien(), don_hang.getNgay_gio_dat_don_hang(), don_hang.getId_nhan_vien(), don_hang.getTrang_thai_don_hang(), don_hang.getId_hoa_don());
+	}
+	
+	public void update_order(int id, int id_nhan_vien, String trang_thai_don_hang) {
+		String query = "UPDATE don_hang SET id_nhan_vien = ?, trang_thai_don_hang = ? WHERE id_don_hang = ?";
+	
+		update(query, id_nhan_vien,	trang_thai_don_hang, id);
+	}
+	
+	public void update_order(int id, Date ngay_gio_nhan_hang, String trang_thai_don_hang) {
+		String query = "UPDATE don_hang SET ngay_gio_nhan = ?, trang_thai_don_hang = ? WHERE id_don_hang = ?";
+	
+		update(query, ngay_gio_nhan_hang, trang_thai_don_hang, id);
 	}
 	
 	public void delete_order(Don_hang don_hang) {
