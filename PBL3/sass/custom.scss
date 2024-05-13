@@ -1,3 +1,5 @@
+// seperator
+
 $spacer: 1.75rem;
 $spacers: (
   0: 0,
@@ -72,6 +74,10 @@ $navbar-bg: $gray-25;
   font-weight: bold;
 }
 
+.p {
+  font-size: 16px;
+}
+
 .breadcrumb-item {
   a {
     color: $gray-400;
@@ -99,6 +105,95 @@ $input-placeholder-color: $gray-400;
 
 $breadcrumb-font-size: 14px;
 $breadcrumb-active-color: $gray-900;
+
+//sep
+.sidecontainer {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 212px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 20px 16px;
+  gap: 16px;
+}
+.sidebar .head {
+  display: flex;
+  width: 100%;
+  height: 88px;
+}
+
+.user-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.user-img img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.menu .title {
+  font-size: 16px;
+  color: #757575;
+  margin: 8px 4px;
+}
+
+.user-detail .name {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.menu .sidelist {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.menu ul li {
+  list-style: none;
+  margin-bottom: 8px;
+  display: flex;
+  width: 100%;
+}
+.menu ul li a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 16px;
+  text-decoration: none;
+  padding: 8px 8px;
+  border-radius: 8px;
+  color: $gray-400;
+  flex: 1;
+}
+
+.menu ul li:hover a {
+  background-color: $gray-200;
+  color: $black;
+}
+
+.menu ul li.active a {
+  background-color: $primary;
+  color: $gray-25;
+}
+
+.menu ul li a .icon {
+  font-size: 20px;
+}
 
 // Create your own map
 @import "../node_modules/bootstrap/scss/bootstrap";

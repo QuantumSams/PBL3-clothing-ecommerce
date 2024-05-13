@@ -7,6 +7,7 @@
             href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <!-- <link rel="stylesheet" href="sidebar.css" /> -->
         <link rel="stylesheet" href="css/custom.min.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,12 +16,11 @@
             rel="stylesheet">
 
         <script src="https://unpkg.com/@phosphor-icons/web"></script>
-        <link rel="stylesheet" href="sidebar.css" />
         <title>Sidebar template</title>
     </head>
 
     <body>
-        <div class="container">
+        <div class="sidecontainer">
             <div class="sidebar">
                 <div class="head">
                     <div class="user-img">
@@ -31,7 +31,7 @@
                 <div class="nav">
                     <div class="menu">
                         <p class="title">Chức năng</p>
-                        <ul>
+                        <ul class="sidelist">
                             <li class="active">
                                 <a href="#">
                                     <i class="icon ph-bold ph-house-simple"></i>
