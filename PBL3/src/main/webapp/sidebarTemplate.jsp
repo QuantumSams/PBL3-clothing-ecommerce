@@ -14,8 +14,6 @@
         <link
             href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
             rel="stylesheet">
-
-        <script src="https://unpkg.com/@phosphor-icons/web"></script>
         <title>Sidebar template</title>
     </head>
 
@@ -34,19 +32,19 @@
                         <ul class="sidelist">
                             <li class="active">
                                 <a href="#">
-                                    <i class="icon ph-bold ph-house-simple"></i>
+                                    <i class="bi bi-box-fill"></i>
                                     <span class="text">Đơn hàng</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    <i class="icon ph-bold ph-house-simple"></i>
+                                    <i class="bi bi-chat-square-text-fill"></i>
                                     <span class="text">Chat</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    <i class="icon ph-bold ph-house-simple"></i>
+                                    <i class="bi bi-person-fill"></i>
                                     <span class="text">Cá nhân</span>
                                 </a>
                             </li>
