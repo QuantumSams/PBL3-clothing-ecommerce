@@ -15,16 +15,16 @@ import Mapper.San_Pham.Danh_muc_san_pham_Mapper;
 public class Don_hang_DAO extends AbstractDao{
 
 	public void add_order(Don_hang don_hang) {
-		String query = "INSERT INTO don_hang VALUES (?, ?, ?, null, ?, ?, ?, ?, ?, ?)";
-		insert(query, don_hang.getId_hoa_don(),
-										don_hang.getTong_tien(), 
-										don_hang.getId_khach_hang(),
-										don_hang.getSo_dien_thoai(),
-										don_hang.getDia_chi_giao_dich(), 
-										don_hang.getNgay_gio_dat_don_hang(),
-										don_hang.getNgay_gio_nhan_don_hang(),
-										don_hang.getGhi_chu(),
-										don_hang.getTrang_thai_don_hang());
+		String query = "INSERT INTO don_hang VALUES (?, ?, ?, 665, ?, ?, ?, ?, ?, ?)";
+		insert(query, 	don_hang.getId_hoa_don(),
+						don_hang.getTong_tien(), 
+						don_hang.getId_khach_hang(),
+						don_hang.getSo_dien_thoai(),
+						don_hang.getDia_chi_giao_dich(), 
+						don_hang.getNgay_gio_dat_don_hang(),
+						don_hang.getNgay_gio_nhan_don_hang(),
+						don_hang.getGhi_chu(),
+						don_hang.getTrang_thai_don_hang());
 		
 		for(Pair<Integer, Integer> muc_san_pham : don_hang.getList_muc_san_pham()) {
 			query = "INSERT INTO chi_tiet_don_hang VALUES (?, ?, ?)";
@@ -104,12 +104,20 @@ public class Don_hang_DAO extends AbstractDao{
 	}
 	
 	
-	public Danh_gia_don_hang get_danh_gia_don_hang(int id_don_hang) {
+	public Danh_gia_don_hang get_danh_gia_don_hang(int id_don_hang) throws java.lang.Exception {
 		String query = "SELECT * FROM danh_gia_don_hang WHERE id_don_hang = ?";
 		List<Danh_gia_don_hang> dg = query(query, new Danh_gia_don_hang_Mapper(), id_don_hang);
-		if(dg!=null) {
+		if(dg.size() != 0) {
 			return dg.get(0);
 		}
+		else {
+			throw Exception();
+		}
+	}
+
+
+	private Exception Exception() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 }

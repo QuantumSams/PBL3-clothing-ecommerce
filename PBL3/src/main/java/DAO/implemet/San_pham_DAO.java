@@ -45,7 +45,7 @@ public class San_pham_DAO extends AbstractDao {
 	}
 	
 	public void add_muc_san_pham(Muc_san_pham muc_san_pham) {
-		String query = "INSERT INTO muc_san_pham VALUES (?, ?, ?, ?, ?, ?)";
+		String query = "INSERT INTO muc_san_pham VALUES (?, ?, ?, ?, ?, ?, ?)";
 		int id = new Random().nextInt();
 		
 		insert(query, 	id, 
@@ -53,7 +53,9 @@ public class San_pham_DAO extends AbstractDao {
 						muc_san_pham.getSo_luong_trong_kho(),
 						muc_san_pham.getMau_sac_san_pham().getId_mau_sac(),
 						muc_san_pham.getKich_thuoc_san_pham().getId_size(),
-						muc_san_pham.getGia_tien());
+						muc_san_pham.getGia_tien(),
+						muc_san_pham.getAnh_chi_tiet()
+						);
 		
 	}
 	
@@ -136,21 +138,19 @@ public class San_pham_DAO extends AbstractDao {
 	}
 	
 	public List<Muc_san_pham> getList_muc_san_pham(int id){
-		String query = 	"SELECT muc_san_pham.id_muc_san_pham, id_san_pham, so_luong_trong_kho, muc_san_pham.id_mau_sac, ten_mau, mau_sac.duong_dan_anh, muc_san_pham.id_size, ten_size,  anh_muc_san_pham.duong_dan_anh AS anh_muc, gia_tien  \r\n"
+		String query = 	"SELECT muc_san_pham.id_muc_san_pham, id_san_pham, so_luong_trong_kho, muc_san_pham.id_mau_sac, ten_mau, mau_sac.duong_dan_anh, muc_san_pham.id_size, ten_size,  anh_muc_san_pham AS anh_muc, gia_tien\r\n"
 						+ "FROM muc_san_pham \r\n"
 						+ "INNER JOIN mau_sac ON muc_san_pham.id_mau_sac = mau_sac.id_mau_sac\r\n"
-						+ "INNER JOIN size ON muc_san_pham.id_size = size.id_size\r\n"
-						+ "INNER JOIN anh_muc_san_pham ON anh_muc_san_pham.id_muc_san_pham = muc_san_pham.id_muc_san_pham WHERE id_san_pham = ?";
+						+ "INNER JOIN size ON muc_san_pham.id_size = size.id_size  WHERE id_san_pham = ?";
 		
 		return query(query, new Muc_san_pham_Mapper(), id);
 	}
 	
 	public Muc_san_pham getMuc_san_pham(int id) {
-		String query = 	"SELECT muc_san_pham.id_muc_san_pham, id_san_pham, so_luong_trong_kho, muc_san_pham.id_mau_sac, ten_mau, mau_sac.duong_dan_anh, muc_san_pham.id_size, ten_size,  anh_muc_san_pham.duong_dan_anh AS anh_muc, gia_tien \r\n"
+		String query = 	"SELECT muc_san_pham.id_muc_san_pham, id_san_pham, so_luong_trong_kho, muc_san_pham.id_mau_sac, ten_mau, mau_sac.duong_dan_anh, muc_san_pham.id_size, ten_size,  anh_muc_san_pham AS anh_muc, gia_tien\r\n"
 						+ "FROM muc_san_pham \r\n"
 						+ "INNER JOIN mau_sac ON muc_san_pham.id_mau_sac = mau_sac.id_mau_sac\r\n"
-						+ "INNER JOIN size ON muc_san_pham.id_size = size.id_size\r\n"
-						+ "INNER JOIN anh_muc_san_pham ON anh_muc_san_pham.id_muc_san_pham = muc_san_pham.id_muc_san_pham WHERE muc_san_pham.id_muc_san_pham = ?";
+						+ "INNER JOIN size ON muc_san_pham.id_size = size.id_size  WHERE muc_san_pham.id_muc_san_pham = ?";
 
 		return query(query, new Muc_san_pham_Mapper(), id).get(0);
 	}

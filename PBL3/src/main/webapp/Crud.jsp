@@ -84,7 +84,7 @@
                                     <button class ="btn1" onclick = "acceptChange('btn1','.editColor')">Chỉnh sửa</button>
                                 	<Select id="itemListMau_sac">
                                             <c:forEach var="item" items="${mau_sac}">
-                                            	<option >
+                                            	<option value="${item.id_mau_sac}">
                                             		${item.ten_mau}
                                             	</option>
                                             </c:forEach>
@@ -109,7 +109,7 @@
                                     <button class ="btn2" onclick = "acceptChange('btn2', '.editSize')">Chỉnh sửa</button>
                                 	<Select id="itemListSize">
                                             <c:forEach var="item" items="${size}">
-                                            	<option>
+                                            	<option value="${item.id_size}">
                                             		${item.ten_size}
                                             	</option>
                                             </c:forEach>
@@ -136,7 +136,8 @@
                             <thead>
                               <tr>
                                 <th scope="col">STT</th>
-                                <th scope="col">Chủng loại</th>
+                                <th scope="col">Size</th>
+                                <th scope="col">Màu</th>
                                 <th scope="col">Giá</th>
                                 <th scope="col">Ảnh</th>
                               </tr>

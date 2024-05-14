@@ -70,12 +70,16 @@ public class Nguoi_dung_Service {
 			try {
 				int id = new Random().nextInt(1000);
 
-				Nguoi_dung nguoi_dung = new Nguoi_dung(id, fullname, true, new Date(0), "", "", phoneNumber, email, "KHACH_HANG");
+				Nguoi_dung nguoi_dung = new Nguoi_dung(id, fullname, true, new Date(0), " / / / ", "", phoneNumber, email, "KHACH_HANG");
 				nguoi_dung.setPassword(passWord);
-				if(nguoidung_DAO.count_email(nguoi_dung.getEmail()) > 0) throw new Exception("Email bị trùng");
-				if(nguoidung_DAO.count_so_dien_thoai(nguoi_dung.getSo_dien_thoai()) > 0) throw new Exception("Số điện thoại bị trùng");
+				if(nguoidung_DAO.count_email(nguoi_dung.getEmail()) > 0)
+					throw new Exception("Email bị trùng");
+					
+				if(nguoidung_DAO.count_so_dien_thoai(nguoi_dung.getSo_dien_thoai()) > 0) 
+					throw new Exception("Số điện thoại bị trùng");
 				
 				nguoi_dung.setPassword(toSHA1(nguoi_dung.getPassword()));
+				
 				new Nguoi_dung_DAO().Dang_ky(nguoi_dung);
 				
 				postJson(resp, "Tạo tài khoản thành công");
