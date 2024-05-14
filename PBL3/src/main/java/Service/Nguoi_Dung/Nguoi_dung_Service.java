@@ -86,7 +86,7 @@ public class Nguoi_dung_Service {
 			
 		}
 	}
-	
+	/*
 	public void UpdateInfor(HttpServletRequest request) throws IOException, ServletException {
 		
 		HttpSession session = request.getSession();
@@ -103,6 +103,36 @@ public class Nguoi_dung_Service {
 			System.out.println(e);
 			session.setAttribute("acc",acc);
 		}
+	}*/
+	
+	public void UpdateInfor(HttpServletRequest request,HttpServletResponse resp) throws IOException {
+		try {
+			int id_khach_hang = Integer.parseInt(request.getParameter("id_khach_hang"));
+			String ho_ten_khach_hang = request.getParameter("ho_ten_khach_hang");
+			String ngay_sinh = request.getParameter("ngay_sinh");
+			String dia_chi = request.getParameter("dia_chi");
+			String gioi_tinh = request.getParameter("gioi_tinh");
+			
+			Nguoi_dung acc = nguoidung_DAO.Get_by_ID(id_khach_hang);
+			System.out.println(dia_chi);
+			acc.setDia_chi(dia_chi);
+			acc.setHo_ten(ho_ten_khach_hang);
+			acc.setGioi_tinh(Boolean.parseBoolean(gioi_tinh));
+			//acc.setAnh_dai_dien(imagePath);
+			
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd"); // Định dạng chuỗi ngày tháng
+       
+			acc.setNgay_sinh(new Date(formatter.parse(ngay_sinh).getTime()));
+			
+			new Nguoi_dung_DAO().Update_thong_tin(acc);
+			
+			postJson(resp, "Cập nhật thông tin tài khoản thành công");
+			
+		} catch (ParseException e) {
+			postJson(resp, "Cập nhật thông tin tài khoản thất bại");
+		}
+        
+        
 	}
 	
 	public Nguoi_dung getNewInfor(HttpServletRequest request) throws IOException, ServletException {

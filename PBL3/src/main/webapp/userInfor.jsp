@@ -54,7 +54,7 @@
                                </div>
                                <div class="email form">
                                     <label for="" class="form-label">Email</label>
-                                    <input type="email" class="form-control"  value = "${sessionScope.acc.email}" name="email">
+                                    <input type="email" class="form-control"  value="${sessionScope.acc.email}" name="email">
                                 </div>
                                 <div class="address form">
                                     <label for="" class="form-label">Địa chỉ</label>
@@ -62,6 +62,28 @@
                                 </div>
                                 <div class="Gender form">
                                     <label for="" class="form-label">Giới tính</label>
+                                    
+                                    <c:if test="${sessionScope.acc.gioi_tinh == true}">
+  										<div class="form-check">
+	                                        <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1" checked>Nam
+	                                        <label class="form-check-label" for="radio1"></label>
+                                      	</div>
+                                      	<div class="form-check">
+	                                        <input type="radio" class="form-check-input" id="radio2" name="optradio" value="option2">Nữ
+	                                        <label class="form-check-label" for="radio2"></label>
+                                      	</div>
+									</c:if>
+									<c:if test="${sessionScope.acc.gioi_tinh == false}">
+  										<div class="form-check">
+	                                        <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1" >Nam
+	                                        <label class="form-check-label" for="radio1"></label>
+                                      	</div>
+                                      	<div class="form-check">
+	                                        <input type="radio" class="form-check-input" id="radio2" name="optradio" value="option2" checked>Nữ
+	                                        <label class="form-check-label" for="radio2"></label>
+                                      	</div>
+									</c:if>
+                                    
                                     <div class="form-check">
                                         <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1" checked>Nam
                                         <label class="form-check-label" for="radio1"></label>
@@ -136,6 +158,7 @@
   		}
 	}); 
 
+	
 	
 	$(document).ready(function(){
 		 $("#doi_mat_khau").click(function(){

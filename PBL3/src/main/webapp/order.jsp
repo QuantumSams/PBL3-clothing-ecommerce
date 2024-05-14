@@ -30,8 +30,7 @@
                         </tr>
                     </thead>
                    <tbody>
-                   <input text="hidden" id="muc_san_pham" value="${muc_san_pham}" />
-                   	<c:forEach var="item" items="${muc_san_pham}">
+                   <c:forEach var="item" items="${muc_san_pham}">
                     	<tr>
 	                        <td>
 	                            <div class="name">
@@ -87,7 +86,7 @@
                 </div>
                 <div class="User">
                     <h5>Địa chỉ giao hàng</h5>
-                    <input  id="dia_chi" class = "inf" type="text" disabled  value = "${acc.dia_chi}">
+                    <input  id="dia_chi" class = "inf" type="text" disabled  value = "${acc.tinh}, ${acc.huyen}, ${acc.xa}, ${acc.dia_chi_cu_the} ">
                 </div>
             </div>
             <div class="note">

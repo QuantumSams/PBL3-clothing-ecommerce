@@ -31,9 +31,9 @@
                     <a class="list-group-item list-group-item-action" data-toggle= "list"
                     href="#mat-khau">Mật khẩu</a>
                 </div>
-                <a class="list-group-item list-group-item-action" data-toggle="list"
+                <a id="gio_hang" class="list-group-item list-group-item-action" data-toggle="list"
                 href="#gio-hang">Giỏ hàng</a>
-                <a class="list-group-item list-group-item-action" data-toggle= "list"
+                <a  id="lich_su" class="list-group-item list-group-item-action" data-toggle= "list"
                 href="#lich-su">Lịch sử</a>
                 
                 </div>
@@ -42,79 +42,8 @@
         <div class = "infor col-md-10 pt-0">
             <div class="tab-content">
                 <div class = "tab-pane fade" id = "gio-hang">
-                    <div class="mainform">
-                        <div class="card ">
-                            <div class="item-cart">
-                                <div class="img-infor">
-                                    <img src="goods_69_464605.png" alt="" width="100px">
-                                    <div class="inforItems">
-                                        <div class="name">
-                                            <h5>Áo sơ mi bỏ túi chống nắng UV (3D Cut)</h5>
-                                            <h6>Xanh biển ngà / S</h6>
-                                            <button class = "btnXoa">Xoá</button>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                                
-                                <div class="price-amount">
-                                    <h6 class = "gia">50000 VNĐ</h6>
-                                    <select name="" id="" class = "optionS">
-                                        <option value="1">1 Chiếc</option>
-                                        <option value="2">2 Chiếc</option>
-                                        <option value="3">3 Chiếc</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card ">
-                            <div class="item-cart">
-                                <div class="img-infor">
-                                    <img src="goods_69_464605.png" alt="" width="100px">
-                                    <div class="inforItems">
-                                        <div class="name">
-                                            <h5>Áo sơ mi bỏ túi chống nắng UV (3D Cut)</h5>
-                                            <h6>Xanh biển ngà / S</h6>
-                                            <button class = "btnXoa">Xoá</button>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                                
-                                <div class="price-amount">
-                                    <h6 class = "gia">50000 VNĐ</h6>
-                                    <select name="" id="" class = "optionS">
-                                        <option value="1">1 Chiếc</option>
-                                        <option value="2">2 Chiếc</option>
-                                        <option value="3">3 Chiếc</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card ">
-                            <div class="item-cart">
-                                <div class="img-infor">
-                                    <img src="goods_69_464605.png" alt="" width="100px">
-                                    <div class="inforItems">
-                                        <div class="name">
-                                            <h5>Áo sơ mi bỏ túi chống nắng UV (3D Cut)</h5>
-                                            <h6>Xanh biển ngà / S</h6>
-                                            <button class = "btnXoa">Xoá</button>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                                
-                                <div class="price-amount">
-                                    <h6 class = "gia">50000 VNĐ</h6>
-                                    <select name="" id="" class = "optionS">
-                                        <option value="1">1 Chiếc</option>
-                                        <option value="2">2 Chiếc</option>
-                                        <option value="3">3 Chiếc</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
+                    <div id="list_gio_hang" class="mainform">
+                        
                         <div class="thanhtoan">
                             <div class="giatien">
                                 <h5>Tạm tính: </h5>
@@ -138,42 +67,7 @@
                                 </tr>
                             </thead>
                             <tbody id="san_pham">
-                                    <tr>
-                                        <td><a href="lishsudon.jsp">07/05/2024</a></td>
-                                        <td>180.000 VNĐ</td>
-                                        <td>10</td>
-                                        <td><button type="button" class="btn btn-warning">Chờ xác nhận</button></td>
-                                        <td>N/A</td>
-                                    </tr>
-                                    <tr>
-                                        <td>08/05/2024</td>
-                                        <td>200.000 VNĐ</td>
-                                        <td>4</td>
-                                        <td><button type="button" class="btn btn-success">Thành công</button></td>
-                                        <td>N/A</td>
-                                    </tr>
-                                    <tr>
-                                        <td>09/05/2024</td>
-                                        <td>230.000 VNĐ</td>
-                                        <td>4</td>
-                                        <td><button type="button" class="btn btn-primary">Chờ nhận hàng</button></td>
-                                        <td>N/A</td>
-                                    </tr>
-                                    <tr>
-                                        <td>10/05/2024</td>
-                                        <td>250.000 VNĐ</td>
-                                        <td>1</td>
-                                        <td><button type="button" class="btn btn-danger">Bị huỷ</button></td>
-                                        <td>N/A</td>
-                                    </tr>
-                                    <tr>
-                                        <td>11/05/2024</td>
-                                        <td>100.000 VNĐ</td>
-                                        <td>5</td>
-                                        <td><button type="button" class="btn btn-warning">Chờ xác nhận</button></td>
-                                        <td>N/A</td>
-                                    </tr>
-                                
+                                    
                             </tbody>
                         </table>
 
@@ -188,40 +82,52 @@
                             </div>
                             <div class="name inputClass">
                                 <h6>Họ và tên</h6>
-                                <input type="text" value="Nguyễn Văn A">
-
+                                <input id="ho_ten_khach_hang"type="text" value="${sessionScope.acc.ho_ten}">
+								<input id="id_khach_hang" type="hidden" value="${sessionScope.acc.id_nguoi_dung}">
                             </div>
                             <div class="birth inputClass">
                                 <h6>Ngày sinh</h6>
-                                <input type="date" >
+                                <input id="ngay_sinh" type="date" value = "${sessionScope.acc.ngay_sinh}">
                                 
                             </div>
                             <div class="gender ">
                                 <h6>Giới tính</h6>
                                 <div class="radio">
-                                    <div class="form-check">
-                                        <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1" checked>Nam
-                                        <label class="form-check-label" for="radio1"></label>
-                                      </div>
-                                      <div class="form-check">
-                                        <input type="radio" class="form-check-input" id="radio2" name="optradio" value="option2">Nữ
-                                        <label class="form-check-label" for="radio2"></label>
-                                      </div>
+                                    <c:if test="${sessionScope.acc.gioi_tinh == true}">
+  										<div class="form-check">
+	                                        <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1" checked>Nam
+	                                        <label class="form-check-label" for="radio1"></label>
+                                      	</div>
+                                      	<div class="form-check">
+	                                        <input type="radio" class="form-check-input" id="radio2" name="optradio" value="option2">Nữ
+	                                        <label class="form-check-label" for="radio2"></label>
+                                      	</div>
+									</c:if>
+									<c:if test="${sessionScope.acc.gioi_tinh == false}">
+  										<div class="form-check">
+	                                        <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1" >Nam
+	                                        <label class="form-check-label" for="radio1"></label>
+                                      	</div>
+                                      	<div class="form-check">
+	                                        <input type="radio" class="form-check-input" id="radio2" name="optradio" value="option2" checked>Nữ
+	                                        <label class="form-check-label" for="radio2"></label>
+                                      	</div>
+									</c:if>
                                       
                                 </div>
                             </div>
                             <div class="phone inputClass">
                                 <h6>Số điện thoại</h6>
-                                <input type="number" >
+                                <input id="so_dien_thoai" type="number" value="${sessionScope.acc.so_dien_thoai}" readonly>
                                 
                             </div>
                             <div class="email inputClass">
                                 <h6>Email</h6>
-                                <input type="number" >
+                                <input id="email" type="email" value="${sessionScope.acc.email}" name="email" readonly>
                                 
                             </div>
                             <div class="buttonList">
-                                <button class = "buttonTT">Save</button>
+                                <button id="cap_nhat_thong_tin" class = "buttonTT">Save</button>
                                 <button class = "buttonCancel">Cancel</button>
                             </div>
                         </div>
@@ -232,26 +138,26 @@
                         <h4>Địa chỉ giao hàng</h4>
                         <div class="inputClass">
                             <h6>Tỉnh/ Thành phố</h6>
-                            <input type="text" >
+                            <input id="tinh" type="text" value="${sessionScope.acc.tinh}">
                             
                         </div>
                         <div class="inputClass">
                             <h6>Huyện / Quận</h6>
-                            <input type="text" >
+                            <input id="huyen" type="text" value="${sessionScope.acc.huyen}">
                             
                         </div>
                         <div class="inputClass">
                             <h6>Xã / Phường</h6>
-                            <input type="text" >
+                            <input id="xa" type="text" value="${sessionScope.acc.xa}">
                             
                         </div>
                         <div class="inputClass">
                             <h6>Địa chỉ cụ thể </h6>
-                            <input type="text" >
+                            <input id="cu_the" type="text" value="${sessionScope.acc.dia_chi_cu_the}">
                             
                         </div>
                         <div class="buttonList">
-                            <button class = "buttonTT">Save</button>
+                            <button id="cap_nhat_thong_tin1" class = "buttonTT">Save</button>
                             <button class = "buttonCancel">Cancel</button>
                         </div>
                     </div>
@@ -261,20 +167,20 @@
                         <h4>Đổi mật khẩu</h4>
                         <div class="inputClass">
                             <h6>Mật khẩu hiện tại</h6>
-                            <input type="password" >
+                            <input id="old_password"  type="password" >
                             
                         </div>
                         <div class="inputClass">
                             <h6>Mật khẩu mới</h6>
-                            <input type="password" >
+                            <input id="new_password"type="password" >
                             
                         </div>
                         <div class="inputClass">
                             <h6>Nhập lại mật khẩu mới</h6>
-                            <input type="password" >
+                            <input id="new_repassword" type="password" >
                         </div>
                         <div class="buttonList">
-                            <button class = "buttonTT">Save</button>
+                            <button id = "doi_mat_khau"  class = "buttonTT">Save</button>
                             <button class = "buttonCancel">Cancel</button>
                         </div>
                     </div>
@@ -292,25 +198,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-<script>
-    tien();
-    var btnXoa = document.querySelectorAll('.btnXoa');
-    btnXoa.forEach(element => {
-        element.addEventListener('click', (e)=>{
-            element.parentElement.parentElement.parentElement.parentElement.parentElement.remove();
-            tien();
-        })
-    });
+<script defer src="./nguoidung.js"></script>
 
-    function tien(){
-        let a = document.querySelectorAll('.gia');
-        let sum = 0; 
-        a.forEach(item => {
-        sum += parseFloat(item.innerHTML.split(' ',1));
-    })
-        document.querySelector('#sum').innerHTML = sum+' VNĐ'
-    }
-    
-
-</script>
 </html>

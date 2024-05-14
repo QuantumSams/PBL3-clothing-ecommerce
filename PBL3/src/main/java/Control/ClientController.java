@@ -26,8 +26,7 @@ public class ClientController extends HttpServlet{
 		Nguoi_dung_Service nguoi_dung_Service = new Nguoi_dung_Service();
 		
 		if(action != null && action.equals("/modify_Infor")) {
-			nguoi_dung_Service.UpdateInfor(req);
-			req.getRequestDispatcher("userInfor.jsp").forward(req, resp);
+			nguoi_dung_Service.UpdateInfor(req, resp);
 		}
 		else if(action != null && action.equals("/update_password")) {
 			nguoi_dung_Service.Update_password(req, resp);

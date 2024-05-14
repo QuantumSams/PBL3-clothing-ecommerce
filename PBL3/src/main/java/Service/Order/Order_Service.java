@@ -17,6 +17,7 @@ import DAO.implemet.Nguoi_dung_DAO;
 import DAO.implemet.San_pham_DAO;
 import DataStructures.Pair;
 import Entity.Don_Hang.Don_hang;
+import Entity.Don_Hang.Lich_su_don_hang;
 import Entity.Nguoi_Dung.Nguoi_dung;
 import Entity.San_Pham.Muc_san_pham;
 import Entity.San_Pham.San_pham;
@@ -54,7 +55,6 @@ public class Order_Service {
 		
 		// <id_muc_san_pham, so_luong>
 		String muc_san_pham = req.getParameter("muc_san_pham");
-		System.out.println(muc_san_pham);
 		ObjectMapper mapper = new ObjectMapper();
 		
 		Muc_san_pham[] mucSanPhams = null;
@@ -68,12 +68,10 @@ public class Order_Service {
 		List<Pair<Integer, Integer>> list_muc_san_pham = new ArrayList<>();
 		Don_hang don_hang = new Don_hang(id_order, tong_tien, id_khach_hang, id_nhan_vien, so_dien_thoai, dia_chi_giao_dich, ngay_gio_dat, ngay_gio_nhan, ghi_chu, trang_thai_don_hang);
 		don_hang.setList_muc_san_pham(list_muc_san_pham);
-		System.out.println(don_hang.toString());
-		
 		don_hang_DAO.add_order(don_hang);
 	}
 	
-	public void load_order(HttpServletRequest req, HttpServletResponse resp) {
+	public void create_order(HttpServletRequest req, HttpServletResponse resp) {
 		
 		List<Integer> list_san_phamm_id = new ArrayList<>();
 		
@@ -96,6 +94,41 @@ public class Order_Service {
 		Nguoi_dung nguoi_dung = nguoi_dung_DAO.Get_by_ID(id);
 		req.setAttribute("acc", nguoi_dung);
 		
+	}
+	
+	public void get_list_lich_su_don_hang (HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		int id_khach_hang = Integer.parseInt(req.getParameter("id_khach_hang"));
+		
+		List<Don_hang>  don_hang = don_hang_DAO.select_order_by_id_khach_hang(id_khach_hang);
+		
+		List<Lich_su_don_hang> ls = new ArrayList<>();
+		
+		for(Don_hang dh : don_hang) {
+			
+			int id_don_hang = dh.getId_hoa_don();
+			Date ngay_dat = dh.getNgay_gio_dat_don_hang();
+			System.out.println(ngay_dat);
+			int so_tien = dh.getTong_tien();
+			int so_luong_san_pham = 0; 
+			for(Pair<Integer, Integer> muc_san_pham : dh.getList_muc_san_pham()) {
+				so_luong_san_pham += muc_san_pham.getValue();
+			}
+			String trang_thai_don_hang = dh.getTrang_thai_don_hang();
+			int so_sao_danh_gia = don_hang_DAO.get_danh_gia_don_hang(dh.getId_hoa_don()).getSo_sao();
+			
+			ls.add(new Lich_su_don_hang(id_don_hang, 
+										ngay_dat,
+										so_tien,
+										so_luong_san_pham,
+										trang_thai_don_hang,
+										so_sao_danh_gia));
+		}
+		
+		ObjectMapper mapper = new ObjectMapper();
+	    String json = mapper.writeValueAsString(ls);
+	    resp.setContentType("application/json");
+	    resp.setCharacterEncoding("UTF-8");
+	    resp.getWriter().write(json);
 	}
 	
 	public void get_lich_su_don_hang(HttpServletRequest req, HttpServletResponse resp) {

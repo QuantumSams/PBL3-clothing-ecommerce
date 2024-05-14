@@ -21,7 +21,9 @@
                     <div class="left">
                     </div>
                     <img src="${product.anh_san_pham[0]}" style = "padding: 10px 10px 10px 10px; width: 500px; margin-left: 35px;"="">
+               
                 </div>
+                
                 <div class="bottom">
                     <div class="describe">
                         <h4>

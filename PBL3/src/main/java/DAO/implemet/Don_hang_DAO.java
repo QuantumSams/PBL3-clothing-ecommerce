@@ -5,8 +5,12 @@ import java.util.List;
 
 import DAO.AbstractDao;
 import DataStructures.Pair;
+import Entity.Don_Hang.Danh_gia_don_hang;
 import Entity.Don_Hang.Don_hang;
+import Entity.San_Pham.Muc_san_pham;
+import Mapper.Don_Hang.Danh_gia_don_hang_Mapper;
 import Mapper.Don_Hang.Don_hang_Mapper;
+import Mapper.San_Pham.Danh_muc_san_pham_Mapper;
 
 public class Don_hang_DAO extends AbstractDao{
 
@@ -37,20 +41,37 @@ public class Don_hang_DAO extends AbstractDao{
 		
 		return list;
 	}
+	
+	public List<Don_hang> select_order_by_id_khach_hang(int id){
+		
+		String query = "SELECT * FROM don_hang WHERE id_khach_hang = ? ";
+		List<Don_hang> list = query(query, new Don_hang_Mapper(), id);
+		
+		for(Don_hang dh : list) {
+			dh.setList_muc_san_pham(get_list_san_pham_don_hang(dh.getId_hoa_don()));
+		}
+		
+		return list;
+	}
+	
 	public Don_hang select_order(int id) {
 		String query = "SELECT * FROM don_hang WHERE id_don_hang = ?";
 		List<Don_hang> list = query(query, new Don_hang_Mapper(), id);
 		
 		if(list != null) {
 			
-			query = "SELECT id_muc_san_pham, so_luong FROM chi_tiet_don_hang WHERE id_don_hang = ?";
-			list.get(0).setList_muc_san_pham(query(query, id));
+			list.get(0).setList_muc_san_pham(get_list_san_pham_don_hang(id));
 			
 			return list.get(0);
 		}
 		else {
 			return null;
 		}
+	}
+	
+	public List<Pair<Integer, Integer>> get_list_san_pham_don_hang(int id_don_hang) {
+		String query = "SELECT id_muc_san_pham, so_luong FROM chi_tiet_don_hang WHERE id_don_hang = ?";
+		return query(query, id_don_hang);
 		
 	}
 	
@@ -80,5 +101,15 @@ public class Don_hang_DAO extends AbstractDao{
 		query = "DELETE FROM don_hang WHERE id_don_hang = ?";
 		update(query, don_hang.getId_hoa_don());
 		
+	}
+	
+	
+	public Danh_gia_don_hang get_danh_gia_don_hang(int id_don_hang) {
+		String query = "SELECT * FROM danh_gia_don_hang WHERE id_don_hang = ?";
+		List<Danh_gia_don_hang> dg = query(query, new Danh_gia_don_hang_Mapper(), id_don_hang);
+		if(dg!=null) {
+			return dg.get(0);
+		}
+		return null;
 	}
 }

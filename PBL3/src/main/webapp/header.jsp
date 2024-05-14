@@ -48,7 +48,7 @@
                     </c:if>
                     
                     <li class="nav-item">
-                      <a class="nav-link" href="#"><i class="fa-solid fa-heart" style="color: #000000;"></i></a>
+                      <a class="nav-link" href="nguoidung.jsp"><i class="fa-solid fa-heart" style="color: #000000;"></i></a>
                     </li>
                     <li class="nav-item">
                         <a href="nguoidung.jsp" class="nav-link"><i class="fa-solid fa-cart-shopping" style="color: #000000;"></i></i></a>
