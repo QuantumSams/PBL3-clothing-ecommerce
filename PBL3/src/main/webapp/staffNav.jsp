@@ -114,14 +114,14 @@
                     <h5 class="card-title fw-bold">Thông tin tài khoản</h5>
                     <dl class="row">
                       <dt class="col-sm-7">Tài khoản</dt>
-                      <dd class="col-sm-5">nguyenvana@123</dd>
+                      <dd class="col-sm-5"><input class="form-control" type="text" value="nguyenvana@123" readonly></dd>
                     </dl>
                     <dl class="row align-items-center">
                       <dt class="col-sm-7">Mật khẩu</dt>
                       <dd class="col-sm-5 d-flex 
                                                     justify-content-between
                                                     align-items-center">
-                        password
+                        <input class="form-control me-2" type="password" value="123456" readonly>
                         <button type="button" class="btn btn-dark"><i class="bi bi-eye-fill"></i></button>
                       </dd>
                     </dl>
