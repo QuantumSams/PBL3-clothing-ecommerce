@@ -37,6 +37,42 @@
 
     </nav>
     <div class="wrapper">
+      <div class="sidecontainer">
+        <div class="sidebar">
+          <div class="head">
+            <div class="user-img">
+              <img
+                src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=2662&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt>
+            </div>
+          </div>
+          <div class="nav">
+            <div class="menu">
+              <p class="title">Chức năng</p>
+              <ul class="sidelist">
+                <li class="active">
+                  <a href="#">
+                    <i class="bi bi-box-fill"></i>
+                    <span class="text">Đơn hàng</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <i class="bi bi-chat-square-text-fill"></i>
+                    <span class="text">Chat</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <i class="bi bi-person-fill"></i>
+                    <span class="text">Cá nhân</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="container">
         <div class="container-fluid ps-1 pe-0 py-3 d-flex justify-content-between">
           <h3 class="fw-bold">Quản lý thông tin cá nhân</h3>
