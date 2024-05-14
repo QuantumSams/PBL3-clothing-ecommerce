@@ -1,4 +1,6 @@
-<%@ page contentType="text/html; charset=UTF-8"  %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri ="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,8 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TGH</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="login.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
     <div class="header">
@@ -22,17 +26,17 @@
     <div class="footer">
         <div class="container" id = "container">
             <div class="form- sign-up">
-                <form action="SignUp" method = "post">
-                    <h1>Tạo tài khoản</h1>
+            	
+            		<h1>Tạo tài khoản</h1>
                     <span>Email hoặc số điện thoại</span>
-                    <input type ="email"  placeholder="Email" name = "email" required>
-                    <input type="text" placeholder="Họ và tên" name = "fullname" required>
-                    <input type="number" placeholder="Phone Number" name = "phoneNumber" required>
-                    <input type="password" placeholder="Password" name = "password" required>
-                    <input type="password" placeholder="Repeat Password" name = "repassword" required>
-                    <button type = "submit">Đăng ký</button> 
-                    <p style = "color: red">${message2}</p>
-                </form>    
+                    <input id="email" type ="email"  placeholder="Email" name = "email" required>
+                    <input id="fullname" type="text" placeholder="Họ và tên" name = "fullname" required>
+                    <input id="phoneNumber" type="number" placeholder="Phone Number" name = "phoneNumber" required>
+                    <input id="passWord" type="password" placeholder="Password" name = "password" required>
+                    <input id="repassword" type="password" placeholder="Repeat Password" name = "repassword" required>
+                    <button id="dang_ky" type = "submit">Đăng ký</button> 
+                    <p id="message2" style = "color: green"></p>
+                
             </div>
             <div class="form- sign-in">
                 <form action="login" method = "post">
@@ -41,7 +45,7 @@
                     <input type="password" placeholder="Password" name = "password" required>
                     <a href="">Quên mật khẩu? </a>
                     <button type = "submit">Đăng nhập</button>
-  					<p style = "color: red">${message1}</p>
+  					<p style = "color: red"></p>
                 </form>    
             </div>
             <div class="container-toggle">
@@ -74,6 +78,28 @@
         loginBtn.addEventListener('click', ()=>{
             container.classList.remove("active");
         });
+        
+        
+        $(document).ready(function(){
+       	 	$("#dang_ky").click(function(){
+       			$.ajax({
+       	      		url: "sign_up", // URL of your Servlet
+       	      		type: "POST",
+       	      		dataType: 'json',
+       	      		data: {
+       					email: 			$("#email").val(),
+       					passWord: 		$("#passWord").val(),
+       					fullname: 		$("#fullname").val(),
+       					phoneNumber: 	$("#phoneNumber").val(),
+       					repassword: 	$("#repassword").val(),
+       		  		},
+       	      		success: function(data) {
+       	      			$("#message2").html(data);
+       	      		}
+       	   		});
+       		});
+       });
+        
     </script>
 </body>
 </html>

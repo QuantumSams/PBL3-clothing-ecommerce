@@ -1,8 +1,6 @@
 package Entity.Don_Hang;
 
-import Entity.Thong_tin;
-
-public class Danh_gia_don_hang implements Thong_tin{
+public class Danh_gia_don_hang{
 	protected int id_hoa_don;
 	protected int so_sao;
 	protected String binh_luan;
@@ -39,31 +37,4 @@ public class Danh_gia_don_hang implements Thong_tin{
 	public void setBinh_luan(String binh_luan) {
 		this.binh_luan = binh_luan;
 	}
-
-
-
-	@Override
-	public void them_thong_tin() {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
-	@Override
-	public void cap_nhat_thong_tin() {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
-	@Override
-	public void xoa_thong_tin() {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	
-	
 }

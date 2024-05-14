@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import Entity.San_Pham.San_pham;
-import Entity.San_Pham.Chi_tiet_san_pham;
+import Entity.San_Pham.Muc_san_pham;
 import Mapper.RowMapper;
 
 public class San_pham_Mapper implements RowMapper<San_pham>{
@@ -22,7 +22,7 @@ public class San_pham_Mapper implements RowMapper<San_pham>{
 										rs.getString("thong_tin_chung"),
 										rs.getString("thong_tin_chi_tiet"),
 										new ArrayList<String>(), 
-										new ArrayList<Chi_tiet_san_pham>());
+										new ArrayList<Muc_san_pham>());
 			
 			return san_pham;
 		} catch (SQLException e) {

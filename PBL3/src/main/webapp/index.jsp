@@ -40,169 +40,47 @@
         </div>
         
     <div class = main-items>
-    
     	<c:forEach var="item" items="${san_pham}">
                  <div class="card" style="width:250px">
-            <img class="card-img-top" src="${item.anh_san_pham[0]}" alt="Card image">
-            	<div class="card-body">
-                	<h6>${item.danh_muc_san_pham}</h6>
-                	<h5 class="card-title" style ="font-weight: bold;" ><a href ="product.jsp">${item.ten_san_pham}</a></h4>
-                	<p class="card-text">${item.ten_nhan_hang}</p>
-                	<h4 style = "font-weight: bold;">980.000VNĐ</h4>
-                	<div class="star">
-                    	<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                    	<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                    	<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                    	<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                    	<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                    	<p style = "text-decoration: underline">(79)</p>
-                	</div>
-            	</div>
-        	</div>                        	  
+            		<img class="card-img-top" src="${item.anh_san_pham[0]}" alt="Card image">
+            		<div class="card-body">
+	                	<h6>${item.danh_muc_san_pham}</h6>
+	                	<h5 class="card-title" style ="font-weight: bold;" >
+	                	
+	                	<form action="load_product" method="get">
+	                		<button>
+	                			${item.ten_san_pham}
+	                		</button>
+	                		<input type="text" name="id_san_pham" value="${item.id_san_pham}"/>
+	                	</form>
+	                		
+	                	</h4>
+	                	<p class="card-text">${item.ten_nhan_hang}</p>
+	                	<h4 style = "font-weight: bold;">980.000VNĐ</h4>
+                		<div class="star">
+	                    	<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+	                    	<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+	                    	<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+	                    	<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+	                    	<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+	                    	<p style = "text-decoration: underline">(79)</p>
+                		</div>
+            		</div>
+        		</div>                        	  
 		</c:forEach>
-    
-        <div class="card" style="width:250px">
-            <img class="card-img-top" src="img/ao-thun-in-hinh-theo-yeu-cau.jpg" alt="Card image">
-            <div class="card-body">
-                <h6>NAM</h6>
-                <h5 class="card-title" style ="font-weight: bold;" ><a href ="product.jsp">Áo parky chống UV bỏ túi(Dáng 3D) (Chống nắng)</a></h4>
-                <p class="card-text">Sản phẩm được làm từ chất liệu tái chế</p>
-                <h4 style = "font-weight: bold;">980.000VNĐ</h4>
-                <div class="star">
-                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                    <p style = "text-decoration: underline">(79)</p>
-                </div>
-            </div>
-        </div>
-        <div class="card" style="width:250px">
-            <img class="card-img-top" src="img/ao-thun-in-hinh-theo-yeu-cau.jpg" alt="Card image">
-            <div class="card-body">
-                <h6>NAM</h6>
-                <h5 class="card-title" style ="font-weight: bold;" >Áo parky chống UV bỏ túi(Dáng 3D) (Chống nắng)</h4>
-                <p class="card-text">Sản phẩm được làm từ chất liệu tái chế</p>
-                <h4 style = "font-weight: bold;">980.000VNĐ</h4>
-                <div class="star">
-                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                    <p style = "text-decoration: underline">(79)</p>
-                </div>
-            </div>
-        </div>
-        <div class="card" style="width:250px">
-            <img class="card-img-top" src="img/ao-thun-in-hinh-theo-yeu-cau.jpg" alt="Card image">
-            <div class="card-body">
-                <h6>NAM</h6>
-                <h5 class="card-title" style ="font-weight: bold;" >Áo parky chống UV bỏ túi(Dáng 3D) (Chống nắng)</h4>
-                <p class="card-text">Sản phẩm được làm từ chất liệu tái chế</p>
-                <h4 style = "font-weight: bold;">980.000VNĐ</h4>
-                <div class="star">
-                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                    <p style = "text-decoration: underline">(79)</p>
-                </div>
-            </div>
-        </div>
-        <div class="card" style="width:250px">
-            <img class="card-img-top" src="img/ao-thun-in-hinh-theo-yeu-cau.jpg" alt="Card image">
-            <div class="card-body">
-                <h6>NAM</h6>
-                <h5 class="card-title" style ="font-weight: bold;" >Áo parky chống UV bỏ túi(Dáng 3D) (Chống nắng)</h4>
-                <p class="card-text">Sản phẩm được làm từ chất liệu tái chế</p>
-                <h4 style = "font-weight: bold;">980.000VNĐ</h4>
-                <div class="star">
-                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                    <p style = "text-decoration: underline">(79)</p>
-                </div>
-            </div>
-        </div>
-        <div class="card" style="width:250px">
-            <img class="card-img-top" src="img/ao-thun-in-hinh-theo-yeu-cau.jpg" alt="Card image">
-            <div class="card-body">
-                <h6>NAM</h6>
-                <h5 class="card-title" style ="font-weight: bold;" >Áo parky chống UV bỏ túi(Dáng 3D) (Chống nắng)</h4>
-                <p class="card-text">Sản phẩm được làm từ chất liệu tái chế</p>
-                <h4 style = "font-weight: bold;">980.000VNĐ</h4>
-                <div class="star">
-                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                    <p style = "text-decoration: underline">(79)</p>
-                </div>
-            </div>
-        </div>
-        <div class="card" style="width:250px">
-            <img class="card-img-top" src="img/ao-thun-in-hinh-theo-yeu-cau.jpg" alt="Card image">
-            <div class="card-body">
-                <h6>NAM</h6>
-                <h5 class="card-title" style ="font-weight: bold;" >Áo parky chống UV bỏ túi(Dáng 3D) (Chống nắng)</h4>
-                <p class="card-text">Sản phẩm được làm từ chất liệu tái chế</p>
-                <h4 style = "font-weight: bold;">980.000VNĐ</h4>
-                <div class="star">
-                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                    <p style = "text-decoration: underline">(79)</p>
-                </div>
-            </div>
-        </div>
-        <div class="card" style="width:250px">
-            <img class="card-img-top" src="img/ao-thun-in-hinh-theo-yeu-cau.jpg" alt="Card image">
-            <div class="card-body">
-                <h6>NAM</h6>
-                <h5 class="card-title" style ="font-weight: bold;" >Áo parky chống UV bỏ túi(Dáng 3D) (Chống nắng)</h4>
-                <p class="card-text">Sản phẩm được làm từ chất liệu tái chế</p>
-                <h4 style = "font-weight: bold;">980.000VNĐ</h4>
-                <div class="star">
-                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                    <p style = "text-decoration: underline">(79)</p>
-                </div>
-            </div>
-        </div>
-        <div class="card" style="width:250px">
-            <img class="card-img-top" src="img/ao-thun-in-hinh-theo-yeu-cau.jpg" alt="Card image">
-            <div class="card-body">
-                <h6>NAM</h6>
-                <h5 class="card-title" style ="font-weight: bold;" >Áo parky chống UV bỏ túi(Dáng 3D) (Chống nắng)</h4>
-                <p class="card-text">Sản phẩm được làm từ chất liệu tái chế</p>
-                <h4 style = "font-weight: bold;">980.000VNĐ</h4>
-                <div class="star">
-                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                    <p class = "number-report" style = "text-decoration: underline;">(79)</p>
-                </div>
-            </div>
-        </div>
-
     </div>
 </body>
     
 </body>
 <script>
+
+	$(document).ready(function() {
+	  $("#loadProductLink").click(function(event) {
+	    event.preventDefault(); // Prevent default link behavior
+	    var productId = $(this).data("productId");
+	    // Use AJAX to load product information based on productId
+	  });
+	});
     var myCarousel = document.querySelector('#myCarousel')
     var carousel = new bootstrap.Carousel(myCarousel, {
     interval: 1000,

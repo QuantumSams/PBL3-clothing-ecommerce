@@ -19,7 +19,7 @@
             </h3>
         </div>
 
-        <form action="modifyInfor" method="post" enctype="multipart/form-data">
+        <form action="modify_Infor" method="post" enctype="multipart/form-data">
 
         <div class="card overflow-hidden">
             <div class="form" style="display: flex;">
@@ -37,8 +37,7 @@
                         <div class = "tab-pane fade active show" id = "account-general">
                             <div class="cardImage card-body">
  
-                                <img id="img" src="img/anh_nguoi_dung/komi.jpg" alt="Card image" class = "d-block ui-w-80" name = "image">
- 								<img src="${sessionScope.acc.anh_dai_dien}" alt="Card image" class = "d-block ui-w-80">
+                                <img id="img" src="${sessionScope.acc.anh_dai_dien}" alt="Card image" class = "d-block ui-w-80">
                             </div>
                             <div class="mainInfor card-body">
                             	
@@ -55,7 +54,7 @@
                                </div>
                                <div class="email form">
                                     <label for="" class="form-label">Email</label>
-                                    <input type="email" class="form-control"  value = "${sessionScope.acc.email}" name="email">
+                                    <input type="email" class="form-control"  value="${sessionScope.acc.email}" name="email">
                                 </div>
                                 <div class="address form">
                                     <label for="" class="form-label">Địa chỉ</label>
@@ -63,6 +62,28 @@
                                 </div>
                                 <div class="Gender form">
                                     <label for="" class="form-label">Giới tính</label>
+                                    
+                                    <c:if test="${sessionScope.acc.gioi_tinh == true}">
+  										<div class="form-check">
+	                                        <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1" checked>Nam
+	                                        <label class="form-check-label" for="radio1"></label>
+                                      	</div>
+                                      	<div class="form-check">
+	                                        <input type="radio" class="form-check-input" id="radio2" name="optradio" value="option2">Nữ
+	                                        <label class="form-check-label" for="radio2"></label>
+                                      	</div>
+									</c:if>
+									<c:if test="${sessionScope.acc.gioi_tinh == false}">
+  										<div class="form-check">
+	                                        <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1" >Nam
+	                                        <label class="form-check-label" for="radio1"></label>
+                                      	</div>
+                                      	<div class="form-check">
+	                                        <input type="radio" class="form-check-input" id="radio2" name="optradio" value="option2" checked>Nữ
+	                                        <label class="form-check-label" for="radio2"></label>
+                                      	</div>
+									</c:if>
+                                    
                                     <div class="form-check">
                                         <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1" checked>Nam
                                         <label class="form-check-label" for="radio1"></label>
@@ -83,22 +104,20 @@
                             <div class="card-body pb-2">
                                 <div class="form-group">
                                     <label class="form-label">Mật khẩu hiện tại</label>
-                                    <input type="password" class="form-control">
+                                    <input id="old_password" type="password" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">Mật khẩu mới</label>
-                                    <input type="password" class="form-control">
+                                    <input id="new_password" type="password" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">Nhập lại mật khẩu mới</label>
-                                    <input type="password" class="form-control">
+                                    <input id="new_repassword" type="password" class="form-control">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                
-                
             </div>
              
         </div> 
@@ -107,11 +126,12 @@
 
         	<input value = "Save" type = "submit"/>
 
-         	<button type="button" class="btn btn-default">Cancel</button>
+         	<button type="button" class="btn btn-default" onclick="history.back()">Cancel</button>
         </div>
 
        </form>
-
+	    <input type="button" id="doi_mat_khau" value='Thay đổi mật khẩu'/> 
+                        
     </div>
 </body>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
@@ -138,7 +158,25 @@
   		}
 	}); 
 
-
+	
+	
+	$(document).ready(function(){
+		 $("#doi_mat_khau").click(function(){
+				$.ajax({
+				      url: "update_password", // URL of your Servlet
+				      type: "POST",
+				      dataType: 'json',
+				      data: {
+				    	  	old_password: $("#old_password").val(),
+				  			new_password: $("#new_password").val(),
+				  			new_repassword: $("#new_repassword").val()
+					  },
+				      success: function(data) {
+					    	alert(data);
+				      }
+			   });
+		});
+	});
 
   function modifyInforDisable() {
 	var inputElements = document.querySelectorAll(".infor");

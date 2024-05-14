@@ -20,8 +20,10 @@
                 <div class="top">
                     <div class="left">
                     </div>
-                    <img src="img/ao-thun-in-hinh-theo-yeu-cau.jpg" style = "padding: 10px 10px 10px 10px; width: 500px; margin-left: 35px;"="">
+                    <img src="${product.anh_san_pham[0]}" style = "padding: 10px 10px 10px 10px; width: 500px; margin-left: 35px;"="">
+               
                 </div>
+                
                 <div class="bottom">
                     <div class="describe">
                         <h4>
@@ -41,7 +43,7 @@
                               </h2>
                               <div id="collapseOne" class="accordion-collapse collapse " data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
-                                  <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                   ${product.thong_tin_chi_tiet}
                                 </div>
                               </div>
                             </div>
@@ -53,7 +55,7 @@
                               </h2>
                               <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
-                                  <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                  ${product.chat_lieu}
                                 </div>
                               </div>
                             </div>
@@ -77,11 +79,11 @@
           <div class="col-5">
             <div class="inforItems">
                 <h2>
-                    Áo Parky chống UV bỏ túi(3D cut) Chống Nắng
+                	${product.ten_san_pham}
                 </h2>
                 <div class="Price-star">
                     <h4>
-                        990.000 VNĐ
+                        ${product.gia_tien}
                     </h4>
                     <div class="star">
                         <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
@@ -93,19 +95,21 @@
                     </div>
                 </div>
                 <p>
-                    Sản phẩm này được làm từ chất liệu tái chế
+                	${product.ten_nhan_hang}
                 </p>
                 <h7>
-                    Áo parky bỏ túi tiện dụng của chúng tôi luôn sẵn sàng khi bạn cần. Cắt 3D cho phép di chuyển dễ dàng, UPF40
+                    ${product.thong_tin_chung}
                 </h7>
                 <hr>
                 <h5>
                     MÀU SẮC: 09 BLACK
                 </h5>
                 <div class = "box color">
-                    <div class="square box1"></div>
-                    <div class="square box2"></div>
-                    <div class="square box3"></div>
+					<c:forEach var="item" items="${product.muc_san_pham}">
+						<div class="square box1">
+							<img src="${item.mau_sac_san_pham.anh_mau_sac}" style = "width : 40px">
+						</div>
+					</c:forEach>
                 </div>
                 <div class="size">
                     <h5>
@@ -116,9 +120,9 @@
                     </a>
                 </div>
                 <div class="box sizes">
-                    <div class="square"> XL </div>
-                    <div class="square"> L </div>
-                    <div class="square"> 2XL</div>
+                	<c:forEach var="item" items="${product.muc_san_pham}">
+                	 	<div class="square"> ${item.kich_thuoc_san_pham.ten_size} </div>
+					</c:forEach>
                 </div>
                 <div>
                     <button class = "buttonS">KÍCH THƯỚC THEO CHIỀU CAO</button>

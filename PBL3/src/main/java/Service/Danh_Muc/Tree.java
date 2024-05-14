@@ -42,6 +42,17 @@ public class Tree {
 		return getChild(node.getNext());
 	}
 	
+	// Lay cac phan tu con cua mot danh muc
+	public List<Danh_muc_san_pham> getChild(int id){
+		Node node = list.get(id);
+		return getChild(node.getNext());
+	}
+	
+	public Danh_muc_san_pham getDanhMucByID(int id){
+		Node node = list.get(id);
+		return node.getDanh_muc();
+	}
+	
 	// lay cac phan tu con mot root
 	public List<Danh_muc_san_pham> getChild(){
 		return getChild(root);
