@@ -41,6 +41,17 @@ $card-bg: $gray-25;
 $card-border-width: 0px;
 
 $navbar-bg: $gray-25;
+$navbar-height: 68px;
+
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+main {
+  height: calc(100vh - $navbar-height);
+  overflow-y: auto;
+}
 
 main.container {
   flex: 1;
