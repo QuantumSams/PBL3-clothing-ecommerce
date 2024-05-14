@@ -66,6 +66,10 @@ main.container {
   display: flex;
 }
 
+.wrapper > * {
+  flex-grow: 1;
+}
+
 .card {
   margin-bottom: 28px;
 }
@@ -138,7 +142,7 @@ $breadcrumb-active-color: $gray-900;
   height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: white;
+  background-color: $gray-25;
   padding: 20px 16px;
   gap: 16px;
 }
@@ -169,7 +173,7 @@ $breadcrumb-active-color: $gray-900;
 
 .menu .title {
   font-size: 16px;
-  color: #757575;
+  color: $gray-300;
   margin: 8px 4px;
 }
 
