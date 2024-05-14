@@ -16,7 +16,7 @@
     <title>Quản lý thông tin cá nhân</title>
   </head>
 
-  <body class="pt-5" style="height: 5000px;">
+  <body>
     <nav class="navbar fixed-top">
       <div class="container p-0">
         <div class="container-fluid d-flex align-items-center justify-content-between">
@@ -36,72 +36,75 @@
       </div>
 
     </nav>
-    <div class="container">
-      <div class="container-fluid ps-1 pe-0 py-3 d-flex justify-content-between">
-        <h3 class="fw-bold">Quản lý thông tin cá nhân</h3>
-        <button class="btn btn-dark">
-          <i class="bi bi-pencil-square"></i>
-          Chỉnh sửa thông tin
-        </button>
-      </div>
-      <div class="row g-lg-3">
-        <div class="col-lg-8 col-sm-12">
-          <div class="row m-0">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title fw-bold">Thông tin cá nhân</h5>
-                <dl class="row">
-                  <dt class="col-sm-7">Họ và tên</dt>
-                  <dd class="col-sm-5">Nguyễn Văn A</dd>
-                </dl>
-                <dl class="row">
-                  <dt class="col-sm-7">Giới tính</dt>
-                  <dd class="col-sm-5">Nam</dd>
-                </dl>
-                <dl class="row">
-                  <dt class="col-sm-7">Số điện thoại</dt>
-                  <dd class="col-sm-5">0934 123 456</dd>
-                </dl>
-                <dl class="row">
-                  <dt class="col-sm-7">Địa chỉ</dt>
-                  <dd class="col-sm-5">Thanh Khê, Đà Nẵng</dd>
-                </dl>
-                </p>
+    <div class="wrapper">
+      <div class="container">
+        <div class="container-fluid ps-1 pe-0 py-3 d-flex justify-content-between">
+          <h3 class="fw-bold">Quản lý thông tin cá nhân</h3>
+          <button class="btn btn-dark">
+            <i class="bi bi-pencil-square"></i>
+            Chỉnh sửa thông tin
+          </button>
+        </div>
+        <div class="row g-lg-3">
+          <div class="col-lg-8 col-sm-12">
+            <div class="row m-0">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title fw-bold">Thông tin cá nhân</h5>
+                  <dl class="row">
+                    <dt class="col-sm-7">Họ và tên</dt>
+                    <dd class="col-sm-5">Nguyễn Văn A</dd>
+                  </dl>
+                  <dl class="row">
+                    <dt class="col-sm-7">Giới tính</dt>
+                    <dd class="col-sm-5">Nam</dd>
+                  </dl>
+                  <dl class="row">
+                    <dt class="col-sm-7">Số điện thoại</dt>
+                    <dd class="col-sm-5">0934 123 456</dd>
+                  </dl>
+                  <dl class="row">
+                    <dt class="col-sm-7">Địa chỉ</dt>
+                    <dd class="col-sm-5">Thanh Khê, Đà Nẵng</dd>
+                  </dl>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="row m-0">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title fw-bold">Thông tin tài khoản</h5>
+                  <dl class="row">
+                    <dt class="col-sm-7">Tài khoản</dt>
+                    <dd class="col-sm-5">nguyenvana@123</dd>
+                  </dl>
+                  <dl class="row align-items-center">
+                    <dt class="col-sm-7">Mật khẩu</dt>
+                    <dd class="col-sm-5 d-flex 
+                                            justify-content-between
+                                            align-items-center">
+                      password
+                      <button type="button" class="btn btn-dark"><i class="bi bi-eye-fill"></i></button>
+                    </dd>
+                  </dl>
+                  </p>
+                </div>
               </div>
             </div>
           </div>
-          <div class="row m-0">
+          <div class="col-lg-4 col-sm-12">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title fw-bold">Thông tin tài khoản</h5>
-                <dl class="row">
-                  <dt class="col-sm-7">Tài khoản</dt>
-                  <dd class="col-sm-5">nguyenvana@123</dd>
-                </dl>
-                <dl class="row align-items-center">
-                  <dt class="col-sm-7">Mật khẩu</dt>
-                  <dd class="col-sm-5 d-flex 
-                                      justify-content-between
-                                      align-items-center">
-                    password
-                    <button type="button" class="btn btn-dark"><i class="bi bi-eye-fill"></i></button>
-                  </dd>
-                </dl>
-                </p>
+                <h5 class="card-title fw-bold">Ảnh chân dung</h5>
+                <img
+                  src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=2662&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  class="img-fluid">
               </div>
             </div>
           </div>
         </div>
-        <div class="col-lg-4 col-sm-12">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title fw-bold">Ảnh chân dung</h5>
-              <img
-                src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=2662&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                class="img-fluid">
-            </div>
-          </div>
-        </div>
+
       </div>
 
     </div>
