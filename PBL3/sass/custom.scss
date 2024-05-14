@@ -41,9 +41,18 @@ $card-bg: $gray-25;
 $card-border-width: 0px;
 
 $navbar-bg: $gray-25;
+
+main.container {
+  flex: 1;
+}
+
 .navbar {
   background-color: $navbar-bg;
   align-self: self-start;
+}
+
+.wrapper {
+  display: flex;
 }
 
 .card {
@@ -108,12 +117,13 @@ $breadcrumb-active-color: $gray-900;
 
 //sep
 .sidecontainer {
-  width: 100%;
+  width: 212px;
   min-height: 100vh;
+  flex: 0 0 auto;
 }
 
 .sidebar {
-  width: 212px;
+  width: 100%;
   height: 100vh;
   display: flex;
   flex-direction: column;

@@ -73,7 +73,7 @@
           </div>
         </div>
       </div>
-      <div class="container">
+      <main class="container">
         <div class="container-fluid ps-1 pe-0 py-3 d-flex justify-content-between">
           <h3 class="fw-bold">Quản lý thông tin cá nhân</h3>
           <button class="btn btn-dark">
@@ -141,7 +141,7 @@
           </div>
         </div>
 
-      </div>
+      </main>
 
     </div>
   </body>
