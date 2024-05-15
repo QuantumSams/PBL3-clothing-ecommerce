@@ -43,6 +43,8 @@ $card-border-width: 0px;
 $navbar-bg: $gray-25;
 $navbar-height: 68px;
 
+$body-padding: 58px;
+
 body {
   height: 100%;
   overflow: hidden;
@@ -55,6 +57,7 @@ main {
 
 main.container {
   flex: 1;
+  padding: 0px $body-padding;
 }
 
 .navbar {
