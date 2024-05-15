@@ -144,6 +144,7 @@ public class AbstractDao implements GenericDAO{
 			connection.commit();
 			return id;
 		} catch (SQLException e) {
+			System.out.println(e);
 			if (connection != null) {
 				try {
 					connection.rollback();

@@ -12,7 +12,7 @@ public class Nguoi_dung_DAO extends AbstractDao {
 	public Nguoi_dung Dang_nhap(String user, String password) {
 		String sql1 = "SELECT * FROM thong_tin_dang_nhap WHERE (so_dien_thoai = ? OR email = ?) AND mat_khau = ? ";
 		
-		int id = new AbstractDao().count(sql1, user, user, password);
+		int id = count(sql1, user, user, password);
 		
 		return Get_by_ID(id);
 	}
@@ -23,7 +23,7 @@ public class Nguoi_dung_DAO extends AbstractDao {
 				+ " INNER JOIN thong_tin_dang_nhap ON thong_tin_nguoi_dung.id = thong_tin_dang_nhap.id"
 				+ " INNER JOIN phan_quyen_nguoi_dung ON phan_quyen_nguoi_dung.id = thong_tin_dang_nhap.id_phan_quyen_nguoi_dung"
 				+ " WHERE thong_tin_dang_nhap.id = ? ";
-		List<Nguoi_dung> l = new AbstractDao().query(sql2, new Nguoi_dung_Mapper(), id);
+		List<Nguoi_dung> l = query(sql2, new Nguoi_dung_Mapper(), id);
 		
 		if(l.size() != 0)
 			return l.get(0);
@@ -34,31 +34,31 @@ public class Nguoi_dung_DAO extends AbstractDao {
 		String query1 = "INSERT INTO thong_tin_dang_nhap VALUES (?, ?, ?, ?, ?);";
 		String query2 = "INSERT INTO thong_tin_nguoi_dung VALUES (?, ?, ?, ?, ?, ?)";
 		
-		new AbstractDao().insert(query1, nguoi_dung.getId_nguoi_dung(), nguoi_dung.getSo_dien_thoai(), nguoi_dung.getEmail(), nguoi_dung.getPassword(), 1);
-		new AbstractDao().insert(query2, nguoi_dung.getId_nguoi_dung(), nguoi_dung.getHo_ten(), nguoi_dung.isGioi_tinh(), nguoi_dung.getNgay_sinh(), nguoi_dung.getDia_chi(), nguoi_dung.getAnh_dai_dien());
+		insert(query1, nguoi_dung.getId_nguoi_dung(), nguoi_dung.getSo_dien_thoai(), nguoi_dung.getEmail(), nguoi_dung.getPassword(), 1);
+		insert(query2, nguoi_dung.getId_nguoi_dung(), nguoi_dung.getHo_ten(), nguoi_dung.isGioi_tinh(), nguoi_dung.getNgay_sinh(), nguoi_dung.getDia_chi(), nguoi_dung.getAnh_dai_dien());
 	}
 	
 	public void update_password(int id, String new_password) {
 		String query = " UPDATE thong_tin_dang_nhap SET mat_khau = ? WHERE id = ?";
-		new AbstractDao().update(query, new_password, id);
+		update(query, new_password, id);
 	}
 	
 	public void Update_thong_tin(Nguoi_dung nguoi_dung) {
 		String sql1 = "UPDATE thong_tin_dang_nhap SET so_dien_thoai = ?, email = ? WHERE id = ?;";
 		String sql2 = "UPDATE thong_tin_nguoi_dung SET ho_ten = ?, gioi_tinh = ?, ngay_sinh = ?, dia_chi = ?, anh_dai_dien = ? WHERE id = ?;";
 		
-		new AbstractDao().update(sql1, nguoi_dung.getSo_dien_thoai(), nguoi_dung.getEmail(), nguoi_dung.getId_nguoi_dung());
-		new AbstractDao().update(sql2, nguoi_dung.getHo_ten(), nguoi_dung.isGioi_tinh(), nguoi_dung.getNgay_sinh(), nguoi_dung.getDia_chi() , nguoi_dung.getAnh_dai_dien(), nguoi_dung.getId_nguoi_dung());
+		update(sql1, nguoi_dung.getSo_dien_thoai(), nguoi_dung.getEmail(), nguoi_dung.getId_nguoi_dung());
+		update(sql2, nguoi_dung.getHo_ten(), nguoi_dung.isGioi_tinh(), nguoi_dung.getNgay_sinh(), nguoi_dung.getDia_chi() , nguoi_dung.getAnh_dai_dien(), nguoi_dung.getId_nguoi_dung());
 	}
 	
 	public int count_email(String email) {
 		String query = "SELECT COUNT(email) FROM thong_tin_dang_nhap WHERE email = ?";
-		return new AbstractDao().count(query, email);
+		return count(query, email);
 	}
 	
 	public int count_so_dien_thoai(String so_dien_thoat) {
 		String query = "SELECT COUNT(so_dien_thoai) FROM thong_tin_dang_nhap WHERE so_dien_thoai = ?";
-		return new AbstractDao().count(query, so_dien_thoat);
+		return count(query, so_dien_thoat);
 	}
 	
 	public List<Nguoi_dung> GetNhanVien(){
@@ -67,7 +67,7 @@ public class Nguoi_dung_DAO extends AbstractDao {
 						+ " INNER JOIN thong_tin_dang_nhap ON thong_tin_nguoi_dung.id = thong_tin_dang_nhap.id"
 						+ " INNER JOIN phan_quyen_nguoi_dung ON phan_quyen_nguoi_dung.id = thong_tin_dang_nhap.id_phan_quyen_nguoi_dung"
 						+ " WHERE id_phan_quyen_nguoi_dung = 2 ";
-		return new AbstractDao().query(sql, new Nguoi_dung_Mapper());
+		return query(sql, new Nguoi_dung_Mapper());
 	}
 	
 	public List<Nguoi_dung> SearchNhanVien(String search){
@@ -76,6 +76,6 @@ public class Nguoi_dung_DAO extends AbstractDao {
 						+ " INNER JOIN thong_tin_dang_nhap ON thong_tin_nguoi_dung.id = thong_tin_dang_nhap.id"
 						+ " INNER JOIN phan_quyen_nguoi_dung ON phan_quyen_nguoi_dung.id = thong_tin_dang_nhap.id_phan_quyen_nguoi_dung"
 						+ " WHERE id_phan_quyen_nguoi_dung = 2 AND ho_ten LIKE '%"+search+"%'";
-		return new AbstractDao().query(sql, new Nguoi_dung_Mapper());
+		return query(sql, new Nguoi_dung_Mapper());
 	}
 }

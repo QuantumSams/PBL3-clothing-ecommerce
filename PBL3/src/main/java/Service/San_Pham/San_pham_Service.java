@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import DAO.implemet.San_pham_DAO;
@@ -108,32 +109,73 @@ public class San_pham_Service {
 	}
 	
 	public void add_product(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-		ObjectMapper objectMapper = new ObjectMapper();
-		BufferedReader reader = req.getReader();
+//		ObjectMapper objectMapper = new ObjectMapper();
+//		BufferedReader reader = req.getReader();
+//		
+//		List<Map<String, Object>> data = objectMapper.readValue(reader, List.class);
+//		List<String> imageStrings = (ArrayList<String>) data.get(0).get("images") ;
+//
+//		int id_danh_muc = Integer.parseInt((String) data.get(0).get("id_danh_muc"));
+//		Danh_muc_san_pham danh_muc = new Danh_muc_Service().getDanh_muc_Id(id_danh_muc);
+//		
+//		int id_san_pham = new Random().nextInt(1000000);		
+//		
+//		String ten_mat_hang = (String) data.get(0).get("ten_mat_hang") ;
+//		String mo_ta = (String) data.get(0).get("mo_ta") ;
+//		String thong_tin_chi_tiet = (String) data.get(0).get("thong_tin_chi_tiet") ;
+//		String thuong_hieu = (String) data.get(0).get("thuong_hieu") ;
+//		String chat_lieu = (String) data.get(0).get("chat_lieu") ;
 		
-		List<Map<String, Object>> data = objectMapper.readValue(reader, List.class);
-		List<String> imageStrings = (ArrayList<String>) data.get(0).get("images") ;
-
-		int id_danh_muc = Integer.parseInt((String) data.get(0).get("id_danh_muc"));
+		
+		int id_danh_muc = Integer.parseInt(req.getParameter("id_danh_muc"));
 		Danh_muc_san_pham danh_muc = new Danh_muc_Service().getDanh_muc_Id(id_danh_muc);
 		
 		int id_san_pham = new Random().nextInt(1000000);		
 		
-		String ten_mat_hang = (String) data.get(0).get("ten_mat_hang") ;
-		String mo_ta = (String) data.get(0).get("mo_ta") ;
-		String thong_tin_chi_tiet = (String) data.get(0).get("thong_tin_chi_tiet") ;
-		String thuong_hieu = (String) data.get(0).get("thuong_hieu") ;
-		String chat_lieu = (String) data.get(0).get("chat_lieu") ;
+		String ten_mat_hang = req.getParameter("ten_mat_hang") ;
+		String mo_ta = req.getParameter("mo_ta") ;
+		String thong_tin_chi_tiet = req.getParameter("thong_tin_chi_tiet") ;
+		String thuong_hieu = req.getParameter("thuong_hieu") ;
+		String chat_lieu = req.getParameter("chat_lieu") ;
+		String anh_san_pham = req.getParameter("images") ;
+		String size_muc_san_pham = req.getParameter("size") ;
+		String mau_muc_san_pham = req.getParameter("color") ;
+		String anh_muc_san_pham = req.getParameter("image_muc") ;
+		String gia_san_pham = req.getParameter("gia") ;
 		
-		List<String> fileanh = add_image(imageStrings, id_san_pham);
+		List<String> list_anh_san_pham = null;
+		List<Integer> list_size_muc_san_pham = null;
+		List<Integer> list_mau_muc_san_pham = null;
+		List<Integer> list_gia_san_pham = null;
+		List<String> list_anh_muc_san_pham = null;
+		
+		list_anh_san_pham = new ObjectMapper().readValue(anh_san_pham, new TypeReference<List<String>>() {});
+		list_size_muc_san_pham = new ObjectMapper().readValue(size_muc_san_pham, new TypeReference<List<Integer>>() {});
+		list_mau_muc_san_pham= new ObjectMapper().readValue(mau_muc_san_pham, new TypeReference<List<Integer>>() {});
+		list_gia_san_pham= new ObjectMapper().readValue(gia_san_pham, new TypeReference<List<Integer>>() {});
+		list_anh_muc_san_pham = new ObjectMapper().readValue(anh_muc_san_pham, new TypeReference<List<String>>() {});
+		
+		List<String> fileanh = add_image(list_anh_san_pham, id_san_pham);
 		
 		
-		List<Muc_san_pham> list_muc_san_pham = null;
+		List<Muc_san_pham> list_muc_san_pham = new ArrayList<>();
+		for(int i = 0; i < list_anh_muc_san_pham.size(); ++i) {
+			int new_id = new Random().nextInt(10000);
+			String path = add_image(list_anh_muc_san_pham.get(i), ""+new_id+id_san_pham);
+			list_muc_san_pham.add(new Muc_san_pham(	new_id, 
+													id_san_pham, 
+													0, 
+													new Mau_sac(list_mau_muc_san_pham.get(i), "", ""), 
+													new Size(list_size_muc_san_pham.get(i), ""), 
+													list_gia_san_pham.get(i), 
+													path));
+		}
+		
 		
 		San_pham san_pham = new San_pham(id_san_pham, danh_muc.getCategory(), ten_mat_hang, thuong_hieu, chat_lieu, mo_ta, thong_tin_chi_tiet, fileanh, list_muc_san_pham);
 		System.out.println(san_pham.toString());
 		san_pham.setId_danh_muc_san_pham(id_danh_muc);
-		san_pham.setAnh_san_pham(fileanh);
+		//san_pham.setAnh_san_pham(fileanh);
 		san_pham_DAO.add_san_pham(san_pham);
 		
 	}
@@ -141,8 +183,6 @@ public class San_pham_Service {
 	public List<String> add_image(List<String> imageStrings, int id_san_pham) throws IOException, ServletException {
 		
 		List<String> list_path = new ArrayList<>();
-		
-		
 		
 		for(int i = 0; i < imageStrings.size(); ++i) {
 			 byte[] data1 = Base64.getDecoder().decode(imageStrings.get(i));
@@ -154,6 +194,19 @@ public class San_pham_Service {
 			 list_path.add(path);												
 		}
 		return list_path;
+	}
+	
+	public String add_image(String imageStrings, String id_san_pham) throws IOException, ServletException {
+		
+		List<String> list_path = new ArrayList<>();
+		
+		byte[] data1 = Base64.getDecoder().decode(imageStrings);
+			 
+		String path = "img/anh_san_pham/" + id_san_pham + ".png";
+			 
+		image(data1, id_san_pham);
+			 
+		return path;	
 	}
 	
 	public void image(byte[] data1, String name_image) {

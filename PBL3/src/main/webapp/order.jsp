@@ -29,9 +29,10 @@
                             <th></th>
                         </tr>
                     </thead>
-                   <tbody>
+                   <tbody id="list_san_pham">
                    <c:forEach var="item" items="${muc_san_pham}">
                     	<tr>
+                    		<input class="id_muc" type="hidden" value="${item.id_muc_san_pham}"/>
 	                        <td>
 	                            <div class="name">
 	                                <h5>${item.ten_san_pham}</h5>
@@ -40,7 +41,7 @@
 	                                    <h5>${item.mau_sac_san_pham.ten_mau} / ${item.kich_thuoc_san_pham.ten_size}</h5>
 	                            </div>
 	                        </td>
-	                        <td>${item.so_luong_trong_kho}</td>
+	                        <td><input class="so_luong" type="text" value="1"/></td>
 	                        <td class = "priceItems">${item.gia_tien}</td>
 	                        <td><Button class = "btnXoa" onclick="deleteR(this)"><i class="fa-solid fa-trash"></i></Button></td>
                     	</tr>          	  
@@ -103,28 +104,44 @@
 
 <script>
 
+
+
+
 $(document).ready(function(){
+	
+	let sanPhamValues = [];
+	let soLuongValues = [];
+	let list = document.querySelectorAll('.id_muc');
+	  list.forEach(item => {
+		  sanPhamValues.push(item.value);
+	})
+	let list1 = document.querySelectorAll('.so_luong');
+	  list1.forEach(item => {
+		  soLuongValues.push(item.value);
+	})
+	 	
+	
 	 $("#add_order").click(function(){
-			
-		 	
+		  
 			$.ajax({
 			      url: "create_order", // URL of your Servlet
 			      type: "POST",
 			      dataType: 'json',
 			      data: {
 			    	  id_khach_hang:  	$("#id_nguoi_dung").val(),
-			    	  muc_san_pham: 	JSON.stringify(jsonString),
 			    	  so_dien_thoai: 	$("#so_dien_thoai").val(),
 			    	  dia_chi: 			$("#dia_chi").val(),
+			    	  so_luong:			JSON.stringify(soLuongValues),
+			    	  muc_san_pham: 	JSON.stringify(sanPhamValues),
 			    	  ghi_chu: 			$("#ghi_chu").val(),
 			    	  tong_tien: 		$("#thanhtien").text(),
 			      },
 			
 			      success: function(data) {
-					alert("Thêm sản phẩm thành công!");
+					alert(data);
 			      },
 			      error: function(data) {
-						alert("Thêm sản phẩm thất bại!");
+						alert(data);
 					}
 		   });
 	});

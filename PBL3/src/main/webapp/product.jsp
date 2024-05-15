@@ -20,7 +20,37 @@
                 <div class="top">
                     <div class="left">
                     </div>
-                    <img src="${product.anh_san_pham[0]}" style = "padding: 10px 10px 10px 10px; width: 500px; margin-left: 35px;"="">
+
+						<div id="demo" class="carousel slide" data-bs-ride="carousel">
+							<div class="carousel-indicators">
+								<button type="button" data-bs-target="#demo"
+									data-bs-slide-to="0" class="active"></button>
+								<button type="button" data-bs-target="#demo"
+									data-bs-slide-to="1"></button>
+								<button type="button" data-bs-target="#demo"
+									data-bs-slide-to="2"></button>
+							</div>
+							<div class="carousel-inner">
+								<c:forEach var="item" items="${product.anh_san_pham}">
+									<div class="carousel-item active">
+										<img src="${item}" alt=""
+											class="d-block w-70 " style = "padding: 10px 10px 10px 10px; width: 500px; margin-left: 35px;"="">
+									</div>
+								</c:forEach>
+								
+							</div>
+							<button class="carousel-control-prev" type="button"
+								data-bs-target="#demo" data-bs-slide="prev">
+								<span class="btn-left"><i
+									class="fa-solid fa-chevron-left"></i></span>
+							</button>
+							<button class="carousel-control-next" type="button"
+								data-bs-target="#demo" data-bs-slide="next">
+								<span class="btn-right"><i
+									class="fa-solid fa-chevron-right"></i></span>
+							</button>
+						</div>
+						
                
                 </div>
                 

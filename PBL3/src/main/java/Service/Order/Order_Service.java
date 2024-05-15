@@ -16,6 +16,7 @@ import DAO.implemet.Don_hang_DAO;
 import DAO.implemet.Nguoi_dung_DAO;
 import DAO.implemet.San_pham_DAO;
 import DataStructures.Pair;
+import Entity.Don_Hang.Danh_gia_don_hang;
 import Entity.Don_Hang.Don_hang;
 import Entity.Don_Hang.Lich_su_don_hang;
 import Entity.Nguoi_Dung.Nguoi_dung;
@@ -52,22 +53,25 @@ public class Order_Service {
 		Date ngay_gio_nhan = new Date(now);
 		String ghi_chu = req.getParameter("ghi_chu");
 		String trang_thai_don_hang = doi_xac_nhan;
-		
-		// <id_muc_san_pham, so_luong>
 		String muc_san_pham = req.getParameter("muc_san_pham");
-		ObjectMapper mapper = new ObjectMapper();
+		String so_luong = req.getParameter("so_luong");
 		
-		Muc_san_pham[] mucSanPhams = null;
+		List<Pair<Integer, Integer>> list_muc_san_pham = new ArrayList<>();
+		
 		try {
-			mucSanPhams = mapper.readValue(muc_san_pham, Muc_san_pham[].class);
+			List<Integer> sanPhamValues = new ObjectMapper().readValue(muc_san_pham, new TypeReference<List<Integer>>() {});
+			List<Integer> soLuongValues = new ObjectMapper().readValue(so_luong, new TypeReference<List<Integer>>() {});
+			for(int i = 0; i < sanPhamValues.size(); ++i) {
+				list_muc_san_pham.add(new Pair<Integer, Integer>(sanPhamValues.get(i), soLuongValues.get(i)));
+				
+				System.out.println(sanPhamValues.get(i) + "  " + soLuongValues.get(i));
+			}
 		} catch (JsonProcessingException e) {}
 		
 		
-		System.out.println(mucSanPhams.length);
-		
-		List<Pair<Integer, Integer>> list_muc_san_pham = new ArrayList<>();
 		Don_hang don_hang = new Don_hang(id_order, tong_tien, id_khach_hang, id_nhan_vien, so_dien_thoai, dia_chi_giao_dich, ngay_gio_dat, ngay_gio_nhan, ghi_chu, trang_thai_don_hang);
 		don_hang.setList_muc_san_pham(list_muc_san_pham);
+		System.out.println(don_hang.toString());
 		don_hang_DAO.add_order(don_hang);
 	}
 	
@@ -114,7 +118,13 @@ public class Order_Service {
 				so_luong_san_pham += muc_san_pham.getValue();
 			}
 			String trang_thai_don_hang = dh.getTrang_thai_don_hang();
-			int so_sao_danh_gia = don_hang_DAO.get_danh_gia_don_hang(dh.getId_hoa_don()).getSo_sao();
+			
+			int so_sao_danh_gia;
+			try {
+				so_sao_danh_gia = don_hang_DAO.get_danh_gia_don_hang(dh.getId_hoa_don()).getSo_sao();
+			} catch (Exception e) {
+				so_sao_danh_gia = -1;
+			}
 			
 			ls.add(new Lich_su_don_hang(id_don_hang, 
 										ngay_dat,
