@@ -42,8 +42,16 @@ $card-border-width: 0px;
 
 $navbar-bg: $gray-25;
 $navbar-height: 68px;
-
 $body-padding: 58px;
+
+//button
+
+$btn-padding-y: 6px;
+$btn-padding-x: 32px;
+$btn-border-radius: 8px;
+$btn-border-width: 2px;
+
+//
 
 body {
   height: 100%;

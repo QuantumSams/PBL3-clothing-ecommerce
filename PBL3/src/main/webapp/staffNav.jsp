@@ -75,12 +75,21 @@
 
         </nav>
         <main class="container">
-          <div class="container-fluid ps-1 pe-0 py-3 d-flex justify-content-between">
+          <div class="container-fluid ps-1 pe-0 py-3 d-flex justify-content-between align-items-center">
             <h3 class="fw-bold">Quản lý thông tin cá nhân</h3>
-            <button class="btn btn-dark">
+            <button class="btn btn-dark p0" id="editButton">
               <i class="bi bi-pencil-square"></i>
               Chỉnh sửa thông tin
             </button>
+
+            <div class="d-flex gap-2" id="editGroup">
+              <button class="btn btn-dark">
+                Lưu thông tin
+              </button>
+              <button class="btn btn-outline-dark">
+                Huỷ
+              </button>
+            </div>
           </div>
           <div class="row g-lg-3">
             <div class="col-lg-8 col-sm-12">
@@ -122,7 +131,7 @@
                                                     justify-content-between
                                                     align-items-center">
                         <input class="form-control me-2" type="password" value="123456" readonly id="passwordField">
-                        <button type="button" class="btn btn-dark" id="passwordEye"><i
+                        <button type="button" class="btn btn-dark p0" id="passwordEye"><i
                             class="bi bi-eye-fill"></i></button>
                       </dd>
                     </dl>
