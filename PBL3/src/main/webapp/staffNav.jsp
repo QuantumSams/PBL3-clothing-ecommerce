@@ -121,8 +121,9 @@
                       <dd class="col-sm-5 d-flex 
                                                     justify-content-between
                                                     align-items-center">
-                        <input class="form-control me-2" type="password" value="123456" readonly>
-                        <button type="button" class="btn btn-dark"><i class="bi bi-eye-fill"></i></button>
+                        <input class="form-control me-2" type="password" value="123456" readonly id="passwordField">
+                        <button type="button" class="btn btn-dark" id="passwordEye"><i
+                            class="bi bi-eye-fill"></i></button>
                       </dd>
                     </dl>
                     </p>

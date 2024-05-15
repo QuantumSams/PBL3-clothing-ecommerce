@@ -3,12 +3,11 @@ $(".menu > ul > li").click(function (e) {
   $(this).toggleClass("active");
 });
 
-const passwordInput = document.getElementById("new_password"); // replace with your password input field id
-const togglePasswordVisibilityButton = document.getElementById(
-  "togglePasswordVisibility"
-); // replace with your eye button id
+const passwordInput = document.getElementById("passwordField");
+const togglePasswordVisibilityButton = document.getElementById("passwordEye");
 
 togglePasswordVisibilityButton.addEventListener("click", function () {
+  console.log("Toggle password visibility button clicked!");
   if (passwordInput.type === "password") {
     passwordInput.type = "text";
   } else {
