@@ -53,3 +53,30 @@ cancelButton.addEventListener("click", function () {
 saveButton.addEventListener("click", function () {
   location.reload();
 });
+
+var fileInput = document.createElement("input");
+fileInput.type = "file";
+fileInput.accept = "image/*";
+fileInput.style.display = "none";
+document.body.appendChild(fileInput);
+
+// Get the button and image elements
+var button = document.getElementById("EditProfileImageUploadButton");
+var image = document.getElementById("EditProfileImageUploadShow");
+
+// Attach click event listener to the button
+button.addEventListener("click", function () {
+  fileInput.click();
+});
+
+// Attach change event listener to the file input
+fileInput.addEventListener("change", function () {
+  var file = fileInput.files[0];
+  if (file) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      image.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+});
