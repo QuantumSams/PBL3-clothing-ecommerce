@@ -58,13 +58,9 @@ body {
   overflow: hidden;
 }
 
-main {
+.content > .main {
   height: calc(100vh - $navbar-height);
   overflow-y: auto;
-}
-
-main.container {
-  flex: 1;
   padding: 0px $body-padding;
 }
 

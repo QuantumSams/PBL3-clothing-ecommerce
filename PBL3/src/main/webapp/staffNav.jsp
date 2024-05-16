@@ -74,7 +74,7 @@
           </div>
 
         </nav>
-        <main class="container">
+        <div class="container main">
           <div class="container-fluid ps-1 pe-0 py-3 d-flex justify-content-between align-items-center">
             <h3 class="fw-bold">Quản lý thông tin cá nhân</h3>
             <div class="d-flex gap-2" id="editGroup">
@@ -150,7 +150,7 @@
               </div>
             </div>
           </div>
-        </main>
+        </div>
       </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.js"
