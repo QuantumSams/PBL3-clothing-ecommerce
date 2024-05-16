@@ -76,7 +76,8 @@
         </nav>
         <div class="container main">
           <div class="container one-page" id="viewProfilePage">
-            <div class="container-fluid ps-1 pe-0 py-3 d-flex justify-content-between align-items-center">
+            <div
+              class="container-fluid ps-1 pe-0 py-3 d-flex justify-content-between align-items-center flex-wrap gap-2">
               <h3 class="fw-bold">Quản lý thông tin cá nhân</h3>
               <div class="d-flex gap-2" id="editGroup">
                 <button class="btn btn-dark p0" id="editButton">
@@ -151,7 +152,8 @@
             </div>
           </div>
           <div class="container one-page" id="editProfilePage">
-            <div class="container-fluid ps-1 pe-0 py-3 d-flex justify-content-between align-items-center">
+            <div
+              class="container-fluid ps-1 pe-0 py-3 d-flex justify-content-between align-items-center flex-wrap gap-2">
               <h3 class="fw-bold">Chỉnh sửa thông tin</h3>
               <div class="d-flex gap-2" id="EditProfleButtonGroup">
                 <button class="btn btn-dark" id="saveButton">
