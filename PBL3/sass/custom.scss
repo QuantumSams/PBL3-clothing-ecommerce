@@ -42,7 +42,7 @@ $card-border-width: 0px;
 
 $navbar-bg: $gray-25;
 $navbar-height: 68px;
-$body-padding: 58px;
+$body-padding: 40px;
 
 //button
 
@@ -141,8 +141,13 @@ $breadcrumb-font-size: 14px;
 $breadcrumb-active-color: $gray-900;
 
 //sep
+.wrapper {
+  overflow-x: hidden;
+}
+
 .sidecontainer {
-  width: 212px;
+  max-width: 212px;
+  min-width: 212px;
   min-height: 100vh;
   flex: 0 0 auto;
 }

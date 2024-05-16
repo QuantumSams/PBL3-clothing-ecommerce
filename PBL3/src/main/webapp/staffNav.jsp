@@ -18,7 +18,7 @@
 
   <body>
     <div class="wrapper">
-      <div class="sidecontainer">
+      <div class="collapse col-lg-2 d-lg-block sidecontainer">
         <div class="sidebar">
           <div class="head">
             <div class="user-img">
@@ -57,8 +57,13 @@
       <div class="content">
         <nav class="navbar">
           <div class="container">
-            <div class="container-fluid d-flex align-items-center justify-content-between">
-              <nav aria-label="breadcrumb">
+            <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap gap-2">
+              <nav class="d-flex align-items-center gap-2" aria-label="breadcrumb">
+                <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
+                  data-target=".sidecontainer" aria-controls="sidebar" aria-expanded="false"
+                  aria-label="Toggle navigation" id="toggleSidebar">
+                  <i class="bi bi-list"></i>
+                </button>
                 <ol class="breadcrumb m-0 p-0 bg-transparent">
                   <li class="breadcrumb-item"><a href="#" id="HeaderBreadcrumbLink">Cá nhân</a></li>
                   <li class="breadcrumb-item active" aria-current="page" id="HeaderBreadcrumbText"></li>
@@ -266,6 +271,8 @@
       integrity="sha512-8Z5++K1rB3U+USaLKG6oO8uWWBhdYsM3hmdirnOEWp8h2B1aOikj5zBzlXs8QOrvY9OxEnD2QDkbSKKpfqcIWw=="
       crossorigin="anonymous"></script>
     <script src="sidebar.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
   </body>
 
 </html>
