@@ -2,26 +2,24 @@ package Service.Order;
 
 import java.io.IOException;
 import java.sql.Date;
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import DAO.implemet.Don_hang_DAO;
+import DAO.implemet.Gio_hang_DAO;
 import DAO.implemet.Nguoi_dung_DAO;
 import DAO.implemet.San_pham_DAO;
 import DataStructures.Pair;
-import Entity.Don_Hang.Danh_gia_don_hang;
 import Entity.Don_Hang.Don_hang;
+import Entity.Don_Hang.Gio_hang;
 import Entity.Don_Hang.Lich_su_don_hang;
 import Entity.Nguoi_Dung.Nguoi_dung;
 import Entity.San_Pham.Muc_san_pham;
-import Entity.San_Pham.San_pham;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -33,11 +31,13 @@ public class Order_Service {
 	Don_hang_DAO don_hang_DAO;
 	San_pham_DAO muc_san_pham_DAO;
 	Nguoi_dung_DAO nguoi_dung_DAO;
+	Gio_hang_DAO gio_hang_DAO;
 	
 	public Order_Service() {
 		don_hang_DAO = new Don_hang_DAO();
 		muc_san_pham_DAO = new San_pham_DAO();
 		nguoi_dung_DAO = new Nguoi_dung_DAO();
+		gio_hang_DAO = new Gio_hang_DAO();
 	}
 	
 	public void add_order(HttpServletRequest req, HttpServletResponse resp) {
@@ -194,6 +194,19 @@ public class Order_Service {
 		Date currentDate = new Date(now);
 		don_hang_DAO.update_order(id_don_hang, currentDate, da_xac_nhan_don);
 		
+	}
+	
+	public void them_gio_hang(HttpServletRequest req, HttpServletResponse resp) {
+		int id_gio_hang = new Random().nextInt();
+		int id_khach_hang = Integer.parseInt(req.getParameter("id_khach_hang"));
+		int id_mau_sac = Integer.parseInt(req.getParameter("id_mau_sac"));
+		int id_size = Integer.parseInt(req.getParameter("id_size"));
+		int so_luong = Integer.parseInt(req.getParameter("so_luong"));
+		int id_muc_san_pham = Integer.parseInt(req.getParameter("id_muc_san_pham"));
+		
+		Gio_hang gio_hang = new Gio_hang(id_gio_hang, id_khach_hang, id_muc_san_pham, so_luong);
+		System.out.println(gio_hang.toString());
+		gio_hang_DAO.add(gio_hang);
 	}
 	
 	public List<Don_hang> get_all_order(HttpServletRequest req, HttpServletResponse resp) {

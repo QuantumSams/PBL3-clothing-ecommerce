@@ -133,6 +133,8 @@ public class San_pham_DAO extends AbstractDao {
 		for(int i = 0; i < list_san_pham.size(); ++i) {
 			list = get_anh_san_pham(query, list_san_pham.get(i).getId_san_pham());
 			list_san_pham.get(i).setAnh_san_pham(list);
+			List<Muc_san_pham> muc_san_pham = getList_muc_san_pham(list_san_pham.get(i).getId_san_pham());
+			list_san_pham.get(i).setMuc_san_pham(muc_san_pham);
 		}
 		return list_san_pham;
 	}

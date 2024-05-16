@@ -13,6 +13,7 @@ public class Gio_hang_Mapper implements RowMapper<Gio_hang>{
 		
 		try {
 			return new Gio_hang(rs.getInt("id_gio_hang"),
+								rs.getInt("id_khach_hang"),
 								rs.getInt("id_muc_san_pham"),
 								rs.getInt("so_luong"));
 		} catch (SQLException e) {

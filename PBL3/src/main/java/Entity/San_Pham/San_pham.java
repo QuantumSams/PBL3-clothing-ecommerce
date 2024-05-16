@@ -1,6 +1,12 @@
 package Entity.San_Pham;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import Entity.San_Pham.Thuoc_Tinh_San_Pham.Mau_sac;
+import Entity.San_Pham.Thuoc_Tinh_San_Pham.Size;
 
 public class San_pham{
 
@@ -15,6 +21,8 @@ public class San_pham{
 	private int gia_tien;
 	private List<String> anh_san_pham;
 	private List<Muc_san_pham> muc_san_pham;
+	private List<Mau_sac> mau_hien_co;
+	private List<Size> size_hien_co;
 	
 	public San_pham(int id_san_pham, String danh_muc_san_pham, String ten_san_pham, String ten_nhan_hang,
 			String chat_lieu, String thong_tin_chung, String thong_tin_chi_tiet, List<String> anh_san_pham,
@@ -37,6 +45,30 @@ public class San_pham{
 			if(min > m.gia_tien) min = m.gia_tien; 
 		}
 		return min;
+	}
+	
+	public void get_size_mau(List<Muc_san_pham> list_muc_san_pham) {
+		List<Mau_sac> mau_hien_co = new ArrayList<>();
+		List<Size> size_hien_co = new ArrayList<>();
+		
+		Map<Integer, Mau_sac> mau = new HashMap<>();
+		Map<Integer, Size> size = new HashMap<>();
+		
+		for(Muc_san_pham muc : list_muc_san_pham) {
+			mau.put(muc.getMau_sac_san_pham().getId_mau_sac(), muc.getMau_sac_san_pham());
+			size.put(muc.getKich_thuoc_san_pham().getId_size(), muc.getKich_thuoc_san_pham());
+		}
+		
+		for(int key : mau.keySet()) {
+			mau_hien_co.add(mau.get(key));
+		}
+		
+		for(int key : size.keySet()) {
+			size_hien_co.add(size.get(key));
+		}
+		
+		this.size_hien_co = size_hien_co;
+		this.mau_hien_co = mau_hien_co;
 	}
 
 	public String getThong_tin_chi_tiet() {
@@ -112,6 +144,8 @@ public class San_pham{
 
 	public void setMuc_san_pham(List<Muc_san_pham> muc_san_pham) {
 		gia_tien = getMinGiaTien(muc_san_pham);
+		get_size_mau(muc_san_pham);
+		System.out.println(gia_tien);
 		this.muc_san_pham = muc_san_pham;
 	}
 
@@ -137,6 +171,22 @@ public class San_pham{
 
 	public void setGia_tien(int gia_tien) {
 		this.gia_tien = gia_tien;
+	}
+
+	public List<Mau_sac> getMau_hien_co() {
+		return mau_hien_co;
+	}
+
+	public void setMau_hien_co(List<Mau_sac> mau_hien_co) {
+		this.mau_hien_co = mau_hien_co;
+	}
+
+	public List<Size> getSize_hien_co() {
+		return size_hien_co;
+	}
+
+	public void setSize_hien_co(List<Size> size_hien_co) {
+		this.size_hien_co = size_hien_co;
 	}
 
 	@Override
