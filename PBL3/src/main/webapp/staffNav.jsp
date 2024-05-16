@@ -56,7 +56,7 @@
       </div>
       <div class="content">
         <nav class="navbar">
-          <div class="container p-0">
+          <div class="container">
             <div class="container-fluid d-flex align-items-center justify-content-between">
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb m-0 p-0 bg-transparent">

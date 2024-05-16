@@ -68,6 +68,9 @@ body {
   background-color: $navbar-bg;
   align-self: self-start;
 }
+.navbar > .container > .container-fluid {
+  padding: 0px $body-padding;
+}
 
 .wrapper {
   display: flex;
