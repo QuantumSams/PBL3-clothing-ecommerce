@@ -19,6 +19,7 @@ const saveButton = document.getElementById("saveButton");
 
 const viewProfilePage = document.getElementById("viewProfilePage");
 const editProfilePage = document.getElementById("editProfilePage");
+const HeaderBreadcrumbText = document.getElementById("HeaderBreadcrumbText");
 
 togglePasswordVisibilityButton.addEventListener("click", function () {
   if (passwordInput.type === "password") {
@@ -42,12 +43,14 @@ editProfilePage.style.display = "none";
 editButton.addEventListener("click", function () {
   editProfilePage.style.display = "";
   viewProfilePage.style.display = "none";
+  HeaderBreadcrumbText.textContent = "Chỉnh sửa thông tin";
 });
 
 //Show button
 cancelButton.addEventListener("click", function () {
   editProfilePage.style.display = "none";
   viewProfilePage.style.display = "";
+  HeaderBreadcrumbText.textContent = "Thông tin cá nhân";
 });
 
 saveButton.addEventListener("click", function () {
@@ -79,4 +82,10 @@ fileInput.addEventListener("change", function () {
     };
     reader.readAsDataURL(file);
   }
+});
+
+const HeaderBreadcrumbLink = document.getElementById("HeaderBreadcrumbLink");
+
+HeaderBreadcrumbLink.addEventListener("click", function () {
+  location.reload();
 });

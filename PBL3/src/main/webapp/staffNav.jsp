@@ -60,8 +60,8 @@
             <div class="container-fluid d-flex align-items-center justify-content-between">
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb m-0 p-0 bg-transparent">
-                  <li class="breadcrumb-item"><a href="#">Cá nhân</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Cá nhân</li>
+                  <li class="breadcrumb-item"><a href="#" id="HeaderBreadcrumbLink">Cá nhân</a></li>
+                  <li class="breadcrumb-item active" aria-current="page" id="HeaderBreadcrumbText">Cá nhân</li>
                 </ol>
               </nav>
 
