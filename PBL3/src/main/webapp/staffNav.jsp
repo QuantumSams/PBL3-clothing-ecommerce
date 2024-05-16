@@ -240,7 +240,8 @@
                 <div class="card">
                   <div class="card-body">
                     <h5 class="card-title fw-bold">
-                      <div class="d-flex justify-content-between align-items-center" id="EditProfileImageUpload">
+                      <div class="d-flex justify-content-between align-items-center flex-wrap gap-2"
+                        id="EditProfileImageUpload">
                         Ảnh chân dung
                         <button class="btn btn-dark p0" id="EditProfileImageUploadButton">
                           Tải ảnh lên
