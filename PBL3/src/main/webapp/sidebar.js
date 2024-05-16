@@ -1,6 +1,6 @@
 $(".menu > ul > li").click(function (e) {
-  $(this).siblings().removeClass("active");
   $(this).toggleClass("active");
+  $(this).siblings().removeClass("active");
 });
 
 const passwordInput = document.getElementById("passwordField");
@@ -39,6 +39,7 @@ EditProfilePasswordFieldEyeButton.addEventListener("click", function () {
 
 //Hiding button
 editProfilePage.style.display = "none";
+HeaderBreadcrumbText.textContent = "Thông tin cá nhân";
 
 editButton.addEventListener("click", function () {
   editProfilePage.style.display = "";

@@ -31,7 +31,7 @@
             <div class="menu">
               <p class="title">Chức năng</p>
               <ul class="sidelist">
-                <li class="active">
+                <li>
                   <a href="#">
                     <i class="bi bi-archive-fill"></i>
                     <span class="text">Đơn hàng</span>
@@ -43,7 +43,7 @@
                     <span class="text">Chat</span>
                   </a>
                 </li>
-                <li>
+                <li class="active">
                   <a href="#">
                     <i class="bi bi-person-fill"></i>
                     <span class="text">Cá nhân</span>
@@ -61,7 +61,7 @@
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb m-0 p-0 bg-transparent">
                   <li class="breadcrumb-item"><a href="#" id="HeaderBreadcrumbLink">Cá nhân</a></li>
-                  <li class="breadcrumb-item active" aria-current="page" id="HeaderBreadcrumbText">Cá nhân</li>
+                  <li class="breadcrumb-item active" aria-current="page" id="HeaderBreadcrumbText"></li>
                 </ol>
               </nav>
 
