@@ -93,20 +93,20 @@
                     <div class="card-body">
                       <h5 class="card-title fw-bold">Thông tin cá nhân</h5>
                       <dl class="row">
-                        <dt class="col-sm-7">Họ và tên</dt>
-                        <dd class="col-sm-5">Nguyễn Văn A</dd>
+                        <dt class="col-sm-4">Họ và tên</dt>
+                        <dd class="col-sm-8">Nguyễn Văn A</dd>
                       </dl>
                       <dl class="row">
-                        <dt class="col-sm-7">Giới tính</dt>
-                        <dd class="col-sm-5">Nam</dd>
+                        <dt class="col-sm-4">Giới tính</dt>
+                        <dd class="col-sm-8">Nam</dd>
                       </dl>
                       <dl class="row">
-                        <dt class="col-sm-7">Số điện thoại</dt>
-                        <dd class="col-sm-5">0934 123 456</dd>
+                        <dt class="col-sm-4">Số điện thoại</dt>
+                        <dd class="col-sm-8">0934 123 456</dd>
                       </dl>
                       <dl class="row">
-                        <dt class="col-sm-7">Địa chỉ</dt>
-                        <dd class="col-sm-5">Thanh Khê, Đà Nẵng</dd>
+                        <dt class="col-sm-4">Địa chỉ</dt>
+                        <dd class="col-sm-8">Thanh Khê, Đà Nẵng</dd>
                       </dl>
                       </p>
                     </div>
@@ -117,14 +117,14 @@
                     <div class="card-body">
                       <h5 class="card-title fw-bold">Thông tin tài khoản</h5>
                       <dl class="row">
-                        <dt class="col-sm-7">Tài khoản</dt>
-                        <dd class="col-sm-5">
+                        <dt class="col-sm-4">Tài khoản</dt>
+                        <dd class="col-sm-8">
                           <input class="form-control" type="text" value="nguyenvana@123" readonly>
                         </dd>
                       </dl>
                       <dl class="row align-items-center">
-                        <dt class="col-sm-7">Mật khẩu</dt>
-                        <dd class="col-sm-5 d-flex 
+                        <dt class="col-sm-4">Mật khẩu</dt>
+                        <dd class="col-sm-8 d-flex 
                                                                 justify-content-between
                                                                 align-items-center">
                           <input class="form-control me-2" type="password" value="123456" readonly id="passwordField">
@@ -171,14 +171,14 @@
                     <div class="card-body">
                       <h5 class="card-title fw-bold">Thông tin cá nhân</h5>
                       <dl class="row">
-                        <dt class="col-sm-7">Họ và tên</dt>
-                        <dd class="col-sm-5">
+                        <dt class="col-sm-4">Họ và tên</dt>
+                        <dd class="col-sm-8">
                           <input class="form-control" id="EditProfileNameField" type="text" value="Nguyễn Văn A">
                         </dd>
                       </dl>
                       <dl class="row">
-                        <dt class="col-sm-7">Giới tính</dt>
-                        <dd class="col-sm-5">
+                        <dt class="col-sm-4">Giới tính</dt>
+                        <dd class="col-sm-8">
                           <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="flexRadioDefault"
                               id="EditProfileGenderRadioMale">
@@ -196,14 +196,14 @@
                         </dd>
                       </dl>
                       <dl class="row">
-                        <dt class="col-sm-7">Số điện thoại</dt>
-                        <dd class="col-sm-5"><input class="form-control" id="EditProfilePhoneField" type="text"
+                        <dt class="col-sm-4">Số điện thoại</dt>
+                        <dd class="col-sm-8"><input class="form-control" id="EditProfilePhoneField" type="text"
                             value="0905 123 455">
                         </dd>
                       </dl>
                       <dl class="row">
-                        <dt class="col-sm-7">Địa chỉ</dt>
-                        <dd class="col-sm-5">
+                        <dt class="col-sm-4">Địa chỉ</dt>
+                        <dd class="col-sm-8">
                           <textarea class="form-control" id="EditProfileAddressField" rows="3">31 Ba Đình, phường Hoà Cường Nam, quận Hải Châu, Đà Nẵng
 
                           </textarea>
@@ -218,14 +218,14 @@
                     <div class="card-body">
                       <h5 class="card-title fw-bold">Thông tin tài khoản</h5>
                       <dl class="row">
-                        <dt class="col-sm-7">Tài khoản</dt>
-                        <dd class="col-sm-5"><input class="form-control" id="EditProfileUsernameField" type="text"
+                        <dt class="col-sm-4">Tài khoản</dt>
+                        <dd class="col-sm-8"><input class="form-control" id="EditProfileUsernameField" type="text"
                             value="nguyenvana@123">
                         </dd>
                       </dl>
                       <dl class="row align-items-center">
-                        <dt class="col-sm-7">Mật khẩu</dt>
-                        <dd class="col-sm-5 d-flex 
+                        <dt class="col-sm-4">Mật khẩu</dt>
+                        <dd class="col-sm-8 d-flex 
                                                                 justify-content-between
                                                                 align-items-center">
                           <input class="form-control me-2" type="password" value="123456" id="EditProfilePasswordField">
