@@ -117,7 +117,8 @@
                       <h5 class="card-title fw-bold">Thông tin tài khoản</h5>
                       <dl class="row">
                         <dt class="col-sm-7">Tài khoản</dt>
-                        <dd class="col-sm-5"><input class="form-control" type="text" value="nguyenvana@123" readonly>
+                        <dd class="col-sm-5">
+                          <input class="form-control" type="text" value="nguyenvana@123" readonly>
                         </dd>
                       </dl>
                       <dl class="row align-items-center">
@@ -138,7 +139,9 @@
               <div class="col-lg-4 col-sm-12">
                 <div class="card">
                   <div class="card-body">
-                    <h5 class="card-title fw-bold">Ảnh chân dung</h5>
+                    <h5 class="card-title fw-bold">
+                      Ảnh chân dung
+                    </h5>
                     <img
                       src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=2662&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                       class="img-fluid">
@@ -149,8 +152,8 @@
           </div>
           <div class="container one-page" id="editProfilePage">
             <div class="container-fluid ps-1 pe-0 py-3 d-flex justify-content-between align-items-center">
-              <h3 class="fw-bold">Quản lý thông tin cá nhân</h3>
-              <div class="d-flex gap-2" id="editGroup">
+              <h3 class="fw-bold">Chỉnh sửa thông tin</h3>
+              <div class="d-flex gap-2" id="EditProfleButtonGroup">
                 <button class="btn btn-dark" id="saveButton">
                   Lưu thông tin
                 </button>
@@ -167,19 +170,42 @@
                       <h5 class="card-title fw-bold">Thông tin cá nhân</h5>
                       <dl class="row">
                         <dt class="col-sm-7">Họ và tên</dt>
-                        <dd class="col-sm-5">Nguyễn Văn A</dd>
+                        <dd class="col-sm-5">
+                          <input class="form-control" id="EditProfileNameField" type="text" value="Nguyễn Văn A">
+                        </dd>
                       </dl>
                       <dl class="row">
                         <dt class="col-sm-7">Giới tính</dt>
-                        <dd class="col-sm-5">Nam</dd>
+                        <dd class="col-sm-5">
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault"
+                              id="EditProfileGenderRadioMale">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                              Nam
+                            </label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault"
+                              id="EditProfileGenderRadioFemale" checked>
+                            <label class="form-check-label" for="flexRadioDefault2">
+                              Nữ
+                            </label>
+                          </div>
+                        </dd>
                       </dl>
                       <dl class="row">
                         <dt class="col-sm-7">Số điện thoại</dt>
-                        <dd class="col-sm-5">0934 123 456</dd>
+                        <dd class="col-sm-5"><input class="form-control" id="EditProfilePhoneField" type="text"
+                            value="0905 123 455">
+                        </dd>
                       </dl>
                       <dl class="row">
                         <dt class="col-sm-7">Địa chỉ</dt>
-                        <dd class="col-sm-5">Thanh Khê, Đà Nẵng</dd>
+                        <dd class="col-sm-5">
+                          <textarea class="form-control" id="EditProfileAddressField" rows="3">31 Ba Đình, phường Hoà Cường Nam, quận Hải Châu, Đà Nẵng
+
+                          </textarea>
+                        </dd>
                       </dl>
                       </p>
                     </div>
@@ -191,7 +217,8 @@
                       <h5 class="card-title fw-bold">Thông tin tài khoản</h5>
                       <dl class="row">
                         <dt class="col-sm-7">Tài khoản</dt>
-                        <dd class="col-sm-5"><input class="form-control" type="text" value="nguyenvana@123" readonly>
+                        <dd class="col-sm-5"><input class="form-control" id="EditProfileUsernameField" type="text"
+                            value="nguyenvana@123">
                         </dd>
                       </dl>
                       <dl class="row align-items-center">
@@ -199,8 +226,8 @@
                         <dd class="col-sm-5 d-flex 
                                                                 justify-content-between
                                                                 align-items-center">
-                          <input class="form-control me-2" type="password" value="123456" readonly id="passwordField">
-                          <button type="button" class="btn btn-dark p0" id="passwordEye"><i
+                          <input class="form-control me-2" type="password" value="123456" id="EditProfilePasswordField">
+                          <button type="button" class="btn btn-dark p0" id="EditProfilePasswordFieldEyeButton"><i
                               class="bi bi-eye-fill"></i></button>
                         </dd>
                       </dl>
@@ -212,7 +239,14 @@
               <div class="col-lg-4 col-sm-12">
                 <div class="card">
                   <div class="card-body">
-                    <h5 class="card-title fw-bold">Ảnh chân dung</h5>
+                    <h5 class="card-title fw-bold">
+                      <div class="d-flex justify-content-between align-items-center" id="EditProfileImageUpload">
+                        Ảnh chân dung
+                        <button class="btn btn-dark p0">
+                          Tải ảnh lên
+                        </button>
+                      </div>
+                    </h5>
                     <img
                       src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=2662&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                       class="img-fluid">
