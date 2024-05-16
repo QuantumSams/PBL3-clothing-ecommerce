@@ -246,6 +246,7 @@
                         id="EditProfileImageUpload">
                         Ảnh chân dung
                         <button class="btn btn-dark p0" id="EditProfileImageUploadButton">
+                          <i class="bi bi-cloud-arrow-up-fill"></i>
                           Tải ảnh lên
                         </button>
                       </div>
