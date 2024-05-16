@@ -75,19 +75,13 @@
 
         </nav>
         <div class="container main">
-          <div class="container one-page" id="view-profile-page">
+          <div class="container one-page" id="viewProfilePage">
             <div class="container-fluid ps-1 pe-0 py-3 d-flex justify-content-between align-items-center">
               <h3 class="fw-bold">Quản lý thông tin cá nhân</h3>
               <div class="d-flex gap-2" id="editGroup">
                 <button class="btn btn-dark p0" id="editButton">
                   <i class="bi bi-pencil-square"></i>
                   Chỉnh sửa thông tin
-                </button>
-                <button class="btn btn-dark" id="saveButton">
-                  Lưu thông tin
-                </button>
-                <button class="btn btn-outline-dark" id="cancelButton">
-                  Huỷ
                 </button>
               </div>
             </div>
@@ -153,14 +147,10 @@
               </div>
             </div>
           </div>
-          <div class="container one-page" id="view-profile-page">
+          <div class="container one-page" id="editProfilePage">
             <div class="container-fluid ps-1 pe-0 py-3 d-flex justify-content-between align-items-center">
               <h3 class="fw-bold">Quản lý thông tin cá nhân</h3>
               <div class="d-flex gap-2" id="editGroup">
-                <button class="btn btn-dark p0" id="editButton">
-                  <i class="bi bi-pencil-square"></i>
-                  Chỉnh sửa thông tin
-                </button>
                 <button class="btn btn-dark" id="saveButton">
                   Lưu thông tin
                 </button>

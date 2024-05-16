@@ -10,6 +10,9 @@ const editButton = document.getElementById("editButton");
 const cancelButton = document.getElementById("cancelButton");
 const saveButton = document.getElementById("saveButton");
 
+const viewProfilePage = document.getElementById("viewProfilePage");
+const editProfilePage = document.getElementById("editProfilePage");
+
 togglePasswordVisibilityButton.addEventListener("click", function () {
   console.log("Toggle password visibility button clicked!");
   if (passwordInput.type === "password") {
@@ -20,18 +23,15 @@ togglePasswordVisibilityButton.addEventListener("click", function () {
 });
 
 //Hiding button
-saveButton.style.display = "none";
-cancelButton.style.display = "none";
+editProfilePage.style.display = "none";
 
 editButton.addEventListener("click", function () {
-  editButton.style.display = "none";
-  saveButton.style.display = "";
-  cancelButton.style.display = "";
+  editProfilePage.style.display = "";
+  viewProfilePage.style.display = "none";
 });
 
 //Show button
 cancelButton.addEventListener("click", function () {
-  editButton.style.display = "";
-  saveButton.style.display = "none";
-  cancelButton.style.display = "none";
+  editProfilePage.style.display = "none";
+  viewProfilePage.style.display = "";
 });
