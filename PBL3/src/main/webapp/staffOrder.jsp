@@ -91,23 +91,45 @@
                 <div class="row m-0">
                   <div class="card">
                     <div class="card-body">
-                      <h5 class="card-title fw-bold">Thông tin cá nhân</h5>
-                      <dl class="row">
-                        <dt class="col-sm-4">Họ và tên</dt>
-                        <dd class="col-sm-8">Nguyễn Văn A</dd>
-                      </dl>
-                      <dl class="row">
-                        <dt class="col-sm-4">Giới tính</dt>
-                        <dd class="col-sm-8">Nam</dd>
-                      </dl>
-                      <dl class="row">
-                        <dt class="col-sm-4">Số điện thoại</dt>
-                        <dd class="col-sm-8">0934 123 456</dd>
-                      </dl>
-                      <dl class="row">
-                        <dt class="col-sm-4">Địa chỉ</dt>
-                        <dd class="col-sm-8">Thanh Khê, Đà Nẵng</dd>
-                      </dl>
+                      <h5 class="card-title fw-bold">Danh sách sản phẩm</h5>
+
+                      <table class="table table-hover w-100">
+                        <colgroup>
+                          <col span="1" style="width: 5%;">
+                          <col span="1" style="width: 45%;">
+                          <col span="1" style="width: 20%;">
+                          <col span="1" style="width: 20%;">
+                          <col span="1" style="width: 5%;">
+                        </colgroup>
+                        <thead>
+                          <tr class="table-primary">
+                            <th scope="col">STT</th>
+                            <th scope="col">Sản phẩm</th>
+                            <th scope="col">Số lượng</th>
+                            <th scope="col">Thành tiền</th>
+                            <th><button type="button" class="btn btn-disabled p0" id="passwordEye"></button></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">1</th>
+
+                            <td>
+                              <div class="d-flex gap-1">
+                                Áo thun dáng rộng tay lỡ
+                                <div class="status status-accent">S/Xanh biển</div>
+                              </div>
+                            </td>
+                            <td>1</td>
+                            <td>15 000</td>
+                            <td><button type="button" class="btn btn-outline-danger p-1" id="removeProduct">
+                                <i class="bi bi-trash3-fill"></i></button>
+                              </button>
+
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
                       </p>
                     </div>
                   </div>
@@ -139,7 +161,7 @@
                     </div>
                   </div>
                 </div>
-                <button type="button pb-1" class="btn btn-dark p0 w-100" id="passwordEye">Xác nhận đơn hàng
+                <button type="button pb-1" class="btn btn-dark m-0 w-100" id="passwordEye">Xác nhận đơn hàng
                 </button>
               </div>
               <div class="col-xl-4 col-sm-12">
@@ -170,26 +192,27 @@
                         Thông tin đơn hàng
                       </h5>
                       <dl class="row">
-                        <dt class="col-sm-7 row-12">Số lượng sản phẩm</dt>
-                        <dd class="col-sm-5 row-12">189</dd>
+                        <dt class="col-sm-5 row-12">Số lượng sản phẩm</dt>
+                        <dd class="col-sm-7 row-12">189</dd>
                       </dl>
                       <dl class="row">
-                        <dt class="col-sm-7 row-12">Đặt vào lúc</dt>
-                        <dd class="col-sm-5 row-12">25/12/2023</dd>
+                        <dt class="col-sm-5 row-12">Đặt vào lúc</dt>
+                        <dd class="col-sm-7 row-12">25/12/2023</dd>
                       </dl>
                       <dl class="row">
-                        <dt class="col-sm-7 row-12">Giao vào lúc</dt>
-                        <dd class="col-sm-5 row-12">-
+                        <dt class="col-sm-5 row-12">Giao vào lúc</dt>
+                        <dd class="col-sm-7 row-12">-
                         </dd>
                       </dl>
                       <dl class="row">
-                        <dt class="col-sm-7 row-12">Nhân viên xác nhận</dt>
-                        <dd class="col-sm-5 row-12">-
+                        <dt class="col-sm-5 row-12">Nhân viên xác nhận</dt>
+                        <dd class="col-sm-7 row-12">-
                         </dd>
                       </dl>
-                      <dl class="row">
-                        <dt class="col-sm-7 row-12">Trạng thái</dt>
-                        <dd class="col-sm-5 row-12">-
+                      <dl class="row align-items-center">
+                        <dt class="col-sm-5 row-12">Trạng thái</dt>
+                        <dd class="col-sm-7 row-12">
+                          <div class="status status-waiting">Chờ xác nhận</div>
                         </dd>
                       </dl>
                     </div>

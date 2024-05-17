@@ -25,9 +25,9 @@ $black: #101828;
 
 $primary: $black;
 // $secondary:     $gray-600;
-// $success:       $green;
-// $info:          $cyan;
-// $warning:       $yellow;
+$success: #12b76a;
+$info: #0086c9;
+$warning: #f79009;
 $danger: #f97066;
 $on-danger: #fef3f2;
 $light: $gray-100;
@@ -51,6 +51,8 @@ $btn-padding-y: 6px;
 $btn-padding-x: 28px;
 $btn-border-radius: 8px;
 $btn-border-width: 2px;
+
+$table-cell-vertical-align: middle;
 
 body {
   height: 100%;
@@ -118,6 +120,39 @@ body {
   &.active {
     color: $gray-900;
   }
+}
+
+.status {
+  border-radius: 16px;
+  padding: 4px 8px;
+  margin: 0;
+  color: $gray-25;
+  font-weight: bold;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.status.status-waiting {
+  background-color: $warning;
+}
+
+.status.status-done {
+  background-color: $success;
+}
+
+.status.status-canceled {
+  background-color: $danger;
+}
+
+.status.status-onTransit {
+  background-color: $info;
+}
+
+.status.status-accent {
+  border-radius: 8px;
+  background-color: $black;
+  font-size: 13px;
+  font-weight: normal;
 }
 
 $form-label-font-size: 14px;
