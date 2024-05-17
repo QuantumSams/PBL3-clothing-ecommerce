@@ -28,7 +28,8 @@ $primary: $black;
 // $success:       $green;
 // $info:          $cyan;
 // $warning:       $yellow;
-// $danger:        $red;
+$danger: #f97066;
+$on-danger: #fef3f2;
 $light: $gray-100;
 $dark: $gray-900;
 $body-bg: $gray-100;
@@ -50,8 +51,6 @@ $btn-padding-y: 6px;
 $btn-padding-x: 28px;
 $btn-border-radius: 8px;
 $btn-border-width: 2px;
-
-//
 
 body {
   height: 100%;
