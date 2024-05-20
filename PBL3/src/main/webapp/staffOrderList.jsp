@@ -84,12 +84,78 @@
               class="container-fluid ps-1 pe-0 py-3 d-flex justify-content-between align-items-center flex-wrap gap-2">
               <h3 class="fw-bold">Danh sách đơn hàng</h3>
             </div>
-            <div class="row g-lg-3">
+            <div class="container orderTable">
               <div class="container searchHeader">
                 <form class="d-flex" role="search">
-                  <input class="form-control me-0" id="searchHeaderForm" type="search"
-                    placeholder="Tìm kiếm mã đơn hàng trong danh sách" aria-label="Search" />
+                  <input class="form-control" id="tableSearchBox" type="search"
+                    placeholder="Tìm kiếm mã đơn hàng trong danh sách" aria-label="Search"
+                    style="width: 450px; height: 40px; " />
                 </form>
+              </div>
+              <div class="container tableData p-0">
+                <table class="table table-hover">
+
+                  <colgroup>
+                    <col span="1" style="width: 15%;">
+                    <col span="1" style="width: 20%;">
+                    <col span="1" style="width: 25%;">
+                    <col span="1" style="width: 20%;">
+                    <col span="1" style="width: 20%;">
+                  </colgroup>
+                  <thead>
+                    <tr class="table-light">
+                      <th scope="col">Mã đơn</th>
+                      <th scope="col">Giá trị đơn</th>
+                      <th scope="col">Tên khách hàng</th>
+                      <th scope="col">Thời điểm đặt</th>
+                      <th scope="col">Trạng thái</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>
+                        <div class="d-flex justify-content-between">
+                          <span>1000000</span>
+                          <span><b>VND</b></span>
+                        </div>
+                      </td>
+                      <td>Nguyễn Văn A</td>
+                      <td>15/10/2023</td>
+                      <td>
+                        <div class="status status-waiting">Chờ xác nhận</div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>
+                        <div class="d-flex justify-content-between">
+                          <span>1000000</span>
+                          <span><b>VND</b></span>
+                        </div>
+                      </td>
+                      <td>Nguyễn Văn A</td>
+                      <td>15/10/2023</td>
+                      <td>
+                        <div class="status status-waiting">Chờ xác nhận</div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>
+                        <div class="d-flex justify-content-between">
+                          <span>1000000</span>
+                          <span><b>VND</b></span>
+                        </div>
+                      </td>
+                      <td>Nguyễn Văn A</td>
+                      <td>15/10/2023</td>
+                      <td>
+                        <div class="status status-waiting">Chờ xác nhận</div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>

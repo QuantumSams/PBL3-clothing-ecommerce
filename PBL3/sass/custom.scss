@@ -26,7 +26,7 @@ $black: #101828;
 $primary: $black;
 // $secondary:     $gray-600;
 $success: #12b76a;
-// $info: #0086c9;
+$info: #0086c9;
 $warning: #f79009;
 $danger: #f97066;
 $on-danger: #fef3f2;
@@ -145,7 +145,7 @@ body {
 }
 
 .status.status-onTransit {
-  // background-color: $info;
+  background-color: $info;
 }
 
 .status.status-accent {
@@ -175,9 +175,43 @@ $breadcrumb-font-size: 14px;
 $breadcrumb-active-color: $gray-900;
 
 //Order list config
-#searchHeaderForm {
-  padding: 10px;
-  width: 300px;
+.container.searchHeader {
+  background-color: $gray-700;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  border: 1px solid $gray-700;
+}
+#tableSearchBox {
+  background-color: $gray-600;
+  color: $gray-25;
+  border-radius: 16px;
+
+  &::placeholder {
+    color: $gray-400;
+  }
+
+  border: 1px solid $gray-600;
+  margin: 28px 8px;
+}
+
+#tableSearchBox:focus {
+  outline: 2px solid $gray-600;
+  background-color: $gray-800;
+}
+.tableData > table.table td,
+.tableData > table.table th {
+  background-color: $gray-25;
+  padding: 16px 16px;
+  font-size: 16px;
+}
+
+.tableData > table.table > thead > tr > th {
+  background-color: $gray-800;
+  color: $gray-300;
+  font-weight: 600;
+}
+.tableData > table.table > thead > tr > th > button {
+  color: $gray-300;
 }
 
 // sep
