@@ -13,7 +13,7 @@
       href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
       rel="stylesheet">
 
-    <title>Quản lý thông tin cá nhân</title>
+    <title>Đơn hàng</title>
   </head>
 
   <body>
@@ -66,7 +66,7 @@
                 </button>
                 <ol class="breadcrumb m-0 p-0 bg-transparent">
                   <li class="breadcrumb-item"><a href="#" id="HeaderBreadcrumbLink">Đơn hàng</a></li>
-                  <li class="breadcrumb-item active" aria-current="page" id="HeaderBreadcrumbText">Đơn hàng 01</li>
+                  <li class="breadcrumb-item active" aria-current="page" id="HeaderBreadcrumbText"></li>
                 </ol>
               </nav>
 
@@ -77,164 +77,19 @@
               </form>
             </div>
           </div>
-
         </nav>
         <div class="container main">
           <div class="container one-page" id="viewProfilePage">
             <div
               class="container-fluid ps-1 pe-0 py-3 d-flex justify-content-between align-items-center flex-wrap gap-2">
-              <h3 class="fw-bold">Đơn hàng 01</h3>
-
+              <h3 class="fw-bold">Danh sách đơn hàng</h3>
             </div>
             <div class="row g-lg-3">
-              <div class="col-xl-8 col-sm-12">
-                <div class="row m-0">
-                  <div class="card">
-                    <div class="card-body">
-                      <h5 class="card-title fw-bold">Danh sách sản phẩm</h5>
-
-                      <table class="table table-hover w-100">
-                        <colgroup>
-                          <col span="1" style="width: 5%;">
-                          <col span="1" style="width: 45%;">
-                          <col span="1" style="width: 20%;">
-                          <col span="1" style="width: 5%;">
-                        </colgroup>
-                        <thead>
-                          <tr class="table-primary">
-                            <th scope="col">STT</th>
-                            <th scope="col">Sản phẩm</th>
-                            <th scope="col">Số lượng</th>
-                            <th scope="col">Thành tiền</th>
-                            <th><button type="button" class="btn btn-disabled p0" id="passwordEye"></button></th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <th scope="row">1</th>
-
-                            <td>
-                              <div class="d-flex gap-1">
-                                Áo thun dáng rộng tay lỡ
-                                <div class="status status-accent">S/Xanh biển</div>
-                              </div>
-                            </td>
-                            <td>1</td>
-                            <td>15 000</td>
-                            <td><button type="button" class="btn btn-outline-danger p-1" id="removeProduct">
-                                <i class="bi bi-trash3-fill"></i></button>
-                              </button>
-
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="row m-0">
-                  <div class="card">
-                    <div class="card-body">
-                      <h5 class="card-title fw-bold">Thành tiền</h5>
-                      <dl class="row">
-                        <dd class="col-sm-8">Tổng tiền hàng</dd>
-                        <dd class="col-sm-2">12 000</dd>
-                        <dt class="col-sm-2">VND</dt>
-                      </dl>
-                      <dl class="row">
-                        <dd class="col-sm-8">Phí vận chuyển</dd>
-                        <dd class="col-sm-2">0</dd>
-                        <dt class="col-sm-2">VND</dt>
-                      </dl>
-                      <dl class="row">
-                        <dd class="col-sm-8">Giảm giá</dd>
-                        <dd class="col-sm-2">0</dd>
-                        <dt class="col-sm-2">VND</dt>
-                      </dl>
-                      <dl class="row">
-                        <dd class="col-sm-8">Thành tiền</dd>
-                        <dd class="col-sm-2">12 000</dd>
-                        <dt class="col-sm-2">VND</dt>
-                      </dl>
-                    </div>
-                  </div>
-                </div>
-                <button type="button pb-1" class="btn btn-dark m-0 w-100" id="passwordEye">Xác nhận đơn hàng
-                </button>
-              </div>
-              <div class="col-xl-4 col-sm-12">
-                <div class="row m-0">
-                  <div class="card">
-                    <div class="card-body">
-                      <h5 class="card-title fw-bold">
-                        Thông tin giao nhận
-                      </h5>
-                      <dl class="row">
-                        <dt class="col-sm-5 row-12">Họ và tên</dt>
-                        <dd class="col-sm-7 row-12">Nguyễn Văn A</dd>
-                      </dl>
-                      <dl class="row">
-                        <dt class="col-sm-5 row-12">SĐT giao hàng</dt>
-                        <dd class="col-sm-7 row-12">0934 123 456</dd>
-                      </dl>
-                      <dl class="row">
-                        <dt class="col-sm-5 row-12">Địa chỉ giao hàng</dt>
-                        <dd class="col-sm-7 row-12">31 Ba Đình, phường Thạch Trang, quận Hải Châu, Thành phố Đà Nẵng
-                        </dd>
-                      </dl>
-                    </div>
-                  </div>
-                  <div class="card">
-                    <div class="card-body">
-                      <h5 class="card-title fw-bold">
-                        Thông tin đơn hàng
-                      </h5>
-                      <dl class="row">
-                        <dt class="col-sm-5 row-12">Số lượng sản phẩm</dt>
-                        <dd class="col-sm-7 row-12">189</dd>
-                      </dl>
-                      <dl class="row">
-                        <dt class="col-sm-5 row-12">Đặt vào lúc</dt>
-                        <dd class="col-sm-7 row-12">25/12/2023</dd>
-                      </dl>
-                      <dl class="row">
-                        <dt class="col-sm-5 row-12">Giao vào lúc</dt>
-                        <dd class="col-sm-7 row-12">-
-                        </dd>
-                      </dl>
-                      <dl class="row">
-                        <dt class="col-sm-5 row-12">Nhân viên xác nhận</dt>
-                        <dd class="col-sm-7 row-12">-
-                        </dd>
-                      </dl>
-                      <dl class="row align-items-center">
-                        <dt class="col-sm-5 row-12">Trạng thái</dt>
-                        <dd class="col-sm-7 row-12">
-                          <div class="status status-waiting">Chờ xác nhận</div>
-                        </dd>
-                      </dl>
-                    </div>
-                  </div>
-                  <div class="card">
-                    <div class="card-body">
-                      <h5 class="card-title fw-bold">
-                        Ghi chú đơn hàng
-                      </h5>
-                      Chỉ giao vào cuối tuần
-                    </div>
-                  </div>
-                  <div class="card">
-                    <div class="card-body">
-                      <h5 class="card-title fw-bold">
-                        Huỷ đơn hàng
-                      </h5>
-                      <button type="button" class="btn btn-danger p0 w-100" id="cancelOrder"><i
-                          class="bi bi-x-octagon-fill pe-1"></i>
-                        Huỷ đơn hàng</button>
-                    </div>
-                  </div>
-                </div>
+              <div class="container searchHeader">
+                <form class="d-flex" role="search">
+                  <input class="form-control me-0" id="searchHeaderForm" type="search"
+                    placeholder="Tìm kiếm mã đơn hàng trong danh sách" aria-label="Search" />
+                </form>
               </div>
             </div>
           </div>

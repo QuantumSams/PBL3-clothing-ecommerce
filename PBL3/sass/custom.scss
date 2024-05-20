@@ -1,4 +1,4 @@
-// seperator
+//seperator
 
 $spacer: 1.75rem;
 $spacers: (
@@ -26,7 +26,7 @@ $black: #101828;
 $primary: $black;
 // $secondary:     $gray-600;
 $success: #12b76a;
-$info: #0086c9;
+// $info: #0086c9;
 $warning: #f79009;
 $danger: #f97066;
 $on-danger: #fef3f2;
@@ -145,7 +145,7 @@ body {
 }
 
 .status.status-onTransit {
-  background-color: $info;
+  // background-color: $info;
 }
 
 .status.status-accent {
@@ -174,7 +174,13 @@ $input-placeholder-color: $gray-400;
 $breadcrumb-font-size: 14px;
 $breadcrumb-active-color: $gray-900;
 
-//sep
+//Order list config
+#searchHeaderForm {
+  padding: 10px;
+  width: 300px;
+}
+
+// sep
 .wrapper {
   overflow-x: hidden;
 }
