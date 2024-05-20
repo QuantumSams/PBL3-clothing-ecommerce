@@ -98,7 +98,6 @@
                           <col span="1" style="width: 5%;">
                           <col span="1" style="width: 45%;">
                           <col span="1" style="width: 20%;">
-                          <col span="1" style="width: 20%;">
                           <col span="1" style="width: 5%;">
                         </colgroup>
                         <thead>
