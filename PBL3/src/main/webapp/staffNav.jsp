@@ -159,12 +159,31 @@
               class="container-fluid ps-1 pe-0 py-3 d-flex justify-content-between align-items-center flex-wrap gap-2">
               <h3 class="fw-bold">Chỉnh sửa thông tin</h3>
               <div class="d-flex gap-2" id="EditProfleButtonGroup">
-                <button class="btn btn-dark" id="saveButton">
+                <button class="btn btn-dark data" data-bs-toggle="modal" data-bs-target="#saveModal">
                   Lưu thông tin
                 </button>
                 <button class="btn btn-outline-dark" id="cancelButton">
                   Huỷ
                 </button>
+              </div>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="saveModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Lưu thông tin</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <p>Bạn có thật sự muốn lưu thông tin?</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="saveButton">Lưu</button>
+                    <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Huỷ</button>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="row g-lg-3">
