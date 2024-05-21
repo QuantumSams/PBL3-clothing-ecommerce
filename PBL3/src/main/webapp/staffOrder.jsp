@@ -22,9 +22,7 @@
         <div class="sidebar">
           <div class="head">
             <div class="user-img">
-              <img
-                src="img/management_logo.png"
-                alt>
+              <img src="img/management_logo.png" alt>
             </div>
           </div>
           <div class="nav">
@@ -244,7 +242,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.js"
       integrity="sha512-8Z5++K1rB3U+USaLKG6oO8uWWBhdYsM3hmdirnOEWp8h2B1aOikj5zBzlXs8QOrvY9OxEnD2QDkbSKKpfqcIWw=="
       crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"></script>
+    <script src="navigation.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
   </body>
 
