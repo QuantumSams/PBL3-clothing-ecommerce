@@ -79,9 +79,14 @@
         </nav>
         <div class="container main">
           <div class="container one-page" id="viewProfilePage">
-            <div
-              class="container-fluid ps-1 pe-0 py-3 d-flex justify-content-between align-items-center flex-wrap gap-2">
-              <h3 class="fw-bold">Đơn hàng 01</h3>
+            <div class="container-fluid ps-1 pe-0 py-3 d-flex align-items-center flex-wrap gap-2">
+              <button type="button" class="btn btn-primary btn-sm rounded-circle" id="backButton">
+                <i class="bi bi-caret-left-fill"></i>
+              </button>
+
+
+              <h3 class="fw-bold m-0">Đơn hàng 01</h3>
+
 
             </div>
             <div class="row g-lg-3">
