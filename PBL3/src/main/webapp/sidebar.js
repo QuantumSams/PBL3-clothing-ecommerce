@@ -1,5 +1,5 @@
 $(".menu > ul > li").click(function (e) {
-  $(this).toggleClass("active");
+  $(this).addClass("active");
   $(this).siblings().removeClass("active");
 });
 
@@ -39,7 +39,7 @@ EditProfilePasswordFieldEyeButton.addEventListener("click", function () {
 
 //Hiding button
 editProfilePage.style.display = "none";
-HeaderBreadcrumbText.textContent = "Thông tin cá nhân";
+HeaderBreadcrumbText.textContent = "";
 
 editButton.addEventListener("click", function () {
   editProfilePage.style.display = "";
@@ -51,7 +51,7 @@ editButton.addEventListener("click", function () {
 cancelButton.addEventListener("click", function () {
   editProfilePage.style.display = "none";
   viewProfilePage.style.display = "";
-  HeaderBreadcrumbText.textContent = "Thông tin cá nhân";
+  HeaderBreadcrumbText.textContent = "";
 });
 
 saveButton.addEventListener("click", function () {

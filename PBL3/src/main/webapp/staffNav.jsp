@@ -30,7 +30,7 @@
               <p class="title">Chức năng</p>
               <ul class="sidelist">
                 <li>
-                  <a href="#">
+                  <a href="staffOrderList.jsp">
                     <i class="bi bi-archive-fill"></i>
                     <span class="text">Đơn hàng</span>
                   </a>
@@ -42,8 +42,8 @@
                   </a>
                 </li>
                 <li class="active">
-                  <a href="#">
-                    <i class="bi bi-person-fill"></i>
+                  <a href="staffNav.jsp"">
+                    <i class=" bi bi-person-fill"></i>
                     <span class="text">Cá nhân</span>
                   </a>
                 </li>
@@ -63,7 +63,7 @@
                   <i class="bi bi-list"></i>
                 </button>
                 <ol class="breadcrumb m-0 p-0 bg-transparent">
-                  <li class="breadcrumb-item"><a href="#" id="HeaderBreadcrumbLink">Cá nhân</a></li>
+                  <li class="breadcrumb-item"><a href="staffNav.jsp" id="HeaderBreadcrumbLink">Cá nhân</a></li>
                   <li class="breadcrumb-item active" aria-current="page" id="HeaderBreadcrumbText"></li>
                 </ol>
               </nav>
