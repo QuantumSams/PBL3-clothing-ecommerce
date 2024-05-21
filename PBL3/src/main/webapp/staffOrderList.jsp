@@ -80,9 +80,10 @@
           <div class="container one-page" id="viewProfilePage">
             <div
               class="container-fluid ps-1 pe-0 py-3 d-flex justify-content-between align-items-center flex-wrap gap-2">
-              <h3 class="fw-bold">Danh sách đơn hàng</h3>
+              <h3 class="fw-bold">
+                Danh sách đơn hàng</h3>
             </div>
-            <div class="container orderTable">
+            <div class="container orderTable p-0">
               <div class="container searchHeader">
                 <form class="d-flex" role="search">
                   <input class="form-control" id="tableSearchBox" type="search"
@@ -90,7 +91,7 @@
                     style="width: 450px; height: 40px; " />
                 </form>
               </div>
-              <div class="container tableData p-0">
+              <div class="tableData p-0 table-responsive">
                 <table class="table table-hover">
 
                   <colgroup>
