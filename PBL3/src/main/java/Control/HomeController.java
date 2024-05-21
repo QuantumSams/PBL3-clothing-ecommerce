@@ -33,6 +33,7 @@ public class HomeController extends HttpServlet{
 		else if(action != null && action.equals("/trang_chu")) {
 			san_pham_Service.load_product_by_session(req, resp);
 			danh_muc_Service.load_category_by_session(req, resp);
+			
 			resp.sendRedirect("index.jsp");
 		}
 		else if(action != null && action.equals("/trang_chu_cua_hang")) {

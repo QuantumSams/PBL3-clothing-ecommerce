@@ -48,14 +48,15 @@ public class San_pham_Service {
 	
 	public void load_product_by_session(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		List<San_pham> list_san_pham = new San_pham_Service().LayTatCaSanPham();
+		List<San_pham> list_san_pham = LayTatCaSanPham();
+		//List<Muc_san_pham> list_muc_san_pham = new San_pham_Service()
 		
 		HttpSession session = req.getSession();
 		if(list_san_pham != null) session.setAttribute("san_pham", list_san_pham);
 	}
 	
 	public void load_product_by_json(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-		List<San_pham> list_san_pham = new San_pham_Service().LayTatCaSanPham();
+		List<San_pham> list_san_pham = LayTatCaSanPham();
 		
 		ObjectMapper mapper = new ObjectMapper();
 	    String json = mapper.writeValueAsString(list_san_pham);
@@ -67,10 +68,6 @@ public class San_pham_Service {
 	public void load_product(HttpServletRequest req, HttpServletResponse resp) {
 		String id = req.getParameter("id_san_pham");
 		San_pham san_pham = san_pham_DAO.getProduct_by_ID(id);
-		System.out.println(san_pham.getGia_tien() + " " + san_pham.getMuc_san_pham().size());
-		for(Muc_san_pham muc_san_pham : san_pham.getMuc_san_pham()) {
-			System.out.println(muc_san_pham.getAnh_chi_tiet() + muc_san_pham.getGia_tien());
-		}
 		HttpSession session = req.getSession();
 		session.setAttribute("product", san_pham);
 		
@@ -109,23 +106,6 @@ public class San_pham_Service {
 	}
 	
 	public void add_product(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-//		ObjectMapper objectMapper = new ObjectMapper();
-//		BufferedReader reader = req.getReader();
-//		
-//		List<Map<String, Object>> data = objectMapper.readValue(reader, List.class);
-//		List<String> imageStrings = (ArrayList<String>) data.get(0).get("images") ;
-//
-//		int id_danh_muc = Integer.parseInt((String) data.get(0).get("id_danh_muc"));
-//		Danh_muc_san_pham danh_muc = new Danh_muc_Service().getDanh_muc_Id(id_danh_muc);
-//		
-//		int id_san_pham = new Random().nextInt(1000000);		
-//		
-//		String ten_mat_hang = (String) data.get(0).get("ten_mat_hang") ;
-//		String mo_ta = (String) data.get(0).get("mo_ta") ;
-//		String thong_tin_chi_tiet = (String) data.get(0).get("thong_tin_chi_tiet") ;
-//		String thuong_hieu = (String) data.get(0).get("thuong_hieu") ;
-//		String chat_lieu = (String) data.get(0).get("chat_lieu") ;
-		
 		
 		int id_danh_muc = Integer.parseInt(req.getParameter("id_danh_muc"));
 		Danh_muc_san_pham danh_muc = new Danh_muc_Service().getDanh_muc_Id(id_danh_muc);
@@ -239,4 +219,5 @@ public class San_pham_Service {
 		
 		return list_anh;
 	}
+	
 }

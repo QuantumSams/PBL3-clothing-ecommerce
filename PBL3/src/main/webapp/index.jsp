@@ -51,12 +51,12 @@
 	                		<button>
 	                			${item.ten_san_pham}
 	                		</button>
-	                		<input type="text" name="id_san_pham" value="${item.id_san_pham}"/>
+	                		<input type="hidden" name="id_san_pham" value="${item.id_san_pham}"/>
 	                	</form>
 	                		
 	                	</h4>
 	                	<p class="card-text">${item.ten_nhan_hang}</p>
-	                	<h4 style = "font-weight: bold;">980.000VNĐ</h4>
+	                	<h4 style = "font-weight: bold;">${item.gia_tien}</h4>
                 		<div class="star">
 	                    	<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
 	                    	<i class="fa-solid fa-star" style="color: #FFD43B;"></i>

@@ -10,6 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="product.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
@@ -131,27 +132,26 @@
                     ${product.thong_tin_chung}
                 </h7>
                 <hr>
-                <h5>
-                    MÀU SẮC: 09 BLACK
+                <h5 id = "labelColor">
+                    Màu sắc: 
                 </h5>
                 <div class = "box color">
-					<c:forEach var="item" items="${product.muc_san_pham}">
-						<div class="square box1">
-							<img src="${item.mau_sac_san_pham.anh_mau_sac}" style = "width : 40px">
-						</div>
+					<c:forEach var="item" items="${product.mau_hien_co}">
+						<button class = "btnColor"><img src="${item.anh_mau_sac}" width="100%" ><div class ="colorDiv">${item.ten_mau}</div> <input value = "${item.id_mau_sac}" ></button>
+
 					</c:forEach>
                 </div>
                 <div class="size">
-                    <h5>
-                        KÍCH CỠ: NAM L
+                    <h5 id = "labelSize">
+                        Kích cỡ: 	
                     </h5>
                     <a href="" class="">
                         BẢNG KÍCH THƯỚC
                     </a>
                 </div>
                 <div class="box sizes">
-                	<c:forEach var="item" items="${product.muc_san_pham}">
-                	 	<div class="square"> ${item.kich_thuoc_san_pham.ten_size} </div>
+                	<c:forEach var="item" items="${product.size_hien_co}">
+                	 	<div class="square"> <button class ="btnSize">${item.ten_size} <input value = "${item.id_size}" ></button> </div>
 					</c:forEach>
                 </div>
                 <div>
@@ -167,9 +167,21 @@
                     <option value="2">3</option>
                     <option value="3">4</option>
                 </select>
-                <p style = "margin-top: 10px;">
+              <!--   <p style = "margin-top: 10px;">
                     Còn ít hàng
-                </p>
+                </p -->
+                <c:forEach var="item" items="${product.muc_san_pham}">
+                	<input class = "id_mau_sac_duyet" value="${item.mau_sac_san_pham.id_mau_sac}" type="hidden">
+                	<input class = "id_size_duyet" value="${item.kich_thuoc_san_pham.id_size}" type="hidden">
+                	<input class = "id_muc_duyet" value="${item.id_muc_san_pham}" type="hidden">
+                </c:forEach>
+                
+                <input class = "id_nguoi_dung" value="${acc.id_nguoi_dung}" type="hidden">
+                <input class = "resultColor" type="hidden">
+                <input class = "resultSize" type="hidden">
+               	<input class = "muc_san_pham" value="${product.muc_san_pham}" type="hidden">
+               	<input class = "so_luong" >
+               	
                 <button class = "cart">
                     THÊM VÀO GIỎ HÀNG
                 </button>
@@ -191,6 +203,7 @@
       </div>
     
 </body>
+<script src= "product.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 </html>

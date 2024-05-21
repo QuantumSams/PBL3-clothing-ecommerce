@@ -28,4 +28,8 @@ public class Gio_hang_DAO extends AbstractDao{
 		update(query, id_gio_hang);
 	}
 	
+	public void add(Gio_hang gio_hang) {
+		String query = "INSERT INTO gio_hang VALUES (?, ?, ?, ?)";
+		insert(query, gio_hang.getId_gio_hang(), gio_hang.getId_khach_hang(), gio_hang.getId_muc_san_pham(), gio_hang.getSo_luong());
+	}
 }

@@ -41,29 +41,6 @@ $(document).ready(function() {
 		console.log(imageSrc);
 		console.log(JSON.stringify(imageSrc));
 
-		/*data.push({
-			id_danh_muc: 	$("#Danh_muc").val(),
-			ten_mat_hang: 	$("#ten_mat_hang").val(),
-			mo_ta: 			$("#mo_ta").val(),
-			thong_tin_chi_tiet: $("#thong_tin_chi_tiet").val(),
-			thuong_hieu: 	$("#thuong_hieu").val(),
-			chat_lieu: 		$("#chat_lieu").val(),
-			images: 		imageSrc
-		});
-			
-		$.ajax({
-			  url: "add_product", // URL of your Servlet
-			  type: "POST",
-			  dataType: 'json',
-			  data: 
-					 JSON.stringify(data),
-			 
-			  success: function(data) {
-				//alert("Thêm sản phẩm thành công!");
-			  }
-	   });*/
-
-		
 		$.ajax({
 			url: "add_product", // URL of your Servlet
 			type: "POST",
