@@ -1,6 +1,5 @@
 //MÀN QUẢN LÝ THÔNG TIN CÁ NHÂN
 
-
 //thông tin cá nhân
 //viewProfilePageName - tên người dùng
 const viewProfilePageName = document.querySelector("#viewProfilePageName");
@@ -52,9 +51,3 @@ togglePasswordVisibilityButton.addEventListener("click", function () {
     viewProfilePagePassword.type = "password";
   }
 });
-
-
-
-
-
-

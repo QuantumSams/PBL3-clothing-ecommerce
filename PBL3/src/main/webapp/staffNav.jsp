@@ -193,7 +193,7 @@
                       <dl class="row">
                         <dt class="col-sm-4">Họ và tên</dt>
                         <dd class="col-sm-8">
-                          <input class="form-control" id="EditProfileNameField" type="text" value="Nguyễn Văn A">
+                          <input class="form-control" id="EditProfileNameField" type="text">
                         </dd>
                       </dl>
                       <dl class="row">
@@ -217,8 +217,7 @@
                       </dl>
                       <dl class="row">
                         <dt class="col-sm-4">Số điện thoại</dt>
-                        <dd class="col-sm-8"><input class="form-control" id="EditProfilePhoneField" type="text"
-                            value="0905 123 455">
+                        <dd class="col-sm-8"><input class="form-control" id="EditProfilePhoneField" type="text">
                         </dd>
                       </dl>
                       <dl class="row">
@@ -239,8 +238,7 @@
                       <h5 class="card-title fw-bold">Thông tin tài khoản</h5>
                       <dl class="row">
                         <dt class="col-sm-4">Tài khoản</dt>
-                        <dd class="col-sm-8"><input class="form-control" id="EditProfileUsernameField" type="text"
-                            value="nguyenvana@123">
+                        <dd class="col-sm-8"><input class="form-control" id="EditProfileUsernameField" type="text">
                         </dd>
                       </dl>
                       <dl class="row align-items-center">
@@ -248,7 +246,7 @@
                         <dd class="col-sm-8 d-flex 
                                                                 justify-content-between
                                                                 align-items-center">
-                          <input class="form-control me-2" type="password" value="123456" id="EditProfilePasswordField">
+                          <input class="form-control me-2" type="password" id="EditProfilePasswordField">
                           <button type="button" class="btn btn-dark p0" id="EditProfilePasswordFieldEyeButton"><i
                               class="bi bi-eye-fill"></i></button>
                         </dd>
@@ -272,7 +270,7 @@
                       </div>
                     </h5>
                     <img
-                      src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=2662&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                      
                       class="img-fluid" id="EditProfileImageUploadShow">
                   </div>
                 </div>
