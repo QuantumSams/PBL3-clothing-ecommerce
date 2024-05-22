@@ -57,9 +57,9 @@
           <div class="container">
             <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap gap-2">
               <nav class="d-flex align-items-center gap-2" aria-label="breadcrumb">
-                <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
-                  data-target=".sidecontainer" aria-controls="sidebar" aria-expanded="false"
-                  aria-label="Toggle navigation" id="toggleSidebar">
+                <button class="navbar-toggler d-lg-none" type="button" aria-controls="sidebar" aria-expanded="false"
+                  data-bs-toggle="collapse" data-bs-target=".sidecontainer" aria-label="Toggle navigation"
+                  id="toggleSidebar">
                   <i class="bi bi-list"></i>
                 </button>
                 <ol class="breadcrumb m-0 p-0 bg-transparent">
