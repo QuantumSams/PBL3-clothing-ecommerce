@@ -42,7 +42,7 @@
                   </a>
                 </li>
                 <li class="active">
-                  <a href="staffNav.jsp"">
+                  <a href="staffNav.jsp">
                     <i class=" bi bi-person-fill"></i>
                     <span class="text">Cá nhân</span>
                   </a>
@@ -97,19 +97,19 @@
                       <h5 class="card-title fw-bold">Thông tin cá nhân</h5>
                       <dl class="row">
                         <dt class="col-sm-4">Họ và tên</dt>
-                        <dd class="col-sm-8">Nguyễn Văn A</dd>
+                        <dd class="col-sm-8" id="viewProfilePageName"></dd>
                       </dl>
                       <dl class="row">
                         <dt class="col-sm-4">Giới tính</dt>
-                        <dd class="col-sm-8">Nam</dd>
+                        <dd class="col-sm-8" id="viewProfilePageGender"></dd>
                       </dl>
                       <dl class="row">
                         <dt class="col-sm-4">Số điện thoại</dt>
-                        <dd class="col-sm-8">0934 123 456</dd>
+                        <dd class="col-sm-8" id="viewProfilePagePhoneNum"></dd>
                       </dl>
                       <dl class="row">
                         <dt class="col-sm-4">Địa chỉ</dt>
-                        <dd class="col-sm-8">Thanh Khê, Đà Nẵng</dd>
+                        <dd class="col-sm-8" id="viewProfilePageAddress"></dd>
                       </dl>
                       </p>
                     </div>
@@ -122,7 +122,7 @@
                       <dl class="row">
                         <dt class="col-sm-4">Tài khoản</dt>
                         <dd class="col-sm-8">
-                          <input class="form-control" type="text" value="nguyenvana@123" readonly>
+                          <input class="form-control" id="viewProfilePageAccount" readonly>
                         </dd>
                       </dl>
                       <dl class="row align-items-center">
@@ -130,7 +130,7 @@
                         <dd class="col-sm-8 d-flex 
                                                                 justify-content-between
                                                                 align-items-center">
-                          <input class="form-control me-2" type="password" value="123456" readonly id="passwordField">
+                          <input class="form-control me-2" id="viewProfilePagePassword" type="password" readonly>
                           <button type="button" class="btn btn-dark p0" id="passwordEye"><i
                               class="bi bi-eye-fill"></i></button>
                         </dd>
@@ -146,9 +146,7 @@
                     <h5 class="card-title fw-bold">
                       Ảnh chân dung
                     </h5>
-                    <img
-                      src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=2662&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                      class="img-fluid">
+                    <img class="img-fluid" id="viewProfilePageImage">
                   </div>
                 </div>
               </div>
