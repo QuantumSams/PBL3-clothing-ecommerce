@@ -62,8 +62,6 @@
                   id="toggleSidebar">
                   <i class="bi bi-list"></i>
                 </button>
-                <i class="bi bi-list"></i>
-                </button>
                 <ol class="breadcrumb m-0 p-0 bg-transparent">
                   <li class="breadcrumb-item"><a href="staffOrderList.jsp" id="HeaderBreadcrumbLink">Đơn hàng</a></li>
                   <li class="breadcrumb-item active" aria-current="page" id="HeaderBreadcrumbText">Đơn hàng 01</li>
@@ -85,11 +83,7 @@
               <button type="button" class="btn btn-primary btn-sm rounded-circle" id="backButton">
                 <i class="bi bi-caret-left-fill"></i>
               </button>
-
-
-              <h3 class="fw-bold m-0">Đơn hàng 01</h3>
-
-
+              <h3 class="fw-bold m-0" id="orderTitle"></h3>
             </div>
             <div class="row g-lg-3">
               <div class="col-xl-8 col-sm-12">
@@ -144,22 +138,22 @@
                       <h5 class="card-title fw-bold">Thành tiền</h5>
                       <dl class="row">
                         <dd class="col-sm-8">Tổng tiền hàng</dd>
-                        <dd class="col-sm-2">12 000</dd>
+                        <dd class="col-sm-2" id="orderValueSum"></dd>
                         <dt class="col-sm-2">VND</dt>
                       </dl>
                       <dl class="row">
                         <dd class="col-sm-8">Phí vận chuyển</dd>
-                        <dd class="col-sm-2">0</dd>
+                        <dd class="col-sm-2" id="orderValueShippingFee">0</dd>
                         <dt class="col-sm-2">VND</dt>
                       </dl>
                       <dl class="row">
                         <dd class="col-sm-8">Giảm giá</dd>
-                        <dd class="col-sm-2">0</dd>
+                        <dd class="col-sm-2" id="orderValueDiscount">0</dd>
                         <dt class="col-sm-2">VND</dt>
                       </dl>
                       <dl class="row">
                         <dd class="col-sm-8">Thành tiền</dd>
-                        <dd class="col-sm-2">12 000</dd>
+                        <dd class="col-sm-2" id="orderValueTotal"></dd>
                         <dt class="col-sm-2">VND</dt>
                       </dl>
                     </div>
@@ -196,15 +190,15 @@
                       </h5>
                       <dl class="row">
                         <dt class="col-sm-5 row-12">Họ và tên</dt>
-                        <dd class="col-sm-7 row-12">Nguyễn Văn A</dd>
+                        <dd class="col-sm-7 row-12" id="shippingInfoName"></dd>
                       </dl>
                       <dl class="row">
                         <dt class="col-sm-5 row-12">SĐT giao hàng</dt>
-                        <dd class="col-sm-7 row-12">0934 123 456</dd>
+                        <dd class="col-sm-7 row-12" id="shippingInfoPhoneNum">0934 123 456</dd>
                       </dl>
                       <dl class="row">
                         <dt class="col-sm-5 row-12">Địa chỉ giao hàng</dt>
-                        <dd class="col-sm-7 row-12">31 Ba Đình, phường Thạch Trang, quận Hải Châu, Thành phố Đà Nẵng
+                        <dd class="col-sm-7 row-12" id="shippingInfoAddress">
                         </dd>
                       </dl>
                     </div>
@@ -216,26 +210,26 @@
                       </h5>
                       <dl class="row">
                         <dt class="col-sm-5 row-12">Số lượng sản phẩm</dt>
-                        <dd class="col-sm-7 row-12">189</dd>
+                        <dd class="col-sm-7 row-12" id="orderInfoQuantity"></dd>
                       </dl>
                       <dl class="row">
                         <dt class="col-sm-5 row-12">Đặt vào lúc</dt>
-                        <dd class="col-sm-7 row-12">25/12/2023</dd>
+                        <dd class="col-sm-7 row-12" id="orderInfoPlacingDate"></dd>
                       </dl>
                       <dl class="row">
                         <dt class="col-sm-5 row-12">Giao vào lúc</dt>
-                        <dd class="col-sm-7 row-12">-
+                        <dd class="col-sm-7 row-12" id="orderInfoShippingDate">
                         </dd>
                       </dl>
                       <dl class="row">
                         <dt class="col-sm-5 row-12">Nhân viên xác nhận</dt>
-                        <dd class="col-sm-7 row-12">-
+                        <dd class="col-sm-7 row-12" id="orderInfoEmployee">
                         </dd>
                       </dl>
                       <dl class="row align-items-center">
                         <dt class="col-sm-5 row-12">Trạng thái</dt>
                         <dd class="col-sm-7 row-12">
-                          <div class="status status-waiting">Chờ xác nhận</div>
+                          <div class="status status-waiting" id="OrderInfoStatus">Chờ xác nhận</div>
                         </dd>
                       </dl>
                     </div>
@@ -245,7 +239,8 @@
                       <h5 class="card-title fw-bold">
                         Ghi chú đơn hàng
                       </h5>
-                      Chỉ giao vào cuối tuần
+                      <p id="orderNote"></p>
+
                     </div>
                   </div>
                   <div class="card">
@@ -299,6 +294,7 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"></script>
     <script src="navigation.js"></script>
+    <script src="staffOrder.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
   </body>
 
