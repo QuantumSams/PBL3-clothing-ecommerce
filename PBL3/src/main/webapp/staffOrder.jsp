@@ -109,175 +109,197 @@
                           </tr>
                         </thead>
                         <tbody>
+
+                          <!-- Thêm dữ liệu vào bảng tại đây <-->
+                          <!--
+                    <c:forEach var="item" items="${list_san_pham_mua}">
+                    <tr>
+                      <th scope="row">{item.index}</th>
+                      <td>
+                        <div class="d-flex gap-1">
+                          ${item.key.ten_san_pham}
+                        </div>
+                        <div class="status status-accent">${item.key.kich_thuoc_san_pham.ten_size}/${item.key.mau_sac_san_pham.ten_mau}</div>
+                        </div>
+                      </td>
+                      <td>{item.value}</td>
+                      <td>${item.key.gia_tien}</td>
+                      <td><button type="button" class="btn btn-outline-danger p-1" id="removeProduct">
+                          <i class="bi bi-trash3-fill"></i></button>
+                        </button>
+                      </td>
+                    </tr>
+                        <-->
+
+                          <!-- Ví dụ 1 hàng dữ liệu-->
                           <tr>
                             <th scope="row">1</th>
-
                             <td>
                               <div class="d-flex gap-1">
                                 Áo thun dáng rộng tay lỡ
-                                <div class="status status-accent">S/Xanh biển</div>
                               </div>
-                            </td>
-                            <td>1</td>
-                            <td>15 000</td>
-                            <td><button type="button" class="btn btn-outline-danger p-1" id="removeProduct">
-                                <i class="bi bi-trash3-fill"></i></button>
-                              </button>
-
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                      </p>
+                              <div class="status status-accent">S/Xanh biển</div>
                     </div>
+                    </td>
+                    <td>1</td>
+                    <td>15 000</td>
+                    <td><button type="button" class="btn btn-outline-danger p-1" id="removeProduct">
+                        <i class="bi bi-trash3-fill"></i></button>
+                      </button>
+
+                    </td>
+                    </tr>
+                    <!-- Hết ví dụ-->
+                    </tbody>
+                    </table>
+                    </p>
                   </div>
                 </div>
-                <div class="row m-0">
-                  <div class="card">
-                    <div class="card-body">
-                      <h5 class="card-title fw-bold">Thành tiền</h5>
-                      <dl class="row">
-                        <dd class="col-sm-8">Tổng tiền hàng</dd>
-                        <dd class="col-sm-2" id="orderValueSum"></dd>
-                        <dt class="col-sm-2">VND</dt>
-                      </dl>
-                      <dl class="row">
-                        <dd class="col-sm-8">Phí vận chuyển</dd>
-                        <dd class="col-sm-2" id="orderValueShippingFee">0</dd>
-                        <dt class="col-sm-2">VND</dt>
-                      </dl>
-                      <dl class="row">
-                        <dd class="col-sm-8">Giảm giá</dd>
-                        <dd class="col-sm-2" id="orderValueDiscount">0</dd>
-                        <dt class="col-sm-2">VND</dt>
-                      </dl>
-                      <dl class="row">
-                        <dd class="col-sm-8">Thành tiền</dd>
-                        <dd class="col-sm-2" id="orderValueTotal"></dd>
-                        <dt class="col-sm-2">VND</dt>
-                      </dl>
-                    </div>
+              </div>
+              <div class="row m-0">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title fw-bold">Thành tiền</h5>
+                    <dl class="row">
+                      <dd class="col-sm-8">Tổng tiền hàng</dd>
+                      <dd class="col-sm-2" id="orderValueSum"></dd>
+                      <dt class="col-sm-2">VND</dt>
+                    </dl>
+                    <dl class="row">
+                      <dd class="col-sm-8">Phí vận chuyển</dd>
+                      <dd class="col-sm-2" id="orderValueShippingFee">0</dd>
+                      <dt class="col-sm-2">VND</dt>
+                    </dl>
+                    <dl class="row">
+                      <dd class="col-sm-8">Giảm giá</dd>
+                      <dd class="col-sm-2" id="orderValueDiscount">0</dd>
+                      <dt class="col-sm-2">VND</dt>
+                    </dl>
+                    <dl class="row">
+                      <dd class="col-sm-8">Thành tiền</dd>
+                      <dd class="col-sm-2" id="orderValueTotal"></dd>
+                      <dt class="col-sm-2">VND</dt>
+                    </dl>
                   </div>
                 </div>
-                <button type="button pb-1" class="btn btn-dark m-0 w-100" id="confirmOrderModalTrigger"
-                  data-bs-toggle="modal" data-bs-target="#confirmOrderModal">Xác nhận đơn hàng</button>
+              </div>
+              <button type="button pb-1" class="btn btn-dark m-0 w-100" id="confirmOrderModalTrigger"
+                data-bs-toggle="modal" data-bs-target="#confirmOrderModal">Xác nhận đơn hàng</button>
 
-                <div class="modal fade" id="confirmOrderModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                  aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Xác nhận đơn hàng</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body">
-                        Bạn muốn thật sự xác nhận đơn hàng?
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" id="orderConfirmButton">Xác nhận</button>
-                        <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Huỷ</button>
-                      </div>
+              <div class="modal fade" id="confirmOrderModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="exampleModalLabel">Xác nhận đơn hàng</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      Bạn muốn thật sự xác nhận đơn hàng?
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-primary" id="orderConfirmButton">Xác nhận</button>
+                      <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Huỷ</button>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="col-xl-4 col-sm-12">
-                <div class="row m-0">
-                  <div class="card">
-                    <div class="card-body">
-                      <h5 class="card-title fw-bold">
-                        Thông tin giao nhận
-                      </h5>
-                      <dl class="row">
-                        <dt class="col-sm-5 row-12">Họ và tên</dt>
-                        <dd class="col-sm-7 row-12" id="shippingInfoName"></dd>
-                      </dl>
-                      <dl class="row">
-                        <dt class="col-sm-5 row-12">SĐT giao hàng</dt>
-                        <dd class="col-sm-7 row-12" id="shippingInfoPhoneNum"></dd>
-                      </dl>
-                      <dl class="row">
-                        <dt class="col-sm-5 row-12">Địa chỉ giao hàng</dt>
-                        <dd class="col-sm-7 row-12" id="shippingInfoAddress">
-                        </dd>
-                      </dl>
-                    </div>
+            </div>
+            <div class="col-xl-4 col-sm-12">
+              <div class="row m-0">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title fw-bold">
+                      Thông tin giao nhận
+                    </h5>
+                    <dl class="row">
+                      <dt class="col-sm-5 row-12">Họ và tên</dt>
+                      <dd class="col-sm-7 row-12" id="shippingInfoName"></dd>
+                    </dl>
+                    <dl class="row">
+                      <dt class="col-sm-5 row-12">SĐT giao hàng</dt>
+                      <dd class="col-sm-7 row-12" id="shippingInfoPhoneNum"></dd>
+                    </dl>
+                    <dl class="row">
+                      <dt class="col-sm-5 row-12">Địa chỉ giao hàng</dt>
+                      <dd class="col-sm-7 row-12" id="shippingInfoAddress">
+                      </dd>
+                    </dl>
                   </div>
-                  <div class="card">
-                    <div class="card-body">
-                      <h5 class="card-title fw-bold">
-                        Thông tin đơn hàng
-                      </h5>
-                      <dl class="row">
-                        <dt class="col-sm-5 row-12">Số lượng sản phẩm</dt>
-                        <dd class="col-sm-7 row-12" id="orderInfoQuantity"></dd>
-                      </dl>
-                      <dl class="row">
-                        <dt class="col-sm-5 row-12">Đặt vào lúc</dt>
-                        <dd class="col-sm-7 row-12" id="orderInfoPlacingDate"></dd>
-                      </dl>
-                      <dl class="row">
-                        <dt class="col-sm-5 row-12">Giao vào lúc</dt>
-                        <dd class="col-sm-7 row-12" id="orderInfoShippingDate">
-                        </dd>
-                      </dl>
-                      <dl class="row">
-                        <dt class="col-sm-5 row-12">Nhân viên xác nhận</dt>
-                        <dd class="col-sm-7 row-12" id="orderInfoEmployee">
-                        </dd>
-                      </dl>
-                      <dl class="row align-items-center">
-                        <dt class="col-sm-5 row-12">Trạng thái</dt>
-                        <dd class="col-sm-7 row-12">
-                          <div id="orderInfoStatus"></div>
-                        </dd>
-                      </dl>
-                    </div>
+                </div>
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title fw-bold">
+                      Thông tin đơn hàng
+                    </h5>
+                    <dl class="row">
+                      <dt class="col-sm-5 row-12">Số lượng sản phẩm</dt>
+                      <dd class="col-sm-7 row-12" id="orderInfoQuantity"></dd>
+                    </dl>
+                    <dl class="row">
+                      <dt class="col-sm-5 row-12">Đặt vào lúc</dt>
+                      <dd class="col-sm-7 row-12" id="orderInfoPlacingDate"></dd>
+                    </dl>
+                    <dl class="row">
+                      <dt class="col-sm-5 row-12">Giao vào lúc</dt>
+                      <dd class="col-sm-7 row-12" id="orderInfoShippingDate">
+                      </dd>
+                    </dl>
+                    <dl class="row">
+                      <dt class="col-sm-5 row-12">Nhân viên xác nhận</dt>
+                      <dd class="col-sm-7 row-12" id="orderInfoEmployee">
+                      </dd>
+                    </dl>
+                    <dl class="row align-items-center">
+                      <dt class="col-sm-5 row-12">Trạng thái</dt>
+                      <dd class="col-sm-7 row-12">
+                        <div id="orderInfoStatus"></div>
+                      </dd>
+                    </dl>
                   </div>
-                  <div class="card">
-                    <div class="card-body">
-                      <h5 class="card-title fw-bold">
-                        Ghi chú đơn hàng
-                      </h5>
-                      <p id="orderNote"></p>
+                </div>
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title fw-bold">
+                      Ghi chú đơn hàng
+                    </h5>
+                    <p id="orderNote"></p>
 
-                    </div>
                   </div>
-                  <div class="card">
-                    <div class="card-body">
-                      <h5 class="card-title fw-bold">
-                        Huỷ đơn hàng
-                      </h5>
-                      <button type="button" class="btn btn-danger p0 w-100" id="cancelOrderModalTrigger"
-                        data-bs-toggle="modal" data-bs-target="#cancelOrderModal"><i
-                          class="bi bi-x-octagon-fill pe-1"></i>
-                        Huỷ đơn hàng</button>
+                </div>
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title fw-bold">
+                      Huỷ đơn hàng
+                    </h5>
+                    <button type="button" class="btn btn-danger p0 w-100" id="cancelOrderModalTrigger"
+                      data-bs-toggle="modal" data-bs-target="#cancelOrderModal"><i
+                        class="bi bi-x-octagon-fill pe-1"></i>
+                      Huỷ đơn hàng</button>
 
-                      <div class="modal fade" id="cancelOrderModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h1 class="modal-title fs-5" id="exampleModalLabel">Huỷ đơn hàng</h1>
-                              <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                              Bạn muốn thật sự huỷ đơn hàng?
-                              <h5>Hành động này không thể hoàn tác!</h5>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-danger" id="orderCancelButton">Huỷ đơn
-                                hàng</button>
-                              <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Hoàn
-                                tác</button>
-                            </div>
+                    <div class="modal fade" id="cancelOrderModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                      aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Huỷ đơn hàng</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            Bạn muốn thật sự huỷ đơn hàng?
+                            <h5>Hành động này không thể hoàn tác!</h5>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" id="orderCancelButton">Huỷ đơn
+                              hàng</button>
+                            <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Hoàn
+                              tác</button>
                           </div>
                         </div>
                       </div>
-
-
                     </div>
+
+
                   </div>
                 </div>
               </div>
@@ -285,6 +307,7 @@
           </div>
         </div>
       </div>
+    </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.js"
       integrity="sha512-8Z5++K1rB3U+USaLKG6oO8uWWBhdYsM3hmdirnOEWp8h2B1aOikj5zBzlXs8QOrvY9OxEnD2QDkbSKKpfqcIWw=="
