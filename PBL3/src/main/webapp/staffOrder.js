@@ -1,5 +1,11 @@
 //tên đơn hàng ở đầu trang
 const orderTitle = document.querySelector("#orderTitle");
+const orderHeadingTitle = document.querySelector("#orderHeadingTitle");
+
+function orderTitleDefaultValues(orderTitleName) {
+  orderTitle.innerText = orderTitleName;
+  orderHeadingTitle.innerText = orderTitleName;
+}
 
 //THÀNH TIỀN
 
@@ -69,9 +75,18 @@ function orderNoteDefaultValues() {
 
 //giá trị mặc định
 window.addEventListener("load", function () {
-  orderTitle.innerText = "Đơn hàng 02";
+  orderTitleDefaultValues("Đơn hàng xyz");
   orderValueDefaultValues();
   shippingDefaultValues();
   orderInfoDefaultValues();
   orderNoteDefaultValues();
+});
+
+//xoá sản phẩm trong giỏ hàng
+$(document).ready(function () {
+  $("#removeProduct").click(function () {
+    //todo: lấy ID của hàng cần xoá, gửi lệnh xoá lên server
+    console.log("Đã xoá ra khỏi giỏ hàng");
+    // location.reload();
+  });
 });

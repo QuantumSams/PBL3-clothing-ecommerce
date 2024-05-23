@@ -1,6 +1,6 @@
 //public final String doi_xac_nhan = "Đợi xác nhận đơn hàng";
 //public final String dang_van_chuyen = "Đang vận chuyển";
-//public final String da_xac_nhan_don = "Đã nhận đươc đơn hàng";
+//public final String da_xac_nhan_don = "Đã nhận được đơn hàng";
 
 //các trạng thái giao hàng
 const ORDER_STATUS = {
