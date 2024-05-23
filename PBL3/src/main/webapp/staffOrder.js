@@ -56,7 +56,8 @@ function orderInfoDefaultValues() {
   orderInfoPlacingDate.innerText = "01/01/2021";
   orderInfoShippingDate.innerText = "01/01/2021";
   orderInfoEmployee.innerText = "Nguyễn Văn B";
-  //   orderInfoStatus.innerText = "Đã giao hàng"; todo
+  orderInfoStatus.innerText = "Đợi xác nhận đơn hàng";
+  orderInfoStatus.className = ORDER_STATUS["Đợi xác nhận đơn hàng"];
 }
 
 //GHI CHÚ ĐƠN HÀNG

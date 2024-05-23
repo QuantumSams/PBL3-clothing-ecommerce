@@ -229,7 +229,7 @@
                       <dl class="row align-items-center">
                         <dt class="col-sm-5 row-12">Trạng thái</dt>
                         <dd class="col-sm-7 row-12">
-                          <div class="status status-waiting" id="OrderInfoStatus">Chờ xác nhận</div>
+                          <div id="orderInfoStatus"></div>
                         </dd>
                       </dl>
                     </div>
@@ -295,6 +295,8 @@
       crossorigin="anonymous"></script>
     <script src="navigation.js"></script>
     <script src="staffOrder.js"></script>
+    <script src="orderStatus.js"></script>
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
   </body>
 
