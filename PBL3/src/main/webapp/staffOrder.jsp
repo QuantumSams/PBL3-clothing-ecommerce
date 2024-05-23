@@ -165,8 +165,27 @@
                     </div>
                   </div>
                 </div>
-                <button type="button pb-1" class="btn btn-dark m-0 w-100" id="passwordEye">Xác nhận đơn hàng
-                </button>
+                <button type="button pb-1" class="btn btn-dark m-0 w-100" id="confirmOrderModalTrigger"
+                  data-bs-toggle="modal" data-bs-target="#confirmOrderModal">Xác nhận đơn hàng</button>
+
+                <div class="modal fade" id="confirmOrderModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                  aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Xác nhận đơn hàng</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        Bạn muốn thật sự xác nhận đơn hàng?
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="orderConfirmButton">Xác nhận</button>
+                        <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Huỷ</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div class="col-xl-4 col-sm-12">
                 <div class="row m-0">
@@ -234,9 +253,35 @@
                       <h5 class="card-title fw-bold">
                         Huỷ đơn hàng
                       </h5>
-                      <button type="button" class="btn btn-danger p0 w-100" id="cancelOrder"><i
+                      <button type="button" class="btn btn-danger p0 w-100" id="cancelOrderModalTrigger"
+                        data-bs-toggle="modal" data-bs-target="#cancelOrderModal"><i
                           class="bi bi-x-octagon-fill pe-1"></i>
                         Huỷ đơn hàng</button>
+
+                      <div class="modal fade" id="cancelOrderModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h1 class="modal-title fs-5" id="exampleModalLabel">Huỷ đơn hàng</h1>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              Bạn muốn thật sự huỷ đơn hàng?
+                              <h5>Hành động này không thể hoàn tác!</h5>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-danger" id="orderCancelButton">Huỷ đơn
+                                hàng</button>
+                              <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Hoàn
+                                tác</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+
                     </div>
                   </div>
                 </div>
