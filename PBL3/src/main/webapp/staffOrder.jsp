@@ -95,8 +95,9 @@
                       <table class="table table-hover w-100">
                         <colgroup>
                           <col span="1" style="width: 5%;">
-                          <col span="1" style="width: 45%;">
+                          <col span="1" style="width: 40%;">
                           <col span="1" style="width: 20%;">
+                          <col span="1" style="width: 30%;">
                           <col span="1" style="width: 5%;">
                         </colgroup>
                         <thead>
@@ -123,7 +124,14 @@
                         </div>
                       </td>
                       <td>{item.value}</td>
-                      <td>${item.key.gia_tien}</td>
+                      <td>
+                        <span class="me-5">
+                          {item.key.gia_ban_san_pham}
+                        </span>
+                        <span>
+                          VND
+                        </span>
+                      </td>
                       <td><button type="button" class="btn btn-outline-danger p-1" id="removeProduct">
                           <i class="bi bi-trash3-fill"></i></button>
                         </button>
@@ -142,7 +150,14 @@
                     </div>
                     </td>
                     <td>1</td>
-                    <td>15 000</td>
+                    <td>
+                      <span class="me-5">
+                        15 000
+                      </span>
+                      <span>
+                        VND
+                      </span>
+                    </td>
                     <td><button type="button" class="btn btn-outline-danger p-1" id="removeProduct">
                         <i class="bi bi-trash3-fill"></i></button>
                       </button>
@@ -167,12 +182,12 @@
                     </dl>
                     <dl class="row">
                       <dd class="col-sm-8">Phí vận chuyển</dd>
-                      <dd class="col-sm-2" id="orderValueShippingFee">0</dd>
+                      <dd class="col-sm-2" id="orderValueShippingFee"></dd>
                       <dt class="col-sm-2">VND</dt>
                     </dl>
                     <dl class="row">
                       <dd class="col-sm-8">Giảm giá</dd>
-                      <dd class="col-sm-2" id="orderValueDiscount">0</dd>
+                      <dd class="col-sm-2" id="orderValueDiscount"></dd>
                       <dt class="col-sm-2">VND</dt>
                     </dl>
                     <dl class="row">
