@@ -2,7 +2,7 @@ package Control;
 
 import java.io.IOException;
 
-import Service.Order.Order_Service;
+import Model.BLL.Service.Order.Order_Service;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -11,8 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet(urlPatterns = {	"/create_order", "/update_order", 
 							"/lich_su_don_tong_quat", "/lich_su_don_chi_tiet", 
-							"/xac_nhan_dat_don", "/nhan_duoc_don_hang",
-							"/gio_hang", "/them_gio_hang"})
+							"/xac_nhan_dat_don", "/nhan_duoc_don_hang" })
 public class OrderController extends HttpServlet{
 
 	private static final long serialVersionUID = 6360439063345108716L;
@@ -36,9 +35,6 @@ public class OrderController extends HttpServlet{
 			req.getRequestDispatcher("lishsudon.jsp").forward(req, resp);
 		}
 		
-		else if(action.equals("/gio_hang")) {
-			
-		}
 	}
 	
 	@Override
@@ -50,17 +46,14 @@ public class OrderController extends HttpServlet{
 			order_Service.add_order(req, resp);
 		}
 		else if(action.equals("/update_order")) {
-			order_Service.update_order(req, resp);
+			//order_Service.update_order(req, resp);
 		}
 		else if(action.equals("/xac_nhan_dat_don")) {
-			order_Service.xac_nhan_dat_don(req, resp);
+			//order_Service.xac_nhan_dat_don(req, resp);
 		}
 		else if(action.equals("/nhan_duoc_don_hang")) {
-			order_Service.nhan_duoc_don_hang(req, resp);
-		}
-		else if(action.equals("/them_gio_hang")) {
-			order_Service.them_gio_hang(req, resp);
+			//order_Service.nhan_duoc_don_hang(req, resp);
 		}
 	}
-	
+
 }

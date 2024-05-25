@@ -15,6 +15,11 @@ public class Danh_muc_san_pham{
 		this.parent_id = parent_id;
 		this.category = category;
 	}
+	
+	public Danh_muc_san_pham() {
+		
+	}
+	
 	public int getId() {
 		return id;
 	}

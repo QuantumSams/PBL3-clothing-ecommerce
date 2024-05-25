@@ -60,23 +60,32 @@
                             <table class = "content-table">
                                 <thead>
                                     <tr>
+                                    	<th>Ảnh sản phẩm</th>
                                         <th>Tên sản phẩm</th>
                                         <th>Số lượng</th>
                                         <th>Giá bán</th>
                                         <th>Đối tượng</th>
                                         <th>Danh mục</th>
                                         <th>Nhãn hàng</th>
+                                        <th>Chi tiết</th>
+                                        <th>Xóa</th>
                                     </tr>
                                 </thead>
                                 <tbody id="san_pham">
                                 	<c:forEach var="item" items="${san_pham}">
                                 		<tr>
-                                        	<td><img src="${item.anh_san_pham[0]}" width="50px" alt="">${item.ten_san_pham}</td>
-                                        	<td>100</td>
-                                        	<td>100.000 VNĐ</td>
-                                        	<td>Nam</td>
-                                        	<td>${item.danh_muc_san_pham}</td>
-                                        	<td>${item.ten_nhan_hang}</td>
+                                			<form action='chinh_sua_san_pham' method='get'>
+	                                			<td><img src="${item.anh_san_pham[0]}" width="50px" alt=""></td>
+	                                        	<td>${item.ten_san_pham}</td>
+	                                        	<td>${item.ten_san_pham}</td>
+	                                        	<td>${item.gia_tien} VNĐ</td>
+	                                        	<td>Nam</td>
+	                                        	<td>${item.danh_muc_san_pham}</td>
+	                                        	<td>${item.ten_nhan_hang}</td>
+	                                        	<td><button class = "buttonSearch">Chi tiết</button></td>
+	                                        	<td><button class = "buttonSearch">Xóa</button></td>
+	                                        	<input type="hidden" name='id_san_pham' value="${item.id_san_pham}">
+                                        	</form>
                                     	</tr>
                                 	</c:forEach>
                                 </tbody>
@@ -117,78 +126,19 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                    	<td><img src="386644391_1615327005662931_6147334074894597765_n.jpg" width="50px" alt=""></td>
-                                        <td>Tên sản phẩm 1</td>
-                                        <td>XL</td>
-                                        <td>Đỏ</td>
-                                        <td>100</td>
-                                        <td>99</td>
-                                        <td>22/04/2024</td>
-                                    </tr>
-                                    <tr>
-                                        <td><img src="386644391_1615327005662931_6147334074894597765_n.jpg" width="50px" alt=""></td>
-                                        <td>Tên sản phẩm 1</td>
-                                        <td>XL</td>
-                                        <td>Đỏ</td>
-                                        <td>100</td>
-                                        <td>99</td>
-                                        <td>22/04/2024</td>
-                                    </tr>
-                                    <tr>
-                                        <td><img src="386644391_1615327005662931_6147334074894597765_n.jpg" width="50px" alt=""></td>
-                                        <td>Tên sản phẩm 1</td>
-                                        <td>XL</td>
-                                        <td>Đỏ</td>
-                                        <td>100</td>
-                                        <td>99</td>
-                                        <td>22/04/2024</td>
-                                    </tr>
-                                    <tr>
-                                        <td><img src="386644391_1615327005662931_6147334074894597765_n.jpg" width="50px" alt=""></td>
-                                        <td>Tên sản phẩm 1</td>
-                                        <td>XL</td>
-                                        <td>Đỏ</td>
-                                        <td>100</td>
-                                        <td>99</td>
-                                        <td>22/04/2024</td>
-                                    </tr>
-                                    <tr>
-                                        <td><img src="386644391_1615327005662931_6147334074894597765_n.jpg" width="50px" alt=""></td>
-                                        <td>Tên sản phẩm 1</td>
-                                        <td>XL</td>
-                                        <td>Đỏ</td>
-                                        <td>100</td>
-                                        <td>99</td>
-                                        <td>22/04/2024</td>
-                                    </tr>
-                                    <tr>
-                                        <td><img src="386644391_1615327005662931_6147334074894597765_n.jpg" width="50px" alt=""></td>
-                                        <td>Tên sản phẩm 1</td>
-                                        <td>XL</td>
-                                        <td>Đỏ</td>
-                                        <td>100</td>
-                                        <td>99</td>
-                                        <td>22/04/2024</td>
-                                    </tr>
-                                    <tr>
-                                        <td><img src="386644391_1615327005662931_6147334074894597765_n.jpg" width="50px" alt=""></td>
-                                        <td>Tên sản phẩm 1</td>
-                                        <td>XL</td>
-                                        <td>Đỏ</td>
-                                        <td>100</td>
-                                        <td>99</td>
-                                        <td>22/04/2024</td>
-                                    </tr>
-                                    <tr>
-                                        <td><img src="386644391_1615327005662931_6147334074894597765_n.jpg" width="50px" alt=""></td>
-                                        <td>Tên sản phẩm 1</td>
-                                        <td>XL</td>
-                                        <td>Đỏ</td>
-                                        <td>100</td>
-                                        <td>99</td>
-                                        <td>22/04/2024</td>
-                                    </tr>
+                                	<c:forEach var="item" items="${muc_san_pham}">
+										<tr>
+											<td><img
+												src="${item.anh_chi_tiet}"
+												width="50px" alt=""></td>
+											<td>${item.ten_san_pham}</td>
+											<td>${item.kich_thuoc_san_pham.ten_size}</td>
+											<td>${item.mau_sac_san_pham.ten_mau}</td>
+											<td>${item.so_luong_trong_kho}</td>
+											<td>99</td>
+											<td>22/04/2024</td>
+										</tr>
+									</c:forEach>
                                 </tbody>
                             </table>
                         </div>
@@ -201,6 +151,12 @@
                     <div class="mainform">
                         <div class="header1">
                             <h3>Nhân viên</h3>
+                            <form action="add_product" method="GET">
+	                            <button class = "add">
+	                                <i class="fa-solid fa-plus"></i>
+	                                Thêm nhân viên
+	                            </button>
+                            </form>
                         </div>
                         <div class = "inforItem">
                             <div class="header">
@@ -225,6 +181,7 @@
                                         <th>Giới tính</th>
                                         <th>Số điện thoại</th>
                                         <th>Chi tiết</th>
+                                        <th>Xóa</th>
                                     </tr>
                                 </thead>
                                 <tbody id="nhan_vien">
@@ -244,6 +201,7 @@
 		                                        <td>${item.so_dien_thoai}</td>
 		                                        <input type="hidden" name='id' value="${item.id_nguoi_dung}">
 		                                        <td><button class = "buttonSearch">Chi tiết</button></td>
+		                                        <td><button class = "buttonSearch">Xóa</button></td>
 	                                        </form>
 	                                    </tr>
                                 	</c:forEach>

@@ -46,15 +46,15 @@
                             <div >
                             	<% int a = 80;  %>
                                 <h5>Tên mặt hàng</h5>
-                                <textarea id="ten_mat_hang" style = "width: 100%;height: 20%"></textarea>
+                                <textarea id="ten_mat_hang" style = "width: 100%;height: 20%">${product.ten_san_pham}</textarea>
                             </div>
                             <div style = "margin-top: 10px;">
                                 <h5>Mô tả sản phẩm</h5>
-                                <textarea id="mo_ta" style = "width: 100%; height: 20%;" ></textarea>
+                                <textarea id="mo_ta" style = "width: 100%; height: 20%;" >${product.thong_tin_chung}</textarea>
                             </div>
                             <div style = "margin-top: 10px;">
                                 <h5>Thông tin chi tiết</h5>
-                                <textarea id="thong_tin_chi_tiet" style = "width: 100% height: 50%;"></textarea>
+                                <textarea id="thong_tin_chi_tiet" style = "width: 100% height: 50%;">${product.thong_tin_chi_tiet}</textarea>
                             </div>
                             
                         </div>
@@ -63,6 +63,17 @@
                         <div class="form">
                             <h5>Ảnh</h5>
                             <div class="upload-container" id="div_anh">
+                            	<c:forEach var="item" items="${product.anh_san_pham}">
+                            		<div class="img_element">
+	                            		<img src="${item}">
+										<div class="btnXoa" onclick="removeIMG(this)">
+											<i class="fa-solid fa-x"></i>
+										</div>		
+										<div class="btnPreview" onclick="previewImageElement(this)">
+											<i class="fa-solid fa-search"></i>
+										</div>	
+                            		</div>
+                                </c:forEach>
                                 <input  style="display: none;" type="file"  id="fileInput" name="file" multiple/>
                                	<label for="fileInput">
                                		<i class="fa-solid fa-plus"></i>
@@ -75,7 +86,7 @@
                             <h5>Phân loại hàng</h5>
                             <div style = "margin-top: 20px;">
                                 <h6>Chất liệu</h6>
-                                <input id="chat_lieu" type="text">
+                                <input id="chat_lieu" type="text" value="${product.chat_lieu}">
                             </div>
                             <hr style = "margin-top: 20px; margin-bottom: 20px; width: 95%;">
                             <div class="color">
@@ -143,8 +154,49 @@
                               </tr>
                             </thead>
                             <tbody id = "myTable">
-                                
-                            </tbody>
+								<f:viewBean>
+									<managed-bean class="com.example.MyBean" scope="session" />
+								</f:viewBean>
+
+								<%-- In your JSP code --%>
+								<c:set var="count" value="#{myBean.counter}" />
+								<c:forEach var="item" items="${product.muc_san_pham}">
+									<tr>
+										<c:set var="count" value="${count + 1}" />
+										<td>${count}</td>
+										<td>
+											<div>${item.kich_thuoc_san_pham.ten_size}</div> <input
+											class="size_table" type="hidden"
+											value="${item.kich_thuoc_san_pham.id_size}">
+										</td>
+										<td>
+											<div>${item.mau_sac_san_pham.ten_mau}</div> <input
+											class="size_table" type="hidden"
+											value="${item.mau_sac_san_pham.id_mau_sac}">
+										</td>
+										<td><input type="text" class="gia"
+											value="${item.gia_tien}"></td>
+										<td>
+											<div class="item-images item-images${count}">
+												<input onchange="addImageItems(this)" style="display: none;"
+													type="file" id="imageInput${count}" name="file" multiple>
+												<label for="imageInput${count}"> <i
+													class="fa-soild fa-plus"></i>
+												</label>
+												<div class="img_element">
+													<img src="${item.anh_chi_tiet}" style="with: 80px">
+													<div class="btnXoa" onclick="removeIMG(this)">
+														<i class="fa-solid fa-x"></i>
+													</div>
+													<div class="btnPreview" onclick="previewImageElement(this)">
+														<i class="fa-solid fa-search"></i>
+													</div>
+												</div>
+											</div>
+										</td>
+									</tr>
+								</c:forEach>
+							</tbody>
                           </table>
                     </div>
                 </div>
@@ -153,7 +205,7 @@
                         <div class="form">
                             <h5>Nhà phân phối</h5>
                             <h6>Thương hiệu</h6>
-                            <input id="thuong_hieu" type="text">
+                            <input id="thuong_hieu" type="text" value="${product.ten_nhan_hang}">
                         </div>
                     </div>
                     <div class="down">

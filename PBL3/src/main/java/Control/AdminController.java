@@ -1,19 +1,19 @@
 package Control;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
-import Entity.Nguoi_Dung.Nguoi_dung;
-import Entity.San_Pham.Danh_muc_san_pham;
-import Entity.San_Pham.San_pham;
-import Entity.San_Pham.Thuoc_Tinh_San_Pham.Mau_sac;
-import Entity.San_Pham.Thuoc_Tinh_San_Pham.Size;
-import Service.Danh_Muc.Danh_muc_Service;
-import Service.Nguoi_Dung.Nguoi_dung_Service;
-import Service.San_Pham.San_pham_Service;
-import Service.Thuoc_Tinh.Thuoc_tinh_Service;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import Model.BLL.Service.Nguoi_Dung.Nguoi_dung_Service;
+import Model.BLL.Service.San_Pham.San_pham_Service;
+import Model.DAL.DAO.implemet.Anh_san_pham_DAO;
+import Model.DAL.DAO.implemet.Mau_sac_DAO;
+import Model.DAL.DAO.implemet.Muc_san_pham_DAO;
+import Model.DAL.DAO.implemet.Nguoi_dung_DAO;
+import Model.DAL.DAO.implemet.San_pham_DAO;
+import Model.DAL.DAO.implemet.Size_DAO;
+import Model.DTO.Nguoi_Dung.Nguoi_dung;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -30,18 +30,26 @@ public class AdminController extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		String action = req.getServletPath();
-		San_pham_Service san_pham_Service = new San_pham_Service();
-		Nguoi_dung_Service nguoi_dung_Service = new Nguoi_dung_Service();
+		San_pham_Service san_pham_Service = new San_pham_Service(new San_pham_DAO(), new Muc_san_pham_DAO(), new Mau_sac_DAO(), new Size_DAO(), new Anh_san_pham_DAO());
+		Nguoi_dung_Service nguoi_dung_Service = new Nguoi_dung_Service(new Nguoi_dung_DAO());
 		
 		if(action != null && action.equals("/add_product")) {
 			san_pham_Service.Load_properties(req, resp);
 			req.getRequestDispatcher("/Crud.jsp").forward(req, resp);
 		}
 		else if(action != null && action.equals("/load_nhan_vien_by_json")) {
-			nguoi_dung_Service.load_nhan_vien_by_json(req, resp);
+			List<Nguoi_dung> list_nhan_vien = nguoi_dung_Service.getNhanVienByName(req, resp);
+			
+			ObjectMapper mapper = new ObjectMapper();
+		    String json = mapper.writeValueAsString(list_nhan_vien);
+		    resp.setContentType("application/json");
+		    resp.setCharacterEncoding("UTF-8");
+		    resp.getWriter().write(json);
 		}
 		else if(action != null && action.equals("/thong_tin_nhan_vien")) {
-			nguoi_dung_Service.Load_nguoi_dung_by_ID(req, resp);
+			List<Nguoi_dung> list = nguoi_dung_Service.getNguoiDungByID(req, resp);
+			HttpSession session = req.getSession();
+			session.setAttribute("nhan_vien", list);
 			req.getRequestDispatcher("userInfor.jsp").forward(req, resp);
 		}
 	}
@@ -50,7 +58,7 @@ public class AdminController extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String action = req.getServletPath();
 		
-		San_pham_Service san_pham_Service = new San_pham_Service();
+		San_pham_Service san_pham_Service = new San_pham_Service(new San_pham_DAO(), new Muc_san_pham_DAO(), new Mau_sac_DAO(), new Size_DAO(), new Anh_san_pham_DAO());
 		
 		if(action != null && action.equals("/add_product")) {
 			san_pham_Service.add_product(req, resp);

@@ -2,7 +2,10 @@ package Control;
 
 import java.io.IOException;
 
-import Service.Nguoi_Dung.Nguoi_dung_Service;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import Model.BLL.Service.Nguoi_Dung.Nguoi_dung_Service;
+import Model.DAL.DAO.implemet.Nguoi_dung_DAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
@@ -23,13 +26,23 @@ public class ClientController extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String action = req.getServletPath();
-		Nguoi_dung_Service nguoi_dung_Service = new Nguoi_dung_Service();
+		Nguoi_dung_Service nguoi_dung_Service = new Nguoi_dung_Service(new Nguoi_dung_DAO());
 		
 		if(action != null && action.equals("/modify_Infor")) {
-			nguoi_dung_Service.UpdateInfor(req, resp);
+			try {
+				nguoi_dung_Service.UpdateInformation(req, resp);
+				postJsonMessage(resp, "Cập nhật thông tin tài khoản thành công");
+			} catch (Exception e) {
+				postJsonMessage(resp, e.getMessage());
+			}
 		}
 		else if(action != null && action.equals("/update_password")) {
-			nguoi_dung_Service.Update_password(req, resp);
+			try {
+				nguoi_dung_Service.UpdatePassword(req, resp);
+				postJsonMessage(resp, "Cập nhật mật khẩu tài khoản thành công");
+			} catch (Exception e) {
+				postJsonMessage(resp, e.getMessage());
+			}
 		}
 		else if(action != null && action.equals("/order")) {
 		}
@@ -37,4 +50,11 @@ public class ClientController extends HttpServlet{
 		}	
 	}
 	
+	private void postJsonMessage( HttpServletResponse resp, String message) throws IOException {
+		ObjectMapper mapper = new ObjectMapper();
+	    String json = mapper.writeValueAsString(message);
+	    resp.setContentType("application/json");
+	    resp.setCharacterEncoding("UTF-8");
+	    resp.getWriter().write(json);
+	}
 }

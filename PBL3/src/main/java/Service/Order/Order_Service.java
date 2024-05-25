@@ -111,7 +111,6 @@ public class Order_Service {
 			
 			int id_don_hang = dh.getId_hoa_don();
 			Date ngay_dat = dh.getNgay_gio_dat_don_hang();
-			System.out.println(ngay_dat);
 			int so_tien = dh.getTong_tien();
 			int so_luong_san_pham = 0; 
 			for(Pair<Integer, Integer> muc_san_pham : dh.getList_muc_san_pham()) {
@@ -196,18 +195,6 @@ public class Order_Service {
 		
 	}
 	
-	public void them_gio_hang(HttpServletRequest req, HttpServletResponse resp) {
-		int id_gio_hang = new Random().nextInt();
-		int id_khach_hang = Integer.parseInt(req.getParameter("id_khach_hang"));
-		int id_mau_sac = Integer.parseInt(req.getParameter("id_mau_sac"));
-		int id_size = Integer.parseInt(req.getParameter("id_size"));
-		int so_luong = Integer.parseInt(req.getParameter("so_luong"));
-		int id_muc_san_pham = Integer.parseInt(req.getParameter("id_muc_san_pham"));
-		
-		Gio_hang gio_hang = new Gio_hang(id_gio_hang, id_khach_hang, id_muc_san_pham, so_luong);
-		System.out.println(gio_hang.toString());
-		gio_hang_DAO.add(gio_hang);
-	}
 	
 	public List<Don_hang> get_all_order(HttpServletRequest req, HttpServletResponse resp) {
 		

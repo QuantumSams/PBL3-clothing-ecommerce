@@ -137,7 +137,7 @@
                 </h5>
                 <div class = "box color">
 					<c:forEach var="item" items="${product.mau_hien_co}">
-						<button class = "btnColor"><img src="${item.anh_mau_sac}" width="100%" ><div class ="colorDiv">${item.ten_mau}</div> <input value = "${item.id_mau_sac}" ></button>
+						<button class = "btnColor"><img src="${item.anh_mau_sac}" width="100%" ><div class ="colorDiv">${item.ten_mau}</div> <input type="hidden" value = "${item.id_mau_sac}" ></button>
 
 					</c:forEach>
                 </div>
@@ -151,7 +151,7 @@
                 </div>
                 <div class="box sizes">
                 	<c:forEach var="item" items="${product.size_hien_co}">
-                	 	<div class="square"> <button class ="btnSize">${item.ten_size} <input value = "${item.id_size}" ></button> </div>
+                	 	<div class="square"> <button class ="btnSize">${item.ten_size} <input type="hidden"  value = "${item.id_size}" ></button> </div>
 					</c:forEach>
                 </div>
                 <div>
@@ -159,7 +159,7 @@
                 </div>
 
                 <div>
-                    <h5 style = "margin-top: 20px;">Số lượng</h5>
+                    <h5 style = "margin-top: 20px;">Số lượng trong kho</h5>
                 </div>
                 <select class="form-select" aria-label="Default select example">
                     <option selected>1</option>
@@ -180,6 +180,9 @@
                 <input class = "resultColor" type="hidden">
                 <input class = "resultSize" type="hidden">
                	<input class = "muc_san_pham" value="${product.muc_san_pham}" type="hidden">
+               	<div>
+                    <h5 style = "margin-top: 20px;">Số lượng mua hàng</h5>
+                </div>
                	<input class = "so_luong" >
                	
                 <button class = "cart">

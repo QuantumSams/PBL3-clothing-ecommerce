@@ -26,10 +26,6 @@ $(document).ready(function() {
 			imageValues.push(image.src.split(",")[1])
 		});
 
-		alert(sizeValues);
-		alert(colorValues);
-		alert(giaValues);
-		alert(imageValues);
 
 		let data = [];
 
@@ -38,9 +34,7 @@ $(document).ready(function() {
 		images.forEach((image) => {
 			imageSrc.push(image.src.split(",")[1])
 		});
-		console.log(imageSrc);
-		console.log(JSON.stringify(imageSrc));
-
+		
 		$.ajax({
 			url: "add_product", // URL of your Servlet
 			type: "POST",

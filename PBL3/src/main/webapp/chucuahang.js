@@ -10,12 +10,21 @@ $(document).ready(function(){
 	      success: function(data) {
 			let chuoi = "";
 	    	  data.forEach(function(item){
-	    		  chuoi += '<tr><td><img src="'+item.anh_san_pham[0]+'" width="50px" alt="">'+item.ten_san_pham+'</td>'
-                                        	+'<td>100</td>'
-                                        	+'<td>100.000 VNĐ</td>'
-                                        	+'<td>Nam</td>'
-                                        	+'<td>'+item.danh_muc_san_pham+'</td>'
-                                        	+'<td>'+item.ten_nhan_hang+'</td></tr>';
+	    		  chuoi += 	'<tr>'+
+	    		  			'<form action="chinh_sua_san_pham" method="get">'+
+	    		  			'<td><img src='+item.anh_san_pham[0]+' width="50px" alt=""></td>' +
+	    		  			'<td>'+item.ten_san_pham+'</td>'+
+	    		  			'<td>'+item.ten_san_pham+'</td>'+
+	    		  			'<td>'+item.gia_tien +' VNĐ</td>'+
+	                        '<td>Nam</td>' +
+	                        '<td>'+item.danh_muc_san_pham+'</td>'+
+	                        '<td>'+item.ten_nhan_hang+'</td>'+
+	                        '<td><button class = "buttonSearch">Chi tiết</button></td>'+
+	                        '<td><button class = "buttonSearch">Xóa</button></td>'+
+	                        '<input type="hidden" name="id_san_pham" value="'+item.id_san_pham+'">'+
+	                        '</form>'+
+	                        '</tr>';
+	               
 	    	  });
 			
 			$("#san_pham").html(chuoi);

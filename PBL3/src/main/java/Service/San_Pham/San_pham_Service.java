@@ -1,12 +1,10 @@
 package Service.San_Pham;
 
-import java.io.BufferedReader;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -70,15 +68,13 @@ public class San_pham_Service {
 		San_pham san_pham = san_pham_DAO.getProduct_by_ID(id);
 		HttpSession session = req.getSession();
 		session.setAttribute("product", san_pham);
-		
-		
 	}
 	
 	public void search_product_by_json(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		String Search = req.getParameter("product_name");
 		
 		List<San_pham> list_san_pham = new San_pham_Service().LaySanPham(Search);
-		System.out.println(list_san_pham.size());
+		
 		ObjectMapper mapper = new ObjectMapper();
 	    String json = mapper.writeValueAsString(list_san_pham);
 	    resp.setContentType("application/json");

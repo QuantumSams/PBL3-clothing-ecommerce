@@ -15,7 +15,6 @@ public class Cart_Service {
 		
 		int id_khach_hang = Integer.parseInt(req.getParameter("id_khach_hang"));
 		
-		
 		List<Gio_hang> list_gio_hang = new Gio_hang_DAO().get_list_by_id_khach_hang(id_khach_hang);
 		
 		ObjectMapper mapper = new ObjectMapper();

@@ -64,7 +64,7 @@ $(document).ready(function() {
 			},
 
 			success: function(data) {
-				alert("Thêm giỏ hàng thành công!");
+				alert(data);
 			}
 			
 		});
