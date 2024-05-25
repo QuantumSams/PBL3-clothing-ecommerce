@@ -111,33 +111,7 @@
                         </thead>
                         <tbody>
 
-                          <!-- Thêm dữ liệu vào bảng tại đây <-->
-                          <!--
-                    <c:forEach var="item" items="${list_san_pham_mua}">
-                    <tr>
-                      <th scope="row">{item.index}</th>
-                      <td>
-                        <div class="d-flex gap-1">
-                          ${item.key.ten_san_pham}
-                        </div>
-                        <div class="status status-accent">${item.key.kich_thuoc_san_pham.ten_size}/${item.key.mau_sac_san_pham.ten_mau}</div>
-                        </div>
-                      </td>
-                      <td>{item.value}</td>
-                      <td>
-                        <span class="me-5">
-                          {item.key.gia_ban_san_pham}
-                        </span>
-                        <span>
-                          VND
-                        </span>
-                      </td>
-                      <td><button type="button" class="btn btn-outline-danger p-1" id="removeProduct">
-                          <i class="bi bi-trash3-fill"></i></button>
-                        </button>
-                      </td>
-                    </tr>
-                        <-->
+                        
 
                           <!-- Ví dụ 1 hàng dữ liệu-->
                           <tr>
