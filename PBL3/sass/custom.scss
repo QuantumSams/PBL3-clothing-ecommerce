@@ -287,6 +287,7 @@ $breadcrumb-active-color: $gray-900;
   margin-bottom: 8px;
   display: flex;
   width: 100%;
+  flex-direction: column;
 }
 .menu ul li a {
   display: flex;
@@ -300,12 +301,20 @@ $breadcrumb-active-color: $gray-900;
   flex: 1;
 }
 
-.menu ul li:hover a {
+.menu ul li:hover > a {
   background-color: $gray-200;
   color: $black;
 }
 
-.menu ul li.active a {
+.menu ul li.active > a {
+  background-color: $primary;
+  color: $gray-25;
+}
+.submenu ul li:hover > a {
+  background-color: $gray-200;
+  color: $black;
+}
+.submenu ul li.active > a {
   background-color: $primary;
   color: $gray-25;
 }
