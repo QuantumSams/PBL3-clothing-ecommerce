@@ -77,7 +77,7 @@
           </div>
         </nav>
         <div class="container main">
-          <div class="container one-page" id="viewProfilePage">
+          <div class="container one-page">
             <div
               class="container-fluid ps-1 pe-0 py-3 d-flex justify-content-between align-items-center flex-wrap gap-2">
               <h3 class="fw-bold">

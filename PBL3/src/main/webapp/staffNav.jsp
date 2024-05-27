@@ -269,9 +269,7 @@
                         </button>
                       </div>
                     </h5>
-                    <img
-                      
-                      class="img-fluid" id="EditProfileImageUploadShow">
+                    <img class="img-fluid" id="EditProfileImageUploadShow">
                   </div>
                 </div>
               </div>
