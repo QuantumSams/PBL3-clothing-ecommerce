@@ -31,16 +31,16 @@
                     </div>
                     <div class="nav">
                         <div class="menu">
-                            <p class="title">Chức năng</p>
+                            <p class="title">Chủ cửa hàng</p>
                             <ul class="sidelist">
-                                <li class="productSidebar">
+                                <li class="productSidebar active">
                                     <a href="#">
                                         <i class="bi bi-archive-fill"></i>
                                         <span class="text me-3">Sản phẩm</span>
                                         <i class="bi bi-caret-down-fill"></i>
                                     </a>
                                     <ul class="list-group submenu ms-3">
-                                        <li class="pt-1" id="productList">
+                                        <li class="pt-1 active" id="productList">
                                             <a data-toggle="list" href="#san-pham" class="ps-3">Danh sách
                                                 SP</a>
                                         </li>
@@ -97,23 +97,26 @@
                             </form>
                         </div>
                     </div>
-
                 </nav>
-
                 <div class="container main">
                     <div class="container one-page">
                         <div id="san-pham">
                             <div class="mainform">
-                                <div class="header1">
-                                    <h3>Sản phẩm</h3>
+                                <div
+                                    class="container-fluid ps-1 pe-0 py-3 d-flex justify-content-between align-items-center flex-wrap gap-2">
+                                    <h3 class="fw-bold m-0">Sản phẩm</h3>
                                     <form action="add_product" method="GET">
-                                        <button class="add">
+                                        <!-- <button class="add">
                                             <i class="fa-solid fa-plus"></i>
+                                            Thêm sản phẩm
+                                        </button> -->
+                                        <button class="btn btn-dark p0">
+                                            <i class="bi bi-plus-circle-fill"></i>
                                             Thêm sản phẩm
                                         </button>
                                     </form>
                                 </div>
-                                <div class="inforItem">
+                                <!-- <div class="inforItem">
                                     <div class="header1">
                                         <div class="search">
                                             <div class="input">
@@ -129,9 +132,24 @@
                                             <h5 style="color: white;">Tổng số sản phẩm: 900</h5>
                                         </div>
                                     </div>
+                                </div> -->
+
+
+                                <div class="d-flex searchHeader flex-row align-items-center justify-content-between">
+                                    <form class="d-flex gap-2" role="search">
+                                        <input class="form-control" id="tableSearchBox" type="search"
+                                            placeholder="Tìm kiếm sản phẩm trong danh sách" aria-label="Search"
+                                            style="width: 450px; height: 40px; " />
+                                        <button class="btn btn-dark my-2" id="button_search">Search</button>
+                                    </form>
+                                    <div class="Count">
+                                        <p class="my-0 mx-2">Tổng số sản phẩm: 900</p>
+                                    </div>
                                 </div>
-                                <div class="bodyInfor">
-                                    <table class="content-table">
+                                <!-- <div class="bodyInfor"> -->
+                                <div class="tableData p-0 table-responsive">
+                                    <!-- <table class="content-table"> -->
+                                    <table class="table table-hover">
                                         <thead>
                                             <tr>
                                                 <th>Tên sản phẩm</th>
@@ -143,17 +161,81 @@
                                             </tr>
                                         </thead>
                                         <tbody id="san_pham">
-                                            <c:forEach var="item" items="${san_pham}">
+                                            <!-- <c:forEach var="item" items="${san_pham}">
                                                 <tr>
-                                                    <td><img src="${item.anh_san_pham[0]}" width="50px"
-                                                            alt="">${item.ten_san_pham}</td>
+                                                    <td class="gap-2">
+                                                        <div class="imgContainer">
+                                                            <img src="${item.anh_san_pham[0]}"
+                                                                alt="">
+                                                        <span>${item.ten_san_pham}</span>
+                                                            </td>
                                                     <td>100</td>
-                                                    <td>100.000 VNĐ</td>
+                                                    <td><div class="d-flex justify-content-between">
+                                                        <span>100.000</span>
+                                                        <span><b>VND</b></span>
+                                                    </div></td>
                                                     <td>Nam</td>
                                                     <td>${item.danh_muc_san_pham}</td>
                                                     <td>${item.ten_nhan_hang}</td>
                                                 </tr>
-                                            </c:forEach>
+                                            </c:forEach> -->
+                                            <tr>
+                                                <td class="gap-2 d-flex flex-row align-items-center">
+                                                    <div class="imgContainer">
+                                                        <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?q=80&w=3064&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                                            alt="">
+                                                    </div>
+                                                    <span>Dummy Product 1</span>
+                                                </td>
+                                                <td>10</td>
+                                                <td>
+                                                    <div class="d-flex justify-content-between">
+                                                        <span>100.000</span>
+                                                        <span><b>VND</b></span>
+                                                    </div>
+                                                </td>
+                                                <td>Men</td>
+                                                <td>Category 1</td>
+                                                <td>Brand 1</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="gap-2 d-flex flex-row align-items-center">
+                                                    <div class="imgContainer">
+                                                        <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?q=80&w=3064&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                                            alt="">
+                                                    </div>
+                                                    <span>Dummy Product 1</span>
+                                                </td>
+                                                <td>10</td>
+                                                <td>
+                                                    <div class="d-flex justify-content-between">
+                                                        <span>100.000</span>
+                                                        <span><b>VND</b></span>
+                                                    </div>
+                                                </td>
+                                                <td>Men</td>
+                                                <td>Category 1</td>
+                                                <td>Brand 1</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="gap-2 d-flex flex-row align-items-center">
+                                                    <div class="imgContainer">
+                                                        <img src="https://images.unsplash.com/photo-1598033129183-c4f50c736f10?q=80&w=3725&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                                            alt="">
+                                                    </div>
+                                                    <span>Dummy Product 1</span>
+                                                </td>
+                                                <td>10</td>
+                                                <td>
+                                                    <div class="d-flex justify-content-between">
+                                                        <span>100.000</span>
+                                                        <span><b>VND</b></span>
+                                                    </div>
+                                                </td>
+                                                <td>Men</td>
+                                                <td>Category 1</td>
+                                                <td>Brand 1</td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>

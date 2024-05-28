@@ -5,7 +5,8 @@ $(document).ready(function () {
       type: "GET",
       dataType: "json",
       data: {
-        product_name: $("#search").val(),
+        // product_name: $("#search").val(),
+        product_name: $("#tableSearchBox").val(),
       },
       success: function (data) {
         let chuoi = "";
