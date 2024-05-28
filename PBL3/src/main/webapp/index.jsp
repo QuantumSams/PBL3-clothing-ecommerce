@@ -14,7 +14,6 @@
 <body>
     <jsp:include page="header.jsp"></jsp:include>
     <div id="demo" class="carousel slide" data-bs-ride="carousel">
-
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
             <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
@@ -41,14 +40,16 @@
         
     <div class = main-items>
     	<c:forEach var="item" items="${san_pham}">
+    	 <label for = "${item.id_san_pham}">
                  <div class="card" style="width:250px">
+                
             		<img class="card-img-top" src="${item.anh_san_pham[0]}" alt="Card image">
             		<div class="card-body">
 	                	<h6>${item.danh_muc_san_pham}</h6>
 	                	<h5 class="card-title" style ="font-weight: bold;" >
 	                	
 	                	<form action="load_product" method="get">
-	                		<button>
+	                		<button id = "${item.id_san_pham}" >
 	                			${item.ten_san_pham}
 	                		</button>
 	                		<input type="hidden" name="id_san_pham" value="${item.id_san_pham}"/>
@@ -66,14 +67,14 @@
 	                    	<p style = "text-decoration: underline">(79)</p>
                 		</div>
             		</div>
-        		</div>                        	  
+        		</div>   
+        	</label>                     	  
 		</c:forEach>
     </div>
 </body>
     
 </body>
 <script>
-
 	$(document).ready(function() {
 	  $("#loadProductLink").click(function(event) {
 	    event.preventDefault(); // Prevent default link behavior

@@ -12,6 +12,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 </head>
 <div class="card ">
     <div class="form" style="display: flex;">
@@ -73,6 +74,7 @@
                                 </thead>
                                 <tbody id="san_pham">
                                 	<c:forEach var="item" items="${san_pham}">
+
 										<tr>
 
 											<td><img src="${item.anh_san_pham[0]}" width="50px"
@@ -91,6 +93,7 @@
 
 										</tr>
 									</c:forEach>
+
                                 </tbody>
                             </table>
                         </div>
@@ -148,7 +151,190 @@
                     </div>
                 </div> 
                 <div class="tab-pane fade" id="doanh-thu">
+<div class="mainform">
+                            <div class="header2">
+                                <button class = "doanh-thu btn1">Doanh thu</button>
+                                <button class = "don-hang btn1">Đơn hàng</button>
+                            </div>
+                            <div class="bodyform active">
+                                <div class="header3">
+                                    <h3>Thống kê doanh thu</h3>
+                                    <select name="" id="selectOpt">
+                                        <option value="">Hôm nay</option>
+                                        <option value="">Hôm qua</option>
+                                    </select>
+                                </div>
+                                <div class="thongke">
+                                    <div class="doanhThu card1">
+                                        <h5>Doanh thu</h5>
+                                        <h2>721K</h2>
+                                    </div>
 
+                                    <div class="tongsodon card1">
+                                        <h5>Tổng số đơn</h5>
+                                        <h2>1.156</h2>
+                                    </div>
+
+                                    <div class="daBan card1">
+                                        <h5>Tổng số sản phẩm đã bán</h5>
+                                        <h2>239K</h2>
+
+                                    </div>
+                                </div>
+                                <div class="thongkedoituong">
+                                    <h5>Thống kê đối tượng mua hàng</h5>
+                                    <canvas id="myChart" style="width:100%; max-width: 900px;"></canvas>
+                                </div>
+                                <div class="topbanchay">
+                                    <table class = "content-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Ảnh</th>
+                                                <th>Tên sản phẩm</th>
+                                                <th>Đã bán</th>
+                                                <th>Giá bán</th>
+                                                <th>Lợi nhuận</th>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><img src="386644391_1615327005662931_6147334074894597765_n.jpg" width="50px" alt=""></td>
+                                                <td>Tên sản phẩm 1</td>
+                                                <td>1000</td>
+                                                <td>15000</td>
+                                                <td>5000</td>
+                                                
+                                            <tr>
+                                                <td><img src="386644391_1615327005662931_6147334074894597765_n.jpg" width="50px" alt=""></td>
+                                                <td>Tên sản phẩm 1</td>
+                                                <td>1000</td>
+                                                <td>15000</td>
+                                                <td>5000</td>
+                                              
+                                            </tr>
+                                            <tr>
+                                                <td><img src="386644391_1615327005662931_6147334074894597765_n.jpg" width="50px" alt=""></td>
+                                                <td>Tên sản phẩm 1</td>
+                                                <td>1000</td>
+                                                <td>15000</td>
+                                                <td>5000</td>
+                                            
+                                            </tr>
+                                            <tr>
+                                                <td><img src="386644391_1615327005662931_6147334074894597765_n.jpg" width="50px" alt=""></td>
+                                                <td>Tên sản phẩm 1</td>
+                                                <td>1000</td>
+                                                <td>15000</td>
+                                                <td>5000</td>
+                                           
+                                            </tr>
+                                            <tr>
+                                                <td><img src="386644391_1615327005662931_6147334074894597765_n.jpg" width="50px" alt=""></td>
+                                                <td>Tên sản phẩm 1</td>
+                                                <td>1000</td>
+                                                <td>15000</td>
+                                                <td>5000</td>
+                                            
+                                            </tr>
+                                            <tr>
+                                                <td><img src="386644391_1615327005662931_6147334074894597765_n.jpg" width="50px" alt=""></td>
+                                                <td>Tên sản phẩm 1</td>
+                                                <td>1000</td>
+                                                <td>15000</td>
+                                                <td>5000</td>
+                                            </tr>
+                                            <tr>
+                                                <td><img src="386644391_1615327005662931_6147334074894597765_n.jpg" width="50px" alt=""></td>
+                                                <td>Tên sản phẩm 1</td>
+                                                <td>1000</td>
+                                                <td>15000</td>
+                                                <td>5000</td>
+                                            </tr>
+                                            <tr>
+                                                <td><img src="386644391_1615327005662931_6147334074894597765_n.jpg" width="50px" alt=""></td>
+                                                <td>Tên sản phẩm 1</td>
+                                                <td>1000</td>
+                                                <td>15000</td>
+                                                <td>5000</td>   
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class = "mainform2 fade">
+                                <h3>Danh sách đơn hàng</h3>
+                                <div class = "inforItem">
+                                    <div class="header1">
+                                        <div class="search">
+                                            <div class="input">
+                                                <span class="iconSearch"><i class="fa-solid fa-magnifying-glass fa-rotate-90" style="color:white;"></i></span>
+                                                <input id="search" class = "inputSearch" type="text" placeholder="Tìm kiếm sản phẩm trong danh sách">
+                                            </div>
+                                            <button class="buttonSearch" id="button_search">Search</button>
+                                        </div>
+                                        <div class="Count">
+                                            <h5 style ="color: white;">Tổng số sản phẩm: 900</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <table class = "content-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Mã đơn hàng</th>
+                                            <th>Giá trị đơn hàng</th>
+                                            <th>Nhân viên xác nhận</th>
+                                            <th>Thời điểm đặt</th>
+                                            <th>Thời điểm nhận</th>
+                                            <th>Trạng thái</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>20.000 VNĐ</td>
+                                            <td>Nguyễn Văn A</td>
+                                            <td>15/10/2023</td>
+                                            <td>-</td>
+                                            <td><button type="button" class="btn btn-warning" disabled>Đang chờ xác nhận</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>20.000 VNĐ</td>
+                                            <td>Nguyễn Văn A</td>
+                                            <td>15/10/2023</td>
+                                            <td>-</td>
+                                            <td><button type="button" class="btn btn-success" disabled>Giao thành công</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>20.000 VNĐ</td>
+                                            <td>Nguyễn Văn A</td>
+                                            <td>15/10/2023</td>
+                                            <td>-</td>
+                                            <td><button type="button" class="btn btn-danger" disabled>Bị huỷ</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>20.000 VNĐ</td>
+                                            <td>Nguyễn Văn A</td>
+                                            <td>15/10/2023</td>
+                                            <td>-</td>
+                                            <td><button type="button" class="btn btn-primary" disabled>Đang giao hàng</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>20.000 VNĐ</td>
+                                            <td>Nguyễn Văn A</td>
+                                            <td>15/10/2023</td>
+                                            <td>-</td>
+                                            <td><button type="button" class="btn btn-warning" disabled>Đang chờ xác nhận</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+    
+                            </div>
+                        </div>
                 </div> 
                 <div class="tab-pane fade" id="nhan-vien">
                     <div class="mainform">
@@ -221,12 +407,10 @@
 
 
 <script src="./chucuahang.js"></script>
-
 </body>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
 </html>

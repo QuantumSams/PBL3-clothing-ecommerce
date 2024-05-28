@@ -40,7 +40,9 @@ $(document).ready(function() {
 					'<h5 id = "sum"></h5>' +
 					'</div>' +
 					'<form action = "create_order" method = "get">' +
-					'<input name="gio_hang" id = "giohang" />' +
+
+					'<input name="gio_hang" id = "giohang" type = "hidden"/>' +
+
 					'<input type = "submit" class = "" onclick = "layGioHang()">' +
 					'</form>'
 				'</div>';
@@ -78,6 +80,8 @@ $(document).ready(function() {
 
 		this.parentElement.parentElement.parentElement.parentElement.parentElement.remove();
 		tien();
+
+		getID();
 	});
 });
 function getID(){

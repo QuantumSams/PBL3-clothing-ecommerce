@@ -1,3 +1,34 @@
+	var doanhthu = document.querySelector('.bodyform');
+    var donhang = document.querySelector('.mainform2');
+    var btn_doanhthu = document.querySelector('.doanh-thu').addEventListener('click', (e) => {
+          
+        doanhthu.classList.add('active');
+        doanhthu.classList.remove('fade');
+        donhang.classList.remove('active');
+        donhang.classList.add('fade');
+    });
+    var btn_donhang = document.querySelector('.don-hang').addEventListener('click', (e) => {
+          
+        donhang.classList.add('active');
+        donhang.classList.remove('fade');
+        doanhthu.classList.add('fade');
+        doanhthu.classList.remove('active');
+    });
+    const xValues = ["Nam", "Nữ", "Trẻ em", "Người già", "Trẻ sơ sinh"];
+    const yValues = [55, 49, 44, 24, 25];
+    const barColors = ["#667085", "#667085","#667085","#667085","#667085"];
+
+    new Chart("myChart", {
+        type: "bar",
+        data: {
+        labels: xValues,
+        datasets: [{
+        backgroundColor: barColors,
+        data: yValues
+        }]
+    },
+  //    options: {...}
+});
 $(document).ready(function(){
 	 $("#button_search").click(function(){
 		$.ajax({
@@ -11,6 +42,7 @@ $(document).ready(function(){
 			let chuoi = "";
 	    	  data.forEach(function(item){
 	    		  chuoi += 	'<tr>'+
+
 	    		  			'<td><img src='+item.anh_san_pham[0]+' width="50px" alt=""></td>' +
 	    		  			'<td>'+item.ten_san_pham+'</td>'+
 	    		  			'<td>'+item.ten_san_pham+'</td>'+
