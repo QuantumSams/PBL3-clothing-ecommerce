@@ -151,13 +151,15 @@
                                     <!-- <table class="content-table"> -->
                                     <table class="table table-hover">
                                         <colgroup>
-                                            <col span="1" style="width: 5%;">
-                                            <col span="1" style="width: 25%;">
+                                            <col span="1" style="width: 2%;">
+                                            <col span="1" style="width: 20%;">
                                             <col span="1" style="width: 10%;">
+                                            <col span="1" style="width: 13%;">
                                             <col span="1" style="width: 15%;">
                                             <col span="1" style="width: 15%;">
                                             <col span="1" style="width: 15%;">
-                                            <col span="1" style="width: 15%;">
+                                            <col span="1" style="width: 5%;">
+                                            <col span="1" style="width: 5%;">
                                         </colgroup>
                                         <thead>
                                             <tr>
@@ -168,6 +170,8 @@
                                                 <th>Đối tượng</th>
                                                 <th>Danh mục</th>
                                                 <th>Nhãn hàng</th>
+                                                <th></th>
+                                                <th></th>
                                             </tr>
                                         </thead>
                                         <tbody id="san_pham">
@@ -187,6 +191,11 @@
                                                     <td>Nam</td>
                                                     <td>${item.danh_muc_san_pham}</td>
                                                     <td>${item.ten_nhan_hang}</td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-dark px-3" id="viewProduct"><i class="bi bi-info-circle-fill"></i></button>
+                                                    </td>
+                                                    <td><button type="button" class="btn btn-outline-danger p-1" id="deleteProduct">
+                                                            <i class="bi bi-trash3-fill"></i></button></td>
                                                 </tr>
                                             </c:forEach> -->
                                             <tr>
@@ -207,6 +216,13 @@
                                                 <td>Men</td>
                                                 <td>Category 1</td>
                                                 <td>Brand 1</td>
+                                                <td>
+                                                    <button type="button" class="btn btn-dark px-3" id="viewProduct"><i
+                                                            class="bi bi-info-circle-fill"></i></button>
+                                                </td>
+                                                <td><button type="button" class="btn btn-outline-danger p-1"
+                                                        id="deleteProduct">
+                                                        <i class="bi bi-trash3-fill"></i></button></td>
                                             </tr>
 
 
@@ -396,8 +412,9 @@
                                             <col span="1" style="width: 15%;">
                                             <col span="1" style="width: 30%;">
                                             <col span="1" style="width: 20%;">
-                                            <col span="1" style="width: 22%;">
-                                            <col span="1" style="width: 13%;">
+                                            <col span="1" style="width: 15%;">
+                                            <col span="1" style="width: 15%;">
+                                            <col span="1" style="width: 5%;">
                                         </colgroup>
                                         <thead>
                                             <tr>
@@ -405,6 +422,7 @@
                                                 <th>Họ tên</th>
                                                 <th>Giới tính</th>
                                                 <th>Số điện thoại</th>
+                                                <th></th>
                                                 <th></th>
                                             </tr>
                                         </thead>
@@ -430,24 +448,14 @@
                                                         <td>${item.so_dien_thoai}</td>
                                                         <input type="hidden" name='id' value="${item.id_nguoi_dung}">
                                                         <td><button class="btn btn-dark" id="button_search_nhan_vien">Chi tiết</button></td>
+                                                        <td><button type="button" class="btn btn-outline-danger p-1" id="removeStaff">
+                                                                <i class="bi bi-trash3-fill"></i></button></td>
                                                     </form>
                                                 </tr>
                                                 
                                             </c:forEach> -->
 
-                                            <tr>
-                                                <td>
-                                                    <div class="imgContainerPortrait">
-                                                        <img src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?q=80&w=3548&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                                            alt="">
-                                                    </div>
-                                                </td>
-                                                <td>Dummy Name</td>
-                                                <td>Nam</td>
-                                                <td>1234567890</td>
-                                                <td><button class="btn btn-dark" id="button_search_nhan_vien">Chi
-                                                        tiết</button></td>
-                                            </tr>
+
                                             <tr>
                                                 <td>
                                                     <div class="imgContainerPortrait">
@@ -460,20 +468,11 @@
                                                 <td>1234567890</td>
                                                 <td><button class="btn btn-dark" id="button_search_nhan_vien">Chi
                                                         tiết</button></td>
+                                                <td><button type="button" class="btn btn-outline-danger p-1"
+                                                        id="removeStaff">
+                                                        <i class="bi bi-trash3-fill"></i></button></td>
                                             </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="imgContainerPortrait">
-                                                        <img src="https://images.unsplash.com/photo-1519895609939-d2a6491c1196?q=80&w=3688&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                                            alt="">
-                                                    </div>
-                                                </td>
-                                                <td>Dummy Name</td>
-                                                <td>Nam</td>
-                                                <td>1234567890</td>
-                                                <td><button class="btn btn-dark" id="button_search_nhan_vien">Chi
-                                                        tiết</button></td>
-                                            </tr>
+
 
                                         </tbody>
                                     </table>

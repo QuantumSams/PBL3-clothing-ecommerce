@@ -53,6 +53,8 @@ $(document).ready(function () {
             "<td>" +
             item.ten_nhan_hang +
             "</td>" +
+            '<td><button type="button" class="btn btn-outline-danger p-1" id="deleteProduct">' +
+            '<i class="bi bi-trash3-fill"></i></button></td>' +
             "</tr>";
         });
         $("#san_pham").html(chuoi);
@@ -126,6 +128,11 @@ $(document).ready(function () {
             item.id_nguoi_dung +
             '">' +
             '<td><button class="btn btn-dark" id="button_search_nhan_vien">Chi tiết</button></td>' +
+            "<td>" +
+            '<button type="button" class="btn btn-dark px-3" id="viewProduct"><i class="bi bi-info-circle-fill"></i></button>' +
+            "</td>";
+          '<td><button type="button" class="btn btn-outline-danger p-1" id="deleteProduct">' +
+            '<i class="bi bi-trash3-fill"></i></button></td>' +
             "</tr>";
         });
 
