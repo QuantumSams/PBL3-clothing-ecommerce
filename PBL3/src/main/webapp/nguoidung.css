@@ -55,6 +55,7 @@ a{
     padding: 50px;
 }
 .inforItems{
+	
     display: flex;
     justify-content: space-between;
 }
@@ -74,7 +75,7 @@ a{
     background-color: #F97066;
     border: none;
     color: white;
-    width: 30%;
+    width: 200px;
 }
 .btnXoa:hover{
     background-color: red;
@@ -146,6 +147,7 @@ a{
     gap: 5%;
     transform: translateX(-330%);
 }
+	
 .gender{
     margin-top: 3%;
     display: flex;

@@ -49,7 +49,7 @@
                                 <h5>Tạm tính: </h5>
                                 <h5 id = "sum"></h5>
                             </div>
-                            <Button class = "buttonTT">Thanh toán</Button>
+                            
                         </div>
                     </div>
                 </div>

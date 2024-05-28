@@ -95,11 +95,11 @@
                 <table class="table table-hover">
 
                   <colgroup>
-                    <col span="1" style="width: 10%;">
                     <col span="1" style="width: 15%;">
-                    <col span="1" style="width: 30%;">
-                    <col span="1" style="width: 30%;">
+                    <col span="1" style="width: 20%;">
                     <col span="1" style="width: 25%;">
+                    <col span="1" style="width: 20%;">
+                    <col span="1" style="width: 20%;">
                   </colgroup>
                   <thead>
                     <tr class="table-light">

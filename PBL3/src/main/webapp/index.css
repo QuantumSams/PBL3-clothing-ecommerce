@@ -22,28 +22,7 @@ body{
 .search{
     width: 100%;
 }
-ul li{
-    display: inline-block;
-    position: relative;
-}
 
-ul li ul.dropdown{
-    width: 500px;
-    height: 500px;
-    background: white;
-    position: absolute;
-    z-index: 100;
-    display: none;
-}
-ul li ul.dropdown li{
-    gap:50px;
-    z-index:1000;
-    flex-direction: column;
-}
-ul li:hover ul.dropdown{
-    display: block;
-
-}
 .main-items{
     display: flex;
     max-width: 100%;
@@ -69,4 +48,8 @@ ul li:hover ul.dropdown{
 }
 .header{
 	position: fixed;
+}
+button{
+	background-color: white;
+	border: none;
 }

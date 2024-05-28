@@ -11,7 +11,6 @@ org.eclipse.jdt.ui.typefilter.disabled=java.awt.*;java.rmi.*;org.graalvm.*
 org.eclipse.jdt.ui.typefilter.enabled=com.sun.*;io.micrometer.shaded.*;jdk.*;sun.*;java.awt.List
 org.eclipse.jdt.ui.visibility.order=B,V,R,D,
 outlinesortoption=T,SF,SI,SM,F,I,C,M,
-sourceHoverBackgroundColor=44,49,53
 spelling_locale_initialized=true
 typefilter_migrated_2=true
 useAnnotationsPrefPage=true

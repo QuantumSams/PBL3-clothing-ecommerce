@@ -30,19 +30,19 @@
                         </tr>
                     </thead>
                    <tbody id="list_san_pham">
-                   <c:forEach var="item" items="${muc_san_pham}">
+                   <c:forEach var="item" items="${gio_hang}">
                     	<tr>
-                    		<input class="id_muc" type="hidden" value="${item.id_muc_san_pham}"/>
+                    		<input class="id_muc" type="hidden" value="${item.muc_san_pham.id_muc_san_pham}"/>
 	                        <td>
 	                            <div class="name">
-	                                <h5>${item.ten_san_pham}</h5>
+	                                <h5>${item.muc_san_pham.ten_san_pham}</h5>
 	                            </div>
 	                            <div class="color">
-	                                    <h5>${item.mau_sac_san_pham.ten_mau} / ${item.kich_thuoc_san_pham.ten_size}</h5>
+	                                    <h5>${item.muc_san_pham.mau_sac_san_pham.ten_mau} / ${item.muc_san_pham.kich_thuoc_san_pham.ten_size}</h5>
 	                            </div>
 	                        </td>
-	                        <td><input class="so_luong" type="text" value="1"/></td>
-	                        <td class = "priceItems">${item.gia_tien}</td>
+	                        <td><input class="so_luong" type="text" value="${item.so_luong}"/></td>
+	                        <td class = "priceItems">${item.muc_san_pham.gia_tien}</td>
 	                        <td><Button class = "btnXoa" onclick="deleteR(this)"><i class="fa-solid fa-trash"></i></Button></td>
                     	</tr>          	  
 					</c:forEach>
@@ -103,9 +103,6 @@
 </body>
 
 <script>
-
-
-
 
 $(document).ready(function(){
 	
@@ -168,7 +165,7 @@ $(document).ready(function(){
 
     let a = document.querySelectorAll('.priceItems');
     let sum = 0;
-    a.forEach((item)=> {sum += parseFloat(item.innerHTML)*1000});
+    a.forEach((item)=> {sum += parseFloat(item.innerHTML)});
     document.getElementById('tongtien').innerHTML = sum;
     thanhtien.innerHTML = sum - giamgia - phivanchuyen;
     const b = document.querySelectorAll('.btnXoa')
@@ -177,7 +174,7 @@ $(document).ready(function(){
             a = document.querySelectorAll('.priceItems');
             sum = 0;
             console.log("haha");
-            a.forEach((item)=> {sum += parseFloat(item.innerHTML)*1000});
+            a.forEach((item)=> {sum += parseFloat(item.innerHTML)});
             document.getElementById('tongtien').innerHTML = sum;
             thanhtien.innerHTML = sum - giamgia - phivanchuyen;
         })   

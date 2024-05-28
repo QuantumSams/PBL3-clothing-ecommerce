@@ -33,6 +33,7 @@ public class AbstractDao implements GenericDAO{
 			
 			return results;
 		} catch (SQLException e) {
+			System.out.println(e);
 			return null;
 		} finally {
 			try {
