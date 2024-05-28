@@ -110,7 +110,13 @@ function fadeOut(element) {
   }, 0.05);
 }
 
+const HeaderBreadcrumbParentText = document.getElementById(
+  "HeaderBreadcrumbParentText"
+);
+HeaderBreadcrumbParentText.innerText = "Danh sách sản phẩm";
+
 chucNangSanPham.addEventListener("click", function () {
+  HeaderBreadcrumbParentText.innerText = "Danh sách sản phẩm";
   fadeOut(khuVucKhoHang);
   fadeOut(khuVucDoanhThu);
   fadeOut(khuVucNhanVien);
@@ -124,6 +130,7 @@ chucNangSanPham.addEventListener("click", function () {
 });
 
 chucNangKhoHang.addEventListener("click", function () {
+  HeaderBreadcrumbParentText.innerText = "Kho hàng";
   fadeOut(khuVucSanPham);
   fadeOut(khuVucDoanhThu);
   fadeOut(khuVucNhanVien);
@@ -137,6 +144,7 @@ chucNangKhoHang.addEventListener("click", function () {
 });
 
 chucNangDoanhThu.addEventListener("click", function () {
+  HeaderBreadcrumbParentText.innerText = "Doanh thu";
   fadeOut(khuVucSanPham);
   fadeOut(khuVucKhoHang);
   fadeOut(khuVucNhanVien);
@@ -150,6 +158,7 @@ chucNangDoanhThu.addEventListener("click", function () {
 });
 
 chucNangNhanVien.addEventListener("click", function () {
+  HeaderBreadcrumbParentText.innerText = "Nhân viên";
   fadeOut(khuVucSanPham);
   fadeOut(khuVucKhoHang);
   fadeOut(khuVucDoanhThu);

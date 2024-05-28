@@ -84,8 +84,7 @@
                                     <i class="bi bi-list"></i>
                                 </button>
                                 <ol class="breadcrumb m-0 p-0 bg-transparent">
-                                    <li class="breadcrumb-item"><a href="staffNav.jsp" id="HeaderBreadcrumbLink">Cá
-                                            nhân</a></li>
+                                    <li class="breadcrumb-item" id="HeaderBreadcrumbParentText"></li>
                                     <li class="breadcrumb-item active" aria-current="page" id="HeaderBreadcrumbText">
                                     </li>
                                 </ol>
@@ -160,7 +159,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="" id="kho-hang">
+                        <div id="kho-hang">
                             <div class="mainform">
                                 <div class="header1">
                                     <h3>Kho hàng</h3>
@@ -289,9 +288,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="" id="doanh-thu">
+                        <div id="doanh-thu">
                         </div>
-                        <div class="" id="nhan-vien">
+                        <div id="nhan-vien">
                             <div class="mainform">
                                 <div class="header1">
                                     <h3>Nhân viên</h3>
