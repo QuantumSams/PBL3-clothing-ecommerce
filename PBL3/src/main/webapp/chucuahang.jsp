@@ -137,7 +137,7 @@
 
                                 <div class="d-flex searchHeader flex-row align-items-center justify-content-between">
                                     <form class="d-flex gap-2" role="search">
-                                        <input class="form-control" id="tableSearchBox" type="search"
+                                        <input class="form-control search_san_pham" id="tableSearchBox" type="search"
                                             placeholder="Tìm kiếm sản phẩm trong danh sách" aria-label="Search"
                                             style="width: 450px; height: 40px; " />
                                         <button class="btn btn-dark my-2" id="button_search">Search</button>
@@ -150,8 +150,18 @@
                                 <div class="tableData p-0 table-responsive">
                                     <!-- <table class="content-table"> -->
                                     <table class="table table-hover">
+                                        <colgroup>
+                                            <col span="1" style="width: 5%;">
+                                            <col span="1" style="width: 25%;">
+                                            <col span="1" style="width: 10%;">
+                                            <col span="1" style="width: 15%;">
+                                            <col span="1" style="width: 15%;">
+                                            <col span="1" style="width: 15%;">
+                                            <col span="1" style="width: 15%;">
+                                        </colgroup>
                                         <thead>
                                             <tr>
+                                                <th></th>
                                                 <th>Tên sản phẩm</th>
                                                 <th>Số lượng</th>
                                                 <th>Giá bán</th>
@@ -163,12 +173,12 @@
                                         <tbody id="san_pham">
                                             <!-- <c:forEach var="item" items="${san_pham}">
                                                 <tr>
-                                                    <td class="gap-2">
+                                                    <td>
                                                         <div class="imgContainer">
                                                             <img src="${item.anh_san_pham[0]}"
                                                                 alt="">
-                                                        <span>${item.ten_san_pham}</span>
                                                             </td>
+                                                            <td>${item.ten_san_pham}</td>
                                                     <td>100</td>
                                                     <td><div class="d-flex justify-content-between">
                                                         <span>100.000</span>
@@ -180,13 +190,13 @@
                                                 </tr>
                                             </c:forEach> -->
                                             <tr>
-                                                <td class="gap-2 d-flex flex-row align-items-center">
+                                                <td>
                                                     <div class="imgContainer">
                                                         <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?q=80&w=3064&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                                                             alt="">
                                                     </div>
-                                                    <span>Dummy Product 1</span>
                                                 </td>
+                                                <td>Tên sản phẩm 1</td>
                                                 <td>10</td>
                                                 <td>
                                                     <div class="d-flex justify-content-between">
@@ -198,44 +208,8 @@
                                                 <td>Category 1</td>
                                                 <td>Brand 1</td>
                                             </tr>
-                                            <tr>
-                                                <td class="gap-2 d-flex flex-row align-items-center">
-                                                    <div class="imgContainer">
-                                                        <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?q=80&w=3064&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                                            alt="">
-                                                    </div>
-                                                    <span>Dummy Product 1</span>
-                                                </td>
-                                                <td>10</td>
-                                                <td>
-                                                    <div class="d-flex justify-content-between">
-                                                        <span>100.000</span>
-                                                        <span><b>VND</b></span>
-                                                    </div>
-                                                </td>
-                                                <td>Men</td>
-                                                <td>Category 1</td>
-                                                <td>Brand 1</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="gap-2 d-flex flex-row align-items-center">
-                                                    <div class="imgContainer">
-                                                        <img src="https://images.unsplash.com/photo-1598033129183-c4f50c736f10?q=80&w=3725&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                                            alt="">
-                                                    </div>
-                                                    <span>Dummy Product 1</span>
-                                                </td>
-                                                <td>10</td>
-                                                <td>
-                                                    <div class="d-flex justify-content-between">
-                                                        <span>100.000</span>
-                                                        <span><b>VND</b></span>
-                                                    </div>
-                                                </td>
-                                                <td>Men</td>
-                                                <td>Category 1</td>
-                                                <td>Brand 1</td>
-                                            </tr>
+
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -243,31 +217,37 @@
                         </div>
                         <div id="kho-hang">
                             <div class="mainform">
-                                <div class="header1">
-                                    <h3>Kho hàng</h3>
+                                <div
+                                    class="container-fluid ps-1 pe-0 py-3 d-flex justify-content-between align-items-center flex-wrap gap-2">
+                                    <h3 class="fw-bold m-0">Kho hàng</h3>
                                 </div>
-                                <div class="inforItem">
-                                    <div class="header">
-                                        <div class="search">
-                                            <div class="input">
-                                                <span class="iconSearch"><i
-                                                        class="fa-solid fa-magnifying-glass fa-rotate-90"
-                                                        style="color:white;"></i></span>
-                                                <input class="inputSearch" type="text"
-                                                    placeholder="Tìm kiếm sản phẩm trong danh sách">
-                                            </div>
-                                            <button class="buttonSearch">Search</button>
-                                        </div>
-                                        <div class="Count">
-                                            <h5 style="color: white;">Tổng số sản phẩm: 900</h5>
-                                        </div>
+
+                                <div class="d-flex searchHeader flex-row align-items-center justify-content-between">
+                                    <form class="d-flex gap-2" role="search">
+                                        <input class="form-control searchInventory" id="tableSearchBox" type="search"
+                                            placeholder="Tìm kiếm sản phẩm trong danh sách" aria-label="Search"
+                                            style="width: 450px; height: 40px; " />
+                                        <button class="btn btn-dark my-2" id="button_search">Search</button>
+                                    </form>
+                                    <div class="Count">
+                                        <p class="my-0 mx-2">Tổng số sản phẩm: 900</p>
                                     </div>
                                 </div>
-                                <div class="bodyInfor">
-                                    <table class="content-table">
+                                <div class="tableData p-0 table-responsive">
+                                    <table class="table table-hover">
+                                        <colgroup>
+                                            <col span="1" style="width: 5%;">
+                                            <col span="1" style="width: 35%;">
+                                            <col span="1" style="width: 10%;">
+                                            <col span="1" style="width: 10%;">
+                                            <col span="1" style="width: 10%;">
+                                            <col span="1" style="width: 10%;">
+                                            <col span="1" style="width: 20%;">
+                                        </colgroup>
+
                                         <thead>
                                             <tr>
-                                                <th>Ảnh</th>
+                                                <th></th>
                                                 <th>Tên sản phẩm</th>
                                                 <th>Size</th>
                                                 <th>Màu</th>
@@ -278,8 +258,11 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td><img src="386644391_1615327005662931_6147334074894597765_n.jpg"
-                                                        width="50px" alt="">
+                                                <td>
+                                                    <div class="imgContainer">
+                                                        <img src="https://images.unsplash.com/photo-1598033129183-c4f50c736f10?q=80&w=3725&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                                            alt="">
+                                                    </div>
                                                 </td>
                                                 <td>Tên sản phẩm 1</td>
                                                 <td>XL</td>
@@ -289,8 +272,11 @@
                                                 <td>22/04/2024</td>
                                             </tr>
                                             <tr>
-                                                <td><img src="386644391_1615327005662931_6147334074894597765_n.jpg"
-                                                        width="50px" alt="">
+                                                <td>
+                                                    <div class="imgContainer">
+                                                        <img src="https://images.unsplash.com/photo-1598033129183-c4f50c736f10?q=80&w=3725&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                                            alt="">
+                                                    </div>
                                                 </td>
                                                 <td>Tên sản phẩm 1</td>
                                                 <td>XL</td>
@@ -300,8 +286,11 @@
                                                 <td>22/04/2024</td>
                                             </tr>
                                             <tr>
-                                                <td><img src="386644391_1615327005662931_6147334074894597765_n.jpg"
-                                                        width="50px" alt="">
+                                                <td>
+                                                    <div class="imgContainer">
+                                                        <img src="https://images.unsplash.com/photo-1598033129183-c4f50c736f10?q=80&w=3725&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                                            alt="">
+                                                    </div>
                                                 </td>
                                                 <td>Tên sản phẩm 1</td>
                                                 <td>XL</td>
@@ -311,8 +300,11 @@
                                                 <td>22/04/2024</td>
                                             </tr>
                                             <tr>
-                                                <td><img src="386644391_1615327005662931_6147334074894597765_n.jpg"
-                                                        width="50px" alt="">
+                                                <td>
+                                                    <div class="imgContainer">
+                                                        <img src="https://images.unsplash.com/photo-1598033129183-c4f50c736f10?q=80&w=3725&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                                            alt="">
+                                                    </div>
                                                 </td>
                                                 <td>Tên sản phẩm 1</td>
                                                 <td>XL</td>
@@ -322,8 +314,11 @@
                                                 <td>22/04/2024</td>
                                             </tr>
                                             <tr>
-                                                <td><img src="386644391_1615327005662931_6147334074894597765_n.jpg"
-                                                        width="50px" alt="">
+                                                <td>
+                                                    <div class="imgContainer">
+                                                        <img src="https://images.unsplash.com/photo-1598033129183-c4f50c736f10?q=80&w=3725&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                                            alt="">
+                                                    </div>
                                                 </td>
                                                 <td>Tên sản phẩm 1</td>
                                                 <td>XL</td>
@@ -333,30 +328,11 @@
                                                 <td>22/04/2024</td>
                                             </tr>
                                             <tr>
-                                                <td><img src="386644391_1615327005662931_6147334074894597765_n.jpg"
-                                                        width="50px" alt="">
-                                                </td>
-                                                <td>Tên sản phẩm 1</td>
-                                                <td>XL</td>
-                                                <td>Đỏ</td>
-                                                <td>100</td>
-                                                <td>99</td>
-                                                <td>22/04/2024</td>
-                                            </tr>
-                                            <tr>
-                                                <td><img src="386644391_1615327005662931_6147334074894597765_n.jpg"
-                                                        width="50px" alt="">
-                                                </td>
-                                                <td>Tên sản phẩm 1</td>
-                                                <td>XL</td>
-                                                <td>Đỏ</td>
-                                                <td>100</td>
-                                                <td>99</td>
-                                                <td>22/04/2024</td>
-                                            </tr>
-                                            <tr>
-                                                <td><img src="386644391_1615327005662931_6147334074894597765_n.jpg"
-                                                        width="50px" alt="">
+                                                <td>
+                                                    <div class="imgContainer">
+                                                        <img src="https://images.unsplash.com/photo-1598033129183-c4f50c736f10?q=80&w=3725&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                                            alt="">
+                                                    </div>
                                                 </td>
                                                 <td>Tên sản phẩm 1</td>
                                                 <td>XL</td>
@@ -374,10 +350,17 @@
                         </div>
                         <div id="nhan-vien">
                             <div class="mainform">
-                                <div class="header1">
-                                    <h3>Nhân viên</h3>
+                                <div
+                                    class="container-fluid ps-1 pe-0 py-3 d-flex justify-content-between align-items-center flex-wrap gap-2">
+                                    <h3 class="fw-bold m-0">Nhân viên</h3>
+                                    <form action="add_staff">
+                                        <button class="btn btn-dark p0">
+                                            <i class="bi bi-person-fill-add"></i>
+                                            Thêm nhân viên
+                                        </button>
+                                    </form>
                                 </div>
-                                <div class="inforItem">
+                                <!-- <div class="inforItem">
                                     <div class="header">
                                         <div class="search">
                                             <div class="input">
@@ -393,23 +376,48 @@
                                             <h5 style="color: white;">Tổng số nhân viên: 10</h5>
                                         </div>
                                     </div>
+                                </div> -->
+                                <div class="d-flex searchHeader flex-row align-items-center justify-content-between">
+                                    <form class="d-flex gap-2" role="search">
+                                        <input class="form-control search_nhan_vien" id="tableSearchBox" type="search"
+                                            placeholder="Tìm kiếm nhân viên" aria-label="Search"
+                                            style="width: 450px; height: 40px; " />
+                                        <button class="btn btn-dark my-2" id="button_search_nhan_vien">Search</button>
+                                    </form>
+                                    <div class="Count">
+                                        <p class="my-0 mx-2">Tổng số nhân viên: 10</p>
+                                    </div>
                                 </div>
-                                <div class="bodyInfor">
-                                    <table class="content-table">
+
+                                <div class="tableData p-0 table-responsive">
+                                    <table class="table table-hover">
+
+                                        <colgroup>
+                                            <col span="1" style="width: 15%;">
+                                            <col span="1" style="width: 30%;">
+                                            <col span="1" style="width: 20%;">
+                                            <col span="1" style="width: 22%;">
+                                            <col span="1" style="width: 13%;">
+                                        </colgroup>
                                         <thead>
                                             <tr>
-                                                <th>Ảnh đại diện</th>
+                                                <th></th>
                                                 <th>Họ tên</th>
                                                 <th>Giới tính</th>
                                                 <th>Số điện thoại</th>
-                                                <th>Chi tiết</th>
+                                                <th></th>
                                             </tr>
                                         </thead>
                                         <tbody id="nhan_vien">
-                                            <c:forEach var='item' items='${nhan_vien}'>
+                                            <!-- <c:forEach var='item' items='${nhan_vien}'>
                                                 <tr>
                                                     <form action='thong_tin_nhan_vien' method='get'>
-                                                        <td><img src="${item.anh_dai_dien}" width="50px" alt=""></td>
+                                                        <td>
+                                                            <div class="imgContainerPortrait">
+                                                                <img src="${item.anh_dai_dien}"
+                                                                    alt="">
+                                                            </div>
+                                                        </td>
                                                         <td>${item.ho_ten}</td>
                                                         <td>
                                                             <c:if test="${item.gioi_tinh == true}">
@@ -421,14 +429,55 @@
                                                         </td>
                                                         <td>${item.so_dien_thoai}</td>
                                                         <input type="hidden" name='id' value="${item.id_nguoi_dung}">
-                                                        <td><button class="buttonSearch">Chi tiết</button></td>
+                                                        <td><button class="btn btn-dark" id="button_search_nhan_vien">Chi tiết</button></td>
                                                     </form>
                                                 </tr>
-                                            </c:forEach>
+                                                
+                                            </c:forEach> -->
+
+                                            <tr>
+                                                <td>
+                                                    <div class="imgContainerPortrait">
+                                                        <img src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?q=80&w=3548&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                                            alt="">
+                                                    </div>
+                                                </td>
+                                                <td>Dummy Name</td>
+                                                <td>Nam</td>
+                                                <td>1234567890</td>
+                                                <td><button class="btn btn-dark" id="button_search_nhan_vien">Chi
+                                                        tiết</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="imgContainerPortrait">
+                                                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=3149&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                                            alt="">
+                                                    </div>
+                                                </td>
+                                                <td>Dummy Name</td>
+                                                <td>Nam</td>
+                                                <td>1234567890</td>
+                                                <td><button class="btn btn-dark" id="button_search_nhan_vien">Chi
+                                                        tiết</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="imgContainerPortrait">
+                                                        <img src="https://images.unsplash.com/photo-1519895609939-d2a6491c1196?q=80&w=3688&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                                            alt="">
+                                                    </div>
+                                                </td>
+                                                <td>Dummy Name</td>
+                                                <td>Nam</td>
+                                                <td>1234567890</td>
+                                                <td><button class="btn btn-dark" id="button_search_nhan_vien">Chi
+                                                        tiết</button></td>
+                                            </tr>
+
                                         </tbody>
                                     </table>
                                 </div>
-
                             </div>
                         </div>
                     </div>

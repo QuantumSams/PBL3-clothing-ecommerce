@@ -227,7 +227,14 @@ $breadcrumb-active-color: $gray-900;
   border-radius: 8px;
   overflow: hidden;
 }
-.tableData > table.table > tbody > tr > td > div.imgContainer > img {
+.tableData > table.table > tbody > tr > td > div.imgContainerPortrait {
+  width: 120px;
+  height: 160px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.tableData > table.table > tbody > tr > td > div.imgContainer > img,
+.tableData > table.table > tbody > tr > td > div.imgContainerPortrait > img {
   width: 100%;
   height: 100%;
   object-fit: cover;
