@@ -22,17 +22,12 @@ public class Danh_muc_Service {
 		LayTatCaDanhMuc();
 	}
 	
-	public void load_category_by_json(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+	public List<Danh_muc_san_pham> load_category_by_json(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		int id  = Integer.parseInt(req.getParameter("danh_muc"));
 		
-		List<Danh_muc_san_pham> list = Lay_danh_muc_con(id);
+		return Lay_danh_muc_con(id);
 		
-	    ObjectMapper mapper = new ObjectMapper();
-	    String json = mapper.writeValueAsString(list);
 	    
-	    resp.setContentType("application/json");
-	    resp.setCharacterEncoding("UTF-8");
-	    resp.getWriter().write(json);
 	}
 	
 	public void load_category_by_session(HttpServletRequest req, HttpServletResponse resp) {

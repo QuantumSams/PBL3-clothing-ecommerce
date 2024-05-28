@@ -18,7 +18,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-@WebServlet(urlPatterns = {"/get_product_by_ajax", "/load_product"})
+@WebServlet(urlPatterns = {"/get_product_by_ajax", "/load_product", "/remove_product"})
 public class ProductController extends HttpServlet {
 
 	private static final long serialVersionUID = -886812143546363698L;
@@ -43,8 +43,31 @@ public class ProductController extends HttpServlet {
 			session.setAttribute("product", san_pham);
 			req.getRequestDispatcher("product.jsp").forward(req, resp);
 		}
+		
+		
 	}
 	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String action = req.getServletPath();
+		San_pham_Service san_pham_Service = new San_pham_Service(new San_pham_DAO(), new Muc_san_pham_DAO(), new Mau_sac_DAO(), new Size_DAO(), new Anh_san_pham_DAO());
+		
+		if(action.equals("/remove_product")) {
+			System.out.println("Herl;looo");
+			
+			san_pham_Service.remove_Product(req, resp);
+			
+			postJsonMessage(resp, "Xóa sản phẩm thành công");
+		}
+	}
 	
+
+	private void postJsonMessage( HttpServletResponse resp, String message) throws IOException {
+		ObjectMapper mapper = new ObjectMapper();
+	    String json = mapper.writeValueAsString(message);
+	    resp.setContentType("application/json");
+	    resp.setCharacterEncoding("UTF-8");
+	    resp.getWriter().write(json);
+	}
 
 }

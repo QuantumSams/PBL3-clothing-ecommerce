@@ -91,7 +91,7 @@ public class San_pham_Service {
 	}
 	
 	public List<San_pham> getProductByID(HttpServletRequest req, HttpServletResponse resp) {
-		String id = req.getParameter("id_san_pham");
+		int id = Integer.parseInt(req.getParameter("id_san_pham"));
 		List<San_pham> list_san_pham = san_pham_DAO.findBySpacification(new FindProductByID(id));
 		
 		for(San_pham san_pham : list_san_pham) {
@@ -250,5 +250,16 @@ public class San_pham_Service {
 	    } catch (IOException e) {
 	    	e.printStackTrace();
 	    }
+	}
+	
+	public void remove_Product(HttpServletRequest req, HttpServletResponse resp)
+	{
+		San_pham san_pham = getProductByID(req, resp).get(0);
+		
+		for(Muc_san_pham muc_san_pham : san_pham.getMuc_san_pham())
+		{
+			muc_san_pham_DAO.remove(muc_san_pham);
+		}
+		san_pham_DAO.remove(san_pham);
 	}
 }

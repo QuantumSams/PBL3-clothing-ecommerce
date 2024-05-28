@@ -97,19 +97,19 @@
                       <h5 class="card-title fw-bold">Thông tin cá nhân</h5>
                       <dl class="row">
                         <dt class="col-sm-4">Họ và tên</dt>
-                        <dd class="col-sm-8" id="viewProfilePageName"></dd>
+                        <dd class="col-sm-8" id="viewProfilePageName">${acc.ho_ten}</dd>
                       </dl>
                       <dl class="row">
                         <dt class="col-sm-4">Giới tính</dt>
-                        <dd class="col-sm-8" id="viewProfilePageGender"></dd>
+                        <dd class="col-sm-8" id="viewProfilePageGender">${acc.ho_ten}</dd>
                       </dl>
                       <dl class="row">
                         <dt class="col-sm-4">Số điện thoại</dt>
-                        <dd class="col-sm-8" id="viewProfilePagePhoneNum"></dd>
+                        <dd class="col-sm-8" id="viewProfilePagePhoneNum">${acc.so_dien_thoai}</dd>
                       </dl>
                       <dl class="row">
                         <dt class="col-sm-4">Địa chỉ</dt>
-                        <dd class="col-sm-8" id="viewProfilePageAddress"></dd>
+                        <dd class="col-sm-8" id="viewProfilePageAddress">${acc.dia_chi}</dd>
                       </dl>
                       </p>
                     </div>
@@ -146,7 +146,7 @@
                     <h5 class="card-title fw-bold">
                       Ảnh chân dung
                     </h5>
-                    <img class="img-fluid" id="viewProfilePageImage">
+                    <img class="img-fluid" id="viewProfilePageImage" src="${acc.anh_dai_dien}">
                   </div>
                 </div>
               </div>

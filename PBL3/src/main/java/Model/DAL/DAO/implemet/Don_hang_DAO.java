@@ -28,7 +28,12 @@ public class Don_hang_DAO extends AbstractDao implements Repository<Don_hang>{
 	public void update(Don_hang don_hang) {
 		String query = "UPDATE don_hang SET id_khach_hang = ?, id_nhan_vien = ? , ngay_gio_dat = ?, ngay_gio_nhan = ?, trang_thai_don_hang = ? WHERE id_don_hang = ?";
 		
-		update(query, don_hang.getId_khach_hang(), don_hang.getId_nhan_vien(), don_hang.getNgay_gio_dat_don_hang(), don_hang.getId_nhan_vien(), don_hang.getTrang_thai_don_hang(), don_hang.getId_hoa_don());
+		update(query, don_hang.getId_khach_hang(), 
+						don_hang.getId_nhan_vien(), 
+						don_hang.getNgay_gio_dat_don_hang(),
+						don_hang.getNgay_gio_nhan_don_hang(),
+						don_hang.getTrang_thai_don_hang(), 
+						don_hang.getId_hoa_don());
 	}
 
 

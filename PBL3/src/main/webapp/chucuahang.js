@@ -11,7 +11,6 @@ $(document).ready(function(){
 			let chuoi = "";
 	    	  data.forEach(function(item){
 	    		  chuoi += 	'<tr>'+
-	    		  			'<form action="chinh_sua_san_pham" method="get">'+
 	    		  			'<td><img src='+item.anh_san_pham[0]+' width="50px" alt=""></td>' +
 	    		  			'<td>'+item.ten_san_pham+'</td>'+
 	    		  			'<td>'+item.ten_san_pham+'</td>'+
@@ -19,10 +18,13 @@ $(document).ready(function(){
 	                        '<td>Nam</td>' +
 	                        '<td>'+item.danh_muc_san_pham+'</td>'+
 	                        '<td>'+item.ten_nhan_hang+'</td>'+
-	                        '<td><button class = "buttonSearch">Chi tiết</button></td>'+
-	                        '<td><button class = "buttonSearch">Xóa</button></td>'+
-	                        '<input type="hidden" name="id_san_pham" value="'+item.id_san_pham+'">'+
+	                        '<td>'+
+	                        '<form action="chinh_sua_san_pham" method="get">'+
+	    		  				'<button class = "buttonSearch">Chi tiết</button>'+
+	    		  				'<input type="hidden" name="id_san_pham" value="'+item.id_san_pham+'">'+
 	                        '</form>'+
+	                        '</td>'+
+	                        '<td><button class="buttonRemove"><input type="hidden" value="'+item.id_san_pham+'">Xóa</button></td>'+
 	                        '</tr>';
 	               
 	    	  });
@@ -61,3 +63,25 @@ $(document).ready(function(){
 	   });
 	});
 });
+
+
+let a = document.querySelectorAll('.buttonRemove');
+a.forEach(item => {
+	item.addEventListener('click', e =>{
+		const inputValue = item.childNodes[0].value;
+		$.ajax({
+			url: "remove_product", 
+			type: "POST",
+			dataType: 'json',
+			data: {
+				id_san_pham : inputValue,
+			},
+			success: function(data) {
+				alert(data);
+			},
+			error:  function() {
+				alert("loi");
+			},
+		});
+	})
+})

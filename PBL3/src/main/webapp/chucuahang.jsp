@@ -73,21 +73,24 @@
                                 </thead>
                                 <tbody id="san_pham">
                                 	<c:forEach var="item" items="${san_pham}">
-                                		<tr>
-                                			<form action='chinh_sua_san_pham' method='get'>
-	                                			<td><img src="${item.anh_san_pham[0]}" width="50px" alt=""></td>
-	                                        	<td>${item.ten_san_pham}</td>
-	                                        	<td>${item.ten_san_pham}</td>
-	                                        	<td>${item.gia_tien} VNĐ</td>
-	                                        	<td>Nam</td>
-	                                        	<td>${item.danh_muc_san_pham}</td>
-	                                        	<td>${item.ten_nhan_hang}</td>
-	                                        	<td><button class = "buttonSearch">Chi tiết</button></td>
-	                                        	<td><button class = "buttonSearch">Xóa</button></td>
-	                                        	<input type="hidden" name='id_san_pham' value="${item.id_san_pham}">
-                                        	</form>
-                                    	</tr>
-                                	</c:forEach>
+										<tr>
+
+											<td><img src="${item.anh_san_pham[0]}" width="50px"
+												alt=""></td>
+											<td>${item.ten_san_pham}</td>
+											<td>${item.ten_san_pham}</td>
+											<td>${item.gia_tien}VNĐ</td>
+											<td>Nam</td>
+											<td>${item.danh_muc_san_pham}</td>
+											<td>${item.ten_nhan_hang}</td>
+											<form action='chinh_sua_san_pham' method='get'>
+												<td><button class="buttonSearch">Chi tiết</button></td>
+												 <input type="hidden" name='id_san_pham' value="${item.id_san_pham}">
+											</form>
+											<td><button class="buttonRemove"><input type="hidden" value="${item.id_san_pham}">Xóa</button></td>
+
+										</tr>
+									</c:forEach>
                                 </tbody>
                             </table>
                         </div>
