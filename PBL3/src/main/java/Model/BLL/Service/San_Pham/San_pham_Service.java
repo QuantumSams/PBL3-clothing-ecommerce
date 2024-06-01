@@ -138,11 +138,55 @@ public class San_pham_Service {
 		List<Danh_muc_san_pham> list_ten_loai_san_pham = danhmuc.Lay_danh_muc_con(list_dtkh.get(0));
 		List<Danh_muc_san_pham> list_danh_muc_san_pham = danhmuc.Lay_danh_muc_con(list_ten_loai_san_pham.get(0));
 		
-		req.setAttribute("mau_sac", list_mau_sac);
-		req.setAttribute("size", list_size);
-		req.setAttribute("doi_tuong_khach_hang", list_dtkh);
-		req.setAttribute("ten_loai_san_pham", list_ten_loai_san_pham);
-		req.setAttribute("ten_danh_muc_san_pham", list_danh_muc_san_pham);
+		HttpSession session = req.getSession();
+		session.setMaxInactiveInterval(30 * 60);
+		session.setAttribute("mau_sac", list_mau_sac);
+		session.setAttribute("size", list_size);
+		session.setAttribute("doi_tuong_khach_hang", list_dtkh);
+		session.setAttribute("ten_loai_san_pham", list_ten_loai_san_pham);
+		session.setAttribute("ten_danh_muc_san_pham", list_danh_muc_san_pham);
+	}
+	
+	public void update_product(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+		int id_danh_muc = Integer.parseInt(req.getParameter("id_danh_muc"));
+		Danh_muc_san_pham danh_muc = new Danh_muc_Service(new Danh_muc_DAO()).getDanh_muc_Id(id_danh_muc);
+		
+		int id_san_pham =	Integer.parseInt(req.getParameter("id_san_pham"));	
+		
+		String ten_mat_hang = req.getParameter("ten_mat_hang") ;
+		String mo_ta = req.getParameter("mo_ta") ;
+		String thong_tin_chi_tiet = req.getParameter("thong_tin_chi_tiet") ;
+		String thuong_hieu = req.getParameter("thuong_hieu") ;
+		String chat_lieu = req.getParameter("chat_lieu") ;
+		
+//		String anh_san_pham = req.getParameter("images") ;
+//		String size_muc_san_pham = req.getParameter("size") ;
+//		String mau_muc_san_pham = req.getParameter("color") ;
+//		String anh_muc_san_pham = req.getParameter("image_muc") ;
+//		String gia_san_pham = req.getParameter("gia") ;
+//		
+//		List<String> list_anh_san_pham = null;
+//		List<Integer> list_size_muc_san_pham = null;
+//		List<Integer> list_mau_muc_san_pham = null;
+//		List<Integer> list_gia_san_pham = null;
+//		List<String> list_anh_muc_san_pham = null;
+//		
+//		list_anh_san_pham = new ObjectMapper().readValue(anh_san_pham, new TypeReference<List<String>>() {});
+//		
+//		list_size_muc_san_pham = new ObjectMapper().readValue(size_muc_san_pham, new TypeReference<List<Integer>>() {});
+//		list_mau_muc_san_pham= new ObjectMapper().readValue(mau_muc_san_pham, new TypeReference<List<Integer>>() {});
+//		list_gia_san_pham= new ObjectMapper().readValue(gia_san_pham, new TypeReference<List<Integer>>() {});
+//		list_anh_muc_san_pham = new ObjectMapper().readValue(anh_muc_san_pham, new TypeReference<List<String>>() {});
+//		
+		List<String> fileanh = new ArrayList<>();//add_image(list_anh_san_pham, id_san_pham);
+		List<Muc_san_pham> list_muc_san_pham = new ArrayList<>();
+		
+		San_pham san_pham = new San_pham(id_san_pham, danh_muc.getCategory(), ten_mat_hang, thuong_hieu, chat_lieu, mo_ta, thong_tin_chi_tiet, fileanh, list_muc_san_pham);
+		san_pham.setId_danh_muc_san_pham(id_danh_muc);
+		System.out.println(san_pham.toString());
+		System.out.println(san_pham.getId_danh_muc_san_pham());
+		san_pham_DAO.update(san_pham);
+
 	}
 	
 	public void add_product(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
@@ -195,9 +239,9 @@ public class San_pham_Service {
 		
 		
 		San_pham san_pham = new San_pham(id_san_pham, danh_muc.getCategory(), ten_mat_hang, thuong_hieu, chat_lieu, mo_ta, thong_tin_chi_tiet, fileanh, list_muc_san_pham);
-		System.out.println(san_pham.toString());
+
 		san_pham.setId_danh_muc_san_pham(id_danh_muc);
-		//san_pham.setAnh_san_pham(fileanh);
+		
 		san_pham_DAO.add(san_pham);
 
 		for(String anh : fileanh) {

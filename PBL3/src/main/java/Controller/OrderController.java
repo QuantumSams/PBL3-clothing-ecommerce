@@ -1,4 +1,4 @@
-package Control;
+package Controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -34,10 +34,11 @@ public class OrderController extends HttpServlet{
 
 	private static final long serialVersionUID = 6360439063345108716L;
 
+	Order_Service order_Service = new Order_Service();
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String action = req.getServletPath();
-		Order_Service order_Service = new Order_Service();
 		
 		if(action.equals("/create_order")) {
 			order_Service.create_order(req, resp);
@@ -85,8 +86,7 @@ public class OrderController extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String action = req.getServletPath();
-		Order_Service order_Service = new Order_Service();
-		
+
 		if(action.equals("/create_order")) {
 			order_Service.add_order(req, resp);
 		}

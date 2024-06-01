@@ -1,4 +1,4 @@
-package Control;
+package Controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -6,20 +6,24 @@ import java.util.List;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import Model.BLL.Service.Danh_Muc.Danh_muc_Service;
+import Model.BLL.Service.Doanh_Thu.Doanh_thu_Service;
 import Model.BLL.Service.Nguoi_Dung.Nguoi_dung_Service;
 import Model.BLL.Service.Order.Order_Service;
 import Model.BLL.Service.San_Pham.Muc_san_pham_Service;
 import Model.BLL.Service.San_Pham.San_pham_Service;
 import Model.DAL.DAO.implemet.Anh_san_pham_DAO;
 import Model.DAL.DAO.implemet.Danh_muc_DAO;
+import Model.DAL.DAO.implemet.Doanh_thu_DAO;
 import Model.DAL.DAO.implemet.Don_hang_DAO;
 import Model.DAL.DAO.implemet.Mau_sac_DAO;
 import Model.DAL.DAO.implemet.Muc_san_pham_DAO;
 import Model.DAL.DAO.implemet.Nguoi_dung_DAO;
 import Model.DAL.DAO.implemet.San_pham_DAO;
 import Model.DAL.DAO.implemet.Size_DAO;
+import Model.DTO.Doanh_Thu.Doanh_thu;
 import Model.DTO.Don_Hang.Don_hang;
 import Model.DTO.Don_Hang.Xac_nhan_don_hang;
+import Model.DTO.Don_Hang.Xem_don_hang;
 import Model.DTO.Nguoi_Dung.Nguoi_dung;
 import Model.DTO.Nguoi_Dung.Phan_quyen_nguoi_dung;
 import Model.DTO.San_Pham.Muc_san_pham;
@@ -30,17 +34,22 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-@WebServlet(urlPatterns = {"/trang_chu", "/trang_chu_cua_hang", "/nhan_vien", "/login", "/logout", "/sign_up"})
+@WebServlet(urlPatterns = {"/trang_chu", "/trang_chu_cua_hang", "/nhan_vien", 
+							"/login", "/logout", "/sign_up"})
 public class HomeController extends HttpServlet{
 
 	private static final long serialVersionUID = -5225303616746645511L;
 
+	Nguoi_dung_Service nguoi_dung_Service = new Nguoi_dung_Service(new Nguoi_dung_DAO());
+	San_pham_Service san_pham_Service = new San_pham_Service(new San_pham_DAO(), new Muc_san_pham_DAO(), new Mau_sac_DAO(), new Size_DAO(), new Anh_san_pham_DAO());
+	Danh_muc_Service danh_muc_Service = new Danh_muc_Service(new Danh_muc_DAO());
+	Muc_san_pham_Service muc_san_pham_Service = new Muc_san_pham_Service(new Muc_san_pham_DAO(), new San_pham_DAO());
+	Order_Service order_Service = new Order_Service();
+	Doanh_thu_Service doanh_thu_Service = new Doanh_thu_Service(new Doanh_thu_DAO());
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String action = req.getServletPath();
-		Nguoi_dung_Service nguoi_dung_Service = new Nguoi_dung_Service(new Nguoi_dung_DAO());
-		San_pham_Service san_pham_Service = new San_pham_Service(new San_pham_DAO(), new Muc_san_pham_DAO(), new Mau_sac_DAO(), new Size_DAO(), new Anh_san_pham_DAO());
-		Danh_muc_Service danh_muc_Service = new Danh_muc_Service(new Danh_muc_DAO());
 		HttpSession session = req.getSession();
 		
 		if(action != null && action.equals("/logout")) {
@@ -65,12 +74,22 @@ public class HomeController extends HttpServlet{
 			List<San_pham> list_san_pham = san_pham_Service.GetAllProducts(req, resp);
 			session = req.getSession();
 			session.setAttribute("san_pham", list_san_pham);
+			session.setAttribute("so_san_pham", list_san_pham.size());
 			
 			List<Nguoi_dung> nhan_vien = nguoi_dung_Service.getAllNhanVien(req, resp);
 			session.setAttribute("nhan_vien", nhan_vien);
+			session.setAttribute("so_nhan_vien", nhan_vien.size());
 			
-			List<Muc_san_pham> muc_san_pham = new Muc_san_pham_Service(new Muc_san_pham_DAO(), new San_pham_DAO()).getAllMucSanPham();
+			List<Muc_san_pham> muc_san_pham = muc_san_pham_Service.getAllMucSanPham(); 
 			session.setAttribute("muc_san_pham", muc_san_pham);
+			session.setAttribute("so_muc_san_pham", muc_san_pham.size());
+			
+			List<Xem_don_hang> xem_don_hang = order_Service.get_Xem_don_hang(req, resp);
+			session.setAttribute("don_hang", xem_don_hang);
+			session.setAttribute("so_don_hang", xem_don_hang.size());
+			
+			Doanh_thu doanh_thu = doanh_thu_Service.getDoanh_thu().get(0);
+			session.setAttribute("doanh_thu", doanh_thu);
 			
 			resp.sendRedirect("chucuahang.jsp");
 		}
@@ -86,7 +105,6 @@ public class HomeController extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String action = req.getServletPath();
-		Nguoi_dung_Service nguoi_dung_Service = new Nguoi_dung_Service(new Nguoi_dung_DAO());
 		
 		if(action != null && action.equals("/login")) {
 			try {

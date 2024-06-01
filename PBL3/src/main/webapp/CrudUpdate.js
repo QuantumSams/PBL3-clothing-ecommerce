@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	$("#button_add_product").click(function() {
 
-		let sizeValues = [];
+		/*let sizeValues = [];
 		let colorValues = [];
 		let giaValues = [];
 		let imageValues = [];
@@ -30,24 +30,25 @@ $(document).ready(function() {
 		let imageSrc = [];
 		images.forEach((image) => {
 			imageSrc.push(image.src.split(",")[1])
-		});
-		
+		});*/
+		alert("Hello");
 		$.ajax({
-			url: "add_product", // URL of your Servlet
+			url: "update_product", // URL of your Servlet
 			type: "POST",
 			dataType: 'json',
 			data: {
+				id_san_pham: $("#id_san_pham").val(),
 				id_danh_muc: $("#Danh_muc").val(),
 				ten_mat_hang: $("#ten_mat_hang").val(),
 				mo_ta: $("#mo_ta").val(),
 				thong_tin_chi_tiet: $("#thong_tin_chi_tiet").val(),
 				thuong_hieu: $("#thuong_hieu").val(),
 				chat_lieu: $("#chat_lieu").val(),
-				images: JSON.stringify(imageSrc),
+				/*images: JSON.stringify(imageSrc),
 				size: JSON.stringify(sizeValues),
 				color: JSON.stringify(colorValues),
 				gia: JSON.stringify(giaValues),
-				image_muc: JSON.stringify(imageValues)
+				image_muc: JSON.stringify(imageValues)*/
 			},
 
 			success: function(data) {

@@ -53,7 +53,7 @@
                                     <button class="buttonSearch" id="button_search">Search</button>
                                 </div>
                                 <div class="Count">
-                                    <h5 style ="color: white;">Tổng số sản phẩm: 900</h5>
+                                    <h5 style ="color: white;">Tổng số sản phẩm: ${so_san_pham}</h5>
                                 </div>
                             </div>
                         </div>
@@ -85,7 +85,7 @@
 											<td>Nam</td>
 											<td>${item.danh_muc_san_pham}</td>
 											<td>${item.ten_nhan_hang}</td>
-											<form action='chinh_sua_san_pham' method='get'>
+											<form action='update_product' method='get'>
 												<td><button class="buttonSearch">Chi tiết</button></td>
 												 <input type="hidden" name='id_san_pham' value="${item.id_san_pham}">
 											</form>
@@ -114,7 +114,7 @@
                                     <button class = "buttonSearch">Search</button>
                                 </div>
                                 <div class="Count">
-                                    <h5 style ="color: white;">Tổng số sản phẩm: 900</h5>
+                                    <h5 style ="color: white;">Tổng số mục sản phẩm: ${so_muc_san_pham}</h5>
                                 </div>
                             </div>
                         </div>
@@ -167,17 +167,17 @@
                                 <div class="thongke">
                                     <div class="doanhThu card1">
                                         <h5>Doanh thu</h5>
-                                        <h2>721K</h2>
+                                        <h2>${doanh_thu.doanh_thu}</h2>
                                     </div>
 
                                     <div class="tongsodon card1">
                                         <h5>Tổng số đơn</h5>
-                                        <h2>1.156</h2>
+                                        <h2>${doanh_thu.tong_so_don}</h2>
                                     </div>
 
                                     <div class="daBan card1">
                                         <h5>Tổng số sản phẩm đã bán</h5>
-                                        <h2>239K</h2>
+                                        <h2>${doanh_thu.san_pham_da_ban}</h2>
 
                                     </div>
                                 </div>
@@ -274,7 +274,7 @@
                                             <button class="buttonSearch" id="button_search">Search</button>
                                         </div>
                                         <div class="Count">
-                                            <h5 style ="color: white;">Tổng số sản phẩm: 900</h5>
+                                            <h5 style ="color: white;">Tổng số sản phẩm: ${so_don_hang}</h5>
                                         </div>
                                     </div>
                                 </div>
@@ -287,51 +287,85 @@
                                             <th>Thời điểm đặt</th>
                                             <th>Thời điểm nhận</th>
                                             <th>Trạng thái</th>
+                                            <th>Xem chi tiết</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>20.000 VNĐ</td>
-                                            <td>Nguyễn Văn A</td>
-                                            <td>15/10/2023</td>
-                                            <td>-</td>
-                                            <td><button type="button" class="btn btn-warning" disabled>Đang chờ xác nhận</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>20.000 VNĐ</td>
-                                            <td>Nguyễn Văn A</td>
-                                            <td>15/10/2023</td>
-                                            <td>-</td>
-                                            <td><button type="button" class="btn btn-success" disabled>Giao thành công</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>20.000 VNĐ</td>
-                                            <td>Nguyễn Văn A</td>
-                                            <td>15/10/2023</td>
-                                            <td>-</td>
-                                            <td><button type="button" class="btn btn-danger" disabled>Bị huỷ</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>20.000 VNĐ</td>
-                                            <td>Nguyễn Văn A</td>
-                                            <td>15/10/2023</td>
-                                            <td>-</td>
-                                            <td><button type="button" class="btn btn-primary" disabled>Đang giao hàng</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>20.000 VNĐ</td>
-                                            <td>Nguyễn Văn A</td>
-                                            <td>15/10/2023</td>
-                                            <td>-</td>
-                                            <td><button type="button" class="btn btn-warning" disabled>Đang chờ xác nhận</button></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+								<tbody>
+
+									<c:forEach var="item" items="${don_hang}">
+										<tr>
+											<th scope="row">${item.id_don_hang}</th>
+											<td>
+												<div class="d-flex justify-content-between">
+													<span>${item.gia_tri_don}</span> <span><b>VND</b></span>
+												</div>
+											</td>
+											<td>${item.ho_ten_nhan_vien}</td>
+											<td>${item.thoi_diem_dat}</td>
+											<td>${item.thoi_diem_nhan}</td>
+											<td>
+												<button class="status status-waiting">
+													<input type="hidden" value="${item.id_don_hang}">
+													${item.trang_thai}
+												</button>
+											</td>
+											<td>
+												<form action="xem_don_hang_chi_tiet" method="get">
+													<input type="hidden" name="id_don_hang"
+														value="${item.id_don_hang}">
+													<button class="xem_chi_tiet">Xem chi tiết</button>
+												</form>
+											</td>
+										</tr>
+									</c:forEach>
+
+									<tr>
+										<td>1</td>
+										<td>20.000 VNĐ</td>
+										<td>Nguyễn Văn A</td>
+										<td>15/10/2023</td>
+										<td>-</td>
+										<td><button type="button" class="btn btn-warning"
+												disabled>Đang chờ xác nhận</button></td>
+									</tr>
+									<tr>
+										<td>1</td>
+										<td>20.000 VNĐ</td>
+										<td>Nguyễn Văn A</td>
+										<td>15/10/2023</td>
+										<td>-</td>
+										<td><button type="button" class="btn btn-success"
+												disabled>Giao thành công</button></td>
+									</tr>
+									<tr>
+										<td>1</td>
+										<td>20.000 VNĐ</td>
+										<td>Nguyễn Văn A</td>
+										<td>15/10/2023</td>
+										<td>-</td>
+										<td><button type="button" class="btn btn-danger" disabled>Bị
+												huỷ</button></td>
+									</tr>
+									<tr>
+										<td>1</td>
+										<td>20.000 VNĐ</td>
+										<td>Nguyễn Văn A</td>
+										<td>15/10/2023</td>
+										<td>-</td>
+										<td><button type="button" class="btn btn-primary"
+												disabled>Đang giao hàng</button></td>
+									</tr>
+									<tr>
+										<td>1</td>
+										<td>20.000 VNĐ</td>
+										<td>Nguyễn Văn A</td>
+										<td>15/10/2023</td>
+										<td>-</td>
+										<td><button type="button" class="btn btn-warning"
+												disabled>Đang chờ xác nhận</button></td>
+									</tr>
+								</tbody>
+							</table>
     
                             </div>
                         </div>
@@ -340,7 +374,7 @@
                     <div class="mainform">
                         <div class="header1">
                             <h3>Nhân viên</h3>
-                            <form action="add_product" method="GET">
+                            <form action="tao_nhan_vien" method="GET">
 	                            <button class = "add">
 	                                <i class="fa-solid fa-plus"></i>
 	                                Thêm nhân viên
@@ -357,7 +391,7 @@
                                     <button id='button_search_nhan_vien' class = "buttonSearch">Search</button>
                                 </div>
                                 <div class="Count">
-                                    <h5 style ="color: white;">Tổng số nhân viên: 10</h5>
+                                    <h5 style ="color: white;">Tổng số nhân viên: ${so_nhan_vien}</h5>
                                 </div>
                             </div>
                         </div>
@@ -375,25 +409,22 @@
                                 </thead>
                                 <tbody id="nhan_vien">
                                 	<c:forEach var='item' items='${nhan_vien}'>
-	                                	<tr>
-	                                		<form action='thong_tin_nhan_vien' method='get'>
-		                                		<td><img src="${item.anh_dai_dien}" width="50px" alt=""></td>
-		                                        <td>${item.ho_ten}</td>
-		                                     	<td>
-		                                        	<c:if test="${item.gioi_tinh == true}">
+										<tr>
+											<td><img src="${item.anh_dai_dien}" width="50px" alt=""></td>
+											<td>${item.ho_ten}</td>
+											<td><c:if test="${item.gioi_tinh == true}">
 										                Nam
-										            </c:if>
-										            <c:if test="${item.gioi_tinh != true}">
+										            </c:if> <c:if test="${item.gioi_tinh != true}">
 										                Nữ
-										            </c:if>
-		                                        </td>
-		                                        <td>${item.so_dien_thoai}</td>
-		                                        <input type="hidden" name='id' value="${item.id_nguoi_dung}">
-		                                        <td><button class = "buttonSearch">Chi tiết</button></td>
-		                                        <td><button class = "buttonSearch">Xóa</button></td>
-	                                        </form>
-	                                    </tr>
-                                	</c:forEach>
+										            </c:if></td>
+											<td>${item.so_dien_thoai}</td>
+											<form action='thong_tin_nhan_vien' method='get'>
+												<input type="hidden" name='id' value="${item.id_nguoi_dung}">
+												<td><button class="buttonSearch">Chi tiết</button></td>
+											</form>
+											<td><button class="buttonRemoveNV"><input type="hidden" name='id' value="${item.id_nguoi_dung}">Xóa</button></td>
+										</tr>
+									</c:forEach>
                                 </tbody>
                             </table>
                         </div>

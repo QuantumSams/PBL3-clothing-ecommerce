@@ -39,7 +39,7 @@
 							<div class="tab-pane fade active show" id="account-general">
 								<div class="cardImage card-body">
 
-									<img id="img" src="${sessionScope.nhan_vien.anh_dai_dien}"
+									<img id="img" src=""
 										alt="Card image" class="d-block ui-w-80">
 								</div>
 								<div class="mainInfor card-body">
@@ -49,48 +49,47 @@
 									<div class="name form">
 										<label for="" class="form-label">Tên</label> <input
 											id="ho_ten_khach_hang" type="text" class="form-control"
-											value="${sessionScope.nhan_vien.ho_ten}" name="name">
+											value="" name="name">
 										<input id="id_khach_hang" type="text" class="form-control"
-											value="${sessionScope.nhan_vien.id_nguoi_dung}" name="id"
+											value="" name="id"
 											style="display: none">
 									</div>
 									<div class="phoneNum form">
 										<label for="" class="form-label">Số điện thoại</label> <input
 											type="tel" id="so_dien_thoai" class="form-control"
-											value="${sessionScope.nhan_vien.so_dien_thoai}" name="phone">
+											value="" name="phone">
 									</div>
 									<div class="email form">
 										<label for="" class="form-label">Email</label> <input
 											type="email" id="email" class="form-control"
-											value="${sessionScope.nhan_vien.email}" name="email">
+											value="" name="email">
 									</div>
 									<div class="address form">
 										<label for="" class="form-label">Tỉnh/ Thành phố</label> <input
 											id="tinh" type="text" class="form-control"
-											value="${sessionScope.nhan_vien.tinh}" name="address">
+											value="" name="address">
 									</div>
 									<div class="address form">
 										<label for="" class="form-label">Huyện / Quận</label> <input
 											id="huyen" type="text" class="form-control"
-											value="${sessionScope.nhan_vien.huyen}" name="address">
+											value="" name="address">
 									</div>
 									<div class="address form">
 										<label for="" class="form-label">Xã / Phường</label> <input
 											id="xa" type="text" class="form-control"
-											value="${sessionScope.nhan_vien.xa}" name="address">
+											value="" name="address">
 									</div>
 									<div class="address form">
 										<label for="" class="form-label">Địa chỉ cụ thể</label> <input
 											id="cap_nhat_thong_tin1" type="text" class="form-control"
-											value="${sessionScope.nhan_vien.dia_chi_cu_the}"
+											value=""
 											name="address">
 									</div>
 									<div class="Gender form">
 										<label for="" class="form-label">Giới tính</label>
 
 										<div class="radio">
-											<c:if test="${sessionScope.nhan_vien.gioi_tinh == true}">
-												<div class="form-check">
+											<div class="form-check">
 													<input type="radio" class="form-check-input" id="radio1"
 														name="optradio" id="radio1" value="option1" checked>Nam
 													<label class="form-check-label" for="radio1"></label>
@@ -99,28 +98,23 @@
 													<input type="radio" class="form-check-input" id="radio2"
 														name="optradio" id="radio2" value="option2">Nữ <label
 														class="form-check-label" for="radio2"></label>
-												</div>
-											</c:if>
-											<c:if test="${sessionScope.nhan_vien.gioi_tinh == false}">
-												<div class="form-check">
-													<input type="radio" class="form-check-input" id="radio1"
-														name="optradio" id="radio1" value="option1">Nam <label
-														class="form-check-label" for="radio1"></label>
-												</div>
-												<div class="form-check">
-													<input type="radio" class="form-check-input" id="radio2"
-														name="optradio" id="radio2" value="option2" checked>Nữ
-													<label class="form-check-label" for="radio2"></label>
-												</div>
-											</c:if>
-
+											</div>
+											
 										</div>
 
 									</div>
 									<div class="birth form">
 										<label for="" class="form-label">Ngày sinh</label> <input
 											id="ngay_sinh" type="date" class="form-control"
-											value="${sessionScope.nhan_vien.ngay_sinh}" name="birth">
+											value="" name="birth">
+									</div>
+									<div class="form-group">
+										<label class="form-label">Mật khẩu </label> <input
+											id="new_password" type="password" class="form-control">
+									</div>
+									<div class="form-group">
+										<label class="form-label">Nhập lại mật khẩu</label> <input
+											id="new_repassword" type="password" class="form-control">
 									</div>
 
 								</div>
@@ -150,7 +144,7 @@
 
 			<div class="text-right mt-3">
 
-				<button id="save">Save</button>
+				<button id="save">OK</button>
 				<button type="button" class="btn btn-default"
 					onclick="history.back()">Cancel</button>
 			</div>
@@ -185,24 +179,26 @@
 		}
 	});
 
+	
 	$(document).ready(
 			function() {
 				$("#save").click(
 						function() {
 							$.ajax({
-								url : "modify_Infor", // URL of your Servlet
+								url : "tao_nhan_vien", // URL of your Servlet
 								type : "POST",
 								dataType : 'json',
 								data : {
-									id_khach_hang : $("#id_khach_hang").val(),
-									ho_ten_khach_hang : $("#ho_ten_khach_hang")
-											.val(),
+									email:  $("#email").val(),
+									so_dien_thoai:  $("#so_dien_thoai").val(),
+									ho_ten : $("#ho_ten_khach_hang").val(),
 									ngay_sinh : $("#ngay_sinh").val(),
 									gioi_tinh : $("#radio1").prop('checked'),
 									dia_chi : $("#tinh").val() + '/'
 											+ $("#huyen").val() + '/'
 											+ $("#xa").val() + '/'
-											+ $("#cu_the").val()
+											+ $("#cu_the").val(),
+									new_password : $("#new_password").val(),
 								},
 								success : function(data) {
 									alert(data);

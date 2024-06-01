@@ -5,22 +5,21 @@ import java.sql.Date;
 public class Lich_su_don_hang {
 	private int id_don_hang;
 	private Date ngay_dat;
+	private Date ngay_nhan;
 	private int so_tien;
 	private int so_luong_san_pham;
 	private String trang_thai_don_hang;
 	private int so_sao_danh_gia;
-	public Lich_su_don_hang(int id_don_hang, Date ngay_dat, int so_tien, int so_luong_san_pham, String trang_thai_don_hang,
-			int so_sao_danh_gia) {
+	public Lich_su_don_hang(int id_don_hang, Date ngay_dat, Date ngay_nhan, int so_tien, int so_luong_san_pham,
+			String trang_thai_don_hang, int so_sao_danh_gia) {
 		super();
 		this.id_don_hang = id_don_hang;
 		this.ngay_dat = ngay_dat;
+		this.ngay_nhan = ngay_nhan;
 		this.so_tien = so_tien;
 		this.so_luong_san_pham = so_luong_san_pham;
 		this.trang_thai_don_hang = trang_thai_don_hang;
 		this.so_sao_danh_gia = so_sao_danh_gia;
-	}
-	public Lich_su_don_hang() {
-		
 	}
 	public int getId_don_hang() {
 		return id_don_hang;
@@ -33,6 +32,12 @@ public class Lich_su_don_hang {
 	}
 	public void setNgay_dat(Date ngay_dat) {
 		this.ngay_dat = ngay_dat;
+	}
+	public Date getNgay_nhan() {
+		return ngay_nhan;
+	}
+	public void setNgay_nhan(Date ngay_nhan) {
+		this.ngay_nhan = ngay_nhan;
 	}
 	public int getSo_tien() {
 		return so_tien;
@@ -60,9 +65,9 @@ public class Lich_su_don_hang {
 	}
 	@Override
 	public String toString() {
-		return "Lich_su_don [id_don_hang=" + id_don_hang + ", ngay_dat=" + ngay_dat + ", so_tien=" + so_tien
-				+ ", so_luong_san_pham=" + so_luong_san_pham + ", trang_thai_don_hang=" + trang_thai_don_hang
-				+ ", so_sao_danh_gia=" + so_sao_danh_gia + "]";
+		return "Lich_su_don_hang [id_don_hang=" + id_don_hang + ", ngay_dat=" + ngay_dat + ", ngay_nhan=" + ngay_nhan
+				+ ", so_tien=" + so_tien + ", so_luong_san_pham=" + so_luong_san_pham + ", trang_thai_don_hang="
+				+ trang_thai_don_hang + ", so_sao_danh_gia=" + so_sao_danh_gia + "]";
 	}
 	
 	

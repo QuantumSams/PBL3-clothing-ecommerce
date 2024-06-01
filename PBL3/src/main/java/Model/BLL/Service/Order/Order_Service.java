@@ -17,6 +17,7 @@ import Model.DAL.DAO.implemet.Gio_hang_DAO;
 import Model.DAL.DAO.implemet.Muc_san_pham_DAO;
 import Model.DAL.DAO.implemet.Nguoi_dung_DAO;
 import Model.DAL.DAO.implemet.San_pham_DAO;
+import Model.DAL.DAO.implemet.Xem_don_hang_DAO;
 import Model.DAL.Specification.Implements.Chi_tiet_don_hang.FindDetailOrderByIDOrder;
 import Model.DAL.Specification.Implements.Don_hang.FindOrderByIDOrder;
 import Model.DAL.Specification.Implements.Don_hang.FindOrderByIDUser;
@@ -30,6 +31,7 @@ import Model.DTO.Don_Hang.Don_hang;
 import Model.DTO.Don_Hang.Gio_hang;
 import Model.DTO.Don_Hang.Lich_su_don_hang;
 import Model.DTO.Don_Hang.Xac_nhan_don_hang;
+import Model.DTO.Don_Hang.Xem_don_hang;
 import Model.DTO.Nguoi_Dung.Nguoi_dung;
 import Model.DTO.San_Pham.Muc_san_pham;
 import Model.DTO.San_Pham.San_pham;
@@ -144,6 +146,7 @@ public class Order_Service {
 			
 			int id_don_hang = dh.getId_hoa_don();
 			Date ngay_dat = dh.getNgay_gio_dat_don_hang();
+			Date ngay_nhan = dh.getNgay_gio_nhan_don_hang();
 			int so_tien = 0;
 			int so_luong_san_pham = 0; 
 			String trang_thai_don_hang = dh.getTrang_thai_don_hang();
@@ -165,6 +168,7 @@ public class Order_Service {
 			
 			ls.add(new Lich_su_don_hang(id_don_hang, 
 										ngay_dat,
+										ngay_nhan,
 										so_tien,
 										so_luong_san_pham,
 										trang_thai_don_hang,
@@ -176,6 +180,10 @@ public class Order_Service {
 	    resp.setContentType("application/json");
 	    resp.setCharacterEncoding("UTF-8");
 	    resp.getWriter().write(json);
+	}
+	
+	public List<Xem_don_hang> get_Xem_don_hang(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		return new Xem_don_hang_DAO().getALL();
 	}
 	
 	public List<Xac_nhan_don_hang> list_don_hang_can_xac_nhan(HttpServletRequest req, HttpServletResponse resp){

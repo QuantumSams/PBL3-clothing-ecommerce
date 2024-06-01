@@ -1,4 +1,4 @@
-package Control;
+package Controller;
 
 import java.io.IOException;
 
@@ -13,20 +13,31 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns= {"/update_password", "/modify_Infor", "/order", "/add_cart"})
+@WebServlet(urlPatterns= {"/update_password", "/modify_Infor", "/remove_User", "/tao_nhan_vien"})
 @MultipartConfig(
 		fileSizeThreshold = 512 * 512 * 10,
 		maxFileSize = 1024 *  1024 * 10,
 		maxRequestSize = 1024 * 1024 * 100
 		)
-public class ClientController extends HttpServlet{
+public class UserController extends HttpServlet{
 
 	private static final long serialVersionUID = -15287231039588276L;
+	
+	Nguoi_dung_Service nguoi_dung_Service = new Nguoi_dung_Service(new Nguoi_dung_DAO());
+	
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String action = req.getServletPath();
+		
+		if(action != null && action.equals("/tao_nhan_vien")) {
+			req.getRequestDispatcher("usercreate.jsp").forward(req, resp);
+		}
+	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String action = req.getServletPath();
-		Nguoi_dung_Service nguoi_dung_Service = new Nguoi_dung_Service(new Nguoi_dung_DAO());
 		
 		if(action != null && action.equals("/modify_Infor")) {
 			try {
@@ -44,10 +55,25 @@ public class ClientController extends HttpServlet{
 				postJsonMessage(resp, e.getMessage());
 			}
 		}
-		else if(action != null && action.equals("/order")) {
+		
+		else if(action != null && action.equals("/remove_User")) {
+			try {
+				nguoi_dung_Service.remove_User(req, resp);
+				postJsonMessage(resp, "Xóa tài khoản thành công");
+			} catch (Exception e) {
+				postJsonMessage(resp, e.getMessage());
+			}
 		}
-		else if(action != null && action.equals("/add_cart")) {
-		}	
+		
+		else if(action != null && action.equals("/tao_nhan_vien")) {
+			try {
+				nguoi_dung_Service.tao_nhan_vien(req, resp);
+				postJsonMessage(resp, "Tạo tài khoản thành công");
+			} catch (Exception e) {
+				postJsonMessage(resp, e.getMessage());
+			}
+		}
+			
 	}
 	
 	private void postJsonMessage( HttpServletResponse resp, String message) throws IOException {

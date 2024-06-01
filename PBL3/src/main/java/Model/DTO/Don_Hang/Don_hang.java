@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.List;
 
 import DataStructures.Pair;
+import Model.DTO.Nguoi_Dung.Nguoi_dung;
 
 public class Don_hang{
 	protected int id_hoa_don;
@@ -17,6 +18,8 @@ public class Don_hang{
 	protected String ghi_chu;
 	protected String trang_thai_don_hang;
 	protected List<Chi_tiet_don_hang> chi_tiet_don_hang;
+	
+	public Don_hang() {}
 	
 	public Don_hang(int id_hoa_don, int id_khach_hang,
 					int id_nhan_vien, String so_dien_thoai, String dia_chi_giao_dich, Date ngay_gio_dat_don_hang, 
@@ -32,15 +35,6 @@ public class Don_hang{
 		this.ghi_chu = ghi_chu;
 		this.trang_thai_don_hang = trang_thai_don_hang;
 	}
-	
-	public Don_hang() {
-		
-	}
-	
-	public void xoa_don_hang() {
-		
-	}
-	
 
 	public int getId_hoa_don() {
 		return id_hoa_don;

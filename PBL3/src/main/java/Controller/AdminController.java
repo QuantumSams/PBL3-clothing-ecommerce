@@ -1,4 +1,4 @@
-package Control;
+package Controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -26,12 +26,13 @@ public class AdminController extends HttpServlet{
 
 	private static final long serialVersionUID = 3077274296845015069L;
 	
+	San_pham_Service san_pham_Service = new San_pham_Service(new San_pham_DAO(), new Muc_san_pham_DAO(), new Mau_sac_DAO(), new Size_DAO(), new Anh_san_pham_DAO());
+	Nguoi_dung_Service nguoi_dung_Service = new Nguoi_dung_Service(new Nguoi_dung_DAO());
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		String action = req.getServletPath();
-		San_pham_Service san_pham_Service = new San_pham_Service(new San_pham_DAO(), new Muc_san_pham_DAO(), new Mau_sac_DAO(), new Size_DAO(), new Anh_san_pham_DAO());
-		Nguoi_dung_Service nguoi_dung_Service = new Nguoi_dung_Service(new Nguoi_dung_DAO());
 		
 		if(action != null && action.equals("/add_product")) {
 			san_pham_Service.Load_properties(req, resp);
@@ -49,7 +50,7 @@ public class AdminController extends HttpServlet{
 		else if(action != null && action.equals("/thong_tin_nhan_vien")) {
 			List<Nguoi_dung> list = nguoi_dung_Service.getNguoiDungByID(req, resp);
 			HttpSession session = req.getSession();
-			session.setAttribute("nhan_vien", list);
+			session.setAttribute("nhan_vien", list.get(0));
 			req.getRequestDispatcher("userInfor.jsp").forward(req, resp);
 		}
 	}
@@ -58,10 +59,9 @@ public class AdminController extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String action = req.getServletPath();
 		
-		San_pham_Service san_pham_Service = new San_pham_Service(new San_pham_DAO(), new Muc_san_pham_DAO(), new Mau_sac_DAO(), new Size_DAO(), new Anh_san_pham_DAO());
-		
 		if(action != null && action.equals("/add_product")) {
 			san_pham_Service.add_product(req, resp);
+			postJsonMessage(resp, "Tạo sản phẩm thành công");
 		}
 		
 		else if(action != null && action.equals("/")) {
@@ -70,7 +70,14 @@ public class AdminController extends HttpServlet{
 		else if(action != null && action.equals("/")) {
 			
 		}
-		
+	}
+	
+	private void postJsonMessage( HttpServletResponse resp, String message) throws IOException {
+		ObjectMapper mapper = new ObjectMapper();
+	    String json = mapper.writeValueAsString(message);
+	    resp.setContentType("application/json");
+	    resp.setCharacterEncoding("UTF-8");
+	    resp.getWriter().write(json);
 	}
 	
 }

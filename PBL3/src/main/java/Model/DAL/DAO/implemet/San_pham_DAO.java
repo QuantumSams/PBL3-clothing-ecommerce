@@ -54,7 +54,7 @@ public class San_pham_DAO extends AbstractDao implements Repository<San_pham>{
 		StringBuilder query = new StringBuilder();
 		
 		query.append("UPDATE san_pham SET ten_san_pham = ?, ten_nhan_hang = ?, ten_chat_lieu = ?,");
-		query.append("thong_tin_chung = ?, thong_tin_chi_tiet = ?, id_danh_muc_san_pham = ?");
+		query.append("thong_tin_chung = ?, thong_tin_chi_tiet = ?, id_danh_muc_san_pham = ? ");
 		query.append("WHERE id_san_pham = ? ");
 		
 		update (query.toString(), 	san_pham.getTen_san_pham(),

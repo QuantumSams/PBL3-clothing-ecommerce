@@ -7,6 +7,7 @@ import Model.DAL.Mapper.Nguoi_Dung.Nguoi_dung_Mapper;
 import Model.DAL.Repository.Repository;
 import Model.DAL.Specification.Specification;
 import Model.DTO.Nguoi_Dung.Nguoi_dung;
+import Model.DTO.Nguoi_Dung.Phan_quyen_nguoi_dung;
 
 public class Nguoi_dung_DAO extends AbstractDao implements Repository<Nguoi_dung>{
 	
@@ -20,7 +21,20 @@ public class Nguoi_dung_DAO extends AbstractDao implements Repository<Nguoi_dung
 		String query1 = "INSERT INTO thong_tin_dang_nhap VALUES (?, ?, ?, ?, ?);";
 		String query2 = "INSERT INTO thong_tin_nguoi_dung VALUES (?, ?, ?, ?, ?, ?)";
 		
-		insert(query1, t.getId_nguoi_dung(), t.getSo_dien_thoai(), t.getEmail(), t.getPassword(), 1);
+		int id_phan_quyen = 1;
+		if(t.getPhan_quyen_nguoi_dung().equals(Phan_quyen_nguoi_dung.KHACH_HANG.toString())){
+			id_phan_quyen = 1;	
+		}
+		
+		else if(t.getPhan_quyen_nguoi_dung().equals(Phan_quyen_nguoi_dung.CHU_CUA_HANG.toString())){
+			id_phan_quyen = 3;
+		}
+		
+		else if(t.getPhan_quyen_nguoi_dung().equals(Phan_quyen_nguoi_dung.NHAN_VIEN.toString())){
+			id_phan_quyen = 2;
+		}
+		
+		insert(query1, t.getId_nguoi_dung(), t.getSo_dien_thoai(), t.getEmail(), t.getPassword(), id_phan_quyen);
 		insert(query2, t.getId_nguoi_dung(), t.getHo_ten(), t.isGioi_tinh(), t.getNgay_sinh(), t.getDia_chi(), t.getAnh_dai_dien());
 	}
 

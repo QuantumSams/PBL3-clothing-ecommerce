@@ -1,4 +1,4 @@
-package Control;
+package Controller;
 
 import java.io.IOException;
 
@@ -16,10 +16,11 @@ public class CartController extends HttpServlet{
 
 	private static final long serialVersionUID = -7433472997820596567L;
 
+	Cart_Service cart_Service = new Cart_Service();
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String action = req.getServletPath();
-		Cart_Service cart_Service = new Cart_Service();
 		
 		if(action.equals("/don_hang_tong_quat")) {
 			cart_Service.get_cart_by_id_khach_hang(req, resp);
@@ -29,7 +30,6 @@ public class CartController extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String action = req.getServletPath();
-		Cart_Service cart_Service = new Cart_Service();
 		
 		if(action.equals("/xoa_gio_hang")) {
 			cart_Service.delete_cart_by_id(req, resp);

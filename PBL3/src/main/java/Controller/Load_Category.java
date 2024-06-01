@@ -1,4 +1,4 @@
-package Control;
+package Controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -18,9 +18,11 @@ import jakarta.servlet.http.HttpServletResponse;
 public class Load_Category extends HttpServlet{
 	private static final long serialVersionUID = 4L;
 
+	Danh_muc_Service danh_muc_Service = new Danh_muc_Service(new Danh_muc_DAO());
+	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		List<Danh_muc_san_pham> list = new Danh_muc_Service(new Danh_muc_DAO()).load_category_by_json(req, resp);
+		List<Danh_muc_san_pham> list = danh_muc_Service.load_category_by_json(req, resp);
 		
 		ObjectMapper mapper = new ObjectMapper();
 	    String json = mapper.writeValueAsString(list);

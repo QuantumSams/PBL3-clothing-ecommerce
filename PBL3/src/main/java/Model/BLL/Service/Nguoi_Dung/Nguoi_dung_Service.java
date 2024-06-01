@@ -85,6 +85,47 @@ public class Nguoi_dung_Service {
 		}
 	}
 	
+	public void tao_nhan_vien(HttpServletRequest req, HttpServletResponse resp) throws Exception {
+		String email = req.getParameter("email");
+		String passWord = req.getParameter("new_password");
+		String fullname = req.getParameter("ho_ten");
+		String phoneNumber = req.getParameter("so_dien_thoai");
+		String ngay_sinh = req.getParameter("ngay_sinh");
+		String dia_chi = req.getParameter("dia_chi");
+		String gioi_tinh = req.getParameter("gioi_tinh");
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd"); // Định dạng chuỗi ngày tháng
+	       
+		Date date = new Date(formatter.parse(ngay_sinh).getTime());
+		
+		
+		try {
+			int id = new Random().nextInt(1000);
+
+			Nguoi_dung nguoi_dung = new Nguoi_dung(id, fullname, Boolean.parseBoolean(gioi_tinh), date, dia_chi, "", phoneNumber, email, "NHAN_VIEN");
+			nguoi_dung.setPassword(passWord);
+				
+			// xet xem email co bi trung hay khong
+			List<Nguoi_dung>  findByEmail = nguoidung_DAO.findBySpacification(new FindNguoiDungByEmail(email));
+				
+			if(findByEmail.size() > 0)
+				throw new Exception("Email bị trùng");
+				
+			// xet xem so dien thoai co bi trung hay khong
+			List<Nguoi_dung> findByNumber = nguoidung_DAO.findBySpacification(new FindNguoiDungByNumber(phoneNumber));
+			if(findByNumber.size() > 0) 
+				throw new Exception("Số điện thoại bị trùng");
+				
+			nguoi_dung.setPassword(toSHA1(nguoi_dung.getPassword()));
+				
+			nguoidung_DAO.add(nguoi_dung);
+		}
+		catch(Exception e){
+			throw new Exception(e.getMessage());
+		}	
+			
+		
+	}
+	
 	public void UpdateInformation(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		try {
 			int id_khach_hang = Integer.parseInt(req.getParameter("id_khach_hang"));
@@ -152,6 +193,13 @@ public class Nguoi_dung_Service {
 		
 		List<Nguoi_dung> list = nguoidung_DAO.findBySpacification(new FindNguoiDungByID(id));
 		return list;
+	}
+	
+	public void remove_User(HttpServletRequest req, HttpServletResponse resp) {
+		int id = Integer.parseInt(req.getParameter("id"));
+		System.out.println(id);
+		Nguoi_dung nguoi_dung = nguoidung_DAO.findBySpacification(new FindNguoiDungByID(id)).get(0);
+		nguoidung_DAO.remove(nguoi_dung);
 	}
 	
 	public static String toSHA1(String str) {

@@ -81,12 +81,26 @@ $(document).ready(function(){
 	      success: function(data) {
 			let chuoi = "";
 	    	  data.forEach(function(item){
-	    		  chuoi += 	'<tr><td><img src="'+item.anh_dai_dien+'" width="50px" alt=""></td>'
-	                        +'<td>'+item.ho_ten+'</td>'
-	                        +'<td><c:if test="'+(item.gioi_tinh == true)+'">Nam</c:if>'
-							+'<c:if test="'+(item.gioi_tinh != true)+'">Nữ</c:if></td>'
-							+'<td>'+item.so_dien_thoai+'</td>'
-							+'<td><button class = "buttonSearch">Chi tiết</button></td></tr>'
+				  chuoi += '<tr>'+
+					  		'<td><img src="'+item.anh_dai_dien+'" width="50px" alt=""></td>'+
+					  		'<td>'+item.ho_ten+'</td>'+
+					  		'<td><c: if test="'+item.gioi_tinh+' == true}">'+
+						  		'Nam'+
+					  		'</c: if>'+
+					  		'<c: if test="'+item.gioi_tinh+' != true}">'+
+							 	'Nữ'+
+						  	'</c: if></td>'+
+					  		'<td>'+item.so_dien_thoai+'</td>'+
+					  		'<td>'+
+					  		'<form action="thong_tin_nhan_vien" method="get">'+
+						  		'<input type="hidden" name="id" value="'+item.id_nguoi_dung+'"/>'+
+							  	'<button class="buttonSearch">Chi tiết</button>'+
+					  		'</form>'+
+					  		'</td>'+
+					  		'<td>'+
+					  		'<button class="buttonRemoveNV"><input type="hidden" name="id" value="'+item.id_nguoi_dung+'">Xóa</button>'+
+					  		'</td>'+
+				  			'</tr>'
 	    	  });
 			
 			$("#nhan_vien").html(chuoi);
@@ -107,6 +121,27 @@ a.forEach(item => {
 			dataType: 'json',
 			data: {
 				id_san_pham : inputValue,
+			},
+			success: function(data) {
+				alert(data);
+			},
+			error:  function() {
+				alert("loi");
+			},
+		});
+	})
+})
+
+let b = document.querySelectorAll('.buttonRemoveNV');
+b.forEach(item => {
+	item.addEventListener('click', e =>{
+		const inputValue = item.childNodes[0].value;
+		$.ajax({
+			url: "remove_User", 
+			type: "POST",
+			dataType: 'json',
+			data: {
+				id : inputValue,
 			},
 			success: function(data) {
 				alert(data);
