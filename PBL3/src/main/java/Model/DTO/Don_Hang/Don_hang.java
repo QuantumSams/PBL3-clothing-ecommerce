@@ -7,130 +7,105 @@ import DataStructures.Pair;
 import Model.DTO.Nguoi_Dung.Nguoi_dung;
 
 public class Don_hang{
-	protected int id_hoa_don;
-	protected List<Pair<Integer, Integer>> list_muc_san_pham; // <id_muc_san_pham, so_luong>
-	protected int id_khach_hang;
+	protected int id_don_hang;
+	protected int tong_tien;
+	protected String ten_nhan_vien;
 	protected int id_nhan_vien;
-	protected String so_dien_thoai;
-	protected String dia_chi_giao_dich;
-	protected Date ngay_gio_dat_don_hang;
-	protected Date ngay_gio_nhan_don_hang;
-	protected String ghi_chu;
+	protected String ten_khach_hang;
+	protected int id_khach_hang;
+	protected Date thoi_gian_dat;
+	protected Date thoi_gian_nhan;
 	protected String trang_thai_don_hang;
-	protected List<Chi_tiet_don_hang> chi_tiet_don_hang;
-	
-	public Don_hang() {}
-	
-	public Don_hang(int id_hoa_don, int id_khach_hang,
-					int id_nhan_vien, String so_dien_thoai, String dia_chi_giao_dich, Date ngay_gio_dat_don_hang, 
-					Date ngay_gio_nhan_don_hang, String ghi_chu, String trang_thai_don_hang) {
+	protected int so_luong;
+	protected int so_sao_danh_gia;
+	public Don_hang() {
+		
+	}
+	public Don_hang(int id_don_hang, int tong_tien, String ten_nhan_vien, String ten_khach_hang, Date thoi_gian_dat,
+			Date thoi_gian_nhan, String trang_thai_don_hang, int so_luong, int so_sao_danh_gia) {
 		super();
-		this.id_hoa_don = id_hoa_don;
-		this.id_khach_hang = id_khach_hang;
-		this.id_nhan_vien = id_nhan_vien;
-		this.so_dien_thoai = so_dien_thoai;
-		this.dia_chi_giao_dich = dia_chi_giao_dich;
-		this.ngay_gio_dat_don_hang = ngay_gio_dat_don_hang;
-		this.ngay_gio_nhan_don_hang = ngay_gio_nhan_don_hang;
-		this.ghi_chu = ghi_chu;
+		this.id_don_hang = id_don_hang;
+		this.tong_tien = tong_tien;
+		this.ten_nhan_vien = ten_nhan_vien;
+		this.ten_khach_hang = ten_khach_hang;
+		this.thoi_gian_dat = thoi_gian_dat;
+		this.thoi_gian_nhan = thoi_gian_nhan;
 		this.trang_thai_don_hang = trang_thai_don_hang;
+		this.so_luong = so_luong;
+		this.so_sao_danh_gia = so_sao_danh_gia;
 	}
-
-	public int getId_hoa_don() {
-		return id_hoa_don;
+	public int getId_don_hang() {
+		return id_don_hang;
 	}
-
-	public void setId_hoa_don(int id_hoa_don) {
-		this.id_hoa_don = id_hoa_don;
+	public void setId_don_hang(int id_don_hang) {
+		this.id_don_hang = id_don_hang;
 	}
-
-	public List<Pair<Integer, Integer>> getList_muc_san_pham() {
-		return list_muc_san_pham;
+	public int getTong_tien() {
+		return tong_tien;
 	}
-
-	public void setList_muc_san_pham(List<Pair<Integer, Integer>> list_muc_san_pham) {
-		this.list_muc_san_pham = list_muc_san_pham;
+	public void setTong_tien(int tong_tien) {
+		this.tong_tien = tong_tien;
 	}
-
-	public int getId_khach_hang() {
-		return id_khach_hang;
+	public String getTen_nhan_vien() {
+		return ten_nhan_vien;
 	}
-
-	public void setId_khach_hang(int id_khach_hang) {
-		this.id_khach_hang = id_khach_hang;
+	public void setTen_nhan_vien(String ten_nhan_vien) {
+		this.ten_nhan_vien = ten_nhan_vien;
 	}
-
-	public int getId_nhan_vien() {
-		return id_nhan_vien;
+	public String getTen_khach_hang() {
+		return ten_khach_hang;
 	}
-
-	public void setId_nhan_vien(int id_nhan_vien) {
-		this.id_nhan_vien = id_nhan_vien;
+	public void setTen_khach_hang(String ten_khach_hang) {
+		this.ten_khach_hang = ten_khach_hang;
 	}
-
-	public String getDia_chi_giao_dich() {
-		return dia_chi_giao_dich;
+	public Date getThoi_gian_dat() {
+		return thoi_gian_dat;
 	}
-
-	public void setDia_chi_giao_dich(String dia_chi_giao_dich) {
-		this.dia_chi_giao_dich = dia_chi_giao_dich;
+	public void setThoi_gian_dat(Date thoi_gian_dat) {
+		this.thoi_gian_dat = thoi_gian_dat;
 	}
-
-	public Date getNgay_gio_dat_don_hang() {
-		return ngay_gio_dat_don_hang;
+	public Date getThoi_gian_nhan() {
+		return thoi_gian_nhan;
 	}
-
-	public void setNgay_gio_dat_don_hang(Date ngay_gio_dat_don_hang) {
-		this.ngay_gio_dat_don_hang = ngay_gio_dat_don_hang;
+	public void setThoi_gian_nhan(Date thoi_gian_nhan) {
+		this.thoi_gian_nhan = thoi_gian_nhan;
 	}
-
-	public Date getNgay_gio_nhan_don_hang() {
-		return ngay_gio_nhan_don_hang;
-	}
-
-	public void setNgay_gio_nhan_don_hang(Date ngay_gio_nhan_don_hang) {
-		this.ngay_gio_nhan_don_hang = ngay_gio_nhan_don_hang;
-	}
-
 	public String getTrang_thai_don_hang() {
 		return trang_thai_don_hang;
 	}
-
 	public void setTrang_thai_don_hang(String trang_thai_don_hang) {
 		this.trang_thai_don_hang = trang_thai_don_hang;
 	}
-
-	public String getGhi_chu() {
-		return ghi_chu;
+	public int getSo_luong() {
+		return so_luong;
 	}
-
-	public void setGhi_chu(String ghi_chu) {
-		this.ghi_chu = ghi_chu;
+	public void setSo_luong(int so_luong) {
+		this.so_luong = so_luong;
 	}
-	
-	
-	public String getSo_dien_thoai() {
-		return so_dien_thoai;
+	public int getSo_sao_danh_gia() {
+		return so_sao_danh_gia;
 	}
-
-	public void setSo_dien_thoai(String so_dien_thoai) {
-		this.so_dien_thoai = so_dien_thoai;
+	public void setSo_sao_danh_gia(int so_sao_danh_gia) {
+		this.so_sao_danh_gia = so_sao_danh_gia;
 	}
-
-	public List<Chi_tiet_don_hang> getChi_tiet_don_hang() {
-		return chi_tiet_don_hang;
+	public int getId_nhan_vien() {
+		return id_nhan_vien;
 	}
-
-	public void setChi_tiet_don_hang(List<Chi_tiet_don_hang> chi_tiet_don_hang) {
-		this.chi_tiet_don_hang = chi_tiet_don_hang;
+	public void setId_nhan_vien(int id_nhan_vien) {
+		this.id_nhan_vien = id_nhan_vien;
 	}
-
+	public int getId_khach_hang() {
+		return id_khach_hang;
+	}
+	public void setId_khach_hang(int id_khach_hang) {
+		this.id_khach_hang = id_khach_hang;
+	}
 	@Override
 	public String toString() {
-		return "Don_hang [id_hoa_don=" + id_hoa_don + ", list_muc_san_pham=" + list_muc_san_pham + ", id_khach_hang=" + id_khach_hang + ", id_nhan_vien=" + id_nhan_vien
-				+ ", dia_chi_giao_dich=" + dia_chi_giao_dich + ", ngay_gio_dat_don_hang=" + ngay_gio_dat_don_hang
-				+ ", ngay_gio_nhan_don_hang=" + ngay_gio_nhan_don_hang + ", ghi_chu=" + ghi_chu
-				+ ", trang_thai_don_hang=" + trang_thai_don_hang + "]";
+		return "Don_hang [id_don_hang=" + id_don_hang + ", tong_tien=" + tong_tien + ", ten_nhan_vien=" + ten_nhan_vien
+				+ ", ten_khach_hang=" + ten_khach_hang + ", thoi_gian_dat=" + thoi_gian_dat + ", thoi_gian_nhan="
+				+ thoi_gian_nhan + ", trang_thai_don_hang=" + trang_thai_don_hang + ", so_luong=" + so_luong
+				+ ", so_sao_danh_gia=" + so_sao_danh_gia + "]";
 	}
 	
 	

@@ -23,6 +23,7 @@
                 <table id = "table">
                     <thead>
                         <tr>
+                        	<th>Ảnh sản phẩm</th>
                             <th>Sản phẩm</th>
                             <th>Số lượng</th>
                             <th>Thành tiền</th>
@@ -32,16 +33,18 @@
                    <tbody id="list_san_pham">
                    <c:forEach var="item" items="${chi_tiet_don_hang}">
                     	<tr>
+                    		<td><img src="${item.anh}" width="50px"
+												alt=""></td>
                     		<td>
 	                            <div class="name">
-	                                <h5>${item.muc_san_pham.ten_san_pham}</h5>
+	                                <h5>${item.ten_san_pham}</h5>
 	                            </div>
 	                            <div class="color">
-	                                    <h5>${item.muc_san_pham.mau_sac_san_pham.ten_mau} / ${item.muc_san_pham.kich_thuoc_san_pham.ten_size}</h5>
+	                                    <h5>${item.ten_mau} / ${item.ten_size}</h5>
 	                            </div>
 	                        </td>
 	                        <td class = "priceItems">${item.so_luong}</td>
-	                        <td class = "priceItems">${item.muc_san_pham.gia_tien}</td>
+	                        <td class = "priceItems">${item.gia}</td>
 	                        <td><Button class = "btnXoa" onclick="deleteR(this)"><i class="fa-solid fa-trash"></i></Button></td>
                     	</tr>          	  
 					</c:forEach>
@@ -75,17 +78,16 @@
                     <h4>Thông tin người nhận</h4>
                 </div>
                 <div  class="User">
-                	<input type="hidden" id="id_nguoi_dung" value="${acc.id_nguoi_dung}" />
-                    <h5>Họ tên người nhận</h5>
-                    <h5>${acc.ho_ten}</h5>
+                	<h5>Họ tên người nhận</h5>
+                    <h5>${don_hang.ten_khach_hang}</h5>
                 </div>
                 <div class="User">
                     <h5>Số điện thoại giao hàng</h5>
-                    <input  id="so_dien_thoai" class = "inf" type="text" value="${acc.so_dien_thoai}" disabled >
+                    <input  id="so_dien_thoai" class = "inf" type="text" value="${don_hang.so_dien_thoai}" disabled >
                 </div>
                 <div class="User">
                     <h5>Địa chỉ giao hàng</h5>
-                    <input  id="dia_chi" class = "inf" type="text" disabled  value = "${acc.tinh}, ${acc.huyen}, ${acc.xa}, ${acc.dia_chi_cu_the} ">
+                    <input  id="dia_chi" class = "inf" type="text" disabled  value = "${don_hang.dia_chi}">
                 </div>
             </div>
             <div class="note">

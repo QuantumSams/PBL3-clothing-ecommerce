@@ -23,6 +23,7 @@
                 <table id = "table">
                     <thead>
                         <tr>
+                        	<th>Ảnh sản phẩm</th>
                             <th>Sản phẩm</th>
                             <th>Số lượng</th>
                             <th>Thành tiền</th>
@@ -30,24 +31,26 @@
                         </tr>
                     </thead>
                    <tbody id="list_san_pham">
-                   <c:forEach var="item" items="${gio_hang}">
+                   <c:forEach var="item" items="${chi_tiet_don_hang}">
                     	<tr>
-                    		<input class="id_muc" type="hidden" value="${item.muc_san_pham.id_muc_san_pham}"/>
-	                        <td>
+                    		<input class="so_luong" value="${item.so_luong}" type="hidden">
+                    		<input class="id_muc" value="${item.id_muc_san_pham}" type="hidden">
+                    		<td><img src="${item.anh}" width="50px"
+												alt=""></td>
+                    		<td>
 	                            <div class="name">
-	                                <h5>${item.muc_san_pham.ten_san_pham}</h5>
+	                                <h5>${item.ten_san_pham}</h5>
 	                            </div>
 	                            <div class="color">
-	                                    <h5>${item.muc_san_pham.mau_sac_san_pham.ten_mau} / ${item.muc_san_pham.kich_thuoc_san_pham.ten_size}</h5>
+	                                    <h5>${item.ten_mau} / ${item.ten_size}</h5>
 	                            </div>
 	                        </td>
-	                        <td><input class="so_luong" type="text" value="${item.so_luong}"/></td>
-	                        <td class = "priceItems">${item.muc_san_pham.gia_tien}</td>
+	                        <td class = "priceItems">${item.so_luong}</td>
+	                        <td class = "priceItems">${item.gia}</td>
 	                        <td><Button class = "btnXoa" onclick="deleteR(this)"><i class="fa-solid fa-trash"></i></Button></td>
                     	</tr>          	  
 					</c:forEach>
                    </tbody>
-                    
                 </table>
             </div> 
             <div class="price">

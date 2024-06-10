@@ -1,5 +1,8 @@
 package Model.BLL.Service.Nguoi_Dung;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.security.MessageDigest;
 import java.sql.Date;
 import java.text.ParseException;
@@ -17,6 +20,7 @@ import Model.DAL.Specification.Implements.Nguoi_dung.FindNguoiDungByMailOrNumber
 import Model.DAL.Specification.Implements.Nguoi_dung.FindNguoiDungByNumber;
 import Model.DAL.Specification.Implements.Nguoi_dung.FindNhanVienByName;
 import Model.DTO.Nguoi_Dung.Nguoi_dung;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
@@ -93,6 +97,8 @@ public class Nguoi_dung_Service {
 		String ngay_sinh = req.getParameter("ngay_sinh");
 		String dia_chi = req.getParameter("dia_chi");
 		String gioi_tinh = req.getParameter("gioi_tinh");
+		String anh_nhan_vien = req.getParameter("anh");
+		
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd"); // Định dạng chuỗi ngày tháng
 	       
 		Date date = new Date(formatter.parse(ngay_sinh).getTime());
@@ -101,9 +107,10 @@ public class Nguoi_dung_Service {
 		try {
 			int id = new Random().nextInt(1000);
 
-			Nguoi_dung nguoi_dung = new Nguoi_dung(id, fullname, Boolean.parseBoolean(gioi_tinh), date, dia_chi, "", phoneNumber, email, "NHAN_VIEN");
+			Nguoi_dung nguoi_dung = new Nguoi_dung(id, fullname, Boolean.parseBoolean(gioi_tinh), date, dia_chi, "img/anh_nguoi_dung/mac_dinh.png", phoneNumber, email, "NHAN_VIEN");
 			nguoi_dung.setPassword(passWord);
-				
+			nguoi_dung.setAnh_dai_dien(add_image(anh_nhan_vien, Integer.toString(id)));
+			
 			// xet xem email co bi trung hay khong
 			List<Nguoi_dung>  findByEmail = nguoidung_DAO.findBySpacification(new FindNguoiDungByEmail(email));
 				
@@ -125,6 +132,40 @@ public class Nguoi_dung_Service {
 			
 		
 	}
+	public String add_image(String imageStrings, String id_nguoi_dung) throws IOException, ServletException {
+		
+		byte[] data1 =  java.util.Base64.getDecoder().decode(imageStrings);
+			 
+		String path = "img/anh_nguoi_dung/" + id_nguoi_dung + ".png";
+		
+		image(data1, path);
+			 
+		return path;	
+	}
+	
+	public void delete_image(String name_image) {
+		String root = "D:/Language Program/Java_web/PBL3/PBL3-clothing-ecommerce/PBL3/src/main/webapp/";
+		String path = root + name_image;
+		File file = new File(path);
+
+        if (file.delete()) {
+            System.out.println("Tệp đã được xóa.");
+        } else {
+            System.out.println("Xóa tệp không thành công.");
+        }
+	}
+	
+	public void image(byte[] data1, String name_image) {
+		String root = "D:/Language Program/Java_web/PBL3/PBL3-clothing-ecommerce/PBL3/src/main/webapp/";
+		String path = root + name_image;
+		
+		try (FileOutputStream fos = new FileOutputStream(path)) {
+			fos.write(data1);
+			System.out.println("Image saved successfully to: " + path);
+	    } catch (IOException e) {
+	    	e.printStackTrace();
+	    }
+	}
 	
 	public void UpdateInformation(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		try {
@@ -133,13 +174,17 @@ public class Nguoi_dung_Service {
 			String ngay_sinh = req.getParameter("ngay_sinh");
 			String dia_chi = req.getParameter("dia_chi");
 			String gioi_tinh = req.getParameter("gioi_tinh");
-			
+			String anh =  req.getParameter("anh");
+			System.out.println(anh);
 			Nguoi_dung acc = nguoidung_DAO.findBySpacification(new FindNguoiDungByID(id_khach_hang)).get(0);
 			
 			acc.setDia_chi(dia_chi);
 			acc.setHo_ten(ho_ten_khach_hang);
 			acc.setGioi_tinh(Boolean.parseBoolean(gioi_tinh));
-			//acc.setAnh_dai_dien(imagePath);
+			if(anh != null) {
+				delete_image( "img/anh_nguoi_dung/" + id_khach_hang + ".png");
+				acc.setAnh_dai_dien(add_image(anh, Integer.toString(id_khach_hang)));
+			}
 			
 			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd"); // Định dạng chuỗi ngày tháng
        

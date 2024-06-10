@@ -1,6 +1,7 @@
 package Controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -18,7 +19,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-@WebServlet(urlPatterns = {"/get_product_by_ajax", "/update_product", "/load_product", "/remove_product"})
+@WebServlet(urlPatterns = {"/get_product_by_ajax", "/add_product", "/update_product", "/load_product", "/remove_product"})
 public class ProductController extends HttpServlet {
 
 	private static final long serialVersionUID = -886812143546363698L;
@@ -35,6 +36,11 @@ public class ProductController extends HttpServlet {
 		    resp.setContentType("application/json");
 		    resp.setCharacterEncoding("UTF-8");
 		    resp.getWriter().write(json);
+		}
+		
+		else if(action != null && action.equals("/add_product")) {
+			san_pham_Service.Load_properties(req, resp);
+			req.getRequestDispatcher("/Crud.jsp").forward(req, resp);
 		}
 		
 		else if(action.equals("/update_product")) {
@@ -59,12 +65,19 @@ public class ProductController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String action = req.getServletPath();
 		
-		if(action.equals("/remove_product")) {
-			System.out.println("Herl;looo");
-			
+		if(action != null && action.equals("/add_product")) {
+			san_pham_Service.add_product(req, resp);
+			postJsonMessage(resp, "Tạo sản phẩm thành công");
+		}
+		else if(action.equals("/remove_product")) {
 			san_pham_Service.remove_Product(req, resp);
-			
-			postJsonMessage(resp, "Xóa sản phẩm thành công");
+			List<San_pham> san_pham = san_pham_Service.GetAllProducts(req, resp);
+
+			ObjectMapper mapper = new ObjectMapper();
+		    String json = mapper.writeValueAsString(san_pham);
+		    resp.setContentType("application/json");
+		    resp.setCharacterEncoding("UTF-8");
+		    resp.getWriter().write(json);
 		}
 		
 		else if(action.equals("/update_product")) {
@@ -82,5 +95,4 @@ public class ProductController extends HttpServlet {
 	    resp.setCharacterEncoding("UTF-8");
 	    resp.getWriter().write(json);
 	}
-
 }

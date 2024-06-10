@@ -22,8 +22,8 @@ import Model.DAL.DAO.implemet.San_pham_DAO;
 import Model.DAL.DAO.implemet.Size_DAO;
 import Model.DTO.Doanh_Thu.Doanh_thu;
 import Model.DTO.Don_Hang.Don_hang;
-import Model.DTO.Don_Hang.Xac_nhan_don_hang;
-import Model.DTO.Don_Hang.Xem_don_hang;
+//import Model.DTO.Don_Hang.Xac_nhan_don_hang;
+//import Model.DTO.Don_Hang.Xem_don_hang;
 import Model.DTO.Nguoi_Dung.Nguoi_dung;
 import Model.DTO.Nguoi_Dung.Phan_quyen_nguoi_dung;
 import Model.DTO.San_Pham.Muc_san_pham;
@@ -84,7 +84,9 @@ public class HomeController extends HttpServlet{
 			session.setAttribute("muc_san_pham", muc_san_pham);
 			session.setAttribute("so_muc_san_pham", muc_san_pham.size());
 			
-			List<Xem_don_hang> xem_don_hang = order_Service.get_Xem_don_hang(req, resp);
+			List<Don_hang> xem_don_hang = order_Service.get_all_order(req, resp);
+			for(Don_hang d : xem_don_hang)
+				System.out.println(d.toString());
 			session.setAttribute("don_hang", xem_don_hang);
 			session.setAttribute("so_don_hang", xem_don_hang.size());
 			
@@ -95,7 +97,7 @@ public class HomeController extends HttpServlet{
 		}
 		
 		else if(action != null && action.equals("/nhan_vien")) {
-			List<Xac_nhan_don_hang> don_hang = new Order_Service().list_don_hang_can_xac_nhan(req, resp);
+			List<Don_hang> don_hang = new Order_Service().get_order_by_state("Đợi xác nhận đơn hàng");
 			
 			session.setAttribute("don_hang", don_hang);
 			resp.sendRedirect("staffOrderList.jsp");

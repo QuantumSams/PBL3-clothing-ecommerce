@@ -59,7 +59,7 @@ $(document).ready(function() {
         			})
     			})
 
-
+				
 			}
 		});
 	});
@@ -141,11 +141,11 @@ function tien() {
 $(document).ready(function() {
 	$("#lich_su").click(function() {
 		$.ajax({
-			url: "lich_su_don_tong_quat", // URL of your Servlet
+			url: "lich_su_don_tong_quat", 
 			type: "GET",
 			dataType: 'json',
 			data: {
-				id_khach_hang: $("#id_khach_hang").val()
+				id_user: $("#id_khach_hang").val()
 			},
 
 			success: function(data) {
@@ -153,17 +153,28 @@ $(document).ready(function() {
 				let chuoi = "";
 				data.forEach(function(item) {
 
-					const date = new Date(item.ngay_dat);
+					const date = new Date(item.thoi_gian_dat);
 					const year = date.getFullYear();
 					const month = date.getMonth() + 1; // Tháng trong JavaScript bắt đầu từ 0
 					const day = date.getDate();
 
 					chuoi += '<tr>' +
 						'<td>' + day + "/" + month + "/" + year + '</td>' +
-						'<td>' + item.so_tien + ' VNĐ</td>' +
-						'<td>' + item.so_luong_san_pham + '</td>' +
+						'<td>' + item.tong_tien + ' VNĐ</td>' +
+						'<td>' + item.so_luong + '</td>' +
 						'<td><button type="button" class="btn btn-primary">' + item.trang_thai_don_hang + '</button></td>' +
 						'<td>' + item.so_sao_danh_gia + '</td>' +
+						'<td>'+
+						'<form action="xem_don_hang_chi_tiet" method="get">'+
+						'<input type="hidden" name="id_don_hang" value="'+item.id_don_hang+'">'+
+						'<button class="btn btn-primary">Xem chi tiết</button>'+
+						'</form>'+
+						'</td>'+
+						'<td>'+
+						'<button class="huy_don_hang">'+
+						'<input class="vale" type="hidden" value="'+item.id_don_hang+'">Hủy đơn hàng'+
+						'</button>'+
+						'</td>'+
 						'</tr>';
 				});
 
@@ -173,8 +184,28 @@ $(document).ready(function() {
 	});
 });
 
-
-
+let a = document.querySelectorAll('.huy_don_hang');
+a.forEach(item => {
+	item.addEventListener('click', e =>{
+		const inputValue = item.childNodes[0].value;
+		alert(inputValue);
+		$.ajax({
+			url: "khach_hang_huy_don", 
+			type: "POST",
+			dataType: 'json',
+			data: {
+				id_don_hang : inputValue,
+				trang_thai_don_hang: "huy"
+			},
+			success: function(data) {
+				alert(data);
+			},
+			error:  function() {
+				alert("loi");
+			},
+		});
+	})
+})
 
 $(document).ready(function() {
 	$("#doi_mat_khau").click(function() {
@@ -195,7 +226,14 @@ $(document).ready(function() {
 });
 
 $(document).ready(function() {
+	let img = document.querySelectorAll('#img');
+	
 	$("#cap_nhat_thong_tin").click(function() {
+		let imageSrc = [];
+		img.forEach((image) => {
+			imageSrc.push(image.src.split(",")[1]);
+
+		});	
 		$.ajax({
 			url: "modify_Infor", // URL of your Servlet
 			type: "POST",
@@ -205,15 +243,17 @@ $(document).ready(function() {
 				ho_ten_khach_hang: $("#ho_ten_khach_hang").val(),
 				ngay_sinh: $("#ngay_sinh").val(),
 				gioi_tinh: $("#radio1").prop('checked'),
-				dia_chi: $("#tinh").val() + '/' + $("#huyen").val() + '/' + $("#xa").val() + '/' + $("#cu_the").val()
+				dia_chi: $("#tinh").val() + '/' + $("#huyen").val() + '/' + $("#xa").val() + '/' + $("#cu_the").val(),
+				anh:  imageSrc[0]
 			},
 			success: function(data) {
 				alert(data);
 			}
 		});
 	});
-
+	
 	$("#cap_nhat_thong_tin1").click(function() {
+			
 		$.ajax({
 			url: "modify_Infor", // URL of your Servlet
 			type: "POST",
@@ -223,7 +263,8 @@ $(document).ready(function() {
 				ho_ten_khach_hang: $("#ho_ten_khach_hang").val(),
 				ngay_sinh: $("#ngay_sinh").val(),
 				gioi_tinh: $("#radio1").prop('checked'),
-				dia_chi: $("#tinh").val() + '/' + $("#huyen").val() + '/' + $("#xa").val() + '/' + $("#cu_the").val()
+				dia_chi: $("#tinh").val() + '/' + $("#huyen").val() + '/' + $("#xa").val() + '/' + $("#cu_the").val(),
+				anh:  imageSrc[0]
 			},
 			success: function(data) {
 				alert(data);
@@ -231,3 +272,30 @@ $(document).ready(function() {
 		});
 	});
 });
+
+const fileInput = document.getElementById('fileInput');
+	const imgElement = document.getElementById('img');
+
+	fileInput.addEventListener('change', function(event) {
+		const file = event.target.files[0];
+
+		if (file) {
+			const reader = new FileReader();
+
+			reader.onload = function(event) {
+				imgElement.src = event.target.result;
+			};
+
+			reader.readAsDataURL(file);
+		}
+	});
+function uploadFile() {
+		let formData = new FormData();
+		formData.append("file", ajaxfile.file[0]);
+		await
+		fetch('fileuploadservlet', {
+			method : "POST",
+			body : formData
+		});
+		alert('The file upload thanh cong');
+	}

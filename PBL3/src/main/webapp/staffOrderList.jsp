@@ -117,25 +117,25 @@
 								<tbody>
 									<c:forEach var="item" items="${don_hang}">
 										<tr>
-											<th scope="row">${item.ma_don_hang}</th>
+											<th scope="row">${item.id_don_hang}</th>
 											<td>
 												<div class="d-flex justify-content-between">
-													<span>${item.gia_tri_don}</span> <span><b>VND</b></span>
+													<span>${item.tong_tien}</span> <span><b>VND</b></span>
 												</div>
 											</td>
 											<td>${item.ten_khach_hang}</td>
-											<td>${item.thoi_diem_dat}</td>
+											<td>${item.thoi_gian_dat}</td>
 											<td>
-												<button class="status status-waiting"><input type="hidden" value="${item.ma_don_hang}">Chờ xác nhận</button>
+												<button class="status status-waiting"><input type="hidden" value="${item.id_don_hang}">Chờ xác nhận</button>
 											</td>
 											<td>
 												<form action="xem_don_hang_chi_tiet" method="get">
-													<input type="hidden" name="id_don_hang" value="${item.ma_don_hang}">
+													<input type="hidden" name="id_don_hang" value="${item.id_don_hang}">
 													<button class="xem_chi_tiet">Xem chi tiết</button>
 												</form>
 											</td>
 											<td>
-												<button class="huy_don_hang"><input class="vale" type="hidden" value="${item.ma_don_hang}">Hủy đơn hàng</button>
+												<button class="huy_don_hang"><input class="vale" type="hidden" value="${item.id_don_hang}">Hủy đơn hàng</button>
 											</td>
 										</tr>
 									</c:forEach>

@@ -215,6 +215,8 @@ public class AbstractDao implements GenericDAO{
 					int index = i + 1;
 					if (parameter instanceof Long) {
 						statement.setLong(index, (Long) parameter);
+					}else if (parameter instanceof String && ((String) parameter).equals("NULL")) {
+						statement.setString(index, null);
 					} else if (parameter instanceof String) {
 						statement.setString(index, (String) parameter);
 					} else if (parameter instanceof Integer) {

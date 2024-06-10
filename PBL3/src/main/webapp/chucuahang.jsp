@@ -297,16 +297,16 @@
 											<th scope="row">${item.id_don_hang}</th>
 											<td>
 												<div class="d-flex justify-content-between">
-													<span>${item.gia_tri_don}</span> <span><b>VND</b></span>
+													<span>${item.tong_tien}</span> <span><b>VND</b></span>
 												</div>
 											</td>
-											<td>${item.ho_ten_nhan_vien}</td>
-											<td>${item.thoi_diem_dat}</td>
-											<td>${item.thoi_diem_nhan}</td>
+											<td>${item.ten_nhan_vien}</td>
+											<td>${item.thoi_gian_dat}</td>
+											<td>${item.thoi_gian_nhan}</td>
 											<td>
 												<button class="status status-waiting">
 													<input type="hidden" value="${item.id_don_hang}">
-													${item.trang_thai}
+													${item.trang_thai_don_hang}
 												</button>
 											</td>
 											<td>

@@ -5,22 +5,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"
-	rel="stylesheet">
-<link rel="stylesheet" href="userInfor.css">
-<title>Document</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link
+		href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"
+		rel="stylesheet">
+	<link rel="stylesheet" href="userInfor.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<title>Document</title>
 </head>
 <body>
 	<div class="container light-style flex-grow-1 container-p-y">
 		<div class="header font-weight-bold py-3 mb-4">
 			<h3>Chỉnh sửa thông tin người dùng</h3>
 		</div>
-
-		<form action="modify_Infor" method="post"
-			enctype="multipart/form-data">
 
 			<div class="card overflow-hidden">
 				<div class="form" style="display: flex;">
@@ -39,8 +38,7 @@
 							<div class="tab-pane fade active show" id="account-general">
 								<div class="cardImage card-body">
 
-									<img id="img" src=""
-										alt="Card image" class="d-block ui-w-80">
+									<img id="img" src="" alt="Card image" class="d-block ui-w-80">
 								</div>
 								<div class="mainInfor card-body">
 
@@ -149,7 +147,6 @@
 					onclick="history.back()">Cancel</button>
 			</div>
 
-		</form>
 		<input type="button" id="doi_mat_khau" value='Thay đổi mật khẩu' />
 
 	</div>
@@ -180,17 +177,26 @@
 	});
 
 	
+	
 	$(document).ready(
 			function() {
+				let img = document.querySelectorAll('#img');
+				
 				$("#save").click(
 						function() {
+							let imageSrc = [];
+							img.forEach((image) => {
+								imageSrc.push(image.src.split(",")[1]);
+								
+							});
+							
 							$.ajax({
 								url : "tao_nhan_vien", // URL of your Servlet
 								type : "POST",
 								dataType : 'json',
 								data : {
-									email:  $("#email").val(),
-									so_dien_thoai:  $("#so_dien_thoai").val(),
+									email : $("#email").val(),
+									so_dien_thoai : $("#so_dien_thoai").val(),
 									ho_ten : $("#ho_ten_khach_hang").val(),
 									ngay_sinh : $("#ngay_sinh").val(),
 									gioi_tinh : $("#radio1").prop('checked'),
@@ -199,6 +205,7 @@
 											+ $("#xa").val() + '/'
 											+ $("#cu_the").val(),
 									new_password : $("#new_password").val(),
+									anh: imageSrc[0]
 								},
 								success : function(data) {
 									alert(data);
@@ -207,38 +214,6 @@
 						});
 			});
 
-	$(document).ready(function() {
-		$("#doi_mat_khau").click(function() {
-			$.ajax({
-				url : "update_password", // URL of your Servlet
-				type : "POST",
-				dataType : 'json',
-				data : {
-					old_password : $("#old_password").val(),
-					new_password : $("#new_password").val(),
-					new_repassword : $("#new_repassword").val()
-				},
-				success : function(data) {
-					alert(data);
-				}
-			});
-		});
-	});
-
-	function modifyInforDisable() {
-		var inputElements = document.querySelectorAll(".infor");
-		inputElements.forEach(function(inputElement) {
-			inputElement.disabled = !inputElement.disabled;
-		});
-	}
-	document.getElementById("modify").addEventListener(
-			"click",
-			function() {
-				document.getElementById("target").disabled = !document
-						.getElementById("target").disabled; // Vô hiệu hóa nút đích
-			});
-
-	async
 	function uploadFile() {
 		let formData = new FormData();
 		formData.append("file", ajaxfile.file[0]);
@@ -249,6 +224,5 @@
 		});
 		alert('The file upload thanh cong');
 	}
-	console.log($sessionScope.acc);
 </script>
 </html>

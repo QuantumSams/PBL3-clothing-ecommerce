@@ -18,8 +18,7 @@ public class Nguoi_dung_DAO extends AbstractDao implements Repository<Nguoi_dung
 	
 	@Override
 	public void add(Nguoi_dung t) {
-		String query1 = "INSERT INTO thong_tin_dang_nhap VALUES (?, ?, ?, ?, ?);";
-		String query2 = "INSERT INTO thong_tin_nguoi_dung VALUES (?, ?, ?, ?, ?, ?)";
+		String query1 = "INSERT INTO thong_tin_dang_nhap VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 		
 		int id_phan_quyen = 1;
 		if(t.getPhan_quyen_nguoi_dung().equals(Phan_quyen_nguoi_dung.KHACH_HANG.toString())){
@@ -34,17 +33,17 @@ public class Nguoi_dung_DAO extends AbstractDao implements Repository<Nguoi_dung
 			id_phan_quyen = 2;
 		}
 		
-		insert(query1, t.getId_nguoi_dung(), t.getSo_dien_thoai(), t.getEmail(), t.getPassword(), id_phan_quyen);
-		insert(query2, t.getId_nguoi_dung(), t.getHo_ten(), t.isGioi_tinh(), t.getNgay_sinh(), t.getDia_chi(), t.getAnh_dai_dien());
+		insert(query1, t.getId_nguoi_dung(), t.getSo_dien_thoai(), t.getEmail(), 
+				t.getPassword(), id_phan_quyen, t.getId_nguoi_dung(), t.getHo_ten(),
+				t.isGioi_tinh(), t.getNgay_sinh(), t.getDia_chi(), t.getAnh_dai_dien());
 	}
 
 	@Override
 	public List<Nguoi_dung> getALL() {
 		StringBuilder query = new StringBuilder();
 		query.append(" SELECT thong_tin_dang_nhap.id, ho_ten, gioi_tinh, ngay_sinh, dia_chi, anh_dai_dien, ");
-		query.append(" thong_tin_dang_nhap.so_dien_thoai, thong_tin_dang_nhap.email, phan_quyen_nguoi_dung.ten_phan_quyen");
-		query.append(" FROM thong_tin_nguoi_dung");
-		query.append(" INNER JOIN thong_tin_dang_nhap ON thong_tin_nguoi_dung.id = thong_tin_dang_nhap.id");
+		query.append(" so_dien_thoai, email, phan_quyen_nguoi_dung.ten_phan_quyen");
+		query.append(" FROM thong_tin_dang_nhap");
 		query.append(" INNER JOIN phan_quyen_nguoi_dung ON phan_quyen_nguoi_dung.id = thong_tin_dang_nhap.id_phan_quyen_nguoi_dung");
 
 		return query(query.toString(), new Nguoi_dung_Mapper());
@@ -59,19 +58,15 @@ public class Nguoi_dung_DAO extends AbstractDao implements Repository<Nguoi_dung
 
 	@Override
 	public void update(Nguoi_dung t) {
-		String sql1 = "UPDATE thong_tin_dang_nhap SET so_dien_thoai = ?, email = ? WHERE id = ?;";
-		String sql2 = "UPDATE thong_tin_nguoi_dung SET ho_ten = ?, gioi_tinh = ?, ngay_sinh = ?, dia_chi = ?, anh_dai_dien = ? WHERE id = ?;";
+		String sql1 = "UPDATE thong_tin_dang_nhap SET so_dien_thoai = ?, email = ?, ho_ten = ?, gioi_tinh = ?, ngay_sinh = ?, dia_chi = ?, anh_dai_dien = ? WHERE id = ?;";
 		
-		update(sql1, t.getSo_dien_thoai(), t.getEmail(), t.getId_nguoi_dung());
-		update(sql2, t.getHo_ten(), t.isGioi_tinh(), t.getNgay_sinh(), t.getDia_chi() , t.getAnh_dai_dien(), t.getId_nguoi_dung());
+		update(sql1, t.getSo_dien_thoai(), t.getEmail(), t.getHo_ten(), t.isGioi_tinh(), t.getNgay_sinh(), t.getDia_chi() , t.getAnh_dai_dien(), t.getId_nguoi_dung());
 	}
 
 	@Override
 	public void remove(Nguoi_dung t) {
-		String sql1 = "DELETE FROM thong_tin_nguoi_dung WHERE id = ?;";
-		String sql2 = "DELETE FROM thong_tin_dang_nhap WHERE id = ?;";
+		String sql1 = "DELETE FROM thong_tin_dang_nhap WHERE id = ?;";
 		
 		update(sql1, t.getId_nguoi_dung());
-		update(sql2, t.getId_nguoi_dung());
 	}
 }
