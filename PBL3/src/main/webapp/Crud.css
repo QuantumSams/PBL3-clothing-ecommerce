@@ -209,7 +209,13 @@ Select{
   justify-content: center;
   z-index: 1000;
 }
-
+.popup{
+	width: 400px;
+	height: 400px;
+	background-color: white;
+	padding: 50px;
+	
+}
 .overlay img{
 	opacity: 1;
 	width: 50%;
@@ -225,4 +231,51 @@ Select{
 
 .table th{
 	text-align: center;
+}
+.box{
+    display: flex;
+    gap:10px;
+   	align-items: center;
+}
+
+a{
+    color: black;
+}
+.size{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.btnColor{
+	border: 1px solid !important;
+	width: 50px;
+	height: 50px;
+}
+.btnSize{
+	border: 1px solid !important;
+	width: 50px;
+	height: 50px;
+	
+}
+.colorDiv{
+	display:none;
+}
+.selected{
+	width: 70px;
+	height: 70px;
+}
+.selected1{
+	width: 70px;
+	height: 70px;
+}
+.btnAdd{
+	border: 1px dashed #000;
+	width: 50px;
+	height: 50px;
+	background-color: white;
+}
+.selectItem{
+	display: flex;
+	gap: 10px;
+
 }

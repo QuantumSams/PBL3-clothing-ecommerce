@@ -137,25 +137,57 @@ $(document).ready(function() {
 const imageUpload = document.getElementById('image-upload');
 const previewImage = document.getElementById('preview-image');
 const container = document.querySelector(".upload-container");
+
 container.querySelector('#fileInput').addEventListener('change', (e) => {
 	addImage(e.target)
 });
 
+let btnColor = document.querySelectorAll('.btnColor');
+btnColor.forEach(item =>{
+	item.addEventListener('click',e=>{
+		if(item.classList.contains('selected')){
+			item.classList.remove('selected');
+		}
+		else{
+			let b = document.querySelector('.selected');
+			if(b == null){
+				
+			}
+			else{
+				b.classList.remove('selected');
+				
+			}
+			item.classList.add('selected');
+		}
 
-function addItem(i) {
-	const list = document.getElementById(i);
-	const newItem = document.createElement("div");
-	const newInput = document.createElement("input");
-	const newButton = document.createElement("button");
-	newButton.textContent = "X";
-	newButton.className = "deleteItem";
-	let j = "#" + i;
-	newButton.onclick = removeItem(j);
-	newItem.appendChild(newInput);
-	newItem.appendChild(newButton);
-	newItem.className = "inputSize";
-	list.appendChild(newItem);
-}
+	})
+})
+
+
+
+	let btnSize = document.querySelectorAll('.btnSize');
+
+btnSize.forEach(item =>{
+	item.addEventListener('click',e=>{
+		if(item.classList.contains('selected1')){
+			item.classList.remove('selected1');
+		}
+		else{
+			let c = document.querySelector('.selected1');
+			if(c == null){
+				
+			}
+			else{
+				c.classList.remove('selected1');
+			}
+			item.classList.add('selected1');
+		}
+	})
+})
+
+
+
+
 function addImage(input) {
 	const file = input.files[0];
 	if (file) {
@@ -173,6 +205,27 @@ function addImage(input) {
 				</div>		
 			`
 			document.querySelector('#div_anh').appendChild(imgElement);
+		};
+		reader.readAsDataURL(file);
+	}
+}
+function addColorImage(input) {
+	const file = input.files[0];
+	if (file) {
+		const reader = new FileReader();
+		reader.onloadend = function(e) {
+			let imgElement = document.createElement('div');
+			imgElement.className = "img_element";
+			imgElement.innerHTML = `
+				<img src="${reader.result}">
+				<div class="btnXoa" onclick="removeIMG(this)">
+					<i class="fa-solid fa-x"></i>
+				</div>		
+				<div class="btnPreview" onclick="previewImageElement(this)">
+					<i class="fa-solid fa-search"></i>
+				</div>		
+			`
+			document.querySelector('.popup').appendChild(imgElement);
 		};
 		reader.readAsDataURL(file);
 	}
@@ -198,6 +251,222 @@ function addImageItems(linput) {
 		reader.readAsDataURL(file);
 	}
 }
+function openPopupColor(){
+	let overlay = document.createElement('div');
+	overlay.className = "overlay";
+	let form = document.createElement('div');
+	form.className = "popup";
+	
+	let name  = document.createElement('input');
+	name.className = "nameColor";
+	let buttonExit = document.createElement('button');
+	let buttonDone = document.createElement('button');
+	let buttonImage = document.createElement('input');
+	let label = document.createElement('label');	
+	let icon = document.createElement('i');
+	icon.className = "fa-solid fa-plus";
+	label.appendChild(icon);
+	/*	<input onchange="addImageItems(this)" style="display: none;" type="file" id="imageInput${count}" name="file" multiple/>*/
+	buttonImage.type = "file"
+	buttonImage.name = "file"
+	buttonImage.setAttribute('id', "idImage");
+	buttonImage.multiple = true;
+	buttonImage.hidden = true;
+	buttonImage.textContent = "Thêm ảnh";
+	label.setAttribute('for', "idImage" );
+	buttonImage.addEventListener('change', e=>{
+		addColorImage(e.target);
+	})
+	buttonExit.textContent ="Thoát";
+	buttonDone.textContent = "Hoàn thành"
+	form.appendChild(name);
+	form.appendChild(buttonDone);
+	form.appendChild(buttonExit);
+	form.appendChild(buttonImage);
+	form.appendChild(label);
+	overlay.appendChild(form);
+	buttonExit.addEventListener('click', () => {
+		overlay.remove();
+	});
+	buttonDone.addEventListener('click', ()=>{
+		let buttonAdd =  document.createElement('button');
+		buttonAdd.textContent = document.querySelector('.nameColor').value;
+		if(buttonAdd.textContent.trim == ""){
+			alert("Chưa nhập gì cả");
+			overlay.remove();
+		}
+		/*buttonAdd.className = "btnColor";
+		document.querySelector('.color').childNodes[1].childNodes[5].appendChild(buttonAdd);*/
+		overlay.remove();
+	})
+	document.body.appendChild(overlay);
+}
+function themDoituong(){
+	let overlay = document.createElement('div');
+	overlay.className = "overlay";
+	let form = document.createElement('div');
+	form.className = "popup";
+	
+	let name  = document.createElement('input');
+	name.className = "name";
+	let buttonExit = document.createElement('button');
+	let buttonDone = document.createElement('button');
+	buttonExit.textContent ="Thoát";
+	buttonDone.textContent = "Hoàn thành"
+	form.appendChild(name);
+	form.appendChild(buttonDone);
+	form.appendChild(buttonExit);
+	
+	overlay.appendChild(form);
+	buttonExit.addEventListener('click', () => {
+		overlay.remove();
+	});
+	buttonDone.addEventListener('click', ()=>{
+		let newOption =  document.createElement('option');
+		newOption.textContent = document.querySelector('.name').value;
+		if(newOption.textContent.trim == ""){
+			alert("Chưa nhập gì cả");
+			overlay.remove();
+		}
+		document.querySelector('#Doi_tuong_khach_hang').appendChild(newOption)
+		overlay.remove();
+	})
+	document.body.appendChild(overlay);
+}
+function themLoaiSanPham(){
+	let overlay = document.createElement('div');
+	overlay.className = "overlay";
+	let form = document.createElement('div');
+	form.className = "popup";
+	
+	let name  = document.createElement('input');
+	name.className = "name";
+	let buttonExit = document.createElement('button');
+	let buttonDone = document.createElement('button');
+	
+	buttonExit.textContent ="Thoát";
+	buttonDone.textContent = "Hoàn thành"
+	
+	
+	form.appendChild(name);
+	form.appendChild(buttonDone);
+	form.appendChild(buttonExit);
+	
+	overlay.appendChild(form);
+	buttonExit.addEventListener('click', () => {
+		overlay.remove();
+	});
+	buttonDone.addEventListener('click', ()=>{
+		let newOption =  document.createElement('option');
+		newOption.textContent = document.querySelector('.name').value;
+		if(newOption.textContent.trim == ""){
+			alert("Chưa nhập gì cả");
+			overlay.remove();
+		}
+		document.querySelector('#Loai_san_pham').appendChild(newOption)
+		overlay.remove();
+	})
+	document.body.appendChild(overlay);
+}
+function themDanhMuc(){
+	let overlay = document.createElement('div');
+	overlay.className = "overlay";
+	let form = document.createElement('div');
+	form.className = "popup";
+	
+	let name  = document.createElement('input');
+	name.className = "name";
+	let buttonExit = document.createElement('button');
+	let buttonDone = document.createElement('button');
+	buttonExit.textContent ="Thoát";
+	buttonDone.textContent = "Hoàn thành"
+	form.appendChild(name);
+	form.appendChild(buttonDone);
+	form.appendChild(buttonExit);
+	
+	overlay.appendChild(form);
+	buttonExit.addEventListener('click', () => {
+		overlay.remove();
+	});
+	buttonDone.addEventListener('click', ()=>{
+		let newOption =  document.createElement('option');
+		newOption.textContent = document.querySelector('.name').value;
+		if(newOption.textContent.trim == ""){
+			alert("Chưa nhập gì cả");
+			overlay.remove();
+		}
+		document.querySelector('#Danh_muc').appendChild(newOption)
+		overlay.remove();
+	})
+	document.body.appendChild(overlay);
+}
+function openPopupSize(){
+	let overlay = document.createElement('div');
+	overlay.className = "overlay";
+	let form = document.createElement('div');
+	form.className = "popup";
+	
+	let name  = document.createElement('input');
+	name.className = "nameSize";
+	let buttonExit = document.createElement('button');
+	let buttonDone = document.createElement('button');
+	buttonExit.textContent ="Thoát";
+	buttonDone.textContent = "Hoàn thành"
+	form.appendChild(name);
+	form.appendChild(buttonDone);
+	form.appendChild(buttonExit);
+	
+	overlay.appendChild(form);
+	buttonExit.addEventListener('click', () => {
+		overlay.remove();
+	});
+	buttonDone.addEventListener('click', ()=>{
+		let buttonAdd =  document.createElement('button');
+		let nameSize = document.createElement('div');
+		let valueSize = document.createElement('input');
+		let btnDelete = document.createElement('button');
+		btnDelete.textContent = "X";
+		
+		
+		if(document.querySelector('.nameSize').value.trim() == ""){
+			alert("Chưa nhập gì cả");
+		}
+		else{
+			buttonAdd.className = "btnSize";
+			nameSize.innerHTML = document.querySelector('.nameSize').value;
+			valueSize.value = document.querySelectorAll('.btnSize').length + 1;
+			valueSize.className = "mausac";
+			valueSize.type = "hidden";
+			
+			buttonAdd.appendChild(nameSize);
+			buttonAdd.appendChild(valueSize);
+			buttonAdd.appendChild(btnDelete);
+			btnDelete.addEventListener('click', e=>{
+				btnDelete.parentElement.remove();
+			})
+			buttonAdd.addEventListener('click',e=>{
+		if(buttonAdd.classList.contains('selected1')){
+			buttonAdd.classList.remove('selected1');
+		}
+		else{
+			let b = document.querySelector('.selected1');
+			if(b == null){
+				
+			}
+			else{
+				b.classList.remove('selected1');
+				
+			}
+			buttonAdd.classList.add('selected1');
+		}
+		})
+		document.querySelector('.sizeBtn').appendChild(buttonAdd);
+		overlay.remove();
+		}
+		
+	})
+	document.body.appendChild(overlay);
+}
 function acceptChange(i, j) {
 	const btn = document.getElementsByClassName(i);
 	const form = document.querySelector(j);
@@ -218,28 +487,34 @@ function removeItem(i) {
 		}
 	});
 }
-let count = 0;
+
 function createTable() {
-	const optionSize = document.getElementById('itemListSize');
-	const optionColor = document.getElementById('itemListMau_sac');
-	console.log(optionColor);
-	const selectedOptionSize = optionSize.options[optionSize.selectedIndex];
-	const selectedOptionColor = optionColor.options[optionColor.selectedIndex];
+	let colorInput = document.querySelector('.selected');
+	let sizeInput = document.querySelector('.selected1');
+	if(colorInput == null) return;
+	if(sizeInput == null) return;
+	const tableCheck = document.querySelector('#myTable');
+	
 	let table = document.getElementById('myTable');
-	count = count + 1;
+	let count = tableCheck.rows.length + 1;
+	for(let i = 0; i < count - 1; ++i){
+		if(tableCheck.rows[i].cells[1].innerText == sizeInput.childNodes[0].innerHTML &&
+		tableCheck.rows[i].cells[2].innerText == colorInput.childNodes[1].textContent){
+			return;
+		}
+	}
 	var newRow = table.insertRow();
 	var stt = newRow.insertCell();
 	var size = newRow.insertCell();
-	size.innerHTML = selectedOptionSize.value;
-	/*size.className = `size`;
-	size.value = count;*/
+	
 	stt.innerHTML = count;
-	size.innerHTML = `<div>${selectedOptionSize.text}</div> <input class = "size_table" type="hidden" value = ${selectedOptionSize.value}>`;
+	size.innerHTML = `<div>${sizeInput.childNodes[0].innerHTML}</div> 
+	<input class = "size_table" type="hidden" value = ${sizeInput.childNodes[1].value}>`;
 	var name = newRow.insertCell();
-	name.innerHTML = selectedOptionColor.value;
-	//name.className = `color`;
+
 	name.value = count;
-	name.innerHTML = `<div>${selectedOptionColor.text}</div> <input  class = "color_table" type="hidden" value = "${selectedOptionColor.value}">`;
+	name.innerHTML = `<div>${colorInput.childNodes[1].textContent}</div> 
+	<input  class = "color_table" type="hidden" value = "${colorInput.childNodes[3].value}">`;
 	var input = newRow.insertCell();
 	input.innerHTML = `<input type = "text" class = "gia">`;
 	var img = newRow.insertCell();
@@ -250,13 +525,15 @@ function createTable() {
                                	<i class="fa-solid fa-plus"></i>
       		 </label>
 		</div>`;
-	/*            const imageContainer = document
-				.querySelector(`.item-images${count}`)
-				.querySelector('#imageInput').addEventListener('change', (e) => {
-					addImageItems(e.target)
-				});  */
+	var xoa = newRow.insertCell();
+	xoa.innerHTML = `<button class = "xoaRow" onclick = "deleteRow(this)">Xoá</button>`
+	colorInput.classList.remove('selected');
+	sizeInput.classList.remove('selected1');	
 }
-
+function deleteRow(r) {
+  var i = r.parentNode.parentNode.rowIndex;
+  document.getElementById('myTable'	).deleteRow(i-1	);
+}
 
 function previewImageElement(button) {
 	const parentImage = button.parentElement.querySelector('img');

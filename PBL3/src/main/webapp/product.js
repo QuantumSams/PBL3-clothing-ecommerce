@@ -12,13 +12,17 @@ const map1 = new Map();
 const mau = new Array();
 
 a.forEach(item => {
-	
 	item.addEventListener('click', e=>{
 		o.forEach(u =>{
 			u.disabled = true;
 		})
-		let b = document.querySelector('.selected');
+		if(item.classList.contains('selected')){
+			item.classList.remove('selected');
+		}
+		else{
+			let b = document.querySelector('.selected');
 		let c = document.querySelector('.selected1');
+		
 		if(c == null){
 			
 		}
@@ -48,11 +52,17 @@ a.forEach(item => {
 		})
 		document.querySelector('#labelColor').innerHTML = 'Màu sắc: ' + item.childNodes[1].innerText;
 		document.querySelector('.resultColor').value = item.childNodes[3].value;
+		}
+		
 		})
 });
 o.forEach(item => {
 	item.addEventListener('click', e=>{
-		let b = document.querySelector('.selected1');
+		if(item.classList.contains('selected1')){
+			item.classList.remove('selected1');
+		}
+		else{
+			let b = document.querySelector('.selected1');
 		if(b == null){
 		}
 		else{
@@ -61,6 +71,8 @@ o.forEach(item => {
 		item.classList.add('selected1');
 		document.querySelector('#labelSize').innerHTML = 'Kích cỡ: ' + item.innerText;
 		document.querySelector('.resultSize').value = item.childNodes[1].value;
+		}
+		
 		})
 });
 function getSize(e){
