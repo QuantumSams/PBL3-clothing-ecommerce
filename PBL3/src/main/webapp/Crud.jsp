@@ -90,18 +90,27 @@
                             </div>
                             <hr style = "margin-top: 20px; margin-bottom: 20px; width: 95%;">
                             <div class="color">
-                                <div style= "display: flex; justify-content: space-between;">
+                                <div style= "display: flex;">
                                     <h6 style = "font-weight: bold;">Màu sắc</h6>
-                                    <button class ="btn1" onclick = "acceptChange('btn1','.editColor')">Chỉnh sửa</button>
-                                	<Select id="itemListMau_sac">
+                                   <!--  <button class ="btn1" onclick = "acceptChange('btn1','.editColor')">Chỉnh sửa</button> -->
+                                     <div class = "box color">
+							<c:forEach var="item" items="${mau_sac}">
+							<button class = "btnColor"><img src="${item.anh_mau_sac}" width="100%" ><div class ="colorDiv">${item.ten_mau}</div> 
+							<input  value = "${item.id_mau_sac}" class = "mausac" type = "hidden"></button>
+							</c:forEach>
+                		</div>
+                		
+							<button onclick="openPopupColor()">Add </button>
+
+                                	<%-- <Select id="itemListMau_sac">
                                             <c:forEach var="item" items="${mau_sac}">
                                             	<option value="${item.id_mau_sac}">
                                             		${item.ten_mau}
                                             	</option>
                                             </c:forEach>
-                                    </Select>
+                                    </Select> --%>
                                 </div>
-                                <div class = "editColor">
+                               <%--  <div class = "editColor">
                                         <ul id="itemListColor">
                                          	<c:forEach var="item" items="${mau_sac}">
                                          		<div class ="inputSize">
@@ -112,22 +121,28 @@
                                         </ul>
                                       <button onclick="addItem('itemListColor')">Add</button>
                                 </div>
-
+ --%>
                             </div>
                             <div class="size">
                                 <div style= "display: flex; justify-content: space-between;">
                                     <h6 style = "font-weight: bold;">Size</h6>
-                                    <button class ="btn2" onclick = "acceptChange('btn2', '.editSize')">Chỉnh sửa</button>
-                                	<Select id="itemListSize">
+                                    <!-- <button class ="btn2" onclick = "acceptChange('btn2', '.editSize')">Chỉnh sửa</button> -->
+                                	<%-- <Select id="itemListSize">
                                             <c:forEach var="item" items="${size}">
                                             	<option value="${item.id_size}">
                                             		${item.ten_size}
                                             	</option>
                                             </c:forEach>
-                                    </Select>
+                                    </Select> --%>
+                                    <div class = "box sizeBtn">
+						<c:forEach var="item" items="${size}">
+						<button class = "btnSize"><div >${item.ten_size}</div><input  value = "${item.id_size}" class = "mausac" type = "hidden"></button>
+						</c:forEach> 	
+                		</div>
+                		<button onclick="openPopupSize()">Add </button>
                                 </div>
                                 
-                                <div class = "editSize">
+                               <%--  <div class = "editSize">
                                 	<ul id="itemListSize">
                                  			<c:forEach var="item" items="${size}">
                                  				<div>
@@ -137,7 +152,7 @@
                                             </c:forEach>
                                      </ul> 
                                      <button onclick="addItem('itemListSize')">Add</button>
-                                </div>
+                                </div> --%>
                             </div>
                         </div>
                     </div>
@@ -151,6 +166,7 @@
                                 <th scope="col">Màu</th>
                                 <th scope="col">Giá</th>
                                 <th scope="col">Ảnh</th>
+                                <th scope="col"></th>
                               </tr>
                             </thead>
                             <tbody id = "myTable">
@@ -184,7 +200,7 @@
 													class="fa-soild fa-plus"></i>
 												</label>
 												<div class="img_element">
-													<img src="${item.anh_chi_tiet}" style="with: 80px">
+													<img src="${item.anh_chi_tiet}" style="width: 80px">
 													<div class="btnXoa" onclick="removeIMG(this)">
 														<i class="fa-solid fa-x"></i>
 													</div>
@@ -212,24 +228,21 @@
                         <div class="form">
                             <h5>Danh mục hàng</h5>
                             <h6>Đối tượng</h6>
-                            <Select id="Doi_tuong_khach_hang">
-                            	<c:forEach var="item" items="${doi_tuong_khach_hang}">
-                            		<Option value="${item.id}">
-                            		${item.category}
-										
-									</Option>
-                                </c:forEach>
-                            </Select>
+                            <div class = "selectItem">
+                            <Select id="Doi_tuong_khach_hang"><c:forEach var="item" items="${doi_tuong_khach_hang}"><Option value="${item.id}">${item.category}</Option></c:forEach></Select>
+                            <button onclick="themDoituong()">Thêm</button>
+                            </div>
                             
                             <h6>Tên loại sản phẩm</h6>
+                            <div class = "selectItem">
                             <Select id="Loai_san_pham">
-                                <c:forEach var="item" items="${ten_loai_san_pham}">
-                            		<Option value="${item.id}">
-                            			${item.category}	
-									</Option>
+                            <c:forEach var="item" items="${ten_loai_san_pham}"><Option value="${item.id}">${item.category}</Option>
                                 </c:forEach>
                             </Select>
+                            <button onclick = "themLoaiSanPham()">Thêm</button>
+                            </div>
                             <h6>Tên danh mục sản phẩm</h6>
+                            <div class = "selectItem">
                             <Select id="Danh_muc">
                                 <c:forEach var="item" items="${ten_danh_muc_san_pham}">
                             		<Option value="${item.id}">
@@ -237,6 +250,8 @@
 									</Option>
                                 </c:forEach>
                             </Select>
+                            <button onclick = "themDanhMuc()">Thêm</button>
+                            </div>
                         </div>
                     </div>
                 </div>
