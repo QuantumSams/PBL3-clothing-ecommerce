@@ -26,10 +26,10 @@ $(document).ready(function() {
 						'</div>' +
 						'</div>' +
 						'<div class="price-amount">' +
-						'<h6 class = "gia">' + item.muc_san_pham.gia_tien + ' VNĐ <input type="checkbox" name="" class="checkBuy" checked > <input class="gio_hang" type="hidden" value="' + item.id_gio_hang + '"/></h6>' +
+						'<h6 class = "gia">' + parseInt(item.muc_san_pham.gia_tien).toLocaleString('vi-VN') + ' VNĐ <input type="checkbox" name="" class="checkBuy"  > <input class="gio_hang" type="hidden" value="' + item.id_gio_hang + '"/></h6>' +
 						'' +
 						'<h6 class = "soLuong">' + item.so_luong + ' Cái</h6>' +
-						'</div>' +
+						'</div>' +	
 						'</div>' +
 						'</div>';
 				});
@@ -40,10 +40,8 @@ $(document).ready(function() {
 					'<h5 id = "sum"></h5>' +
 					'</div>' +
 					'<form action = "create_order" method = "get">' +
-
 					'<input name="gio_hang" id = "giohang" type = "hidden"/>' +
-
-					'<input type = "submit" class = "" onclick = "layGioHang()">' +
+					'<input type = "submit" class = "mua" value =  "Thanh toán">' +
 					'</form>'
 				'</div>';
 
@@ -133,10 +131,11 @@ function tien() {
 	let sum = 0;
 	for(let i = 0; i < a.length; ++i){
 		if(a[i].childNodes[1].checked){
+			let tmp = a[i].innerHTML
 			sum += parseFloat(a[i].innerHTML.split(' ', 1))*(parseFloat(b[i].innerHTML.split(' ', 1)));
 		}
 	}
-	document.querySelector('#sum').innerHTML = sum + ' VNĐ'
+	document.querySelector('#sum').innerHTML = parseInt(sum).toLocaleString('vi-VN') + ' VNĐ'
 }
 $(document).ready(function() {
 	$("#lich_su").click(function() {
