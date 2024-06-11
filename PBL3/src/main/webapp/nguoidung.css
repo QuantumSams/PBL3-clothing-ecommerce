@@ -49,6 +49,26 @@ a{
     color: #4e5155 !important;
    
 }
+.checkBuy{
+	width: 50px;
+}
+.gia{
+	font-size: larger;
+}
+.buttonCancel{
+	background-color: orange;
+	color: white;
+	border: none;
+	width: 10%;
+}
+.mua{
+	width: 100px;
+	border: none;
+	border-radius: 7px;
+	background-color: orange;
+	color: white;
+	height: 40px;
+}
 .mainform{
     width: 100%;
     height: fit-content;
@@ -74,13 +94,17 @@ a{
     background-color: #F97066;
     border: none;
     color: white;
-    width: 30%;
+    width: 200px;
 }
 .btnXoa:hover{
     background-color: red;
 }
 .price-amount{
-    width: 10%;
+    width: 20%;
+}
+.gia{
+	display: flex;
+	justify-content: space-between;	
 }
 .optionS{
     border: 1px thin ;
@@ -146,17 +170,14 @@ a{
     gap: 5%;
     transform: translateX(-330%);
 }
+	
 .gender{
     margin-top: 3%;
     display: flex;
     justify-content: space-between;
 
 }
-.buttonCancel{
-    background-color: white;
-    color: black;
-    width: 10%;
-}
+
 .cardForm{
 	transform: translateY(92px);
 }

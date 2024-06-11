@@ -49,7 +49,7 @@
                                 <h5>Tạm tính: </h5>
                                 <h5 id = "sum"></h5>
                             </div>
-                            <Button class = "buttonTT">Thanh toán</Button>
+                            
                         </div>
                     </div>
                 </div>
@@ -63,7 +63,8 @@
                                     <th>Số lượng sản phẩm</th>
                                     <th>Trạng thái đơn</th>
                                     <th>Đánh giá</th>
-                                    
+                                    <th>Xem chi tiết</th>
+                                    <th>Hủy đơn</th>
                                 </tr>
                             </thead>
                             <tbody id="san_pham">
@@ -79,6 +80,10 @@
                         <div class="userinfor">
                             <div class="img inputClass">
                                 <h6>Ảnh đại diện</h6>
+                                <div class="cardImage card-body">
+									<img id="img" src="${sessionScope.acc.anh_dai_dien}" alt="Card image" class="d-block ui-w-80">
+									<input type="file" id="fileInput" name="file" />
+								</div>
                             </div>
                             <div class="name inputClass">
                                 <h6>Họ và tên</h6>

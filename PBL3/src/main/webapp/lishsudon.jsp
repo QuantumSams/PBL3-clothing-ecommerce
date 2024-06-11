@@ -26,27 +26,29 @@
                 <table id = "table">
                     <thead>
                         <tr>
+                        	<th>Ảnh sản phẩm</th>
                             <th>Sản phẩm</th>
                             <th>Số lượng</th>
                             <th>Thành tiền</th>
                            
                         </tr>
                     </thead>
-                   <tbody>
-                   
-                   	<c:forEach var="item" items="${list_san_pham_mua}">
+                   <tbody id="list_san_pham">
+                   <c:forEach var="item" items="${chi_tiet_don_hang}">
                     	<tr>
-	                        <td>
+                    		<td><img src="${item.anh}" width="50px"
+												alt=""></td>
+                    		<td>
 	                            <div class="name">
-	                                <h5>${item.key.ten_san_pham}</h5>
+	                                <h5>${item.ten_san_pham}</h5>
 	                            </div>
 	                            <div class="color">
-	                                    <h5>${item.key.mau_sac_san_pham.ten_mau} / ${item.key.kich_thuoc_san_pham.ten_size}</h5>
+	                                    <h5>${item.ten_mau} / ${item.ten_size}</h5>
 	                            </div>
 	                        </td>
-	                        <td>${item.value}</td>
-	                        <td class = "priceItems">${item.key.gia_tien}</td>
-                        
+	                        <td class = "priceItems">${item.so_luong}</td>
+	                        <td class = "priceItems">${item.gia}</td>
+	                        <td><Button class = "btnXoa" onclick="deleteR(this)"><i class="fa-solid fa-trash"></i></Button></td>
                     	</tr>          	  
 					</c:forEach>
                    </tbody>
@@ -82,7 +84,7 @@
                 </div>
                 <div class="User">
                     <h5>Họ tên người nhận</h5>
-                    <h5>${khach_hang.ho_ten}</h5>
+                    <h5>${don_hang.ten_khach_hang}</h5>
                 </div>
                 <div class="User">
                     <h5>Số điện thoại giao hàng</h5>
@@ -90,35 +92,27 @@
                 </div>
                 <div class="User">
                     <h5>Địa chỉ giao hàng</h5>
-                    <h5>${don_hang.dia_chi_giao_dich}</h5>
+                    <h5>${don_hang.dia_chi}</h5>
                 </div>
             </div>
             <div class="note">
                 <h4>Thông tin đơn hàng</h4>
                 <div class="User">
-                    <h5>Số lượng</h5>
-                    <h5>3</h5>
-                </div>
-                <div class="User">
                     <h5>Đặt vào lúc</h5>
-                    <h5>${don_hang.ngay_gio_dat_don_hang}</h5>
+                    <h5>${don_hang.thoi_gian_dat}</h5>
                 </div>
                 <div class="User">
                     <h5>Nhận vào lúc</h5>
-                    <h5>${don_hang.ngay_gio_nhan_don_hang}</h5>
-                </div>
-                <div class="User">
-                    <h5>Nhân viên xác nhận lúc</h5>
-                    <h5>-</h5>
+                    <h5>${don_hang.thoi_gian_nhan}</h5>
                 </div>
                 <div class="User">
                     <h5>Trạng thái</h5>
-                    <h5><button type="button" class="btn btn-success">${don_hang.trang_thai_don_hang}</button></h5>
+                    <h5><button type="button" class="btn btn-success">${don_hang.trang_thai_don_hang }</button></h5>
                 </div>
             </div>
             <div class="note">
                 <h4>Ghi chú</h4>
-                <h5 style = "display: flex; align-items: center; justify-content: center; margin-top: 5%;">Chỉ giao vào giờ hành chính</h5>
+                <h5 style = "display: flex; align-items: center; justify-content: center; margin-top: 5%;">${don_hang.ghi_chu}</h5>
             </div>
             <button id="xac_nhan_don" class="chinhsua xacnhan huy">Xác nhận thanh toán</button>
         </div>

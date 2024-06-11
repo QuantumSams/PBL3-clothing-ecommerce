@@ -35,7 +35,7 @@
 								<c:forEach var="item" items="${product.anh_san_pham}">
 									<div class="carousel-item active">
 										<img src="${item}" alt=""
-											class="d-block w-70 " style = "padding: 10px 10px 10px 10px; width: 500px; margin-left: 35px;"="">
+											class="d-block " style = "padding: 10px 10px 10px 10px; width: 500px; margin-left: 35px;">
 									</div>
 								</c:forEach>
 								
@@ -113,8 +113,7 @@
                 	${product.ten_san_pham}
                 </h2>
                 <div class="Price-star">
-                    <h4>
-                        ${product.gia_tien}
+                    <h4 id = "giaTien" style = "">${product.gia_tien}
                     </h4>
                     <div class="star">
                         <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
@@ -137,7 +136,9 @@
                 </h5>
                 <div class = "box color">
 					<c:forEach var="item" items="${product.mau_hien_co}">
-						<button class = "btnColor"><img src="${item.anh_mau_sac}" width="100%" ><div class ="colorDiv">${item.ten_mau}</div> <input value = "${item.id_mau_sac}" ></button>
+
+						<button class = "btnColor"><img src="${item.anh_mau_sac}" width="100%" ><div class ="colorDiv">${item.ten_mau}</div> 
+							<input  value = "${item.id_mau_sac}" class = "mausac" type = "hidden"></button>
 
 					</c:forEach>
                 </div>
@@ -151,37 +152,39 @@
                 </div>
                 <div class="box sizes">
                 	<c:forEach var="item" items="${product.size_hien_co}">
-                	 	<div class="square"> <button class ="btnSize">${item.ten_size} <input value = "${item.id_size}" ></button> </div>
+
+                	 	<div class="square"> <button class ="btnSize" disabled >${item.ten_size} <input  value = "${item.id_size}" class = "kichco" type = "hidden"></button> </div>
+
 					</c:forEach>
                 </div>
                 <div>
                     <button class = "buttonS">KÍCH THƯỚC THEO CHIỀU CAO</button>
                 </div>
 
-                <div>
-                    <h5 style = "margin-top: 20px;">Số lượng</h5>
+               <!--  <div>
+                    <h5 style = "margin-top: 20px;">Số lượng trong kho</h5>
                 </div>
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>1</option>
-                    <option value="1">2</option>
-                    <option value="2">3</option>
-                    <option value="3">4</option>
-                </select>
+                
+                <div>
+                	<input >
+                </div> -->
               <!--   <p style = "margin-top: 10px;">
                     Còn ít hàng
                 </p -->
                 <c:forEach var="item" items="${product.muc_san_pham}">
-                	<input class = "id_mau_sac_duyet" value="${item.mau_sac_san_pham.id_mau_sac}" type="hidden">
-                	<input class = "id_size_duyet" value="${item.kich_thuoc_san_pham.id_size}" type="hidden">
-                	<input class = "id_muc_duyet" value="${item.id_muc_san_pham}" type="hidden">
+                	<input class = "id_mau_sac_duyet" value="${item.mau_sac_san_pham.id_mau_sac}" type = "hidden">
+                	<input class = "id_size_duyet" value="${item.kich_thuoc_san_pham.id_size}" type = "hidden">
+                	<input class = "id_muc_duyet" value="${item.id_muc_san_pham}" type = "hidden">
                 </c:forEach>
                 
                 <input class = "id_nguoi_dung" value="${acc.id_nguoi_dung}" type="hidden">
                 <input class = "resultColor" type="hidden">
                 <input class = "resultSize" type="hidden">
                	<input class = "muc_san_pham" value="${product.muc_san_pham}" type="hidden">
-               	<input class = "so_luong" >
-               	
+               	<div>
+                    <h5 style = "margin-top: 20px;">Số lượng mua hàng</h5>
+                </div>
+               	<input class = "so_luong" type = "number" min="1" value = 1 >
                 <button class = "cart">
                     THÊM VÀO GIỎ HÀNG
                 </button>
@@ -197,7 +200,6 @@
                     <i class="fa-brands fa-youtube fa-2xl"></i>
                 </div>
             </div>
-            
           </div>
         </div>
       </div>
