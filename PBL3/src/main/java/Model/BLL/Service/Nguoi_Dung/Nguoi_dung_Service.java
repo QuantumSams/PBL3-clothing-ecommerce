@@ -209,6 +209,7 @@ public class Nguoi_dung_Service {
 			throw new Exception("Mật khẩu mới không trùng khớp");
 		}
 		else{
+			if(acc == null) throw new Exception("không tìm thấy người dùng");
 			Nguoi_dung tmp = nguoidung_DAO.findBySpacification(new FindNguoiDungByMailOrNumber(acc.getEmail(), acc.getSo_dien_thoai(),toSHA1(old_password))).get(0);
 			if(tmp == null) {
 				throw new Exception("Mật khẩu cũ không trùng khớp");

@@ -50,7 +50,8 @@ public class UserController extends HttpServlet{
 		else if(action != null && action.equals("/thong_tin_nhan_vien")) {
 			List<Nguoi_dung> list = nguoi_dung_Service.getNguoiDungByID(req, resp);
 			HttpSession session = req.getSession();
-			session.setAttribute("nhan_vien", list.get(0));
+			session.setMaxInactiveInterval(-1);
+			session.setAttribute("acc", list.get(0));
 			req.getRequestDispatcher("userInfor.jsp").forward(req, resp);
 		}
 	}

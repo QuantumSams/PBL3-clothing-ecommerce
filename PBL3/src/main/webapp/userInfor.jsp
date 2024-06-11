@@ -35,7 +35,7 @@
 						<div class="tab-pane fade active show" id="account-general">
 							<div class="cardImage card-body">
 
-								<img id="img" src="${sessionScope.nhan_vien.anh_dai_dien}"
+								<img id="img" src="${sessionScope.acc.anh_dai_dien}"
 									alt="Card image" class="d-block ui-w-80">
 							</div>
 							<div class="mainInfor card-body">
@@ -45,47 +45,47 @@
 								<div class="name form">
 									<label for="" class="form-label">Tên</label> <input
 										id="ho_ten_khach_hang" type="text" class="form-control"
-										value="${sessionScope.nhan_vien.ho_ten}" name="name">
+										value="${sessionScope.acc.ho_ten}" name="name">
 									<input id="id_khach_hang" type="text" class="form-control"
-										value="${sessionScope.nhan_vien.id_nguoi_dung}" name="id"
+										value="${sessionScope.acc.id_nguoi_dung}" name="id"
 										style="display: none">
 								</div>
 								<div class="phoneNum form">
 									<label for="" class="form-label">Số điện thoại</label> <input
 										type="tel" id="so_dien_thoai" class="form-control"
-										value="${sessionScope.nhan_vien.so_dien_thoai}" name="phone">
+										value="${sessionScope.acc.so_dien_thoai}" name="phone">
 								</div>
 								<div class="email form">
 									<label for="" class="form-label">Email</label> <input
 										type="email" id="email" class="form-control"
-										value="${sessionScope.nhan_vien.email}" name="email">
+										value="${sessionScope.acc.email}" name="email">
 								</div>
 								<div class="address form">
 									<label for="" class="form-label">Tỉnh/ Thành phố</label> <input
 										id="tinh" type="text" class="form-control"
-										value="${sessionScope.nhan_vien.tinh}" name="address">
+										value="${sessionScope.acc.tinh}" name="address">
 								</div>
 								<div class="address form">
 									<label for="" class="form-label">Huyện / Quận</label> <input
 										id="huyen" type="text" class="form-control"
-										value="${sessionScope.nhan_vien.huyen}" name="address">
+										value="${sessionScope.acc.huyen}" name="address">
 								</div>
 								<div class="address form">
 									<label for="" class="form-label">Xã / Phường</label> <input
 										id="xa" type="text" class="form-control"
-										value="${sessionScope.nhan_vien.xa}" name="address">
+										value="${sessionScope.acc.xa}" name="address">
 								</div>
 								<div class="address form">
 									<label for="" class="form-label">Địa chỉ cụ thể</label> <input
 										id="cap_nhat_thong_tin1" type="text" class="form-control"
-										value="${sessionScope.nhan_vien.dia_chi_cu_the}"
+										value="${sessionScope.acc.dia_chi_cu_the}"
 										name="address">
 								</div>
 								<div class="Gender form">
 									<label for="" class="form-label">Giới tính</label>
 
 									<div class="radio">
-										<c:if test="${sessionScope.nhan_vien.gioi_tinh == true}">
+										<c:if test="${sessionScope.acc.gioi_tinh == true}">
 											<div class="form-check">
 												<input type="radio" class="form-check-input" id="radio1"
 													name="optradio" id="radio1" value="option1" checked>Nam
@@ -97,7 +97,7 @@
 													class="form-check-label" for="radio2"></label>
 											</div>
 										</c:if>
-										<c:if test="${sessionScope.nhan_vien.gioi_tinh == false}">
+										<c:if test="${sessionScope.acc.gioi_tinh == false}">
 											<div class="form-check">
 												<input type="radio" class="form-check-input" id="radio1"
 													name="optradio" id="radio1" value="option1">Nam <label
@@ -116,7 +116,7 @@
 								<div class="birth form">
 									<label for="" class="form-label">Ngày sinh</label> <input
 										id="ngay_sinh" type="date" class="form-control"
-										value="${sessionScope.nhan_vien.ngay_sinh}" name="birth">
+										value="${sessionScope.acc.ngay_sinh}" name="birth">
 								</div>
 
 							</div>

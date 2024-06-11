@@ -63,7 +63,6 @@
                                     <tr>
                                     	<th>Ảnh sản phẩm</th>
                                         <th>Tên sản phẩm</th>
-                                        <th>Số lượng</th>
                                         <th>Giá bán</th>
                                         <th>Đối tượng</th>
                                         <th>Danh mục</th>
@@ -79,7 +78,6 @@
 
 											<td><img src="${item.anh_san_pham[0]}" width="50px"
 												alt=""></td>
-											<td>${item.ten_san_pham}</td>
 											<td>${item.ten_san_pham}</td>
 											<td>${item.gia_tien}VNĐ</td>
 											<td>Nam</td>
@@ -127,22 +125,22 @@
                                         <th>Size</th>
                                         <th>Màu</th>
                                         <th>Sẵn hàng</th>
-                                        <th>Đã bán</th>
                                         <th>Cập nhật lần cuối</th>
+                                        <th>Cập nhật số lượng sản phẩm</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 	<c:forEach var="item" items="${muc_san_pham}">
-										<tr>
+										<tr class="muc_san_pham">
 											<td><img
 												src="${item.anh_chi_tiet}"
 												width="50px" alt=""></td>
 											<td>${item.ten_san_pham}</td>
 											<td>${item.kich_thuoc_san_pham.ten_size}</td>
 											<td>${item.mau_sac_san_pham.ten_mau}</td>
-											<td>${item.so_luong_trong_kho}</td>
-											<td>99</td>
+											<td><input value="${item.so_luong_trong_kho}"></td>
 											<td>22/04/2024</td>
+											<td><button class="cap_nhat_san_pham">Cập nhật</button></td>
 										</tr>
 									</c:forEach>
                                 </tbody>

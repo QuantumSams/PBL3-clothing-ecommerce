@@ -31,12 +31,7 @@ $(document).ready(function() {
 		images.forEach((image) => {
 			imageSrc.push(image.src.split(",")[1])
 		});*/
-		alert("Hello");
-		$.ajax({
-			url: "update_product", // URL of your Servlet
-			type: "POST",
-			dataType: 'json',
-			data: {
+		let data = {
 				id_san_pham: $("#id_san_pham").val(),
 				id_danh_muc: $("#Danh_muc").val(),
 				ten_mat_hang: $("#ten_mat_hang").val(),
@@ -49,7 +44,12 @@ $(document).ready(function() {
 				color: JSON.stringify(colorValues),
 				gia: JSON.stringify(giaValues),
 				image_muc: JSON.stringify(imageValues)*/
-			},
+			};
+		$.ajax({
+			url: "update_product", // URL of your Servlet
+			type: "POST",
+			dataType: 'json',
+			data: JSON.stringify(data),
 
 			success: function(data) {
 				alert(data);

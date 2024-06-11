@@ -1,10 +1,12 @@
 package Model.BLL.Service.San_Pham;
 
+import java.io.BufferedReader;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -24,7 +26,10 @@ import Model.DAL.Specification.Implements.Mau_sac.FindColorByID;
 import Model.DAL.Specification.Implements.Muc_san_pham.FindProductItemByIDProduct;
 import Model.DAL.Specification.Implements.San_pham.FindProductByID;
 import Model.DAL.Specification.Implements.San_pham.FindProductByName;
+import Model.DAL.Specification.Implements.San_pham.FindProductByPropertyProduct;
+import Model.DAL.Specification.Implements.San_pham.UpdatePriceQuatityItemProduct;
 import Model.DAL.Specification.Implements.Size.FindSizeByID;
+import Model.DTO.Don_Hang.Muc_sp_don_hang;
 import Model.DTO.San_Pham.Danh_muc_san_pham;
 import Model.DTO.San_Pham.Muc_san_pham;
 import Model.DTO.San_Pham.San_pham;
@@ -81,8 +86,9 @@ public class San_pham_Service {
 	}
 	
 	public List<San_pham> SearchProduct(String Search){
-		List<San_pham> list_san_pham = san_pham_DAO.findBySpacification(new FindProductByName(Search));
+		System.out.println(Search);
 		
+		List<San_pham> list_san_pham = san_pham_DAO.findBySpacification(new FindProductByName(Search));
 		for(San_pham san_pham : list_san_pham) {
 			getFullInformationProduct(san_pham);
 		}
@@ -93,6 +99,17 @@ public class San_pham_Service {
 	public List<San_pham> getProductByID(HttpServletRequest req, HttpServletResponse resp) {
 		int id = Integer.parseInt(req.getParameter("id_san_pham"));
 		List<San_pham> list_san_pham = san_pham_DAO.findBySpacification(new FindProductByID(id));
+		
+		for(San_pham san_pham : list_san_pham) {
+			getFullInformationProduct(san_pham);
+		}
+		
+		return list_san_pham;
+	}
+	
+	public List<San_pham> getProductByPropertyProduct(HttpServletRequest req, HttpServletResponse resp){
+		int id_muc_san_pham = Integer.parseInt(req.getParameter("id_muc_san_pham"));
+		List<San_pham> list_san_pham = san_pham_DAO.findBySpacification(new FindProductByPropertyProduct(id_muc_san_pham));
 		
 		for(San_pham san_pham : list_san_pham) {
 			getFullInformationProduct(san_pham);
@@ -139,7 +156,7 @@ public class San_pham_Service {
 		List<Danh_muc_san_pham> list_danh_muc_san_pham = danhmuc.Lay_danh_muc_con(list_ten_loai_san_pham.get(0));
 		
 		HttpSession session = req.getSession();
-		session.setMaxInactiveInterval(30 * 60);
+		session.setMaxInactiveInterval(-1);
 		session.setAttribute("mau_sac", list_mau_sac);
 		session.setAttribute("size", list_size);
 		session.setAttribute("doi_tuong_khach_hang", list_dtkh);
@@ -148,36 +165,24 @@ public class San_pham_Service {
 	}
 	
 	public void update_product(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-		int id_danh_muc = Integer.parseInt(req.getParameter("id_danh_muc"));
+		resp.setContentType("application/json");
+		
+		ObjectMapper objectMapper = new ObjectMapper();
+        BufferedReader reader = req.getReader();
+
+		Map<String, Object> data = objectMapper.readValue(reader, Map.class);
+		
+		int id_danh_muc = Integer.parseInt(data.get("id_danh_muc").toString());
 		Danh_muc_san_pham danh_muc = new Danh_muc_Service(new Danh_muc_DAO()).getDanh_muc_Id(id_danh_muc);
 		
-		int id_san_pham =	Integer.parseInt(req.getParameter("id_san_pham"));	
+		int id_san_pham =	Integer.parseInt(data.get("id_san_pham").toString());	
 		
-		String ten_mat_hang = req.getParameter("ten_mat_hang") ;
-		String mo_ta = req.getParameter("mo_ta") ;
-		String thong_tin_chi_tiet = req.getParameter("thong_tin_chi_tiet") ;
-		String thuong_hieu = req.getParameter("thuong_hieu") ;
-		String chat_lieu = req.getParameter("chat_lieu") ;
-		
-//		String anh_san_pham = req.getParameter("images") ;
-//		String size_muc_san_pham = req.getParameter("size") ;
-//		String mau_muc_san_pham = req.getParameter("color") ;
-//		String anh_muc_san_pham = req.getParameter("image_muc") ;
-//		String gia_san_pham = req.getParameter("gia") ;
-//		
-//		List<String> list_anh_san_pham = null;
-//		List<Integer> list_size_muc_san_pham = null;
-//		List<Integer> list_mau_muc_san_pham = null;
-//		List<Integer> list_gia_san_pham = null;
-//		List<String> list_anh_muc_san_pham = null;
-//		
-//		list_anh_san_pham = new ObjectMapper().readValue(anh_san_pham, new TypeReference<List<String>>() {});
-//		
-//		list_size_muc_san_pham = new ObjectMapper().readValue(size_muc_san_pham, new TypeReference<List<Integer>>() {});
-//		list_mau_muc_san_pham= new ObjectMapper().readValue(mau_muc_san_pham, new TypeReference<List<Integer>>() {});
-//		list_gia_san_pham= new ObjectMapper().readValue(gia_san_pham, new TypeReference<List<Integer>>() {});
-//		list_anh_muc_san_pham = new ObjectMapper().readValue(anh_muc_san_pham, new TypeReference<List<String>>() {});
-//		
+		String ten_mat_hang = data.get("ten_mat_hang").toString() ;
+		String mo_ta = data.get("mo_ta").toString() ;
+		String thong_tin_chi_tiet = data.get("thong_tin_chi_tiet").toString() ;
+		String thuong_hieu = data.get("thuong_hieu").toString() ;
+		String chat_lieu = data.get("chat_lieu").toString() ;
+	
 		List<String> fileanh = new ArrayList<>();//add_image(list_anh_san_pham, id_san_pham);
 		List<Muc_san_pham> list_muc_san_pham = new ArrayList<>();
 		
@@ -190,22 +195,28 @@ public class San_pham_Service {
 	}
 	
 	public void add_product(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+		resp.setContentType("application/json");
 		
-		int id_danh_muc = Integer.parseInt(req.getParameter("id_danh_muc"));
+		ObjectMapper objectMapper = new ObjectMapper();
+        BufferedReader reader = req.getReader();
+
+		Map<String, Object> data = objectMapper.readValue(reader, Map.class);
+		
+        int id_danh_muc = Integer.parseInt(data.get("id_danh_muc").toString());
 		Danh_muc_san_pham danh_muc = new Danh_muc_Service(new Danh_muc_DAO()).getDanh_muc_Id(id_danh_muc);
 		
 		int id_san_pham = new Random().nextInt(1000000);		
 		
-		String ten_mat_hang = req.getParameter("ten_mat_hang") ;
-		String mo_ta = req.getParameter("mo_ta") ;
-		String thong_tin_chi_tiet = req.getParameter("thong_tin_chi_tiet") ;
-		String thuong_hieu = req.getParameter("thuong_hieu") ;
-		String chat_lieu = req.getParameter("chat_lieu") ;
-		String anh_san_pham = req.getParameter("images") ;
-		String size_muc_san_pham = req.getParameter("size") ;
-		String mau_muc_san_pham = req.getParameter("color") ;
-		String anh_muc_san_pham = req.getParameter("image_muc") ;
-		String gia_san_pham = req.getParameter("gia") ;
+		String ten_mat_hang = data.get("ten_mat_hang").toString() ;
+		String mo_ta = data.get("mo_ta").toString() ;
+		String thong_tin_chi_tiet = data.get("thong_tin_chi_tiet").toString() ;
+		String thuong_hieu = data.get("thuong_hieu").toString() ;
+		String chat_lieu = data.get("chat_lieu").toString() ;
+		String anh_san_pham = data.get("images").toString() ;
+		String size_muc_san_pham = data.get("size").toString() ;
+		String mau_muc_san_pham = data.get("color").toString() ;
+		String anh_muc_san_pham = data.get("image_muc").toString() ;
+		String gia_san_pham = data.get("gia").toString() ;
 		
 		List<String> list_anh_san_pham = null;
 		List<Integer> list_size_muc_san_pham = null;
@@ -219,13 +230,13 @@ public class San_pham_Service {
 		list_gia_san_pham= new ObjectMapper().readValue(gia_san_pham, new TypeReference<List<Integer>>() {});
 		list_anh_muc_san_pham = new ObjectMapper().readValue(anh_muc_san_pham, new TypeReference<List<String>>() {});
 		
-		List<String> fileanh = add_image(list_anh_san_pham, id_san_pham);
+		List<String> fileanh = add_image(list_anh_san_pham, "img/anh_san_pham/"+id_san_pham);
 		
 		
 		List<Muc_san_pham> list_muc_san_pham = new ArrayList<>();
 		for(int i = 0; i < list_anh_muc_san_pham.size(); ++i) {
 			int new_id = new Random().nextInt(10000);
-			String path = add_image(list_anh_muc_san_pham.get(i), ""+new_id+id_san_pham);
+			String path = add_image(list_anh_muc_san_pham.get(i), "img/anh_san_pham/"+new_id+"_"+id_san_pham);
 			
 			Muc_san_pham muc_san_pham = new Muc_san_pham(	new_id, 
 					id_san_pham, 
@@ -257,14 +268,24 @@ public class San_pham_Service {
 		}
 	}
 	
-	public List<String> add_image(List<String> imageStrings, int id_san_pham) throws IOException, ServletException {
+	public void update_Muc_san_pham(HttpServletRequest req, HttpServletResponse resp) {
+		
+		int id_muc_san_pham = Integer.parseInt(req.getParameter("id_muc_san_pham"));
+		int so_luong_san_pham = Integer.parseInt(req.getParameter("so_luong_san_pham"));
+		int gia_san_pham = Integer.parseInt(req.getParameter("gia_san_pham"));
+		
+		muc_san_pham_DAO.updateBySpacification(new UpdatePriceQuatityItemProduct(gia_san_pham, so_luong_san_pham, id_muc_san_pham));
+		
+	}
+	
+	public List<String> add_image(List<String> imageStrings, String id_san_pham) throws IOException, ServletException {
 		
 		List<String> list_path = new ArrayList<>();
 		
 		for(int i = 0; i < imageStrings.size(); ++i) {
 			 byte[] data1 = Base64.getDecoder().decode(imageStrings.get(i));
 			 
-			 String path = "img/anh_san_pham/" + id_san_pham + "_" + i + ".png";
+			 String path = id_san_pham + "_" + i + ".png";
 			 
 			 image(data1, id_san_pham + "_" + i);
 			 
@@ -277,7 +298,7 @@ public class San_pham_Service {
 		
 		byte[] data1 = Base64.getDecoder().decode(imageStrings);
 			 
-		String path = "img/anh_san_pham/" + id_san_pham + ".png";
+		String path =  id_san_pham + ".png";
 			 
 		image(data1, id_san_pham);
 			 
@@ -286,7 +307,7 @@ public class San_pham_Service {
 	
 	public void image(byte[] data1, String name_image) {
 		String root = "D:/Language Program/Java_web/PBL3/PBL3-clothing-ecommerce/PBL3/src/main/webapp/";
-		String path = root + "img/anh_san_pham/" + name_image + ".png";
+		String path = root + name_image + ".png";
 		
 		try (FileOutputStream fos = new FileOutputStream(path)) {
 			fos.write(data1);
@@ -305,5 +326,26 @@ public class San_pham_Service {
 			muc_san_pham_DAO.remove(muc_san_pham);
 		}
 		san_pham_DAO.remove(san_pham);
+	}
+	
+	public void them_mau(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+		int id_mau = new Random().nextInt(10000);
+		String ten_mau = req.getParameter("ten_mau");
+		String src_anh = req.getParameter("anh");
+
+		String duong_dan = add_image(src_anh, "img/anh_mau_sac/"+id_mau);
+		
+		Mau_sac mau_sac = new Mau_sac(id_mau, ten_mau, duong_dan);
+		
+		mau_sac_DAO.add(mau_sac);
+	}
+	
+	public void them_size(HttpServletRequest req, HttpServletResponse resp) {
+		int id_size = new Random().nextInt(10000);
+		String ten_size = req.getParameter("ten_size");
+		
+		Size size = new Size(id_size, ten_size);
+		
+		size_DAO.add(size);
 	}
 }

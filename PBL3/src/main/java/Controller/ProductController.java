@@ -19,7 +19,10 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-@WebServlet(urlPatterns = {"/get_product_by_ajax", "/add_product", "/update_product", "/load_product", "/remove_product"})
+@WebServlet(urlPatterns = {"/get_product_by_ajax", "/add_product", 
+							"/update_product", "/load_product", 
+							"/remove_product", "/them_mau", "/them_size",
+							"/xoa_size", "/xoa_mau", "/tim_kiem_san_pham", "/sua_muc_san_pham"})
 public class ProductController extends HttpServlet {
 
 	private static final long serialVersionUID = -886812143546363698L;
@@ -59,6 +62,16 @@ public class ProductController extends HttpServlet {
 			session.setAttribute("product", san_pham);
 			req.getRequestDispatcher("product.jsp").forward(req, resp);
 		}
+		
+		else if(action.equals("/tim_kiem_san_pham")) {
+			List<San_pham> san_pham = san_pham_Service.searchProductByName(req, resp);
+			
+			ObjectMapper mapper = new ObjectMapper();
+		    String json = mapper.writeValueAsString(san_pham);
+		    resp.setContentType("application/json");
+		    resp.setCharacterEncoding("UTF-8");
+		    resp.getWriter().write(json);
+		}
 	}
 	
 	@Override
@@ -84,6 +97,36 @@ public class ProductController extends HttpServlet {
 			san_pham_Service.update_product(req, resp);
 			
 			postJsonMessage(resp, "Cập nhật sản phẩm thành công");
+		}
+		
+		else if(action.equals("/them_mau")) {
+			san_pham_Service.them_mau(req, resp);
+			
+			postJsonMessage(resp, "Thêm màu thành công");
+		}	
+		
+		else if(action.equals("/them_size")) {
+			san_pham_Service.them_size(req, resp);
+			
+			postJsonMessage(resp, "Thêm size thành công");
+		}
+		
+		else if(action.equals("/xoa_mau")) {
+			san_pham_Service.them_mau(req, resp);
+			
+			postJsonMessage(resp, "Xóa màu thành công");
+		}	
+		
+		else if(action.equals("/xoa_size")) {
+			san_pham_Service.them_size(req, resp);
+			
+			postJsonMessage(resp, "Xóa size thành công");
+		}
+		
+		else if(action.equals("/sua_muc_san_pham")) {
+			san_pham_Service.update_Muc_san_pham(req, resp);
+			
+			postJsonMessage(resp, "Sửa thành công");
 		}
 	}
 	

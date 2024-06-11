@@ -31,13 +31,9 @@ $(document).ready(function() {
 		images.forEach((image) => {
 			imageSrc.push(image.src.split(",")[1])
 		});
-		
-		$.ajax({
-			url: "add_product", // URL of your Servlet
-			type: "POST",
-			dataType: 'json',
-			data: {
-				id_danh_muc: $("#Danh_muc").val(),
+		let id_dm = $("#Danh_muc").val();
+		let data = {
+				id_danh_muc:id_dm,
 				ten_mat_hang: $("#ten_mat_hang").val(),
 				mo_ta: $("#mo_ta").val(),
 				thong_tin_chi_tiet: $("#thong_tin_chi_tiet").val(),
@@ -48,7 +44,12 @@ $(document).ready(function() {
 				color: JSON.stringify(colorValues),
 				gia: JSON.stringify(giaValues),
 				image_muc: JSON.stringify(imageValues)
-			},
+			};
+		$.ajax({
+			url: "add_product", // URL of your Servlet
+			type: "POST",
+			dataType: 'json',
+			data: JSON.stringify(data),
 
 			success: function(data) {
 				alert(data);
@@ -217,7 +218,7 @@ function addColorImage(input) {
 			let imgElement = document.createElement('div');
 			imgElement.className = "img_element";
 			imgElement.innerHTML = `
-				<img src="${reader.result}">
+				<img src="${reader.result}" id="imageColor">
 				<div class="btnXoa" onclick="removeIMG(this)">
 					<i class="fa-solid fa-x"></i>
 				</div>		
@@ -297,6 +298,30 @@ function openPopupColor(){
 		}
 		/*buttonAdd.className = "btnColor";
 		document.querySelector('.color').childNodes[1].childNodes[5].appendChild(buttonAdd);*/
+		let img = document.querySelectorAll('#imageColor');
+		let imageSrc = [];
+		img.forEach((image) => {
+			imageSrc.push(image.src.split(",")[1]);
+
+		});	
+		$.ajax({
+			
+			url: "them_mau", // URL of your Servlet
+			type: "POST",
+			dataType: 'json',
+			data: {
+				ten_mau: $(".nameColor").val(),
+				anh: imageSrc[0],
+			},
+
+			success: function(data) {
+				alert(data);
+			},
+			error: function() {
+				alert("Có lỗi phát sinh");
+			}
+		});
+		
 		overlay.remove();
 	})
 	document.body.appendChild(overlay);
@@ -461,6 +486,24 @@ function openPopupSize(){
 		}
 		})
 		document.querySelector('.sizeBtn').appendChild(buttonAdd);
+		
+		$.ajax({
+			
+			url: "them_size", // URL of your Servlet
+			type: "POST",
+			dataType: 'json',
+			data: {
+				ten_size: $(".nameSize").val()
+			},
+
+			success: function(data) {
+				alert(data);
+			},
+			error: function() {
+				alert("Có lỗi phát sinh");
+			}
+		});
+		
 		overlay.remove();
 		}
 		

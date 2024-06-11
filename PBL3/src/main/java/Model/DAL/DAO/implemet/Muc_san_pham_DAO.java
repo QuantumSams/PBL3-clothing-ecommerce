@@ -7,11 +7,12 @@ import Model.DAL.DAO.AbstractDao;
 import Model.DAL.Mapper.San_Pham.Muc_san_pham_Mapper;
 import Model.DAL.Mapper.San_Pham.San_pham_Mapper;
 import Model.DAL.Repository.Repository;
+import Model.DAL.Repository.UpdateRepository;
 import Model.DAL.Specification.Specification;
 import Model.DTO.San_Pham.Muc_san_pham;
 import Model.DTO.San_Pham.San_pham;
 
-public class Muc_san_pham_DAO extends AbstractDao implements Repository<Muc_san_pham>{
+public class Muc_san_pham_DAO extends AbstractDao implements Repository<Muc_san_pham>, UpdateRepository<Muc_san_pham>{
 
 	@Override
 	public void add(Muc_san_pham muc_san_pham) {
@@ -63,6 +64,11 @@ public class Muc_san_pham_DAO extends AbstractDao implements Repository<Muc_san_
 	public void remove(Muc_san_pham t) {
 		String query = "DELETE FROM muc_san_pham WHERE id_muc_san_pham = ?";
 		update(query, t.getId_muc_san_pham());
+	}
+
+	@Override
+	public void updateBySpacification(Specification<Muc_san_pham> specification) {
+		query(specification.getQuery(), specification.getParameters());
 	}
 
 }

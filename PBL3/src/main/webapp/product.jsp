@@ -165,12 +165,10 @@
                 <div>
                     <h5 style = "margin-top: 20px;">Số lượng trong kho</h5>
                 </div>
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>1</option>
-                    <option value="1">2</option>
-                    <option value="2">3</option>
-                    <option value="3">4</option>
-                </select>
+                
+                <div>
+                	<input >
+                </div>
               <!--   <p style = "margin-top: 10px;">
                     Còn ít hàng
                 </p -->

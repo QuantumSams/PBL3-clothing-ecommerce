@@ -90,6 +90,7 @@ $(document).ready(function(){
 });
 
 
+
 function showNV(data){
 	let chuoi = "";
 	    	  data.forEach(function(item){
@@ -152,6 +153,29 @@ b.forEach(item => {
 			},
 			success: function(data) {
 				alert(data);
+			},
+			error:  function() {
+				alert("loi");
+			},
+		});
+	})
+})
+
+let c = document.querySelectorAll('.cap_nhat_san_pham');
+c.forEach(item => {
+	item.addEventListener('click', e =>{
+		const inputValue = item.childNodes[0].value;
+		$.ajax({
+			url: "remove_product", 
+			type: "POST",
+			dataType: 'json',
+			data: {
+				id_muc_san_pham : inputValue,
+				so_luong_san_pham: inputValue,
+				gia_san_pham: inputValue
+			},
+			success: function(data) {
+				ShowSP(data);
 			},
 			error:  function() {
 				alert("loi");
