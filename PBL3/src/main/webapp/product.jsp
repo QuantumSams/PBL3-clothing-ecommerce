@@ -35,7 +35,7 @@
 								<c:forEach var="item" items="${product.anh_san_pham}">
 									<div class="carousel-item active">
 										<img src="${item}" alt=""
-											class="d-block w-70 " style = "padding: 10px 10px 10px 10px; width: 500px; margin-left: 35px;"="">
+											class="d-block " style = "padding: 10px 10px 10px 10px; width: 500px; margin-left: 35px;">
 									</div>
 								</c:forEach>
 								
@@ -113,8 +113,7 @@
                 	${product.ten_san_pham}
                 </h2>
                 <div class="Price-star">
-                    <h4>
-                        ${product.gia_tien}
+                    <h4 id = "giaTien" style = "">${product.gia_tien}
                     </h4>
                     <div class="star">
                         <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
@@ -185,7 +184,7 @@
                	<div>
                     <h5 style = "margin-top: 20px;">Số lượng mua hàng</h5>
                 </div>
-               	<input class = "so_luong" >
+               	<input class = "so_luong" type = "number" min="1" value = 1 >
                 <button class = "cart">
                     THÊM VÀO GIỎ HÀNG
                 </button>

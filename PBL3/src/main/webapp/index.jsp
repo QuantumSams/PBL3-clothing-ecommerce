@@ -55,24 +55,31 @@
 	<div class=main-items>
 		<c:forEach var="item" items="${san_pham}">
 			<label for="${item.id_san_pham}">
-				<div class="card" style="width: 250px">
+				<div class="card" style="width: 250px; height: 500px;">
 
 					<img class="card-img-top" src="${item.anh_san_pham[0]}"
 						alt="Card image">
 					<div class="card-body">
-						<h6>${item.danh_muc_san_pham}</h6>
-						<h5 class="card-title" style="font-weight: bold;">
-
+						<div style = "height: 20%;">
+							<h6>${item.danh_muc_san_pham}</h6>
+						</div>
+						<div style = "height: 40%;">
+							<h5 class="card-title" style="font-weight: bold;">
 							<form action="load_product" method="get">
 								<button id="${item.id_san_pham}">${item.ten_san_pham}
 								</button>
 								<input type="hidden" name="id_san_pham"
 									value="${item.id_san_pham}" />
 							</form>
-
-							</h4>
+							</h5>
+						</div>
+						<div style = "height: 20%;">
 							<p class="card-text">${item.ten_nhan_hang}</p>
-							<h4 style="font-weight: bold;">${item.gia_tien}VND</h4>
+						</div>
+						<div style = "height: 20%;">
+							<h4 class = "giaTien" style="font-weight: bold; margin-bottom: 10px">${item.gia_tien} VND</h4>
+						</div>
+
 					</div>
 				</div>
 			</label>
@@ -127,6 +134,10 @@ $(document).ready(function() {
 		});
 	});
   })
+let tien = document.querySelectorAll('.giaTien')
+tien.forEach(item=>{
+	item.innerText = parseInt(item.innerText).toLocaleString('vi-VN') + " VNĐ"
+});
 
 	$(document).ready(function() {
 	  $("#loadProductLink").click(function(event) {

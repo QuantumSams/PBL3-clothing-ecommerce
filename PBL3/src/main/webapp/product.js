@@ -11,6 +11,8 @@ let kichco = document.querySelectorAll('.kichco');
 const map1 = new Map();
 const mau = new Array();
 
+
+document.querySelector('#giaTien').innerText = parseInt(document.querySelector('#giaTien').innerText).toLocaleString('vi-VN') + " VNĐ"
 a.forEach(item => {
 	item.addEventListener('click', e=>{
 		o.forEach(u =>{
