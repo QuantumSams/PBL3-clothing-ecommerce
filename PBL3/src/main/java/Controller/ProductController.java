@@ -5,12 +5,14 @@ import java.util.List;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import Model.BLL.Service.San_Pham.Muc_san_pham_Service;
 import Model.BLL.Service.San_Pham.San_pham_Service;
 import Model.DAL.DAO.implemet.Anh_san_pham_DAO;
 import Model.DAL.DAO.implemet.Mau_sac_DAO;
 import Model.DAL.DAO.implemet.Muc_san_pham_DAO;
 import Model.DAL.DAO.implemet.San_pham_DAO;
 import Model.DAL.DAO.implemet.Size_DAO;
+import Model.DTO.San_Pham.Muc_san_pham;
 import Model.DTO.San_Pham.San_pham;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -28,7 +30,7 @@ public class ProductController extends HttpServlet {
 	private static final long serialVersionUID = -886812143546363698L;
 	
 	San_pham_Service san_pham_Service = new San_pham_Service(new San_pham_DAO(), new Muc_san_pham_DAO(), new Mau_sac_DAO(), new Size_DAO(), new Anh_san_pham_DAO());
-	
+	Muc_san_pham_Service muc_san_pham_Service = new Muc_san_pham_Service(new Muc_san_pham_DAO(), new San_pham_DAO());
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String action = req.getServletPath();
@@ -125,8 +127,15 @@ public class ProductController extends HttpServlet {
 		
 		else if(action.equals("/sua_muc_san_pham")) {
 			san_pham_Service.update_Muc_san_pham(req, resp);
+			List<Muc_san_pham> muc_san_pham = muc_san_pham_Service.getAllMucSanPham(); 
 			
-			postJsonMessage(resp, "Sửa thành công");
+			System.out.println("sua muc san  pham");
+			
+			ObjectMapper mapper = new ObjectMapper();
+		    String json = mapper.writeValueAsString(muc_san_pham);
+		    resp.setContentType("application/json");
+		    resp.setCharacterEncoding("UTF-8");
+		    resp.getWriter().write(json);
 		}
 	}
 	

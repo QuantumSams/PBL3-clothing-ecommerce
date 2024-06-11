@@ -11,6 +11,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import DataStructures.Pair;
+import DataStructures.RandomID;
 import Model.DAL.DAO.implemet.Don_hang_DAO;
 import Model.DAL.DAO.implemet.Don_hang_chi_tiet_DAO;
 import Model.DAL.DAO.implemet.Gio_hang_DAO;
@@ -25,6 +26,7 @@ import Model.DAL.Specification.Implements.Don_hang.FindOrderByIDOrder;
 import Model.DAL.Specification.Implements.Don_hang.FindOrderByIDUser;
 import Model.DAL.Specification.Implements.Don_hang.FindOrderByStatus;
 import Model.DAL.Specification.Implements.Gio_hang.FindCartByID;
+import Model.DAL.Specification.Implements.Gio_hang.RemoveByID;
 import Model.DAL.Specification.Implements.Muc_san_pham.FindProductItemByID;
 import Model.DAL.Specification.Implements.Nguoi_dung.FindNguoiDungByID;
 import Model.DAL.Specification.Implements.San_pham.FindProductByID;
@@ -64,7 +66,7 @@ public class Order_Service {
 	
 	public void add_order(HttpServletRequest req, HttpServletResponse resp) {
 		
-		int id_order = new Random().nextInt();System.out.println(id_order);
+		int id_order = new RandomID().ran();
 		int id_khach_hang = Integer.parseInt(req.getParameter("id_khach_hang"));;
 		String so_dien_thoai = req.getParameter("so_dien_thoai");
 		String dia_chi_giao_dich = req.getParameter("dia_chi");
@@ -74,6 +76,8 @@ public class Order_Service {
 		String trang_thai_don_hang = doi_xac_nhan;
 		String muc_san_pham = req.getParameter("muc_san_pham");
 		String so_luong = req.getParameter("so_luong");
+		String list_gio_hang = req.getParameter("gio_hang");
+		String[] tmp = list_gio_hang.split(" ");
 		
 		Don_hang_chi_tiet don_hang = new Don_hang_chi_tiet();
 		don_hang.setId_don_hang(id_order);
@@ -92,7 +96,6 @@ public class Order_Service {
 			
 			for(int i = 0; i < sanPhamValues.size(); ++i) {
 				
-				System.out.println(sanPhamValues.get(i) + " " + soLuongValues.get(i));
 				Muc_san_pham muc = muc_san_pham_DAO.findBySpacification(new FindProductItemByID(sanPhamValues.get(0))).get(0);
 				
 				Muc_sp_don_hang muc_sp_don_hang = new Muc_sp_don_hang();
@@ -105,64 +108,12 @@ public class Order_Service {
 			}
 		} catch (JsonProcessingException e) {}
 		
+		for(String gio_hang : tmp) {
+			System.out.println("Remove gio hang: " + gio_hang);
+			gio_hang_DAO.removeBySpacification(new RemoveByID(Integer.parseInt(gio_hang)));
+		}
 	}
 	
-
-	
-
-
-//	
-//	public void Khach_hang_huy_don(HttpServletRequest req, HttpServletResponse resp) {
-//		
-//		int id_don_hang = Integer.parseInt(req.getParameter("id_don_hang"));
-//		
-//		Don_hang don_hang = don_hang_DAO.findBySpacification(new FindOrderByIDOrder(id_don_hang)).get(0);
-//		
-//		don_hang.setTrang_thai_don_hang("Khách hàng đã hủy đơn");
-//		
-//		don_hang_DAO.update(don_hang);
-//	}
-//	
-//	public void Nhan_vien_huy_don(HttpServletRequest req, HttpServletResponse resp) {
-//		
-//		int id_don_hang = Integer.parseInt(req.getParameter("id_don_hang"));
-//		int id_nhan_vien = Integer.parseInt(req.getParameter("id_nhan_vien"));
-//		
-//		Don_hang don_hang = don_hang_DAO.findBySpacification(new FindOrderByIDOrder(id_don_hang)).get(0);
-//		
-//		don_hang.setId_nhan_vien(id_nhan_vien);
-//		don_hang.setTrang_thai_don_hang("Nhân viên đã hủy đơn");
-//		
-//		don_hang_DAO.update(don_hang);
-//	}
-//	
-//	public void Nhan_vien_xac_nhan_don(HttpServletRequest req, HttpServletResponse resp) {
-//		
-//		int id_don_hang = Integer.parseInt(req.getParameter("id_don_hang"));
-//		int id_nhan_vien = Integer.parseInt(req.getParameter("id_nhan_vien"));
-//		
-//		Don_hang don_hang = don_hang_DAO.findBySpacification(new FindOrderByIDOrder(id_don_hang)).get(0);
-//		
-//		don_hang.setId_nhan_vien(id_nhan_vien);
-//		don_hang.setTrang_thai_don_hang("Đơn hàng đã được xác nhận");
-//		
-//		don_hang_DAO.update(don_hang);
-//	}
-//	
-//	public void Khach_hang_xac_nhan_don(HttpServletRequest req, HttpServletResponse resp) {
-//		
-//		int id_don_hang = Integer.parseInt(req.getParameter("id_don_hang"));
-//		
-//		Don_hang don_hang = don_hang_DAO.findBySpacification(new FindOrderByIDOrder(id_don_hang)).get(0);
-//		
-//		don_hang.setTrang_thai_don_hang("Hàng đã giao đến thành công");
-//		long now = new java.util.Date().getTime();
-//		Date ngay_gio_nhan = new Date(now);
-//		don_hang.setNgay_gio_nhan_don_hang(ngay_gio_nhan);
-//		
-//		don_hang_DAO.update(don_hang);
-//	}
-//	
 	public void nhan_vien_xac_nhan(HttpServletRequest req, HttpServletResponse resp) {
 		int id_don_hang = Integer.parseInt(req.getParameter("id_don_hang"));
 		int id_nhan_vien = Integer.parseInt(req.getParameter("id_nhan_vien"));
@@ -186,9 +137,11 @@ public class Order_Service {
 		don_hang_chi_tiet_DAO.update(don_hang_chi_tiet);
 	}
 	
-	public void khach_hang_xac_nhan(HttpServletRequest req, HttpServletResponse resp) {
+	public void khach_hang_xac_nhan(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		int id_don_hang = Integer.parseInt(req.getParameter("id_don_hang"));
 		String trang_thai_don_hang = req.getParameter("trang_thai_don_hang");
+		
+		System.out.println("id don hang" + id_don_hang);
 		
 		if(trang_thai_don_hang.equals("xac_nhan")) {
 			trang_thai_don_hang = da_xac_nhan_don;
@@ -197,14 +150,17 @@ public class Order_Service {
 			trang_thai_don_hang = khach_huy_don;
 		}
 		
-		Don_hang_chi_tiet don_hang_chi_tiet = don_hang_chi_tiet_DAO.findBySpacification(new FindDetailOrderByIDOrder(id_don_hang)).get(0);
+		Don_hang_chi_tiet don_hang_chi_tiet = new Don_hang_chi_tiet();
 		
+		don_hang_chi_tiet.setId_don_hang(id_don_hang);
 		don_hang_chi_tiet.setTrang_thai_don_hang(trang_thai_don_hang);
 		long now = new java.util.Date().getTime();
 		Date ngay_gio_nhan = new Date(now);
 		don_hang_chi_tiet.setThoi_gian_nhan(ngay_gio_nhan);
 		
-		don_hang_chi_tiet_DAO.update(don_hang_chi_tiet);
+		don_hang_chi_tiet_DAO.updateKH(don_hang_chi_tiet);
+		
+		
 	}
 	
 	public List<Muc_sp_don_hang> get_item_order_by_id_cart(HttpServletRequest req, HttpServletResponse resp) {

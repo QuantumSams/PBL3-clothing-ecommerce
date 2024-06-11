@@ -75,4 +75,10 @@ public class Don_hang_chi_tiet_DAO extends AbstractDao implements Repository<Don
 		update(query, don_hang.getId_don_hang());
 	}
 
+	public void updateKH(Don_hang_chi_tiet don_hang) {
+		String query = "UPDATE don_hang SET ngay_gio_nhan = ?, trang_thai_don_hang = ? WHERE id_don_hang = ?";
+		update(query, don_hang.getThoi_gian_nhan(),
+						don_hang.getTrang_thai_don_hang(), 
+						don_hang.getId_don_hang());
+	}
 }

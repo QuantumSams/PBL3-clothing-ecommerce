@@ -140,72 +140,100 @@ function tien() {
 }
 $(document).ready(function() {
 	$("#lich_su").click(function() {
-		$.ajax({
-			url: "lich_su_don_tong_quat", 
-			type: "GET",
-			dataType: 'json',
-			data: {
-				id_user: $("#id_khach_hang").val()
-			},
-
-			success: function(data) {
-
-				let chuoi = "";
-				data.forEach(function(item) {
-
-					const date = new Date(item.thoi_gian_dat);
-					const year = date.getFullYear();
-					const month = date.getMonth() + 1; // Tháng trong JavaScript bắt đầu từ 0
-					const day = date.getDate();
-
-					chuoi += '<tr>' +
-						'<td>' + day + "/" + month + "/" + year + '</td>' +
-						'<td>' + item.tong_tien + ' VNĐ</td>' +
-						'<td>' + item.so_luong + '</td>' +
-						'<td><button type="button" class="btn btn-primary submitDon" id = "'+item.id_don_hang+'">' + item.trang_thai_don_hang + '</button></td>' +
-						'<td>' + item.so_sao_danh_gia + '</td>' +
-						'<td>'+
-						'<form action="xem_lich_su_don" method="get">'+
-						'<input type="hidden" name="id_don_hang" value="'+item.id_don_hang+'">'+
-						'<button class="btn btn-primary">Xem chi tiết</button>'+
-						'</form>'+
-						'</td>'+
-						'<td>'+
-						'<button class="huy_don_hang">'+
-						'<input class="vale" type="hidden" value="'+item.id_don_hang+'">Hủy đơn hàng'+
-						'</button>'+
-						'</td>'+
-						'</tr>';
-				});
-
-				$("#san_pham").html(chuoi);
-			}
-		});
+		load_ajax_lich_su_don();
 	});
 });
 
-let a = document.querySelectorAll('.huy_don_hang');
-a.forEach(item => {
-	item.addEventListener('click', e =>{
-		const inputValue = item.childNodes[0].value;
-		alert(inputValue);
-		$.ajax({
-			url: "khach_hang_huy_don", 
-			type: "POST",
-			dataType: 'json',
-			data: {
-				id_don_hang : inputValue,
-				trang_thai_don_hang: "huy"
-			},
-			success: function(data) {
-				alert(data);
-			},
-			error:  function() {
-				alert("loi");
-			},
-		});
+function load_ajax_lich_su_don() {
+	$.ajax({
+		url: "lich_su_don_tong_quat",
+		type: "GET",
+		dataType: 'json',
+		data: {
+			id_user: $("#id_khach_hang").val()
+		},
+
+		success: function(data) {
+			load_lich_su_don(data)
+		}
+	});
+}
+
+function load_lich_su_don(data) {
+	let chuoi = "";
+	data.forEach(function(item) {
+
+		const date = new Date(item.thoi_gian_dat);
+		const year = date.getFullYear();
+		const month = date.getMonth() + 1; // Tháng trong JavaScript bắt đầu từ 0
+		const day = date.getDate();
+
+		chuoi += '<tr>' +
+			'<td>' + day + "/" + month + "/" + year + '</td>' +
+			'<td>' + item.tong_tien + ' VNĐ</td>' +
+			'<td>' + item.so_luong + '</td>' +
+			'<td><button type="button" class="btn btn-primary submitDon" id = "' + item.id_don_hang + '">' + item.trang_thai_don_hang + '</button></td>' +
+			'<td>' + item.so_sao_danh_gia + '</td>' +
+			'<td>' +
+			'<form action="xem_lich_su_don" method="get">' +
+			'<input type="hidden" name="id_don_hang" value="' + item.id_don_hang + '">' +
+			'<button class="btn btn-primary">Xem chi tiết</button>' +
+			'</form>' +
+			'</td>' +
+			'<td>' +
+			'<button class="huy_don_hang">' +
+			'<input class="vale" type="hidden" value="' + item.id_don_hang + '">Hủy đơn hàng' +
+			'</button>' +
+			'</td>' +
+			'</tr>';
+	});
+
+	$("#san_pham").html(chuoi);
+
+	let a = document.querySelectorAll('.huy_don_hang');
+	a.forEach(item => {
+		item.addEventListener('click', e => {
+			const inputValue = item.childNodes[0].value;
+			$.ajax({
+				url: "khach_hang_huy_don",
+				type: "POST",
+				dataType: 'json',
+				data: {
+					id_don_hang: inputValue,
+					trang_thai_don_hang: "huy"
+				},
+				success: function(data) {
+					load_ajax_lich_su_don()
+				},
+				error: function() {
+					alert("loi");
+				},
+			});
+		})
+	});
+
+	const btnSubmit = document.querySelectorAll('.submitDon');
+	btnSubmit.forEach(item => {
+		item.addEventListener('click', e => {
+			const inputValue = item.id;
+			$.ajax({
+				url: "khach_hang_nhan_don",
+				type: "POST",
+				dataType: 'json',
+				data: {
+					id_don_hang: inputValue,
+					trang_thai_don_hang: "xac_nhan"
+				},
+				success: function(data) {
+					load_ajax_lich_su_don()
+				},
+				error: function() {
+					alert("loi");
+				},
+			});
+		})
 	})
-})
+}
 
 $(document).ready(function() {
 	$("#doi_mat_khau").click(function() {
@@ -300,24 +328,3 @@ function uploadFile() {
 		alert('The file upload thanh cong');
 }
 
-const btnSubmit = document.querySelectorAll('.submitDon');
-btnSubmit.forEach(item=>{
-	item.addEventListener('click', e=>{
-		const inputValue = item.id;
-		$.ajax({
-			url: "khach_hang_nhan_don", 
-			type: "POST",
-			dataType: 'json',
-			data: {
-				id_don_hang : inputValue,
-				trang_thai_don_hang: "xac_nhan"
-			},
-			success: function(data) {
-				alert(data);
-			},
-			error:  function() {
-				alert("loi");
-			},
-		});
-	})
-})

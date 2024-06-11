@@ -31,6 +31,7 @@
                         </tr>
                     </thead>
                    <tbody id="list_san_pham">
+                   <input class="id_gio_hang" type="hidden" value="${gio_hang}">
                    <c:forEach var="item" items="${chi_tiet_don_hang}">
                     	<tr>
                     		<input class="so_luong" value="${item.so_luong}" type="hidden">
@@ -135,10 +136,12 @@ $(document).ready(function(){
 			    	  muc_san_pham: 	JSON.stringify(sanPhamValues),
 			    	  ghi_chu: 			$("#ghi_chu").val(),
 			    	  tong_tien: 		$("#thanhtien").text(),
+			    	  gio_hang:			$(".id_gio_hang").val()
 			      },
 			
 			      success: function(data) {
 					alert(data);
+					window.history.back();
 			      },
 			      error: function(data) {
 						alert(data);

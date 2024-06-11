@@ -77,7 +77,7 @@
 								</div>
 								<div class="address form">
 									<label for="" class="form-label">Địa chỉ cụ thể</label> <input
-										id="cap_nhat_thong_tin1" type="text" class="form-control"
+										id="cu_the" type="text" class="form-control"
 										value="${sessionScope.acc.dia_chi_cu_the}"
 										name="address">
 								</div>

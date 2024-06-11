@@ -87,8 +87,6 @@ public class HomeController extends HttpServlet{
 			session.setAttribute("so_muc_san_pham", muc_san_pham.size());
 			
 			List<Don_hang> xem_don_hang = order_Service.get_all_order(req, resp);
-			for(Don_hang d : xem_don_hang)
-				System.out.println(d.toString());
 			session.setAttribute("don_hang", xem_don_hang);
 			session.setAttribute("so_don_hang", xem_don_hang.size());
 			
@@ -117,6 +115,7 @@ public class HomeController extends HttpServlet{
 			try {
 				Nguoi_dung nguoi_dung = nguoi_dung_Service.Login(req, resp);
 				HttpSession session = req.getSession();
+				session.setMaxInactiveInterval(-1);
 				session.setAttribute("acc", nguoi_dung);
 				
 				if(nguoi_dung.getPhan_quyen_nguoi_dung().equals(Phan_quyen_nguoi_dung.KHACH_HANG.toString())){

@@ -127,7 +127,7 @@
                                         <th>Cập nhật số lượng sản phẩm</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody class="Muc_sp">
                                 	<c:forEach var="item" items="${muc_san_pham}">
 										<tr class="muc_san_pham">
 											<td><img
@@ -138,7 +138,11 @@
 											<td>${item.mau_sac_san_pham.ten_mau}</td>
 											<td><input value="${item.so_luong_trong_kho}"></td>
 											<td><input value="${item.gia_tien}"></td>
-											<td><button class="cap_nhat_san_pham">Cập nhật</button></td>
+											<td><button class="cap_nhat_san_pham">
+												<input value="${item.so_luong_trong_kho}" type="hidden">
+												<input value="${item.gia_tien}" type="hidden">
+												<input value="${item.id_muc_san_pham}" type="hidden">
+												Cập nhật</button></td>
 										</tr>
 									</c:forEach>
                                 </tbody>
