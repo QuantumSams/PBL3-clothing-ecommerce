@@ -34,7 +34,7 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet(urlPatterns = {	"/create_order", "/khach_hang_huy_don", "/nhan_vien_huy_don" ,
 							"/nhan_vien_xac_nhan_don", "/khach_hang_nhan_don",
 							"/lich_su_don_tong_quat", "/lich_su_don_chi_tiet", 
-							"/xac_nhan_dat_don", "/nhan_duoc_don_hang", "/xem_don_hang_chi_tiet" })
+							"/xac_nhan_dat_don", "/nhan_duoc_don_hang", "/xem_don_hang_chi_tiet", "/xem_lich_su_don"})
 public class OrderController extends HttpServlet{
 
 	private static final long serialVersionUID = 6360439063345108716L;
@@ -71,6 +71,15 @@ public class OrderController extends HttpServlet{
 			req.setAttribute("chi_tiet_don_hang", muc_san_pham);
 			req.setAttribute("don_hang", chi_tiet_don_hang);
 			req.getRequestDispatcher("orderDetail.jsp").forward(req, resp);
+		}
+		
+		else if(action.equals("/xem_lich_su_don")) {
+			Don_hang_chi_tiet chi_tiet_don_hang = order_Service.get_detail_order_by_ID(req, resp);
+			List<Muc_sp_don_hang> muc_san_pham = order_Service.get_item_order_by_id(req, resp);
+			
+			req.setAttribute("chi_tiet_don_hang", muc_san_pham);
+			req.setAttribute("don_hang", chi_tiet_don_hang);
+			req.getRequestDispatcher("lishsudon.jsp").forward(req, resp);
 		}
 		
 	}

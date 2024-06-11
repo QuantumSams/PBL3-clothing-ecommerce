@@ -16,6 +16,7 @@ body {
 }
 .account-settings-links .list-group-item.active {
     font-weight: bold !important;
+    background-color: orange;
 }
 
 .account-settings-multiselect~.select2-container {
@@ -198,4 +199,30 @@ body {
 }
 .btn{
     color: white !important;
+}
+.buttonRemove{
+	background-color: orange;
+	color: white;
+	border: none;
+	border-radius: 5px;
+}
+.buttonSearch{
+	width: 70px;
+}
+.cap_nhat_san_pham{
+	background-color: black;
+	color:white;
+	border-radius: 7px;	
+}
+.buttonRemoveNV{
+	background-color: orange;
+	border: none;
+	color: white;
+	border-radius: 7px;
+	width: 70px;
+}
+.xem_chi_tiet{
+	background-color: black;
+	color:white;
+	border-radius: 7px;	
 }

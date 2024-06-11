@@ -14,10 +14,11 @@
         doanhthu.classList.add('fade');
         doanhthu.classList.remove('active');
     });
-    const xValues = ["Nam", "Nữ", "Trẻ em", "Người già", "Trẻ sơ sinh"];
-    const yValues = [55, 49, 44, 24, 25];
+    const xValues = ["Nam", "Nữ", "Trẻ em"];
+    
     const barColors = ["#667085", "#667085","#667085","#667085","#667085"];
-
+	const so_san_pham = document.querySelectorAll('.so_san_pham');
+	const yValues = [so_san_pham[0].value, so_san_pham[1].value, so_san_pham[2].value];
     new Chart("myChart", {
         type: "bar",
         data: {
@@ -53,13 +54,12 @@ function ShowSP(data) {
 
 			'<td><img src=' + item.anh_san_pham[0] + ' width="50px" alt=""></td>' +
 			'<td>' + item.ten_san_pham + '</td>' +
-			'<td>' + item.ten_san_pham + '</td>' +
 			'<td>' + item.gia_tien + ' VNĐ</td>' +
 			'<td>Nam</td>' +
 			'<td>' + item.danh_muc_san_pham + '</td>' +
 			'<td>' + item.ten_nhan_hang + '</td>' +
 			'<td>' +
-			'<form action="chinh_sua_san_pham" method="get">' +
+			'<form action="update_product" method="get">' +
 			'<button class = "buttonSearch">Chi tiết</button>' +
 			'<input type="hidden" name="id_san_pham" value="' + item.id_san_pham + '">' +
 			'</form>' +

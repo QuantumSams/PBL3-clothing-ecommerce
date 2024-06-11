@@ -14,7 +14,7 @@
 <body>
     <div class="payment">
        <div class="thanhtoan">
-            <h2>Thanh toán đơn hàng</h2>
+            <h2>Chi tiết đơn hàng</h2>
        </div>
        <div class="maininfor">
         <div class="right">

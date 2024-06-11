@@ -45,15 +45,15 @@
                         <div class="form">
                             <div >
                             	<h5>Tên mặt hàng</h5>
-                                <textarea id="ten_mat_hang" style = "width: 100%;height: 20%"></textarea>
+                                <textarea id="ten_mat_hang" style = "width: 100%"></textarea>
                             </div>
                             <div style = "margin-top: 10px;">
                                 <h5>Mô tả sản phẩm</h5>
-                                <textarea id="mo_ta" style = "width: 100%; height: 20%;" ></textarea>
+                                <textarea id="mo_ta" style = "width: 100%"></textarea>
                             </div>
                             <div style = "margin-top: 10px;">
                                 <h5>Thông tin chi tiết</h5>
-                                <textarea id="thong_tin_chi_tiet" style = "width: 100% height: 50%;"></textarea>
+                                <textarea id="thong_tin_chi_tiet"></textarea>
                             </div>
                             
                         </div>
@@ -62,7 +62,6 @@
                         <div class="form">
                             <h5>Ảnh</h5>
                             <div class="upload-container" id="div_anh">
-                            	
                                 <input  style="display: none;" type="file"  id="fileInput" name="file" multiple/>
                                	<label for="fileInput">
                                		<i class="fa-solid fa-plus"></i>
@@ -79,7 +78,7 @@
                             </div>
                             <hr style = "margin-top: 20px; margin-bottom: 20px; width: 95%;">
                             <div class="color">
-                                <div style= "display: flex;">
+                                <div class = "fixcontent" style= "display: flex;">
                                     <h6 style = "font-weight: bold;">Màu sắc</h6>
                                    <!--  <button class ="btn1" onclick = "acceptChange('btn1','.editColor')">Chỉnh sửa</button> -->
                                      <div class = "box color">
@@ -89,7 +88,7 @@
 							</c:forEach>
                 		</div>
                 		
-							<button onclick="openPopupColor()">Add </button>
+							<button class = "themMuc" onclick="openPopupColor()">Add </button>
 
                                 	<%-- <Select id="itemListMau_sac">
                                             <c:forEach var="item" items="${mau_sac}">
@@ -113,7 +112,7 @@
  --%>
                             </div>
                             <div class="size">
-                                <div style= "display: flex; justify-content: space-between;">
+                                <div class = "fixcontent" style= "display: flex; justify-content: space-between;">
                                     <h6 style = "font-weight: bold;">Size</h6>
                                     <!-- <button class ="btn2" onclick = "acceptChange('btn2', '.editSize')">Chỉnh sửa</button> -->
                                 	<%-- <Select id="itemListSize">
@@ -128,7 +127,7 @@
 						<button class = "btnSize"><div >${item.ten_size}</div><input  value = "${item.id_size}" class = "mausac" type = "hidden"></button>
 						</c:forEach> 	
                 		</div>
-                		<button onclick="openPopupSize()">Add </button>
+                		<button class ="themMuc" onclick="openPopupSize()">Add </button>
                                 </div>
                                 
                                <%--  <div class = "editSize">
@@ -145,7 +144,10 @@
                             </div>
                         </div>
                     </div>
-                    <button onclick = "createTable()">OK</button>
+                    <div style = "display: flex; margin: 20px 0 20px 0; justify-content: center;">
+                     <button class = "create" onclick = "createTable()">OK</button>
+                    </div>
+                   
                     <div class="Jtable">
                         <table class="table">
                             <thead>
@@ -160,48 +162,6 @@
                             </thead>
                             <tbody id = "myTable">
 
-								<f:viewBean>
-									<managed-bean class="com.example.MyBean" scope="session" />
-								</f:viewBean>
-
-								<%-- In your JSP code --%>
-								<c:set var="count" value="#{myBean.counter}" />
-								<c:forEach var="item" items="${product.muc_san_pham}">
-									<tr>
-										<c:set var="count" value="${count + 1}" />
-										<td>${count}</td>
-										<td>
-											<div>${item.kich_thuoc_san_pham.ten_size}</div> <input
-											class="size_table" type="hidden"
-											value="${item.kich_thuoc_san_pham.id_size}">
-										</td>
-										<td>
-											<div>${item.mau_sac_san_pham.ten_mau}</div> <input
-											class="size_table" type="hidden"
-											value="${item.mau_sac_san_pham.id_mau_sac}">
-										</td>
-										<td><input type="text" class="gia"
-											value="${item.gia_tien}"></td>
-										<td>
-											<div class="item-images item-images${count}">
-												<input onchange="addImageItems(this)" style="display: none;"
-													type="file" id="imageInput${count}" name="file" multiple>
-												<label for="imageInput${count}"> <i
-													class="fa-soild fa-plus"></i>
-												</label>
-												<div class="img_element">
-													<img src="${item.anh_chi_tiet}" style="width: 80px">
-													<div class="btnXoa" onclick="removeIMG(this)">
-														<i class="fa-solid fa-x"></i>
-													</div>
-													<div class="btnPreview" onclick="previewImageElement(this)">
-														<i class="fa-solid fa-search"></i>
-													</div>
-												</div>
-											</div>
-										</td>
-									</tr>
-								</c:forEach>
 							</tbody>
                           </table>
                     </div>
@@ -220,7 +180,7 @@
                             <h6>Đối tượng</h6>
                             <div class = "selectItem">
                             <Select id="Doi_tuong_khach_hang"><c:forEach var="item" items="${doi_tuong_khach_hang}"><Option value="${item.id}">${item.category}</Option></c:forEach></Select>
-                            <button onclick="themDoituong()">Thêm</button>
+                            <button class = "themMuc" onclick="themDoituong()">Thêm</button>
                             </div>
                             
                             <h6>Tên loại sản phẩm</h6>
@@ -229,7 +189,7 @@
                             <c:forEach var="item" items="${ten_loai_san_pham}"><Option value="${item.id}">${item.category}</Option>
                                 </c:forEach>
                             </Select>
-                            <button onclick = "themLoaiSanPham()">Thêm</button>
+                            <button class = "themMuc" onclick = "themLoaiSanPham()">Thêm</button>
                             </div>
                             <h6>Tên danh mục sản phẩm</h6>
                             <div class = "selectItem">
@@ -240,7 +200,7 @@
 									</Option>
                                 </c:forEach>
                             </Select>
-                            <button onclick = "themDanhMuc()">Thêm</button>
+                            <button class = "themMuc" onclick = "themDanhMuc()">Thêm</button>
                             </div>
                         </div>
                     </div>

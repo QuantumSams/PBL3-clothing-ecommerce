@@ -162,10 +162,10 @@ $(document).ready(function() {
 						'<td>' + day + "/" + month + "/" + year + '</td>' +
 						'<td>' + item.tong_tien + ' VNĐ</td>' +
 						'<td>' + item.so_luong + '</td>' +
-						'<td><button type="button" class="btn btn-primary">' + item.trang_thai_don_hang + '</button></td>' +
+						'<td><button type="button" class="btn btn-primary submitDon" id = "'+item.id_don_hang+'">' + item.trang_thai_don_hang + '</button></td>' +
 						'<td>' + item.so_sao_danh_gia + '</td>' +
 						'<td>'+
-						'<form action="xem_don_hang_chi_tiet" method="get">'+
+						'<form action="xem_lich_su_don" method="get">'+
 						'<input type="hidden" name="id_don_hang" value="'+item.id_don_hang+'">'+
 						'<button class="btn btn-primary">Xem chi tiết</button>'+
 						'</form>'+
@@ -298,4 +298,26 @@ function uploadFile() {
 			body : formData
 		});
 		alert('The file upload thanh cong');
-	}
+}
+
+const btnSubmit = document.querySelectorAll('.submitDon');
+btnSubmit.forEach(item=>{
+	item.addEventListener('click', e=>{
+		const inputValue = item.id;
+		$.ajax({
+			url: "khach_hang_nhan_don", 
+			type: "POST",
+			dataType: 'json',
+			data: {
+				id_don_hang : inputValue,
+				trang_thai_don_hang: "xac_nhan"
+			},
+			success: function(data) {
+				alert(data);
+			},
+			error:  function() {
+				alert("loi");
+			},
+		});
+	})
+})

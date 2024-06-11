@@ -18,7 +18,7 @@
 <body>
 	<div class="container light-style flex-grow-1 container-p-y">
 		<div class="header font-weight-bold py-3 mb-4">
-			<h3>Chỉnh sửa thông tin người dùng</h3>
+			<h3>Thêm nhân viên mới</h3>
 		</div>
 
 			<div class="card overflow-hidden">

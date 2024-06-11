@@ -87,6 +87,7 @@ input{
 }
 .form{
     padding: 20px 10px 20px 30px;
+    height: 500px;
 }
 Select{
     width: 95%;
@@ -277,5 +278,36 @@ a{
 .selectItem{
 	display: flex;
 	gap: 10px;
-
+}
+#thong_tin_chi_tiet{
+	width: 100%;
+	height: 200px;
+}
+.fixcontent{
+	align-items: center;
+	gap: 2%;
+	margin-top:50px;
+	display: flex;
+}
+.create{
+	background-color: black;
+	color:white;
+	width: 70px;
+	border-radius: 7px;
+}
+.xoaRow{
+	background-color: black;
+	color:white;
+	border-radius: 7px;
+}
+.imgItems{
+	display: flex;
+	gap:1%;
+	align-items: center;
+	justify-content: center;	
+}
+.themMuc{
+	background-color: black;
+	color:white;
+	border-radius: 7px;
 }

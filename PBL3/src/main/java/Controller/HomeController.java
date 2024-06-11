@@ -14,6 +14,7 @@ import Model.BLL.Service.San_Pham.San_pham_Service;
 import Model.DAL.DAO.implemet.Anh_san_pham_DAO;
 import Model.DAL.DAO.implemet.Danh_muc_DAO;
 import Model.DAL.DAO.implemet.Doanh_thu_DAO;
+import Model.DAL.DAO.implemet.Doanh_thu_tung_DTKH_DAO;
 import Model.DAL.DAO.implemet.Don_hang_DAO;
 import Model.DAL.DAO.implemet.Mau_sac_DAO;
 import Model.DAL.DAO.implemet.Muc_san_pham_DAO;
@@ -21,6 +22,7 @@ import Model.DAL.DAO.implemet.Nguoi_dung_DAO;
 import Model.DAL.DAO.implemet.San_pham_DAO;
 import Model.DAL.DAO.implemet.Size_DAO;
 import Model.DTO.Doanh_Thu.Doanh_thu;
+import Model.DTO.Doanh_Thu.Doanh_thu_tung_DTKH;
 import Model.DTO.Don_Hang.Don_hang;
 //import Model.DTO.Don_Hang.Xac_nhan_don_hang;
 //import Model.DTO.Don_Hang.Xem_don_hang;
@@ -92,6 +94,9 @@ public class HomeController extends HttpServlet{
 			
 			Doanh_thu doanh_thu = doanh_thu_Service.getDoanh_thu().get(0);
 			session.setAttribute("doanh_thu", doanh_thu);
+			
+			List<Doanh_thu_tung_DTKH> list_doanh_thu = new Doanh_thu_tung_DTKH_DAO().getALL();
+			session.setAttribute("cot_du_lieu", list_doanh_thu);
 			
 			resp.sendRedirect("chucuahang.jsp");
 		}

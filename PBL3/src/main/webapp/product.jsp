@@ -162,13 +162,13 @@
                     <button class = "buttonS">KÍCH THƯỚC THEO CHIỀU CAO</button>
                 </div>
 
-                <div>
+               <!--  <div>
                     <h5 style = "margin-top: 20px;">Số lượng trong kho</h5>
                 </div>
                 
                 <div>
                 	<input >
-                </div>
+                </div> -->
               <!--   <p style = "margin-top: 10px;">
                     Còn ít hàng
                 </p -->

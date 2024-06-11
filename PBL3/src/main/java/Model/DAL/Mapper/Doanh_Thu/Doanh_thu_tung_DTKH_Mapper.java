@@ -10,12 +10,13 @@ public class Doanh_thu_tung_DTKH_Mapper implements RowMapper<Doanh_thu_tung_DTKH
 
 	@Override
 	public Doanh_thu_tung_DTKH mapRow(ResultSet rs) {
+		Doanh_thu_tung_DTKH doanh_thu_tung_DTKH = null;
 		try {
-			Doanh_thu_tung_DTKH doanh_thu_tung_DTKH = new Doanh_thu_tung_DTKH(rs.getString(0), rs.getInt(0));
+			doanh_thu_tung_DTKH = new Doanh_thu_tung_DTKH(rs.getString("ten_danh_muc_san_pham"), rs.getInt("so_san_pham_cuaDTKH"));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return null;
+		return doanh_thu_tung_DTKH;
 	}
 
 }

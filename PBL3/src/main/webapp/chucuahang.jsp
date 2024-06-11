@@ -17,7 +17,7 @@
 <div class="card ">
     <div class="form" style="display: flex;">
         <div class=" col-md-2 pt-0">
-            <img src="386644391_1615327005662931_6147334074894597765_n.jpg" alt="" width="200">
+            <img src="img/logoicqon.png" alt="" width="150px">
             <p style = "margin-top: 20px;">Chức năng</p>
             <div class="list-group list-group-flush account-settings-links">
                 <a class="list-group-item list-group-item-action active" data-toggle="list"
@@ -73,9 +73,7 @@
                                 </thead>
                                 <tbody id="san_pham">
                                 	<c:forEach var="item" items="${san_pham}">
-
 										<tr>
-
 											<td><img src="${item.anh_san_pham[0]}" width="50px"
 												alt=""></td>
 											<td>${item.ten_san_pham}</td>
@@ -111,9 +109,9 @@
                                     </div>
                                     <button class = "buttonSearch">Search</button>
                                 </div>
-                                <div class="Count">
-                                    <h5 style ="color: white;">Tổng số mục sản phẩm: ${so_muc_san_pham}</h5>
-                                </div>
+                                
+                                    <h5 style ="color: white;"> Tổng số mục sản phẩm: ${so_muc_san_pham}</h5>
+                                
                             </div>
                         </div>
                         <div class="bodyInfor">
@@ -125,7 +123,7 @@
                                         <th>Size</th>
                                         <th>Màu</th>
                                         <th>Sẵn hàng</th>
-                                        <th>Cập nhật lần cuối</th>
+                                        <th>Giá</th>
                                         <th>Cập nhật số lượng sản phẩm</th>
                                     </tr>
                                 </thead>
@@ -139,7 +137,7 @@
 											<td>${item.kich_thuoc_san_pham.ten_size}</td>
 											<td>${item.mau_sac_san_pham.ten_mau}</td>
 											<td><input value="${item.so_luong_trong_kho}"></td>
-											<td>22/04/2024</td>
+											<td><input value="${item.gia_tien}"></td>
 											<td><button class="cap_nhat_san_pham">Cập nhật</button></td>
 										</tr>
 									</c:forEach>
@@ -149,8 +147,14 @@
                     </div>
                 </div> 
                 <div class="tab-pane fade" id="doanh-thu">
-<div class="mainform">
-                            <div class="header2">
+			<div class="mainform">
+
+						<c:forEach var="item" items="${cot_du_lieu}">
+							<input type = "hidden" class="ten_doi_tuong" value="${item.doi_tuong_khach_hang }">
+							<input type = "hidden" class="so_san_pham" value="${item.so_san_pham_ban }">
+						</c:forEach>
+
+						<div class="header2">
                                 <button class = "doanh-thu btn1">Doanh thu</button>
                                 <button class = "don-hang btn1">Đơn hàng</button>
                             </div>

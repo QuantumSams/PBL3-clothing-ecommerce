@@ -239,13 +239,16 @@ function addImageItems(linput) {
 			let imgElement = document.createElement('div');
 			imgElement.className = "img_element";
 			imgElement.innerHTML = `
-				<img src="${reader.result}" style = "width : 80px">
-				<div class="btnXoa" onclick="removeIMG(this)">
+			<div class = "imgItems">
+			<div class="btnXoa" onclick="removeIMG(this)">
 					<i class="fa-solid fa-x"></i>
-				</div>		
+				</div>
+				<img src="${reader.result}" style = "width : 80px">
+						
 				<div class="btnPreview" onclick="previewImageElement(this)">
 					<i class="fa-solid fa-search"></i>
-				</div>		
+				</div>	
+			</div>	
 			`
 			linput.parentElement.appendChild(imgElement);
 		};

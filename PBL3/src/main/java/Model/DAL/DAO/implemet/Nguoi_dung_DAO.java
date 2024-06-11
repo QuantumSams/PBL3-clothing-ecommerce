@@ -18,7 +18,7 @@ public class Nguoi_dung_DAO extends AbstractDao implements Repository<Nguoi_dung
 	
 	@Override
 	public void add(Nguoi_dung t) {
-		String query1 = "INSERT INTO thong_tin_dang_nhap VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+		String query1 = "INSERT INTO thong_tin_dang_nhap VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 		
 		int id_phan_quyen = 1;
 		if(t.getPhan_quyen_nguoi_dung().equals(Phan_quyen_nguoi_dung.KHACH_HANG.toString())){
@@ -34,7 +34,7 @@ public class Nguoi_dung_DAO extends AbstractDao implements Repository<Nguoi_dung
 		}
 		
 		insert(query1, t.getId_nguoi_dung(), t.getSo_dien_thoai(), t.getEmail(), 
-				t.getPassword(), id_phan_quyen, t.getId_nguoi_dung(), t.getHo_ten(),
+				t.getPassword(), id_phan_quyen, t.getHo_ten(),
 				t.isGioi_tinh(), t.getNgay_sinh(), t.getDia_chi(), t.getAnh_dai_dien());
 	}
 
