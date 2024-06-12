@@ -113,10 +113,15 @@
                         <div class="userinfor">
                             <div class="img inputClass">
                                 <h6>Ảnh đại diện</h6>
-                                <div class="cardImage card-body">
+                              
+                               <div class="cardImage">
+                                <label for = "fileInput">
 									<img id="img" src="${sessionScope.acc.anh_dai_dien}" alt="Card image" class="d-block ui-w-80">
-									<input type="file" id="fileInput" name="file" />
+									<input type="file" id="fileInput" name="file"  style = "display: none"/>
+									</label>
 								</div>
+                               
+                                
                             </div>
                             <div class="name inputClass">
                                 <h6>Họ và tên</h6>

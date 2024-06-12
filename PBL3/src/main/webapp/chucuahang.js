@@ -291,7 +291,7 @@ function load_muc_san_pham(data){
 			'<td>'+item.mau_sac_san_pham.ten_mau+'</td>' +
 			'<td><input value="'+item.so_luong_trong_kho+'"></td>' +
 			'<td><input value="'+item.gia_tien+'"></td>' +
-			'<td><button class="cap_nhat_san_pham">' +
+			'<td><button class="cap_nhat_san_pham" >' +
 			'<input value="'+item.so_luong_trong_kho+'" type="hidden">' +
 			'<input value="'+item.gia_tien+'" type="hidden">' +
 			'<input value="'+item.id_muc_san_pham+'" type="hidden">' +

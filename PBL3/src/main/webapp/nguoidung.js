@@ -1,4 +1,5 @@
 
+
 $(document).ready(function() {
 	$("#gio_hang").click(function() {
 		$.ajax({
@@ -184,6 +185,7 @@ function load_lich_su_don(data) {
 
 		const date = new Date(item.thoi_gian_dat);
 		const year = date.getFullYear();
+
 
 		const month = String(date.getMonth() + 1).padStart(2, '0'); // Month is 0-indexed, add 1 and zero-pad
 		const day = String(date.getDate()).padStart(2, '0');
@@ -383,4 +385,3 @@ function uploadFile() {
 		});
 		alert('The file upload thanh cong');
 }
-

@@ -190,7 +190,7 @@ a{
 .radio{
     display: flex;
     gap: 5%;
-    transform: translateX(-330%);
+    transform: translateX(-230%);
 }
 	
 .gender{
@@ -200,7 +200,7 @@ a{
 
 }
 .cardImage{
-	transform: translateX(50%);
+	transform: translate(-260%);
 }
 .huy_don_hang{
 	width:100%;

@@ -125,7 +125,9 @@ $(document).ready(function() {
 			},
 
 			success: function(data) {
+
 				load_product(data);
+
 			},
 			
 			error: function() {

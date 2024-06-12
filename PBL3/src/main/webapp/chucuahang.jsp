@@ -14,6 +14,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 </head>
+
 <div class="card ">
     <div class="form" style="display: flex;">
         <div class=" col-md-2 pt-0">
@@ -30,11 +31,11 @@
                 href="#nhan-vien"><i class="fa-solid fa-user"></i>Nhân viên</a>
             </div>
         </div>
-        
+
         <div class = "infor col-md-10 pt-0">
         	
             <div class="tab-content">
-           <div style = "display: flex; justify-content: right; margin-top: 20px;"><a href = "logout"><i class="fa-solid fa-right-to-bracket fa-2xl"></i></a></div>
+           <div style = "display: flex; justify-content: right; margin-top: 20px; align-items: center; gap: 40px" ><h2>Xin Chào ADMIN</h2> <a href = "logout"><i class="fa-solid fa-right-to-bracket fa-2xl"></i></a></div>
             
                 <div class = "tab-pane fade active show" id = "san-pham">
                     <div class="mainform">

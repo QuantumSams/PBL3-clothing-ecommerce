@@ -113,5 +113,11 @@ header ul .dropdown li {
 	</div>
 </header>
 <script>
+<<<<<<< HEAD
 	
+=======
+	document.querySelector('.test').addEventListener('click', e=>{
+		alert('Test');
+	})
+>>>>>>> refs/remotes/origin/sua_giao_dien5
 </script>
