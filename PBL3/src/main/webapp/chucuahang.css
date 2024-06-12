@@ -113,7 +113,10 @@ body {
 .mainform{
     padding: 0px 20px 10px 10px;
 }
-
+.content-table tr:hover{
+	background-color: grey !important;
+	transition: 0.25s ease-in-out !important;
+}
 .header3{
     padding: 40px 0px;
     display: flex;

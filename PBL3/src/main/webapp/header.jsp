@@ -34,6 +34,17 @@ header ul .dropdown li {
 	margin: 0;
 	width: 100%;
 }
+.dropdown-1{
+	display: none;
+}
+.dropdown li:hover .dropdown-1{
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 150px;
+	width: 200px;
+	background-color: white;
+}
 </style>
 <header>
 
@@ -46,7 +57,13 @@ header ul .dropdown li {
 						src="img/logoicqon.png" width=100; alt=""></a>
 					<li class="nav-item"><a class="nav-link" href="#">Nữ</a>
 						<ul class="dropdown">
-							<li><a href="#">Áo thun</a></li>
+							<li><a href="#">Áo thun</a>
+								<ul class="dropdown-1">
+									<li><a class = "test" href="">Áo thun</a></li>
+									<li><a href="#">áo ấm</a></li>
+									<li><a href="#">Áo vest</a></li>
+									
+							</ul></li>
 							<li><a href="#">áo ấm</a></li>
 							<li><a href="#">Áo vest</a></li>
 							<li><a href="#">Áo len</a></li>
@@ -103,3 +120,8 @@ header ul .dropdown li {
 		</nav>
 	</div>
 </header>
+<script>
+	document.querySelector('.test').addEventListener('click', e=>{
+		alert('Test');
+	})
+</script>

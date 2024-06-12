@@ -21,7 +21,9 @@ $(document).ready(function() {
 						'<div class="name">' +
 						'<h5>' + item.muc_san_pham.ten_san_pham + '</h5>' +
 						'<h6>' + item.muc_san_pham.mau_sac_san_pham.ten_mau + ' / ' + item.muc_san_pham.kich_thuoc_san_pham.ten_size + '</h6>' +
-						'<button value="' + (item.id_gio_hang) + '" class = "btnXoa">Xoá</button>' +
+						'<button type="button" class="btn btnXoa" value="' + (item.id_gio_hang) + '"'+
+						'data-bs-toggle="modal" data-bs-target="#xoasanpham">Xoá</button>'+
+						//'<button value="' + (item.id_gio_hang) + '" class = "btnXoa">Xoá</button>' +
 						'</div>' +
 						'</div>' +
 						'</div>' +
@@ -47,13 +49,14 @@ $(document).ready(function() {
 
 				$("#list_gio_hang").html(chuoi);
 				tien();
-
+				setLayout();
 				getID()
 				var checkBox = document.querySelectorAll('.checkBuy');
     				checkBox.forEach(item =>{
        			 	item.addEventListener('change', (e)=>{
             		tien();
             		getID();
+            		setLayout();
         			})
     			})
 
@@ -65,7 +68,8 @@ $(document).ready(function() {
 
 $(document).ready(function() {
 	$('#list_gio_hang').on('click', 'button', function() {
-		$.ajax({
+		document.querySelector('.xac_nhan_xoa').addEventListener('click',e=>{
+			$.ajax({
 			url: "xoa_gio_hang", // URL of your Servlet
 			type: "POST",
 			dataType: 'json',
@@ -78,8 +82,10 @@ $(document).ready(function() {
 
 		this.parentElement.parentElement.parentElement.parentElement.parentElement.remove();
 		tien();
-
+		setLayout();
 		getID();
+		})
+		
 	});
 });
 function getID(){
@@ -135,6 +141,7 @@ function tien() {
 			sum += parseFloat(a[i].innerHTML.split(' ', 1))*(parseFloat(b[i].innerHTML.split(' ', 1)));
 		}
 	}
+
 	document.querySelector('#sum').innerHTML = parseInt(sum).toLocaleString('vi-VN') + '.000 VNĐ'
 }
 $(document).ready(function() {
@@ -158,6 +165,19 @@ function load_ajax_lich_su_don() {
 	});
 }
 
+function setLayout(){
+	let a = document.querySelector('#sum')
+	if(a.textContent.split('.',1) == 0){
+		document.querySelector('.thanhtoan').classList.add('remove');
+		
+	}
+	else{
+		if(document.querySelector('.thanhtoan').classList.contains('remove'))
+			document.querySelector('.thanhtoan').classList.remove('remove')
+
+	}
+}
+
 function load_lich_su_don(data) {
 	let chuoi = "";
 	data.forEach(function(item) {
@@ -166,13 +186,19 @@ function load_lich_su_don(data) {
 		const year = date.getFullYear();
 		const month = date.getMonth() + 1; // Tháng trong JavaScript bắt đầu từ 0
 		const day = date.getDate();
-
+		let kiemtra = null;
+		if(item.so_sao_danh_gia == 0){
+			kiemtra = "Chưa có đánh giá";
+		}
+		else {
+			kiemtra = item.so_sao_danh_gia;
+		}
 		chuoi += '<tr>' +
 			'<td>' + day + "/" + month + "/" + year + '</td>' +
 			'<td>' + parseInt(item.tong_tien).toLocaleString('vi-VN') + ' VNĐ</td>' +
 			'<td>' + item.so_luong + '</td>' +
 			'<td><button type="button" class="btn btn-primary submitDon" id = "' + item.id_don_hang + '">' + item.trang_thai_don_hang + '</button></td>' +
-			'<td>' + item.so_sao_danh_gia + '</td>' +
+			'<td class = "danhgia">' + kiemtra + '</td>' +
 			'<td>' +
 			'<form action="xem_lich_su_don" method="get">' +
 			'<input type="hidden" name="id_don_hang" value="' + item.id_don_hang + '">' +
@@ -180,7 +206,8 @@ function load_lich_su_don(data) {
 			'</form>' +
 			'</td>' +
 			'<td>' +
-			'<button class="huy_don_hang btn" disabled>' +
+			'<button type="button" class="btn huy_don_hang" disabled data-bs-toggle="modal" data-bs-target="#huydonhang">'+
+			//'<button class="huy_don_hang btn" disabled>' +
 			'<input class="vale" type="hidden" value="' + item.id_don_hang + '">Hủy đơn hàng' +
 			'</button>' +
 			'</td>' +
@@ -213,7 +240,9 @@ function load_lich_su_don(data) {
 	a.forEach(item => {
 		item.addEventListener('click', e => {
 			const inputValue = item.childNodes[0].value;
-			$.ajax({
+			let xacnhan = document.querySelector('.xac_nhan');
+			xacnhan.addEventListener('click', q=>{
+				$.ajax({
 				url: "khach_hang_huy_don",
 				type: "POST",
 				dataType: 'json',
@@ -228,6 +257,8 @@ function load_lich_su_don(data) {
 					alert("loi");
 				},
 			});
+			})
+			
 		})
 	});
 
