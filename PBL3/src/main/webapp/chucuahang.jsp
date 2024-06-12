@@ -30,8 +30,12 @@
                 href="#nhan-vien"><i class="fa-solid fa-user"></i>Nhân viên</a>
             </div>
         </div>
+        
         <div class = "infor col-md-10 pt-0">
+        	
             <div class="tab-content">
+           <div style = "display: flex; justify-content: right; margin-top: 20px;"><a href = "logout"><i class="fa-solid fa-right-to-bracket fa-2xl"></i></a></div>
+            
                 <div class = "tab-pane fade active show" id = "san-pham">
                     <div class="mainform">
                         <div class="header1">
@@ -77,7 +81,7 @@
 											<td><img src="${item.anh_san_pham[0]}" width="50px"
 												alt=""></td>
 											<td>${item.ten_san_pham}</td>
-											<td>${item.gia_tien}VNĐ</td>
+											<td class = "giaTienSanPham">${item.gia_tien}</td>
 											<td>Nam</td>
 											<td>${item.danh_muc_san_pham}</td>
 											<td>${item.ten_nhan_hang}</td>
@@ -110,7 +114,7 @@
                                     <button class = "buttonSearch">Search</button>
                                 </div>
                                 
-                                    <h5 style ="color: white;"> Tổng số mục sản phẩm: ${so_muc_san_pham}</h5>
+                                    <h5 style ="color: white; width: 25%" > Tổng số mục sản phẩm: ${so_muc_san_pham}</h5>
                                 
                             </div>
                         </div>
@@ -163,15 +167,12 @@
                             <div class="bodyform active">
                                 <div class="header3">
                                     <h3>Thống kê doanh thu</h3>
-                                    <select name="" id="selectOpt">
-                                        <option value="">Hôm nay</option>
-                                        <option value="">Hôm qua</option>
-                                    </select>
+                                   
                                 </div>
                                 <div class="thongke">
                                     <div class="doanhThu card1">
                                         <h5>Doanh thu</h5>
-                                        <h2>${doanh_thu.doanh_thu}</h2>
+                                        <h2 id = "tienDoanhthu">${doanh_thu.doanh_thu}</h2>
                                     </div>
 
                                     <div class="tongsodon card1">
@@ -285,7 +286,6 @@
                                 <table class = "content-table">
                                     <thead>
                                         <tr>
-                                            <th>Mã đơn hàng</th>
                                             <th>Giá trị đơn hàng</th>
                                             <th>Nhân viên xác nhận</th>
                                             <th>Thời điểm đặt</th>
@@ -298,20 +298,12 @@
 
 									<c:forEach var="item" items="${don_hang}">
 										<tr>
-											<th scope="row">${item.id_don_hang}</th>
-											<td>
-												<div class="d-flex justify-content-between">
-													<span>${item.tong_tien}</span> <span><b>VND</b></span>
-												</div>
-											</td>
+											<td class = "giaDonHang">${item.tong_tien}</td>
 											<td>${item.ten_nhan_vien}</td>
 											<td>${item.thoi_gian_dat}</td>
 											<td>${item.thoi_gian_nhan}</td>
 											<td>
-												<button class="status status-waiting">
-													<input type="hidden" value="${item.id_don_hang}">
-													${item.trang_thai_don_hang}
-												</button>
+												<button class="btn status status-waiting btnStatus"><input type="hidden" value="${item.id_don_hang}">${item.trang_thai_don_hang}</button>
 											</td>
 											<td>
 												<form action="xem_don_hang_chi_tiet" method="get">
@@ -322,55 +314,8 @@
 											</td>
 										</tr>
 									</c:forEach>
-
-									<tr>
-										<td>1</td>
-										<td>20.000 VNĐ</td>
-										<td>Nguyễn Văn A</td>
-										<td>15/10/2023</td>
-										<td>-</td>
-										<td><button type="button" class="btn btn-warning"
-												disabled>Đang chờ xác nhận</button></td>
-									</tr>
-									<tr>
-										<td>1</td>
-										<td>20.000 VNĐ</td>
-										<td>Nguyễn Văn A</td>
-										<td>15/10/2023</td>
-										<td>-</td>
-										<td><button type="button" class="btn btn-success"
-												disabled>Giao thành công</button></td>
-									</tr>
-									<tr>
-										<td>1</td>
-										<td>20.000 VNĐ</td>
-										<td>Nguyễn Văn A</td>
-										<td>15/10/2023</td>
-										<td>-</td>
-										<td><button type="button" class="btn btn-danger" disabled>Bị
-												huỷ</button></td>
-									</tr>
-									<tr>
-										<td>1</td>
-										<td>20.000 VNĐ</td>
-										<td>Nguyễn Văn A</td>
-										<td>15/10/2023</td>
-										<td>-</td>
-										<td><button type="button" class="btn btn-primary"
-												disabled>Đang giao hàng</button></td>
-									</tr>
-									<tr>
-										<td>1</td>
-										<td>20.000 VNĐ</td>
-										<td>Nguyễn Văn A</td>
-										<td>15/10/2023</td>
-										<td>-</td>
-										<td><button type="button" class="btn btn-warning"
-												disabled>Đang chờ xác nhận</button></td>
-									</tr>
-								</tbody>
-							</table>
-    
+    							</tbody>
+    							</table>
                             </div>
                         </div>
                 </div> 
@@ -437,6 +382,7 @@
                     </div> 
                 </div>
             </div>
+	
         </div>
     </div>
 

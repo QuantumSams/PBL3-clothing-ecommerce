@@ -14,6 +14,9 @@
         doanhthu.classList.add('fade');
         doanhthu.classList.remove('active');
     });
+    
+    let tien = document.querySelector('#tienDoanhthu').textContent;
+    document.querySelector('#tienDoanhthu').innerText = parseInt(tien).toLocaleString('vi-VN') + ' VNĐ';
     const xValues = ["Nam", "Nữ", "Trẻ em"];
     
     const barColors = ["#667085", "#667085","#667085","#667085","#667085"];
@@ -58,7 +61,7 @@ function ShowSP(data) {
 
 			'<td><img src=' + item.anh_san_pham[0] + ' width="50px" alt=""></td>' +
 			'<td>' + item.ten_san_pham + '</td>' +
-			'<td>' + item.gia_tien + ' VNĐ</td>' +
+			'<td>' + parseInt(item.gia_tien).toLocaleString('vi-VN')+ ' VNĐ</td>' +
 			'<td>Nam</td>' +
 			'<td>' + item.danh_muc_san_pham + '</td>' +
 			'<td>' + item.ten_nhan_hang + '</td>' +
@@ -252,7 +255,30 @@ c.forEach(item => {
 		});
 	})
 })
+let listTien = document.querySelectorAll('.giaDonHang');
+listTien.forEach(item => {
+	item.innerText = parseInt(item.textContent).toLocaleString('vi-VN') + " VNĐ"
+})
+let listTienSanPham = document.querySelectorAll('.giaTienSanPham');
+listTienSanPham.forEach(item => {
+	item.innerText = parseInt(item.textContent).toLocaleString('vi-VN') + " VNĐ"
+})
 
+let btnList = document.querySelectorAll('.btnStatus');
+btnList.forEach(item=>{
+	if(item.textContent == "Đã nhận được đơn hàng"){
+	item.classList.add('btn-success');
+}
+else if(item.textContent == "Đang vận chuyển"){
+	item.classList.add('btn-primary');
+}
+else if(item.textContent == "Đợi xác nhận đơn hàng"){
+	item.classList.add('btn-warning');
+}
+else{
+	item.classList.add('btn-danger');
+}
+})
 function load_muc_san_pham(data){
 	let chuoi = "";
 	data.forEach(function(item) {

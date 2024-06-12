@@ -103,31 +103,30 @@ $(document).ready(function() {
 				let chuoi = "";
 				data.forEach(function(item) {
 					chuoi += '<label for="'+item.id_san_pham+'">'+
-								'<div class="card" style="width: 250px">'+
-
-								'<img class="card-img-top" src="'+item.anh_san_pham[0]+'" alt="Card image">'+
-								'<div class="card-body">'+
-								'<h6>' + item.danh_muc_san_pham + '</h6>'+
+								'<div class="card" style="width: 250px; height: 500px;">'+
+								'<img class="card-img-top" src="'+item.anh_san_pham[0]+'" alt="Card image">'
+								+'<div class="card-body">'
+								+'<div style = "height: 20%;">'+
+								'<h6>'+item.danh_muc_san_pham+'</h6></div>'+
+								'<div style = "height: 40%;">'+
 								'<h5 class="card-title" style="font-weight: bold;">'+
-
 								'<form action="load_product" method="get">'+
-									'<button id="' + item.id_san_pham + '">"' + item.ten_san_pham +'"'+
-									'</button>'+
-									'<input type="hidden" name="id_san_pham" value="'+item.id_san_pham +'" />'+
-								'</form>'+
-
-								'</h4>'+
-								'<p class="card-text">'+item.ten_nhan_hang+'</p>'+
-								'<h4 style="font-weight: bold;">'+item.gia_tien+'VND</h4>'+
-							
+								'<button id="'+item.id_san_pham+'">'+item.ten_san_pham+'</button>'+
+									'<input type="hidden" name="id_san_pham" value="'+item.id_san_pham+ '" />'
+								+'</form></h5></div>'+
+								'<div style = "height: 20%;">'+
+								'<p class="card-text">'+item.ten_nhan_hang+'</p></div>'+
+								'<div style = "height: 20%;">'+
+								'<h4 class = "giaTien" style="font-weight: bold; margin-bottom: 10px">' + parseInt(item.gia_tien).toLocaleString('vi-VN') +' VND</h4></div>'+
 							'</div>'+
-						'</div>'+
+							'</div>'+
 					'</label>';
 
 				});
 
 				$(".main-items").html(chuoi);
 			},
+			
 			error: function() {
 				alert("Có lỗi phát sinh");
 			}

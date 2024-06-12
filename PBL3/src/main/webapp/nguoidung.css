@@ -133,6 +133,9 @@ a{
     border: none;
 
 }
+.submitDon{
+	width: 220px !important;
+}
 .buttonTT:hover{
     background-color: #4e5155;
 }
@@ -177,7 +180,12 @@ a{
     justify-content: space-between;
 
 }
-
+.huy_don_hang{
+	width:100%;
+	background-color: orange !important;
+	color: white !important;
+	border: none !important;
+}
 .cardForm{
 	transform: translateY(92px);
 }
