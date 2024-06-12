@@ -1,92 +1,149 @@
-//tên đơn hàng ở đầu trang
-const orderTitle = document.querySelector("#orderTitle");
-const orderHeadingTitle = document.querySelector("#orderHeadingTitle");
-
-function orderTitleDefaultValues(orderTitleName) {
-  orderTitle.innerText = orderTitleName;
-  orderHeadingTitle.innerText = orderTitleName;
+let listTien = document.querySelectorAll('.tien');
+listTien.forEach(item => {
+	item.innerText = parseInt(item.textContent).toLocaleString('vi-VN') + " VNĐ"
+})
+let a = document.querySelectorAll('.huy_don_hang');
+a.forEach(item => {
+	item.addEventListener('click', e => {
+		const inputValue = item.childNodes[0].value;
+		alert(inputValue);
+		$.ajax({
+			url: "nhan_vien_huy_don",
+			type: "POST",
+			dataType: 'json',
+			data: {
+				id_don_hang: inputValue,
+				id_nhan_vien: $('#id_nhan_vien').val(),
+				trang_thai_don_hang: "huy"
+			},
+			success: function(data) {
+				load_ajax_don_hoang()
+			},
+			error: function() {
+				alert("loi");
+			},
+		});
+	})
+})
+let b = document.querySelectorAll('.status-waiting');
+b.forEach(item => {
+	item.addEventListener('click', e => {
+		const inputValue = item.childNodes[0].value;
+		$.ajax({
+			url: "nhan_vien_xac_nhan_don",
+			type: "POST",
+			dataType: 'json',
+			data: {
+				id_don_hang: inputValue,
+				id_nhan_vien: $('#id_nhan_vien').val(),
+				trang_thai_don_hang: "xac_nhan"
+			},
+			success: function(data) {
+				load_ajax_don_hoang();
+			},
+			error: function() {
+				alert("loi");
+			},
+		});
+	})
+})
+function buttonHuy() {
+	let a = document.querySelectorAll('.huy_don_hang');
+	a.forEach(item => {
+		item.addEventListener('click', e => {
+			const inputValue = item.childNodes[0].value;
+			alert(inputValue);
+			$.ajax({
+				url: "nhan_vien_huy_don",
+				type: "POST",
+				dataType: 'json',
+				data: {
+					id_don_hang: inputValue,
+					id_nhan_vien: $('#id_nhan_vien').val(),
+					trang_thai_don_hang: "huy"
+				},
+				success: function(data) {
+					load_ajax_don_hoang()
+				},
+				error: function() {
+					alert("loi");
+				},
+			});
+		})
+	})
 }
 
-//THÀNH TIỀN
-
-//tổng giá trị đơn hàng
-const orderValueSum = document.querySelector("#orderValueSum");
-//phí giao hàng
-const orderValueShippingFee = document.querySelector("#orderValueShippingFee");
-//tổng giá trị đơn hàng
-const orderValueTotal = document.querySelector("#orderValueTotal");
-//giảm giá
-const orderValueDiscount = document.querySelector("#orderValueDiscount");
-
-function orderValueDefaultValues() {
-  orderValueSum.innerText = "1000000";
-  orderValueShippingFee.innerText = "0";
-  orderValueDiscount.innerText = "0";
-
-  orderValueTotal.innerText =
-    parseInt(orderValueSum.innerText) +
-    parseInt(orderValueShippingFee.innerText) -
-    parseInt(orderValueDiscount.innerText);
+function buttonXacNhan() {
+	let b = document.querySelectorAll('.status-waiting');
+	b.forEach(item => {
+		item.addEventListener('click', e => {
+			const inputValue = item.childNodes[0].value;
+			$.ajax({
+				url: "nhan_vien_xac_nhan_don",
+				type: "POST",
+				dataType: 'json',
+				data: {
+					id_don_hang: inputValue,
+					id_nhan_vien: $('#id_nhan_vien').val(),
+					trang_thai_don_hang: "xac_nhan"
+				},
+				success: function(data) {
+					load_ajax_don_hoang();
+				},
+				error: function() {
+					alert("loi");
+				},
+			});
+		})
+	})
 }
 
-//THÔNG TIN GIAO NHẬN
 
-//tên người nhận
-const shippingInfoName = document.querySelector("#shippingInfoName");
-//SDT
-const shippingInfoPhoneNum = document.querySelector("#shippingInfoPhoneNum");
-//địa chỉ
-const shippingInfoAddress = document.querySelector("#shippingInfoAddress");
+function load_ajax_don_hoang(){
+	$.ajax({
+		url: "load_don_hang_ajax",
+		type: "GET",
+		dataType: 'json',
+		data: {
+		},
 
-function shippingDefaultValues() {
-  shippingInfoName.innerText = "Nguyễn Văn A";
-  shippingInfoPhoneNum.innerText = "123456789";
-  shippingInfoAddress.innerText = "123 Main St";
+		success: function(data) {
+			load_don_hang(data)
+		}
+	});
 }
 
-//THÔNG TIN ĐƠN HÀNG
+function load_don_hang(data){
+	let chuoi = "";
+	data.forEach(function(item) {
 
-//số lượng
-const orderInfoQuantity = document.querySelector("#orderInfoQuantity");
-//ngày đặt
-const orderInfoPlacingDate = document.querySelector("#orderInfoPlacingDate");
-//ngày giao
-const orderInfoShippingDate = document.querySelector("#orderInfoShippingDate");
-//nhân viên xử lý
-const orderInfoEmployee = document.querySelector("#orderInfoEmployee");
-//trạng thái
-const orderInfoStatus = document.querySelector("#orderInfoStatus");
+		chuoi += '<tr>' +
+			'<th scope="row">'+item.id_don_hang+'</th>' +
+			'<td>' +
+			'<div class="d-flex justify-content-between">'
+			+parseInt(item.tong_tien).toLocaleString('vi-VN') + ' VNĐ'+
+			'</div>' +
+			'</td>' +
+			'<td>'+item.ten_khach_hang+'</td>' +
+			'<td>'+item.thoi_gian_dat+'</td>' +
+			'<td>' +
+			'<button class="status status-waiting"><input type="hidden" value="'+item.id_don_hang+'">Chờ xác nhận</button>' +
+			'</td>' +
+			'<td>' +
+			'<form action="xem_don_hang_chi_tiet" method="get">' +
+			'<input type="hidden" name="id_don_hang" value="'+item.id_don_hang+'">' +
+			'<button class="xem_chi_tiet status status-waiting" style = "width: 150px">Xem chi tiết</button>' +
+			'</form>' +
+			'</td>' +
+			'<td>' +
+			'<button class="huy_don_hang status status-waiting" style = "width: 150px"><input class="vale" type="hidden" value="'+item.id_don_hang+'">Hủy đơn hàng</button>' +
+			'</td>' +
+			'</tr>';
+	});
 
-function orderInfoDefaultValues() {
-  orderInfoQuantity.innerText = "1";
-  orderInfoPlacingDate.innerText = "01/01/2021";
-  orderInfoShippingDate.innerText = "01/01/2021";
-  orderInfoEmployee.innerText = "Nguyễn Văn B";
-  orderInfoStatus.innerText = "Đợi xác nhận đơn hàng";
-  orderInfoStatus.className = ORDER_STATUS["Đợi xác nhận đơn hàng"];
+	$(".don_hang").html(chuoi);
+	
+	buttonXacNhan();
+	buttonHuy();
 }
 
-//GHI CHÚ ĐƠN HÀNG
-const orderNote = document.querySelector("#orderNote");
-
-function orderNoteDefaultValues() {
-  orderNote.innerText = "Giao hàng vào giờ hành chính";
-}
-
-//giá trị mặc định
-window.addEventListener("load", function () {
-  orderTitleDefaultValues("Đơn hàng xyz");
-  orderValueDefaultValues();
-  shippingDefaultValues();
-  orderInfoDefaultValues();
-  orderNoteDefaultValues();
-});
-
-//xoá sản phẩm trong giỏ hàng
-$(document).ready(function () {
-  $("#removeProduct").click(function () {
-    //todo: lấy ID của hàng cần xoá, gửi lệnh xoá lên server
-    console.log("Đã xoá ra khỏi giỏ hàng");
-    // location.reload();
-  });
-});

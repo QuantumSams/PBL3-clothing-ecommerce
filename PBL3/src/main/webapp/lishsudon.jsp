@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="lishsudon.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+   
     <title>Document</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
@@ -26,27 +26,29 @@
                 <table id = "table">
                     <thead>
                         <tr>
+                        	<th>Ảnh sản phẩm</th>
                             <th>Sản phẩm</th>
                             <th>Số lượng</th>
                             <th>Thành tiền</th>
                            
                         </tr>
                     </thead>
-                   <tbody>
-                   
-                   	<c:forEach var="item" items="${list_san_pham_mua}">
+                   <tbody id="list_san_pham">
+                   <c:forEach var="item" items="${chi_tiet_don_hang}">
                     	<tr>
-	                        <td>
+                    		<td><img src="${item.anh}" width="50px"
+												alt=""></td>
+                    		<td>
 	                            <div class="name">
-	                                <h5>${item.key.ten_san_pham}</h5>
+	                                <h5>${item.ten_san_pham}</h5>
 	                            </div>
 	                            <div class="color">
-	                                    <h5>${item.key.mau_sac_san_pham.ten_mau} / ${item.key.kich_thuoc_san_pham.ten_size}</h5>
+	                                    <h5>${item.ten_mau} / ${item.ten_size}</h5>
 	                            </div>
 	                        </td>
-	                        <td>${item.value}</td>
-	                        <td class = "priceItems">${item.key.gia_tien}</td>
-                        
+	                        <td class = "priceItems">${item.so_luong}</td>
+	                        <td class = "priceItems">${item.gia}</td>
+	                        
                     	</tr>          	  
 					</c:forEach>
                    </tbody>
@@ -68,7 +70,7 @@
                 <div class="dform">
                     <h5>Bình luận</h5>
                     <div class="textarea">
-                        <textarea name="" id="" >Bình luận sẽ xuất hiện ở đây
+                        <textarea name="" id="cmt" >Bình luận sẽ xuất hiện ở đây
                         </textarea>
                     </div>
                 </div>
@@ -82,7 +84,7 @@
                 </div>
                 <div class="User">
                     <h5>Họ tên người nhận</h5>
-                    <h5>${khach_hang.ho_ten}</h5>
+                    <h5>${don_hang.ten_khach_hang}</h5>
                 </div>
                 <div class="User">
                     <h5>Số điện thoại giao hàng</h5>
@@ -90,37 +92,29 @@
                 </div>
                 <div class="User">
                     <h5>Địa chỉ giao hàng</h5>
-                    <h5>${don_hang.dia_chi_giao_dich}</h5>
+                    <h5>${don_hang.dia_chi}</h5>
                 </div>
             </div>
             <div class="note">
                 <h4>Thông tin đơn hàng</h4>
                 <div class="User">
-                    <h5>Số lượng</h5>
-                    <h5>3</h5>
-                </div>
-                <div class="User">
                     <h5>Đặt vào lúc</h5>
-                    <h5>${don_hang.ngay_gio_dat_don_hang}</h5>
+                    <h5>${don_hang.thoi_gian_dat}</h5>
                 </div>
                 <div class="User">
                     <h5>Nhận vào lúc</h5>
-                    <h5>${don_hang.ngay_gio_nhan_don_hang}</h5>
-                </div>
-                <div class="User">
-                    <h5>Nhân viên xác nhận lúc</h5>
-                    <h5>-</h5>
+                    <h5>${don_hang.thoi_gian_nhan}</h5>
                 </div>
                 <div class="User">
                     <h5>Trạng thái</h5>
-                    <h5><button type="button" class="btn btn-success">${don_hang.trang_thai_don_hang}</button></h5>
+                    <h5><button type="button" class="btn trangthai">${don_hang.trang_thai_don_hang }</button></h5>
                 </div>
             </div>
             <div class="note">
                 <h4>Ghi chú</h4>
-                <h5 style = "display: flex; align-items: center; justify-content: center; margin-top: 5%;">Chỉ giao vào giờ hành chính</h5>
+                <h5 style = "display: flex; align-items: center; justify-content: center; margin-top: 5%;">${don_hang.ghi_chu}</h5>
             </div>
-            <button id="xac_nhan_don" class="chinhsua xacnhan huy">Xác nhận thanh toán</button>
+            
         </div>
       
        </div>
@@ -129,6 +123,19 @@
 </body>
 <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
 <script>
+let a = document.querySelector('.trangthai');
+if(a.textContent == "Đã nhận được đơn hàng"){
+	a.classList.add('btn-success');
+}
+else if(a.textContent == "Đang vận chuyển"){
+	a.classList.add('btn-primary');
+}
+else if(a.textContent == "Đợi xác nhận đơn hàng"){
+	a.classList.add('btn-warning');
+}
+else{
+	a.classList.add('btn-danger');
+}
 $(document).ready(function(){
 	 $("#xac_nhan_don").click(function(){
 			$.ajax({
@@ -149,4 +156,4 @@ $(document).ready(function(){
     
     
   </script> 
-</html>
+</html>	

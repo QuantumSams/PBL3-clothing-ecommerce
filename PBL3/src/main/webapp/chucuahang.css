@@ -16,6 +16,7 @@ body {
 }
 .account-settings-links .list-group-item.active {
     font-weight: bold !important;
+    background-color: orange;
 }
 
 .account-settings-multiselect~.select2-container {
@@ -50,6 +51,7 @@ body {
     padding: 5px 20px 5px 10px;
 }
 .inputSearch{
+	color: white;
     width: 90%;
     background-color: transparent;
     border: none;
@@ -75,6 +77,9 @@ body {
     color: white;
     border-radius: 10px;
     padding: 5px 5px 5px 5px;
+}
+.giaTienSanPham{
+	width: 130px;
 }
 .buttonSearch{
     border-radius: 5px;
@@ -105,3 +110,142 @@ body {
     display: flex;
     gap:10px;
 }
+.mainform{
+    padding: 0px 20px 10px 10px;
+}
+.content-table tr:hover{
+	background-color: grey !important;
+	transition: 0.25s ease-in-out !important;
+}
+.header3{
+    padding: 40px 0px;
+    display: flex;
+    justify-content: space-between;
+}
+.thongke{
+    display: flex;
+    justify-content: space-between;
+}
+.doanhThu{
+    width: 35%;
+    background-color: #667085;
+    color: white;
+    
+}
+.daBan{
+    width: 30%;
+    background-color: #EAECF0;
+
+}
+.tongsodon{
+    width: 30%;
+    background-color: #D0D5DD;
+}
+.card1{
+    padding: 20px;
+    border-radius: 10px;
+}
+.btn1{
+    width: 10%;
+    padding: 7px;
+    border-radius: 5px;
+    border: none;
+}
+.doanh-thu{
+    background-color: #101828;
+    color: white;
+}
+.don-hang{
+    background-color: #EAECF0;
+    
+}
+#selectOpt{
+    width: 10%;
+    padding: 5px;
+    background-color: #101828;
+    color: white;
+    border-radius: 5px;
+}
+.mainform2{
+    transform: translateY(40px);
+}
+.fade{
+    display: none !important;
+}
+.active{
+    display: block !important;
+}
+.thongkedoituong{
+    width: 100%;
+    height: 500px;
+    background-color: white;
+    margin-top: 3%;
+    border-radius: 10px;
+    padding: 16px;
+}
+#doanh-thu{
+    background-color: #e5e5e5;
+}
+.content-table{
+    border-collapse: collapse;
+    min-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+.content-table thead tr th{
+    padding: 10px 15px;
+    color: white;
+    background-color: #1C1B1F;
+}
+.content-table tbody tr td{
+    padding: 10px 15px;
+    background-color: white;
+}
+.topbanchay{
+    width: 100%;
+    height: fit-content;
+    padding: 16px 0 16px 0;
+}
+.btn{
+    color: white !important;
+}
+.buttonRemove{
+	background-color: orange;
+	color: white;
+	border: none;
+	border-radius: 5px;
+}
+.buttonSearch{
+	width: 70px;
+}
+.cap_nhat_san_pham{
+	background-color: black;
+	color:white;
+	border-radius: 7px;	
+}
+.buttonRemoveNV{
+	background-color: orange;
+	border: none;
+	color: white;
+	border-radius: 7px;
+	width: 70px;
+}
+.xem_chi_tiet{
+	background-color: black;
+	color:white;
+	border-radius: 7px;	
+}
+.btnStatus{
+	width: 230px !important;
+}
+.content-table td{
+	font-weight: bold;
+}
+.hienthi{
+	display: block !important;
+}
+#doanh-thu{
+	border-radius: 10px;
+    padding: 20px;
+    margin-top: 10px;
+}	

@@ -49,10 +49,36 @@ a{
     color: #4e5155 !important;
    
 }
+.checkBuy{
+	width: 50px;
+}
+.gia{
+	font-size: larger;
+}
+.buttonCancel{
+	background-color: orange;
+	color: white;
+	border: none;
+	width: 10%;
+}
+.mua{
+	width: 100px;
+	border: none;
+	border-radius: 7px;
+	background-color: orange;
+	color: white;
+	height: 40px;
+}
 .mainform{
     width: 100%;
     height: fit-content;
     padding: 50px;
+}
+.thongtin{
+	width: 80% !important;
+}
+.remove{
+	display: none !important;
 }
 .inforItems{
     display: flex;
@@ -71,16 +97,20 @@ a{
     gap: 2%;
 }
 .btnXoa{
-    background-color: #F97066;
-    border: none;
-    color: white;
-    width: 30%;
+    background-color: #F97066 !important;
+    border: none !important;
+    color: white !important;
+    width: 200px !important;
 }
 .btnXoa:hover{
     background-color: red;
 }
 .price-amount{
-    width: 10%;
+    width: 20%;
+}
+.gia{
+	display: flex;
+	justify-content: space-between;	
 }
 .optionS{
     border: 1px thin ;
@@ -109,13 +139,20 @@ a{
     border: none;
 
 }
+.submitDon{
+	width: 220px !important;
+}
 .buttonTT:hover{
     background-color: #4e5155;
 }
 .inputClass{
+	align-items: center;
     display: flex;
     justify-content: space-between;
     margin-top: 3%;
+}
+#img{
+	transform: translateX(50%);
 }
 .inputClass input{
     width: 40%;
@@ -131,7 +168,10 @@ a{
     border: solid 1px thin orange;
     min-width: 400px;
     width: 100%;
-    text-align: center;
+   text-align: center;
+}
+.danhgia{
+	width: 200px;
 }
 .content-table thead tr th{
     padding: 10px 15px;
@@ -141,21 +181,32 @@ a{
 .content-table tbody tr td{
     padding: 10px 15px;
 }
+
+.content-table tr:hover{
+	background-color: rgb(255, 231, 185);
+	transition: 0.25s ease-in-out 0.1s;
+	font-weight: bold;
+}
 .radio{
     display: flex;
     gap: 5%;
-    transform: translateX(-330%);
+    transform: translateX(-230%);
 }
+	
 .gender{
     margin-top: 3%;
     display: flex;
     justify-content: space-between;
 
 }
-.buttonCancel{
-    background-color: white;
-    color: black;
-    width: 10%;
+.cardImage{
+	transform: translate(-260%);
+}
+.huy_don_hang{
+	width:100%;
+	background-color: orange !important;
+	color: white !important;
+	border: none !important;
 }
 .cardForm{
 	transform: translateY(92px);

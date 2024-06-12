@@ -31,7 +31,7 @@ const viewProfilePagePassword = document.getElementById(
 const viewProfilePageImage = document.querySelector("#viewProfilePageImage");
 
 //thông tin cá nhân mặc định
-window.addEventListener("load", function () {
+/*window.addEventListener("load", function () {
   viewProfilePageName.innerText = "Nguyễn Văn X";
   viewProfilePageGender.innerText = "Nữ";
   viewProfilePagePhoneNum.innerText = "123456789";
@@ -40,7 +40,7 @@ window.addEventListener("load", function () {
   viewProfilePagePassword.value = "password";
   viewProfilePageImage.src =
     "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=2662&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
-});
+});*/
 
 //nút hiển thị mật khẩu
 const togglePasswordVisibilityButton = document.getElementById("passwordEye");

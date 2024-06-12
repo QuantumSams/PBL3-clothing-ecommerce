@@ -21,4 +21,8 @@
     <fullyQualifiedTypeName name="com.google.protobuf.compiler.PluginProtos.CodeGeneratorResponse.File"/>
     <fullyQualifiedTypeName name="java.io.File"/>
     <fullyQualifiedTypeName name="jakarta.servlet.http.HttpSession"/>
+    <fullyQualifiedTypeName name="java.lang.StringBuilder"/>
+    <fullyQualifiedTypeName name="Model.DAL.Mapper.Doanh_Thu.Doanh_thu_tung_DTKH_Mapper"/>
+    <fullyQualifiedTypeName name="Model.DTO.Doanh_Thu.Doanh_thu_tung_DTKH"/>
+    <fullyQualifiedTypeName name="Model.DAL.DAO.implemet.Doanh_thu_tung_DTKH_DAO"/>
 </qualifiedTypeNameHistroy>
