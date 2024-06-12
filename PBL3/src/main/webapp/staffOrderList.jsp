@@ -50,34 +50,20 @@
 			</div>
 		</div>
 		<div class="content">
-			<nav class="navbar">
-				<div class="container">
-					<div
-						class="container-fluid d-flex align-items-center justify-content-between flex-wrap gap-2">
-						<nav class="d-flex align-items-center gap-2"
-							aria-label="breadcrumb">
-							<button class="navbar-toggler d-lg-none" type="button"
-								aria-controls="sidebar" aria-expanded="false"
-								data-bs-toggle="collapse" data-bs-target=".sidecontainer"
-								aria-label="Toggle navigation" id="toggleSidebar">
-								<i class="bi bi-list"></i>
-							</button>
-							<ol class="breadcrumb m-0 p-0 bg-transparent">
-								<li class="breadcrumb-item"><a href="staffOrderList.jsp"
-									id="HeaderBreadcrumbLink">Đơn hàng</a></li>
-								<li class="breadcrumb-item active" aria-current="page"
-									id="HeaderBreadcrumbText"></li>
-							</ol>
-						</nav>
+		<div class="header"
+		style="position: fixed; width: 100%; z-index: 99; background-color: white;">
+		<nav class="navbar navbar-expand-sm">
+			<div class="col-4 center">
 
-						<form class="d-flex" role="search">
-
-							<input class="form-control me-0" type="search"
-								placeholder="Tìm kiếm" aria-label="Search" style="width: 300px;" />
-						</form>
-					</div>
-				</div>
-			</nav>
+			</div>
+			<div class="col-4 center">
+			
+			</div>
+			<div class="col-3 center">
+				<div style = "display: flex; margin-top: 20px; align-items: center; gap: 40px;" ><h4>Xin Chào ${sessionScope.acc.ho_ten}</h4> <a href = "logout"><i style = "transform: translateY(-6px)"class="fa-solid fa-right-to-bracket fa-2xl"></i></a></div>
+			</div>
+		</nav>
+	</div>
 			<div class="container main">
 				<div class="container one-page" id="viewProfilePage">
 					<div
@@ -119,8 +105,8 @@
 										<tr>
 											<th scope="row">${item.id_don_hang}</th>
 											<td>
-												<div class="d-flex justify-content-between">
-													<span>${item.tong_tien}</span> <span><b>VND</b></span>
+												<div class="d-flex justify-content-between tien">
+													${item.tong_tien}
 												</div>
 											</td>
 											<td>${item.ten_khach_hang}</td>
@@ -131,11 +117,14 @@
 											<td>
 												<form action="xem_don_hang_chi_tiet" method="get">
 													<input type="hidden" name="id_don_hang" value="${item.id_don_hang}">
-													<button class="xem_chi_tiet">Xem chi tiết</button>
+													<button class="xem_chi_tiet status status-waiting"
+													style = "width: 150px" >Xem chi tiết</button>
 												</form>
 											</td>
 											<td>
-												<button class="huy_don_hang"><input class="vale" type="hidden" value="${item.id_don_hang}">Hủy đơn hàng</button>
+												<button class="huy_don_hang status status-waiting" 
+													style = "width: 150px"
+												><input class="vale" type="hidden" value="${item.id_don_hang}">Hủy đơn hàng</button>
 											</td>
 										</tr>
 									</c:forEach>
@@ -159,5 +148,10 @@
 		crossorigin="anonymous"></script>
 
 </body>
-
+<style>
+	.table tr th{
+		text-align: center;
+	
+	}
+</style>
 </html>

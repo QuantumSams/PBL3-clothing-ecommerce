@@ -1,3 +1,7 @@
+let listTien = document.querySelectorAll('.tien');
+listTien.forEach(item => {
+	item.innerText = parseInt(item.textContent).toLocaleString('vi-VN') + " VNĐ"
+})
 let a = document.querySelectorAll('.huy_don_hang');
 a.forEach(item => {
 	item.addEventListener('click', e => {
@@ -116,8 +120,8 @@ function load_don_hang(data){
 		chuoi += '<tr>' +
 			'<th scope="row">'+item.id_don_hang+'</th>' +
 			'<td>' +
-			'<div class="d-flex justify-content-between">' +
-			'<span>'+item.tong_tien+'</span> <span><b>VND</b></span>' +
+			'<div class="d-flex justify-content-between">'
+			+parseInt(item.tong_tien).toLocaleString('vi-VN') + ' VNĐ'+
 			'</div>' +
 			'</td>' +
 			'<td>'+item.ten_khach_hang+'</td>' +
@@ -128,11 +132,11 @@ function load_don_hang(data){
 			'<td>' +
 			'<form action="xem_don_hang_chi_tiet" method="get">' +
 			'<input type="hidden" name="id_don_hang" value="'+item.id_don_hang+'">' +
-			'<button class="xem_chi_tiet">Xem chi tiết</button>' +
+			'<button class="xem_chi_tiet status status-waiting" style = "width: 150px">Xem chi tiết</button>' +
 			'</form>' +
 			'</td>' +
 			'<td>' +
-			'<button class="huy_don_hang"><input class="vale" type="hidden" value="'+item.id_don_hang+'">Hủy đơn hàng</button>' +
+			'<button class="huy_don_hang status status-waiting" style = "width: 150px"><input class="vale" type="hidden" value="'+item.id_don_hang+'">Hủy đơn hàng</button>' +
 			'</td>' +
 			'</tr>';
 	});

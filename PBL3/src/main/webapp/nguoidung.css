@@ -74,6 +74,12 @@ a{
     height: fit-content;
     padding: 50px;
 }
+.thongtin{
+	width: 80% !important;
+}
+.remove{
+	display: none !important;
+}
 .inforItems{
     display: flex;
     justify-content: space-between;
@@ -91,10 +97,10 @@ a{
     gap: 2%;
 }
 .btnXoa{
-    background-color: #F97066;
-    border: none;
-    color: white;
-    width: 200px;
+    background-color: #F97066 !important;
+    border: none !important;
+    color: white !important;
+    width: 200px !important;
 }
 .btnXoa:hover{
     background-color: red;
@@ -140,9 +146,13 @@ a{
     background-color: #4e5155;
 }
 .inputClass{
+	align-items: center;
     display: flex;
     justify-content: space-between;
     margin-top: 3%;
+}
+#img{
+	transform: translateX(50%);
 }
 .inputClass input{
     width: 40%;
@@ -158,7 +168,10 @@ a{
     border: solid 1px thin orange;
     min-width: 400px;
     width: 100%;
-    text-align: center;
+   text-align: center;
+}
+.danhgia{
+	width: 200px;
 }
 .content-table thead tr th{
     padding: 10px 15px;
@@ -168,10 +181,16 @@ a{
 .content-table tbody tr td{
     padding: 10px 15px;
 }
+
+.content-table tr:hover{
+	background-color: rgb(255, 231, 185);
+	transition: 0.25s ease-in-out 0.1s;
+	font-weight: bold;
+}
 .radio{
     display: flex;
     gap: 5%;
-    transform: translateX(-330%);
+    transform: translateX(-230%);
 }
 	
 .gender{
@@ -179,6 +198,9 @@ a{
     display: flex;
     justify-content: space-between;
 
+}
+.cardImage{
+	transform: translate(-260%);
 }
 .huy_don_hang{
 	width:100%;

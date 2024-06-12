@@ -234,9 +234,9 @@ c.forEach(item => {
 		let gia = item.parentElement.parentElement.childNodes[9].childNodes[0].value;
 		let so_luong = item.parentElement.parentElement.childNodes[11].childNodes[0].value;
 		let id = item.childNodes[1].value;
-		alert(so_luong);
-		alert(gia);
-		alert(id);
+		//alert(so_luong);
+		//alert(gia);
+		//alert(id);
 		$.ajax({
 			url: "sua_muc_san_pham", 
 			type: "POST",
@@ -291,7 +291,7 @@ function load_muc_san_pham(data){
 			'<td>'+item.mau_sac_san_pham.ten_mau+'</td>' +
 			'<td><input value="'+item.so_luong_trong_kho+'"></td>' +
 			'<td><input value="'+item.gia_tien+'"></td>' +
-			'<td><button class="cap_nhat_san_pham">' +
+			'<td><button class="cap_nhat_san_pham" >' +
 			'<input value="'+item.so_luong_trong_kho+'" type="hidden">' +
 			'<input value="'+item.gia_tien+'" type="hidden">' +
 			'<input value="'+item.id_muc_san_pham+'" type="hidden">' +
@@ -307,9 +307,6 @@ function load_muc_san_pham(data){
 			let gia = item.parentElement.parentElement.childNodes[4].childNodes[0].value;
 			let so_luong = item.parentElement.parentElement.childNodes[5].childNodes[0].value;
 			let id = item.childNodes[2].value;
-			alert(so_luong);
-			alert(gia);
-			alert(id);
 			$.ajax({
 				url: "sua_muc_san_pham",
 				type: "POST",

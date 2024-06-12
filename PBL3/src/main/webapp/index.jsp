@@ -111,7 +111,7 @@ $(document).ready(function() {
 								'<div style = "height: 40%;">'+
 								'<h5 class="card-title" style="font-weight: bold;">'+
 								'<form action="load_product" method="get">'+
-								'<button id="'+item.id_san_pham+'">'+item.ten_san_pham+'</button>'+
+								'<button style = "background-color: transparent;"id="'+item.id_san_pham+'">'+item.ten_san_pham+'</button>'+
 									'<input type="hidden" name="id_san_pham" value="'+item.id_san_pham+ '" />'
 								+'</form></h5></div>'+
 								'<div style = "height: 20%;">'+

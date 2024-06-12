@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 *{
     padding: 0;
@@ -39,9 +40,16 @@ body{
     transform: translateY(-5px);
 }
 .card-img-top:hover{
-	transform: scale(0.9);
-	transition:0.2s;
+	transform: scale(0.95);
+	transition:0.25s ease-in-out 0.25s;
 }
+.card-body:hover{
+	background-color: #e4e4e4;
+	transition:0.25s ease-in-out;
+	font-weight: bold;
+	
+}
+
 .nav-item:hover{
 
 	color: orange;	
@@ -50,6 +58,6 @@ body{
 	position: fixed;
 }
 button{
-	background-color: white;
+	background-color: transparent;
 	border: none;
 }

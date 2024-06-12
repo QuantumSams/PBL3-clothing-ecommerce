@@ -15,7 +15,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <jsp:include page="header.jsp"></jsp:include>
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="huydonhang" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -23,11 +23,28 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        ...
+        Bạn có muốn huỷ đơn hàng không
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Không</button>
+        <button type="button" class="btn btn-success xac_nhan" data-bs-dismiss="modal">Có</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="xoasanpham" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Bạn có muốn xoá sản phẩm không
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Không</button>
+        <button type="button" class="btn btn-success xac_nhan_xoa" data-bs-dismiss="modal">Có</button>
       </div>
     </div>
   </div>
@@ -91,15 +108,20 @@
                     </div>
                 </div> 
                 <div class="tab-pane fade  active show" id="tai-khoan">
-                    <div class="mainform">
+                    <div class="mainform thongtin">
                         <h4>Thông tin chung</h4>
                         <div class="userinfor">
                             <div class="img inputClass">
                                 <h6>Ảnh đại diện</h6>
-                                <div class="cardImage card-body">
+                              
+                               <div class="cardImage">
+                                <label for = "fileInput">
 									<img id="img" src="${sessionScope.acc.anh_dai_dien}" alt="Card image" class="d-block ui-w-80">
-									<input type="file" id="fileInput" name="file" />
+									<input type="file" id="fileInput" name="file"  style = "display: none"/>
+									</label>
 								</div>
+                               
+                                
                             </div>
                             <div class="name inputClass">
                                 <h6>Họ và tên</h6>

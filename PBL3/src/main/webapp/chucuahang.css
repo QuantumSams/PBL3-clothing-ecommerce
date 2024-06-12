@@ -113,7 +113,10 @@ body {
 .mainform{
     padding: 0px 20px 10px 10px;
 }
-
+.content-table tr:hover{
+	background-color: grey !important;
+	transition: 0.25s ease-in-out !important;
+}
 .header3{
     padding: 40px 0px;
     display: flex;
@@ -127,6 +130,7 @@ body {
     width: 35%;
     background-color: #667085;
     color: white;
+    
 }
 .daBan{
     width: 30%;
@@ -237,3 +241,11 @@ body {
 .content-table td{
 	font-weight: bold;
 }
+.hienthi{
+	display: block !important;
+}
+#doanh-thu{
+	border-radius: 10px;
+    padding: 20px;
+    margin-top: 10px;
+}	
