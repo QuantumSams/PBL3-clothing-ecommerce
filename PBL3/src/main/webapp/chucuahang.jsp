@@ -105,7 +105,7 @@
                                 <div class="search">
                                     <div class="input">
                                         <span class="iconSearch"><i class="fa-solid fa-magnifying-glass fa-rotate-90" style="color:white;"></i></span>
-                                        <input class = "inputSearch" type="text" placeholder="Tìm kiếm sản phẩm trong danh sách">
+                                        <input id="searchKhoHang" class = "inputSearch" type="text" placeholder="Tìm kiếm sản phẩm trong danh sách">
                                     </div>
                                     <button class = "buttonSearch">Search</button>
                                 </div>
@@ -136,11 +136,9 @@
 											<td>${item.ten_san_pham}</td>
 											<td>${item.kich_thuoc_san_pham.ten_size}</td>
 											<td>${item.mau_sac_san_pham.ten_mau}</td>
-											<td><input value="${item.so_luong_trong_kho}"></td>
-											<td><input value="${item.gia_tien}"></td>
+											<td><input class="so_luong_trong_kho" value="${item.so_luong_trong_kho}"></td>
+											<td><input class="gia_tien_muc_san_pham" value="${item.gia_tien}"></td>
 											<td><button class="cap_nhat_san_pham">
-												<input value="${item.so_luong_trong_kho}" type="hidden">
-												<input value="${item.gia_tien}" type="hidden">
 												<input value="${item.id_muc_san_pham}" type="hidden">
 												Cập nhật</button></td>
 										</tr>

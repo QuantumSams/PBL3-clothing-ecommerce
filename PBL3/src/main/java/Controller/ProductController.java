@@ -24,7 +24,8 @@ import jakarta.servlet.http.HttpSession;
 @WebServlet(urlPatterns = {"/get_product_by_ajax", "/add_product", 
 							"/update_product", "/load_product", 
 							"/remove_product", "/them_mau", "/them_size",
-							"/xoa_size", "/xoa_mau", "/tim_kiem_san_pham", "/sua_muc_san_pham"})
+							"/xoa_size", "/xoa_mau", "/tim_kiem_san_pham", 
+							"/sua_muc_san_pham", "/tim_kho_hang"})
 public class ProductController extends HttpServlet {
 
 	private static final long serialVersionUID = -886812143546363698L;
@@ -70,6 +71,16 @@ public class ProductController extends HttpServlet {
 			
 			ObjectMapper mapper = new ObjectMapper();
 		    String json = mapper.writeValueAsString(san_pham);
+		    resp.setContentType("application/json");
+		    resp.setCharacterEncoding("UTF-8");
+		    resp.getWriter().write(json);
+		}
+		
+		else if(action.equals("/tim_kho_hang")) {
+			List<Muc_san_pham> muc_san_pham = muc_san_pham_Service.search(req, resp);
+			
+			ObjectMapper mapper = new ObjectMapper();
+		    String json = mapper.writeValueAsString(muc_san_pham);
 		    resp.setContentType("application/json");
 		    resp.setCharacterEncoding("UTF-8");
 		    resp.getWriter().write(json);
@@ -126,10 +137,9 @@ public class ProductController extends HttpServlet {
 		}
 		
 		else if(action.equals("/sua_muc_san_pham")) {
+
 			san_pham_Service.update_Muc_san_pham(req, resp);
 			List<Muc_san_pham> muc_san_pham = muc_san_pham_Service.getAllMucSanPham(); 
-			
-			System.out.println("sua muc san  pham");
 			
 			ObjectMapper mapper = new ObjectMapper();
 		    String json = mapper.writeValueAsString(muc_san_pham);

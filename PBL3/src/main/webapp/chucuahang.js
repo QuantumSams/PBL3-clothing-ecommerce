@@ -205,12 +205,32 @@ b.forEach(item => {
 	})
 })
 
+$(document).ready(function(){
+	 $(".buttonSearch").click(function(){
+		$.ajax({
+			url: "tim_kho_hang", 
+			type: "GET",
+			dataType: 'json',
+			data: {
+				ten_muc_san_pham: $("#searchKhoHang").val(),
+			},
+			success: function(data) {
+				load_muc_san_pham(data);
+			},
+			error:  function() {
+				alert("loi");
+			},
+		});
+	});
+});
+
+
 let c = document.querySelectorAll('.cap_nhat_san_pham');
 c.forEach(item => {
 	item.addEventListener('click', e =>{
-		let so_luong = item.childNodes[1].value;
-		let gia = item.childNodes[3].value;
-		let id = item.childNodes[5].value;
+		let gia = item.parentElement.parentElement.childNodes[9].childNodes[0].value;
+		let so_luong = item.parentElement.parentElement.childNodes[11].childNodes[0].value;
+		let id = item.childNodes[1].value;
 		alert(so_luong);
 		alert(gia);
 		alert(id);
@@ -219,9 +239,9 @@ c.forEach(item => {
 			type: "POST",
 			dataType: 'json',
 			data: {
-				id_muc_san_pham : inputValue,
-				so_luong_san_pham: inputValue,
-				gia_san_pham: inputValue
+				id_muc_san_pham : id,
+				so_luong_san_pham: so_luong,
+				gia_san_pham: gia
 			},
 			success: function(data) {
 				load_muc_san_pham(data);
@@ -237,8 +257,8 @@ function load_muc_san_pham(data){
 	let chuoi = "";
 	data.forEach(function(item) {
 		chuoi += '<tr class="muc_san_pham">' +
-			'<td><img' +
-			'src="'+item.anh_chi_tiet+'"' +
+			'<td><img ' +
+			'src="'+item.anh_chi_tiet+'" ' +
 			'width="50px" alt=""></td>' +
 			'<td>'+item.ten_san_pham+'</td>' +
 			'<td>'+item.kich_thuoc_san_pham.ten_size+'</td>' +
@@ -254,4 +274,32 @@ function load_muc_san_pham(data){
 	});
 
 	$(".Muc_sp").html(chuoi);
+	
+	let c = document.querySelectorAll('.cap_nhat_san_pham');
+	c.forEach(item => {
+		item.addEventListener('click', e => {
+			let gia = item.parentElement.parentElement.childNodes[4].childNodes[0].value;
+			let so_luong = item.parentElement.parentElement.childNodes[5].childNodes[0].value;
+			let id = item.childNodes[2].value;
+			alert(so_luong);
+			alert(gia);
+			alert(id);
+			$.ajax({
+				url: "sua_muc_san_pham",
+				type: "POST",
+				dataType: 'json',
+				data: {
+					id_muc_san_pham : id,
+					so_luong_san_pham: so_luong,
+					gia_san_pham: gia
+				},
+				success: function(data) {
+					load_muc_san_pham(data);
+				},
+				error: function() {
+					alert("loi");
+				},
+			});
+		})
+	})
 }

@@ -175,6 +175,8 @@
                 	<input class = "id_mau_sac_duyet" value="${item.mau_sac_san_pham.id_mau_sac}" type = "hidden">
                 	<input class = "id_size_duyet" value="${item.kich_thuoc_san_pham.id_size}" type = "hidden">
                 	<input class = "id_muc_duyet" value="${item.id_muc_san_pham}" type = "hidden">
+                	<input class = "so_luong_san_pham" value="${item.so_luong_trong_kho}" type = "hidden">
+                	<input class = "gia_san_pham" value="${item.gia_tien}" type = "hidden">
                 </c:forEach>
                 
                 <input class = "id_nguoi_dung" value="${acc.id_nguoi_dung}" type="hidden">

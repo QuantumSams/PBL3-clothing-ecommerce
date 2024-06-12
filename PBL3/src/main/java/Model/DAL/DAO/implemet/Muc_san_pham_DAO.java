@@ -66,9 +66,24 @@ public class Muc_san_pham_DAO extends AbstractDao implements Repository<Muc_san_
 		update(query, t.getId_muc_san_pham());
 	}
 
+	public void updateGiaSoLuong(int gia, int so_luong, int id) {
+		String sql = "UPDATE muc_san_pham SET so_luong_trong_kho = ?, gia_tien = ? WHERE id_muc_san_pham = ?";
+		update(sql, gia, so_luong, id);
+	}
+	
 	@Override
 	public void updateBySpacification(Specification<Muc_san_pham> specification) {
-		query(specification.getQuery(), specification.getParameters());
+		update(specification.getQuery(), specification.getParameters());
+	}
+	
+	public void updateGiamSoLuong(int so_sp_dc_ban, int id) {
+		String sql = "UPDATE muc_san_pham SET so_luong_trong_kho = so_luong_trong_kho - ? WHERE id_muc_san_pham = ?";
+		update(sql, so_sp_dc_ban, id);
+	}
+	
+	public void updateTangSoLuong(int so_sp_dc_ban, int id) {
+		String sql = "UPDATE muc_san_pham SET so_luong_trong_kho = so_luong_trong_kho + ? WHERE id_muc_san_pham = ?";
+		update(sql, so_sp_dc_ban, id);
 	}
 
 }

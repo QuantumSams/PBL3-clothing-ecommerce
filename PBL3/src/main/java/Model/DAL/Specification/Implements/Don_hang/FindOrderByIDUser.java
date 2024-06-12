@@ -33,7 +33,8 @@ public class FindOrderByIDUser implements Specification<Don_hang>{
 		Query.append(") AS chi_tiet ON chi_tiet.id = don_hang.id_don_hang\r\n");
 		Query.append("LEFT JOIN danh_gia_don_hang \r\n");
 		Query.append("ON danh_gia_don_hang.id_don_hang = don_hang.id_don_hang\r\n");
-		Query.append("WHERE don_hang.id_khach_hang = ?");
+		Query.append("WHERE don_hang.id_khach_hang = ? ");
+		Query.append("ORDER BY thoi_gian_dat DESC ");
 		
 		setParameters(id_order);
 		

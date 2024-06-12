@@ -105,6 +105,9 @@ public class Order_Service {
 				muc_sp_don_hang.setGia(muc.getGia_tien());
 				
 				muc_sp_don_hang_DAO.add(muc_sp_don_hang);
+				
+				
+				muc_san_pham_DAO.updateGiamSoLuong(soLuongValues.get(i), sanPhamValues.get(i));
 			}
 		} catch (JsonProcessingException e) {}
 		
@@ -124,6 +127,7 @@ public class Order_Service {
 		}
 		else {
 			trang_thai_don_hang = nhan_vien_huy_don;
+			hoan_so_luong_san_pham(id_don_hang);
 		}
 		
 		Don_hang_chi_tiet don_hang_chi_tiet = don_hang_chi_tiet_DAO.findBySpacification(new FindDetailOrderByIDOrder(id_don_hang)).get(0);
@@ -148,6 +152,7 @@ public class Order_Service {
 		}
 		else {
 			trang_thai_don_hang = khach_huy_don;
+			hoan_so_luong_san_pham(id_don_hang);
 		}
 		
 		Don_hang_chi_tiet don_hang_chi_tiet = new Don_hang_chi_tiet();
@@ -161,6 +166,14 @@ public class Order_Service {
 		don_hang_chi_tiet_DAO.updateKH(don_hang_chi_tiet);
 		
 		
+	}
+	
+	public void hoan_so_luong_san_pham(int id_don_hang) {
+		List<Muc_sp_don_hang> list_muc_san_pham = muc_sp_don_hang_DAO.findBySpacification(new FindItemOrderByIDOrder(id_don_hang));
+		for(Muc_sp_don_hang muc : list_muc_san_pham) {
+			System.out.println(muc.getSo_luong() + " " +  muc.getId_muc_san_pham());
+			muc_san_pham_DAO.updateTangSoLuong(muc.getSo_luong(), muc.getId_muc_san_pham());
+		}
 	}
 	
 	public List<Muc_sp_don_hang> get_item_order_by_id_cart(HttpServletRequest req, HttpServletResponse resp) {

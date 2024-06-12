@@ -23,8 +23,6 @@ public class Cart_Service {
 	public void them_gio_hang(HttpServletRequest req, HttpServletResponse resp) {
 		int id_gio_hang = new Random().nextInt();
 		int id_khach_hang = Integer.parseInt(req.getParameter("id_khach_hang"));
-		int id_mau_sac = Integer.parseInt(req.getParameter("id_mau_sac"));
-		int id_size = Integer.parseInt(req.getParameter("id_size"));
 		int so_luong = Integer.parseInt(req.getParameter("so_luong"));
 		int id_muc_san_pham = Integer.parseInt(req.getParameter("id_muc_san_pham"));
 		

@@ -274,8 +274,10 @@ public class San_pham_Service {
 		int so_luong_san_pham = Integer.parseInt(req.getParameter("so_luong_san_pham"));
 		int gia_san_pham = Integer.parseInt(req.getParameter("gia_san_pham"));
 		
-		muc_san_pham_DAO.updateBySpacification(new UpdatePriceQuatityItemProduct(gia_san_pham, so_luong_san_pham, id_muc_san_pham));
-		
+		System.out.println(id_muc_san_pham + " " + so_luong_san_pham+  " " + gia_san_pham);
+		muc_san_pham_DAO.updateGiaSoLuong(gia_san_pham, so_luong_san_pham, id_muc_san_pham);
+		//muc_san_pham_DAO.updateBySpacification(new UpdatePriceQuatityItemProduct(gia_san_pham, so_luong_san_pham, id_muc_san_pham));
+		System.out.println("caapj nhaatj thanhf cong");
 	}
 	
 	public List<String> add_image(List<String> imageStrings, String id_san_pham) throws IOException, ServletException {
