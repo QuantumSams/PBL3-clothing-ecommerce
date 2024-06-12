@@ -55,8 +55,8 @@
                     
                 </table>
             </div> 
-            <input id = "diemdanhgia" value = "-1" type = "hidden">
-            <input id = "diemsao" value = "3" type = "hidden">
+            <input id = "diemdanhgia" value = "${danh_gia.diem_danh_gia}" type = "hidden">
+            <input id = "diemsao" value = "${danh_gia.diem_danh_gia}" type = "hidden">
             <div class="price">
                 <h3>Đánh giá đơn hàng</h3>
                 <div class="dform">
@@ -72,7 +72,7 @@
                 <div class="dform" style = "margin-top: 20px">
                     <h5>Bình luận</h5>
                     <div class="textarea">
-                        <textarea name="" id="cmt" >Bình luận sẽ xuất hiện ở đây
+                        <textarea name="" id="cmt" >${danh_gia.binh_luan}
                         </textarea>
                     </div>
                 </div>
@@ -109,6 +109,7 @@
                 </div>
                 <div class="User">
                     <h5>Trạng thái</h5>
+                    <input id="id_don_hang" value="${don_hang.id_don_hang}" type="hidden">
                     <h5><button type="button" class="btn trangthai">${don_hang.trang_thai_don_hang }</button></h5>
                 </div>
             </div>
@@ -127,14 +128,15 @@
 </body>
 <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
 <script>
+let value = 0;
 let star = document.querySelectorAll('.btnStar');
-let diemdanhgia = document.querySelector('#diemdanhgia').value;
-if(diemdanhgia == -1){
+
+if(document.querySelector('#diemdanhgia').value == -1){
 	star.forEach(item=>{
 		item.addEventListener('click', e=>{
-			let value = item.value;
+			value = item.value;
 			if(item.childNodes[0].classList.contains('fa-2xl')){
-				for(let i = value - 1; i<5; ++i){
+				for(let i = item.value - 1; i<5; ++i){
 					if(star[i].childNodes[0].classList.contains('fa-2xl')){
 						star[i].childNodes[0].classList.remove('fa-2xl')
 					}
@@ -170,24 +172,30 @@ else{
 }
 
 
-$(document).ready(function(){
-	 $("#xac_nhan_don").click(function(){
-			$.ajax({
-			      url: "nhan_duoc_don_hang", // URL of your Servlet
-			      type: "POST",
-			      dataType: 'json',
-			      
-			      success: function(data) {
-					alert("Thêm sản phẩm thành công!");
-			      },
-			      error: function(data) {
-						alert("Thêm sản phẩm thất bại!");
-					}
-		   });
-	});
-});
 
-    
+document.querySelector('.btnXacnhan').addEventListener('click', e=>{
+	alert('ahha');
+	let id = document.querySelector('#id_don_hang').value;
+	let cmt = document.querySelector('#cmt').value;
+	
+	$.ajax({
+	      url: "luu_danh_gia", // URL of your Servlet
+	      type: "POST",
+	      dataType: 'json',
+	      data: {
+	    	  id_don_hang: id,
+	    	  so_diem_danh_gia: value,
+	    	  binh_luan: cmt
+	      }
+	      /* success: function(data) {
+			alert("Thêm sản phẩm thành công!");
+	      },
+	      error: function(data) {
+				alert("Thêm sản phẩm thất bại!");
+			}  */
+ });
+	
+})
     
   </script> 
 </html>	

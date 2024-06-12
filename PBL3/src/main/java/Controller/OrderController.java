@@ -145,7 +145,7 @@ public class OrderController extends HttpServlet{
 			danh_muc_Service.addDanhMucSanPham(req, resp);
 		}
 		else if(action.equals("/luu_danh_gia")) {
-			danh_muc_Service.addDanhMucSanPham(req, resp);
+			order_Service.danh_gia_san_pham(req, resp);
 		}
 		
 	}

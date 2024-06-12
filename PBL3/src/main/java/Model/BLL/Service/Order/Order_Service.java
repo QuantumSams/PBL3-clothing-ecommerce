@@ -251,7 +251,7 @@ public class Order_Service {
 		danh_gia.setId_don_hang(id_don_hang);
 		danh_gia.setDiem_danh_gia(so_diem_danh_gia);
 		danh_gia.setBinh_luan(binh_luan);
-		
+		System.out.println(id_don_hang + " " +so_diem_danh_gia +" "+binh_luan);
 		danh_gia_don_hang_DAO.update(danh_gia);
 		
 	}
