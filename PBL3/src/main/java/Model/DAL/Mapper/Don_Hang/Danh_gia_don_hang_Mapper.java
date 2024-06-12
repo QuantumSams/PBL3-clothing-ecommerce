@@ -12,10 +12,10 @@ public class Danh_gia_don_hang_Mapper  implements RowMapper<Danh_gia_don_hang>{
 	public Danh_gia_don_hang mapRow(ResultSet rs) {
 		Danh_gia_don_hang danh_gia_don_hang = null;
 		try {
-			danh_gia_don_hang= new Danh_gia_don_hang(rs.getInt(0),
-														rs.getInt(0) , 	
-														rs.getInt(0), 
-														rs.getString(0));
+			danh_gia_don_hang= new Danh_gia_don_hang(rs.getInt("id"),
+														rs.getInt("id_don_hang") , 	
+														rs.getInt("diem_danh_gia"), 
+														rs.getString("binh_luan"));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

@@ -40,7 +40,7 @@ import jakarta.servlet.http.HttpServletResponse;
 							"/lich_su_don_tong_quat", "/lich_su_don_chi_tiet", 
 							"/xac_nhan_dat_don", "/nhan_duoc_don_hang", "/xem_don_hang_chi_tiet", 
 							"/xem_lich_su_don", "/load_don_hang_ajax", "/load_kho_ajax", 
-							"/them_danh_muc"})
+							"/them_danh_muc", "/luu_danh_gia"})
 public class OrderController extends HttpServlet{
 
 	private static final long serialVersionUID = 6360439063345108716L;
@@ -79,9 +79,7 @@ public class OrderController extends HttpServlet{
 		else if(action.equals("/xem_don_hang_chi_tiet")) {
 			Don_hang_chi_tiet chi_tiet_don_hang = order_Service.get_detail_order_by_ID(req, resp);
 			List<Muc_sp_don_hang> muc_san_pham = order_Service.get_item_order_by_id(req, resp);
-			Danh_gia_don_hang danh_gia_don_hang = order_Service.getEvaluateByIDOrder(req, resp);
 			
-			req.setAttribute("danh_gia", danh_gia_don_hang);
 			req.setAttribute("chi_tiet_don_hang", muc_san_pham);
 			req.setAttribute("don_hang", chi_tiet_don_hang);
 			req.getRequestDispatcher("orderDetail.jsp").forward(req, resp);
@@ -90,7 +88,9 @@ public class OrderController extends HttpServlet{
 		else if(action.equals("/xem_lich_su_don")) {
 			Don_hang_chi_tiet chi_tiet_don_hang = order_Service.get_detail_order_by_ID(req, resp);
 			List<Muc_sp_don_hang> muc_san_pham = order_Service.get_item_order_by_id(req, resp);
-			
+			Danh_gia_don_hang danh_gia_don_hang = order_Service.getEvaluateByIDOrder(req, resp);
+			System.out.println(danh_gia_don_hang.getDiem_danh_gia());
+			req.setAttribute("danh_gia", danh_gia_don_hang);
 			req.setAttribute("chi_tiet_don_hang", muc_san_pham);
 			req.setAttribute("don_hang", chi_tiet_don_hang);
 			req.getRequestDispatcher("lishsudon.jsp").forward(req, resp);
@@ -142,6 +142,9 @@ public class OrderController extends HttpServlet{
 			postJsonMessage(resp,  "Xác nhận đã nhận đon hàng thành công!");
 		}
 		else if(action.equals("/them_danh_muc")) {
+			danh_muc_Service.addDanhMucSanPham(req, resp);
+		}
+		else if(action.equals("/luu_danh_gia")) {
 			danh_muc_Service.addDanhMucSanPham(req, resp);
 		}
 		

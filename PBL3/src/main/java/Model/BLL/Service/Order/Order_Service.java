@@ -56,7 +56,7 @@ public class Order_Service {
 	Don_hang_chi_tiet_DAO don_hang_chi_tiet_DAO;
 	San_pham_DAO san_pham_DAO;
 	Muc_sp_don_hang_DAO muc_sp_don_hang_DAO;
-	Danh_gia_don_hang_DAO danh_gia_san_pham_DAO;
+	Danh_gia_don_hang_DAO danh_gia_don_hang_DAO;
 	
 	public Order_Service() {
 		don_hang_DAO = new Don_hang_DAO();
@@ -66,7 +66,7 @@ public class Order_Service {
 		don_hang_chi_tiet_DAO = new Don_hang_chi_tiet_DAO();
 		san_pham_DAO = new San_pham_DAO();
 		muc_sp_don_hang_DAO = new Muc_sp_don_hang_DAO();
-		danh_gia_san_pham_DAO = new Danh_gia_don_hang_DAO();
+		danh_gia_don_hang_DAO = new Danh_gia_don_hang_DAO();
 	}
 	
 	public void add_order(HttpServletRequest req, HttpServletResponse resp) {
@@ -124,7 +124,7 @@ public class Order_Service {
 		
 		int id_danh_gia = new RandomID().ran();
 		Danh_gia_don_hang danh_gia_don_hang = new Danh_gia_don_hang(id_danh_gia, id_order, -1, "");
-		danh_gia_san_pham_DAO.add(danh_gia_don_hang);
+		danh_gia_don_hang_DAO.add(danh_gia_don_hang);
 	}
 	
 	public void nhan_vien_xac_nhan(HttpServletRequest req, HttpServletResponse resp) {
@@ -217,7 +217,7 @@ public class Order_Service {
 	public Danh_gia_don_hang getEvaluateByIDOrder(HttpServletRequest req, HttpServletResponse resp) {
 		int id_don_hang = Integer.parseInt(req.getParameter("id_don_hang"));
 		
-		return danh_gia_san_pham_DAO.findBySpacification(new FindEvaluateByIDOrder(id_don_hang)).get(0);
+		return danh_gia_don_hang_DAO.findBySpacification(new FindEvaluateByIDOrder(id_don_hang)).get(0);
 	}
 	
 	public List<Don_hang> get_order_by_state(HttpServletRequest req, HttpServletResponse resp){
@@ -240,6 +240,20 @@ public class Order_Service {
 		int id_don_hang = Integer.parseInt(req.getParameter("id_don_hang"));
 		
 		return new Muc_sp_don_hang_DAO().findBySpacification(new FindItemOrderByIDOrder(id_don_hang));
+	}
+	
+	public void danh_gia_san_pham(HttpServletRequest req, HttpServletResponse resp) {
+		int id_don_hang = Integer.parseInt(req.getParameter("id_don_hang"));
+		int so_diem_danh_gia = Integer.parseInt(req.getParameter("so_diem_danh_gia"));
+		String binh_luan = req.getParameter("binh_luan");
+		
+		Danh_gia_don_hang danh_gia = new Danh_gia_don_hang();
+		danh_gia.setId_don_hang(id_don_hang);
+		danh_gia.setDiem_danh_gia(so_diem_danh_gia);
+		danh_gia.setBinh_luan(binh_luan);
+		
+		danh_gia_don_hang_DAO.update(danh_gia);
+		
 	}
 	
 	private void postMessageJson( HttpServletResponse resp, String message) throws IOException {

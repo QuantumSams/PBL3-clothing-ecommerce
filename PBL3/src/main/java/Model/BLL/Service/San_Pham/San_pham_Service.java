@@ -184,9 +184,7 @@ public class San_pham_Service {
 		
 		int id_danh_muc = Integer.parseInt(data.get("id_danh_muc").toString());
 		Danh_muc_san_pham danh_muc = new Danh_muc_Service(new Danh_muc_DAO()).getDanh_muc_Id(id_danh_muc);
-		
 		int id_san_pham =	Integer.parseInt(data.get("id_san_pham").toString());	
-		
 		String ten_mat_hang = data.get("ten_mat_hang").toString() ;
 		String mo_ta = data.get("mo_ta").toString() ;
 		String thong_tin_chi_tiet = data.get("thong_tin_chi_tiet").toString() ;
@@ -198,8 +196,8 @@ public class San_pham_Service {
 		
 		San_pham san_pham = new San_pham(id_san_pham, danh_muc.getCategory(), ten_mat_hang, thuong_hieu, chat_lieu, mo_ta, thong_tin_chi_tiet, fileanh, list_muc_san_pham);
 		san_pham.setId_danh_muc_san_pham(id_danh_muc);
-		System.out.println(san_pham.toString());
-		System.out.println(san_pham.getId_danh_muc_san_pham());
+		
+		
 		san_pham_DAO.update(san_pham);
 
 	}

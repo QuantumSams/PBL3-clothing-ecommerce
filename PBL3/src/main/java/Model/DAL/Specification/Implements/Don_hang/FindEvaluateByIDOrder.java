@@ -14,7 +14,7 @@ public class FindEvaluateByIDOrder implements Specification<Danh_gia_don_hang>{
 	
 	@Override
 	public String getQuery() {
-		String sql = "SELECT * FROM danh_gia_don_hang WHERE id_don_hang = ?";
+		String sql = "SELECT * FROM danh_gia_don_hang  WHERE id_don_hang = ?";
 		
 		setParameters(id_order);
 		
