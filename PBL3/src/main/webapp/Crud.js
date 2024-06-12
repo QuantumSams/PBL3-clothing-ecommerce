@@ -33,18 +33,18 @@ $(document).ready(function() {
 		});
 		let id_dm = $("#Danh_muc").val();
 		let data = {
-				id_danh_muc:id_dm,
-				ten_mat_hang: $("#ten_mat_hang").val(),
-				mo_ta: $("#mo_ta").val(),
-				thong_tin_chi_tiet: $("#thong_tin_chi_tiet").val(),
-				thuong_hieu: $("#thuong_hieu").val(),
-				chat_lieu: $("#chat_lieu").val(),
-				images: JSON.stringify(imageSrc),
-				size: JSON.stringify(sizeValues),
-				color: JSON.stringify(colorValues),
-				gia: JSON.stringify(giaValues),
-				image_muc: JSON.stringify(imageValues)
-			};
+			id_danh_muc: id_dm,
+			ten_mat_hang: $("#ten_mat_hang").val(),
+			mo_ta: $("#mo_ta").val(),
+			thong_tin_chi_tiet: $("#thong_tin_chi_tiet").val(),
+			thuong_hieu: $("#thuong_hieu").val(),
+			chat_lieu: $("#chat_lieu").val(),
+			images: JSON.stringify(imageSrc),
+			size: JSON.stringify(sizeValues),
+			color: JSON.stringify(colorValues),
+			gia: JSON.stringify(giaValues),
+			image_muc: JSON.stringify(imageValues)
+		};
 		$.ajax({
 			url: "add_product", // URL of your Servlet
 			type: "POST",
@@ -144,19 +144,19 @@ container.querySelector('#fileInput').addEventListener('change', (e) => {
 });
 
 let btnColor = document.querySelectorAll('.btnColor');
-btnColor.forEach(item =>{
-	item.addEventListener('click',e=>{
-		if(item.classList.contains('selected')){
+btnColor.forEach(item => {
+	item.addEventListener('click', e => {
+		if (item.classList.contains('selected')) {
 			item.classList.remove('selected');
 		}
-		else{
+		else {
 			let b = document.querySelector('.selected');
-			if(b == null){
-				
+			if (b == null) {
+
 			}
-			else{
+			else {
 				b.classList.remove('selected');
-				
+
 			}
 			item.classList.add('selected');
 		}
@@ -166,19 +166,19 @@ btnColor.forEach(item =>{
 
 
 
-	let btnSize = document.querySelectorAll('.btnSize');
+let btnSize = document.querySelectorAll('.btnSize');
 
-btnSize.forEach(item =>{
-	item.addEventListener('click',e=>{
-		if(item.classList.contains('selected1')){
+btnSize.forEach(item => {
+	item.addEventListener('click', e => {
+		if (item.classList.contains('selected1')) {
 			item.classList.remove('selected1');
 		}
-		else{
+		else {
 			let c = document.querySelector('.selected1');
-			if(c == null){
-				
+			if (c == null) {
+
 			}
-			else{
+			else {
 				c.classList.remove('selected1');
 			}
 			item.classList.add('selected1');
@@ -255,18 +255,18 @@ function addImageItems(linput) {
 		reader.readAsDataURL(file);
 	}
 }
-function openPopupColor(){
+function openPopupColor() {
 	let overlay = document.createElement('div');
 	overlay.className = "overlay";
 	let form = document.createElement('div');
 	form.className = "popup";
-	
-	let name  = document.createElement('input');
+
+	let name = document.createElement('input');
 	name.className = "nameColor";
 	let buttonExit = document.createElement('button');
 	let buttonDone = document.createElement('button');
 	let buttonImage = document.createElement('input');
-	let label = document.createElement('label');	
+	let label = document.createElement('label');
 	let icon = document.createElement('i');
 	icon.className = "fa-solid fa-plus";
 	label.appendChild(icon);
@@ -277,11 +277,11 @@ function openPopupColor(){
 	buttonImage.multiple = true;
 	buttonImage.hidden = true;
 	buttonImage.textContent = "Thêm ảnh";
-	label.setAttribute('for', "idImage" );
-	buttonImage.addEventListener('change', e=>{
+	label.setAttribute('for', "idImage");
+	buttonImage.addEventListener('change', e => {
 		addColorImage(e.target);
 	})
-	buttonExit.textContent ="Thoát";
+	buttonExit.textContent = "Thoát";
 	buttonDone.textContent = "Hoàn thành"
 	form.appendChild(name);
 	form.appendChild(buttonDone);
@@ -292,10 +292,10 @@ function openPopupColor(){
 	buttonExit.addEventListener('click', () => {
 		overlay.remove();
 	});
-	buttonDone.addEventListener('click', ()=>{
-		let buttonAdd =  document.createElement('button');
+	buttonDone.addEventListener('click', () => {
+		let buttonAdd = document.createElement('button');
 		buttonAdd.textContent = document.querySelector('.nameColor').value;
-		if(buttonAdd.textContent.trim == ""){
+		if (buttonAdd.textContent.trim == "") {
 			alert("Chưa nhập gì cả");
 			overlay.remove();
 		}
@@ -306,212 +306,253 @@ function openPopupColor(){
 		img.forEach((image) => {
 			imageSrc.push(image.src.split(",")[1]);
 
-		});	
+		});
+
+		overlay.remove();
+	})
+	document.body.appendChild(overlay);
+}
+function themDoituong() {
+	let overlay = document.createElement('div');
+	overlay.className = "overlay";
+	let form = document.createElement('div');
+	form.className = "popup";
+
+	let name = document.createElement('input');
+	name.className = "name";
+	let buttonExit = document.createElement('button');
+	let buttonDone = document.createElement('button');
+	buttonExit.textContent = "Thoát";
+	buttonDone.textContent = "Hoàn thành"
+	form.appendChild(name);
+	form.appendChild(buttonDone);
+	form.appendChild(buttonExit);
+
+	overlay.appendChild(form);
+	buttonExit.addEventListener('click', () => {
+		overlay.remove();
+	});
+	buttonDone.addEventListener('click', () => {
+		let newOption = document.createElement('option');
+		newOption.textContent = document.querySelector('.name').value;
+		if (newOption.textContent.trim == "") {
+			alert("Chưa nhập gì cả");
+			overlay.remove();
+		}
+		let ten = document.querySelector('.name').value;
+		alert(ten);
 		$.ajax({
-			
-			url: "them_mau", // URL of your Servlet
+			url: "them_danh_muc", // URL of your Servlet
 			type: "POST",
 			dataType: 'json',
 			data: {
-				ten_mau: $(".nameColor").val(),
-				anh: imageSrc[0],
+				id_parent: null,
+				ten: ten
 			},
 
 			success: function(data) {
-				alert(data);
-			},
-			error: function() {
-				alert("Có lỗi phát sinh");
+				$("#Doi_tuong_khach_hang").html(load(data));
 			}
+
+		});
+		overlay.remove();
+		
+	})
+	document.body.appendChild(overlay);
+}
+
+function themLoaiSanPham() {
+	let overlay = document.createElement('div');
+	overlay.className = "overlay";
+	let form = document.createElement('div');
+	form.className = "popup";
+
+	let name = document.createElement('input');
+	name.className = "name";
+	let buttonExit = document.createElement('button');
+	let buttonDone = document.createElement('button');
+
+	buttonExit.textContent = "Thoát";
+	buttonDone.textContent = "Hoàn thành"
+
+
+	form.appendChild(name);
+	form.appendChild(buttonDone);
+	form.appendChild(buttonExit);
+
+	overlay.appendChild(form);
+	buttonExit.addEventListener('click', () => {
+		overlay.remove();
+	});
+	buttonDone.addEventListener('click', () => {
+		let newOption = document.createElement('option');
+		newOption.textContent = document.querySelector('.name').value;
+		if (newOption.textContent.trim == "") {
+			alert("Chưa nhập gì cả");
+			overlay.remove();
+		}
+		let ten = document.querySelector('.name').value;
+		alert(ten);
+		$.ajax({
+			url: "them_danh_muc", // URL of your Servlet
+			type: "POST",
+			dataType: 'json',
+			data: {
+				id_parent: document.querySelector('#Doi_tuong_khach_hang').value,
+				ten: ten
+			},
+
+			success: function(data) {
+				$("#Loai_san_pham").html(load(data));
+			}
+
 		});
 		
 		overlay.remove();
 	})
 	document.body.appendChild(overlay);
 }
-function themDoituong(){
+function themDanhMuc() {
 	let overlay = document.createElement('div');
 	overlay.className = "overlay";
 	let form = document.createElement('div');
 	form.className = "popup";
-	
-	let name  = document.createElement('input');
+
+	let name = document.createElement('input');
 	name.className = "name";
 	let buttonExit = document.createElement('button');
 	let buttonDone = document.createElement('button');
-	buttonExit.textContent ="Thoát";
+	buttonExit.textContent = "Thoát";
 	buttonDone.textContent = "Hoàn thành"
 	form.appendChild(name);
 	form.appendChild(buttonDone);
 	form.appendChild(buttonExit);
-	
+
 	overlay.appendChild(form);
 	buttonExit.addEventListener('click', () => {
 		overlay.remove();
 	});
-	buttonDone.addEventListener('click', ()=>{
-		let newOption =  document.createElement('option');
+	buttonDone.addEventListener('click', () => {
+		let newOption = document.createElement('option');
 		newOption.textContent = document.querySelector('.name').value;
-		if(newOption.textContent.trim == ""){
+		if (newOption.textContent.trim == "") {
 			alert("Chưa nhập gì cả");
 			overlay.remove();
 		}
-		document.querySelector('#Doi_tuong_khach_hang').appendChild(newOption)
+		
+		let ten = document.querySelector('.name').value;
+		alert(ten);
+		$.ajax({
+			url: "them_danh_muc", // URL of your Servlet
+			type: "POST",
+			dataType: 'json',
+			data: {
+				id_parent: document.querySelector('#Loai_san_pham').value,
+				ten: ten
+			},
+
+			success: function(data) {
+				$("#Danh_muc").html(load(data));
+			}
+
+		});
+		
 		overlay.remove();
 	})
 	document.body.appendChild(overlay);
 }
-function themLoaiSanPham(){
+function openPopupSize() {
 	let overlay = document.createElement('div');
 	overlay.className = "overlay";
 	let form = document.createElement('div');
 	form.className = "popup";
-	
-	let name  = document.createElement('input');
-	name.className = "name";
-	let buttonExit = document.createElement('button');
-	let buttonDone = document.createElement('button');
-	
-	buttonExit.textContent ="Thoát";
-	buttonDone.textContent = "Hoàn thành"
-	
-	
-	form.appendChild(name);
-	form.appendChild(buttonDone);
-	form.appendChild(buttonExit);
-	
-	overlay.appendChild(form);
-	buttonExit.addEventListener('click', () => {
-		overlay.remove();
-	});
-	buttonDone.addEventListener('click', ()=>{
-		let newOption =  document.createElement('option');
-		newOption.textContent = document.querySelector('.name').value;
-		if(newOption.textContent.trim == ""){
-			alert("Chưa nhập gì cả");
-			overlay.remove();
-		}
-		document.querySelector('#Loai_san_pham').appendChild(newOption)
-		overlay.remove();
-	})
-	document.body.appendChild(overlay);
-}
-function themDanhMuc(){
-	let overlay = document.createElement('div');
-	overlay.className = "overlay";
-	let form = document.createElement('div');
-	form.className = "popup";
-	
-	let name  = document.createElement('input');
-	name.className = "name";
-	let buttonExit = document.createElement('button');
-	let buttonDone = document.createElement('button');
-	buttonExit.textContent ="Thoát";
-	buttonDone.textContent = "Hoàn thành"
-	form.appendChild(name);
-	form.appendChild(buttonDone);
-	form.appendChild(buttonExit);
-	
-	overlay.appendChild(form);
-	buttonExit.addEventListener('click', () => {
-		overlay.remove();
-	});
-	buttonDone.addEventListener('click', ()=>{
-		let newOption =  document.createElement('option');
-		newOption.textContent = document.querySelector('.name').value;
-		if(newOption.textContent.trim == ""){
-			alert("Chưa nhập gì cả");
-			overlay.remove();
-		}
-		document.querySelector('#Danh_muc').appendChild(newOption)
-		overlay.remove();
-	})
-	document.body.appendChild(overlay);
-}
-function openPopupSize(){
-	let overlay = document.createElement('div');
-	overlay.className = "overlay";
-	let form = document.createElement('div');
-	form.className = "popup";
-	
-	let name  = document.createElement('input');
+
+	let name = document.createElement('input');
 	name.className = "nameSize";
 	let buttonExit = document.createElement('button');
 	let buttonDone = document.createElement('button');
-	buttonExit.textContent ="Thoát";
+	buttonExit.textContent = "Thoát";
 	buttonDone.textContent = "Hoàn thành"
 	form.appendChild(name);
 	form.appendChild(buttonDone);
 	form.appendChild(buttonExit);
-	
+
 	overlay.appendChild(form);
 	buttonExit.addEventListener('click', () => {
 		overlay.remove();
 	});
-	buttonDone.addEventListener('click', ()=>{
-		let buttonAdd =  document.createElement('button');
+	buttonDone.addEventListener('click', () => {
+		let buttonAdd = document.createElement('button');
 		let nameSize = document.createElement('div');
 		let valueSize = document.createElement('input');
 		let btnDelete = document.createElement('button');
 		btnDelete.textContent = "X";
-		
-		
-		if(document.querySelector('.nameSize').value.trim() == ""){
+
+
+		if (document.querySelector('.nameSize').value.trim() == "") {
 			alert("Chưa nhập gì cả");
 		}
-		else{
+		else {
 			buttonAdd.className = "btnSize";
 			nameSize.innerHTML = document.querySelector('.nameSize').value;
 			valueSize.value = document.querySelectorAll('.btnSize').length + 1;
 			valueSize.className = "mausac";
 			valueSize.type = "hidden";
-			
+
 			buttonAdd.appendChild(nameSize);
 			buttonAdd.appendChild(valueSize);
 			buttonAdd.appendChild(btnDelete);
-			btnDelete.addEventListener('click', e=>{
+			btnDelete.addEventListener('click', e => {
 				btnDelete.parentElement.remove();
 			})
-			buttonAdd.addEventListener('click',e=>{
-		if(buttonAdd.classList.contains('selected1')){
-			buttonAdd.classList.remove('selected1');
-		}
-		else{
-			let b = document.querySelector('.selected1');
-			if(b == null){
-				
-			}
-			else{
-				b.classList.remove('selected1');
-				
-			}
-			buttonAdd.classList.add('selected1');
-		}
-		})
-		document.querySelector('.sizeBtn').appendChild(buttonAdd);
-		
-		$.ajax({
-			
-			url: "them_size", // URL of your Servlet
-			type: "POST",
-			dataType: 'json',
-			data: {
-				ten_size: $(".nameSize").val()
-			},
+			buttonAdd.addEventListener('click', e => {
+				if (buttonAdd.classList.contains('selected1')) {
+					buttonAdd.classList.remove('selected1');
+				}
+				else {
+					let b = document.querySelector('.selected1');
+					if (b == null) {
 
-			success: function(data) {
-				alert(data);
-			},
-			error: function() {
-				alert("Có lỗi phát sinh");
-			}
-		});
-		
-		overlay.remove();
+					}
+					else {
+						b.classList.remove('selected1');
+
+					}
+					buttonAdd.classList.add('selected1');
+				}
+			})
+			document.querySelector('.sizeBtn').appendChild(buttonAdd);
+
+			$.ajax({
+
+				url: "them_size", // URL of your Servlet
+				type: "POST",
+				dataType: 'json',
+				data: {
+					ten_size: $(".nameSize").val()
+				},
+
+				success: function(data) {
+					alert(data);
+				},
+				error: function() {
+					alert("Có lỗi phát sinh");
+				}
+			});
+
+			overlay.remove();
 		}
-		
+
 	})
 	document.body.appendChild(overlay);
+}
+
+function load(data) {
+	let chuoi = "";
+	data.forEach(function(item) {
+		chuoi += '<Option value="'+item.id+'">'+item.category+'</Option>';
+	});
+	return chuoi;
 }
 function acceptChange(i, j) {
 	const btn = document.getElementsByClassName(i);
@@ -537,22 +578,22 @@ function removeItem(i) {
 function createTable() {
 	let colorInput = document.querySelector('.selected');
 	let sizeInput = document.querySelector('.selected1');
-	if(colorInput == null) return;
-	if(sizeInput == null) return;
+	if (colorInput == null) return;
+	if (sizeInput == null) return;
 	const tableCheck = document.querySelector('#myTable');
-	
+
 	let table = document.getElementById('myTable');
 	let count = tableCheck.rows.length + 1;
-	for(let i = 0; i < count - 1; ++i){
-		if(tableCheck.rows[i].cells[1].innerText == sizeInput.childNodes[0].innerHTML &&
-		tableCheck.rows[i].cells[2].innerText == colorInput.childNodes[1].textContent){
+	for (let i = 0; i < count - 1; ++i) {
+		if (tableCheck.rows[i].cells[1].innerText == sizeInput.childNodes[0].innerHTML &&
+			tableCheck.rows[i].cells[2].innerText == colorInput.childNodes[1].textContent) {
 			return;
 		}
 	}
 	var newRow = table.insertRow();
 	var stt = newRow.insertCell();
 	var size = newRow.insertCell();
-	
+
 	stt.innerHTML = count;
 	size.innerHTML = `<div>${sizeInput.childNodes[0].innerHTML}</div> 
 	<input class = "size_table" type="hidden" value = ${sizeInput.childNodes[1].value}>`;
@@ -574,11 +615,11 @@ function createTable() {
 	var xoa = newRow.insertCell();
 	xoa.innerHTML = `<button class = "xoaRow" onclick = "deleteRow(this)">Xoá</button>`
 	colorInput.classList.remove('selected');
-	sizeInput.classList.remove('selected1');	
+	sizeInput.classList.remove('selected1');
 }
 function deleteRow(r) {
-  var i = r.parentNode.parentNode.rowIndex;
-  document.getElementById('myTable'	).deleteRow(i-1	);
+	var i = r.parentNode.parentNode.rowIndex;
+	document.getElementById('myTable').deleteRow(i - 1);
 }
 
 function previewImageElement(button) {

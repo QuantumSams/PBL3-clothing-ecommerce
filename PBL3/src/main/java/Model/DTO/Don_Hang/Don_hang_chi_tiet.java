@@ -1,6 +1,7 @@
 package Model.DTO.Don_Hang;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Don_hang_chi_tiet extends Don_hang{
 	private String so_dien_thoai;
@@ -11,7 +12,7 @@ public class Don_hang_chi_tiet extends Don_hang{
 	}
 	
 	public Don_hang_chi_tiet(int id_don_hang, int tong_tien, String ten_nhan_vien, String ten_khach_hang,
-			Date thoi_gian_dat, Date thoi_gian_nhan, String trang_thai_don_hang, int so_luong, int so_sao_danh_gia,
+			Timestamp thoi_gian_dat, Timestamp thoi_gian_nhan, String trang_thai_don_hang, int so_luong, int so_sao_danh_gia,
 			String so_dien_thoai, String dia_chi, String ghi_chu, String danh_gia) {
 		super(id_don_hang, tong_tien, ten_nhan_vien, ten_khach_hang, thoi_gian_dat, thoi_gian_nhan, trang_thai_don_hang,
 				so_luong, so_sao_danh_gia);

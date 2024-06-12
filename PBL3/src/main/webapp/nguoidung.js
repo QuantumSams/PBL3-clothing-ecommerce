@@ -164,11 +164,15 @@ function load_lich_su_don(data) {
 
 		const date = new Date(item.thoi_gian_dat);
 		const year = date.getFullYear();
-		const month = date.getMonth() + 1; // Tháng trong JavaScript bắt đầu từ 0
-		const day = date.getDate();
+		const month = String(date.getMonth() + 1).padStart(2, '0'); // Month is 0-indexed, add 1 and zero-pad
+		const day = String(date.getDate()).padStart(2, '0');
+		const hours = String(date.getHours()).padStart(2, '0');
+		const minutes = String(date.getMinutes()).padStart(2, '0');
+
+		const formattedDate = day + '-' + month + '-' + year + ' ' + hours + ':' + minutes;
 
 		chuoi += '<tr>' +
-			'<td>' + day + "/" + month + "/" + year + '</td>' +
+			'<td>' + formattedDate + '</td>' +
 			'<td>' + parseInt(item.tong_tien).toLocaleString('vi-VN') + ' VNĐ</td>' +
 			'<td>' + item.so_luong + '</td>' +
 			'<td><button type="button" class="btn btn-primary submitDon" id = "' + item.id_don_hang + '">' + item.trang_thai_don_hang + '</button></td>' +

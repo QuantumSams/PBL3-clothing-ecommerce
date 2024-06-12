@@ -1,17 +1,17 @@
 package Model.BLL.Service.Order;
 
 import java.io.IOException;
-import java.sql.Date;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import DataStructures.Pair;
 import DataStructures.RandomID;
+import Model.DAL.DAO.implemet.Danh_gia_don_hang_DAO;
 import Model.DAL.DAO.implemet.Don_hang_DAO;
 import Model.DAL.DAO.implemet.Don_hang_chi_tiet_DAO;
 import Model.DAL.DAO.implemet.Gio_hang_DAO;
@@ -20,6 +20,7 @@ import Model.DAL.DAO.implemet.Muc_sp_don_hang_DAO;
 import Model.DAL.DAO.implemet.Nguoi_dung_DAO;
 import Model.DAL.DAO.implemet.San_pham_DAO;
 import Model.DAL.Specification.Implements.Don_hang.FindDetailOrderByIDOrder;
+import Model.DAL.Specification.Implements.Don_hang.FindEvaluateByIDOrder;
 import Model.DAL.Specification.Implements.Don_hang.FindItemOrderByIDCart;
 import Model.DAL.Specification.Implements.Don_hang.FindItemOrderByIDOrder;
 import Model.DAL.Specification.Implements.Don_hang.FindOrderByIDOrder;
@@ -30,6 +31,7 @@ import Model.DAL.Specification.Implements.Gio_hang.RemoveByID;
 import Model.DAL.Specification.Implements.Muc_san_pham.FindProductItemByID;
 import Model.DAL.Specification.Implements.Nguoi_dung.FindNguoiDungByID;
 import Model.DAL.Specification.Implements.San_pham.FindProductByID;
+import Model.DTO.Don_Hang.Danh_gia_don_hang;
 import Model.DTO.Don_Hang.Don_hang;
 import Model.DTO.Don_Hang.Don_hang_chi_tiet;
 import Model.DTO.Don_Hang.Gio_hang;
@@ -54,6 +56,8 @@ public class Order_Service {
 	Don_hang_chi_tiet_DAO don_hang_chi_tiet_DAO;
 	San_pham_DAO san_pham_DAO;
 	Muc_sp_don_hang_DAO muc_sp_don_hang_DAO;
+	Danh_gia_don_hang_DAO danh_gia_san_pham_DAO;
+	
 	public Order_Service() {
 		don_hang_DAO = new Don_hang_DAO();
 		muc_san_pham_DAO = new Muc_san_pham_DAO();
@@ -62,6 +66,7 @@ public class Order_Service {
 		don_hang_chi_tiet_DAO = new Don_hang_chi_tiet_DAO();
 		san_pham_DAO = new San_pham_DAO();
 		muc_sp_don_hang_DAO = new Muc_sp_don_hang_DAO();
+		danh_gia_san_pham_DAO = new Danh_gia_don_hang_DAO();
 	}
 	
 	public void add_order(HttpServletRequest req, HttpServletResponse resp) {
@@ -70,8 +75,9 @@ public class Order_Service {
 		int id_khach_hang = Integer.parseInt(req.getParameter("id_khach_hang"));;
 		String so_dien_thoai = req.getParameter("so_dien_thoai");
 		String dia_chi_giao_dich = req.getParameter("dia_chi");
-		long now = new java.util.Date().getTime();
-		Date ngay_gio_dat = new Date(now);
+		LocalDateTime now = LocalDateTime.now();
+        Timestamp ngay_gio_dat = Timestamp.valueOf(now);
+		
 		String ghi_chu = req.getParameter("ghi_chu");
 		String trang_thai_don_hang = doi_xac_nhan;
 		String muc_san_pham = req.getParameter("muc_san_pham");
@@ -115,6 +121,10 @@ public class Order_Service {
 			System.out.println("Remove gio hang: " + gio_hang);
 			gio_hang_DAO.removeBySpacification(new RemoveByID(Integer.parseInt(gio_hang)));
 		}
+		
+		int id_danh_gia = new RandomID().ran();
+		Danh_gia_don_hang danh_gia_don_hang = new Danh_gia_don_hang(id_danh_gia, id_order, -1, "");
+		danh_gia_san_pham_DAO.add(danh_gia_don_hang);
 	}
 	
 	public void nhan_vien_xac_nhan(HttpServletRequest req, HttpServletResponse resp) {
@@ -134,8 +144,9 @@ public class Order_Service {
 		
 		don_hang_chi_tiet.setId_nhan_vien(id_nhan_vien);
 		don_hang_chi_tiet.setTrang_thai_don_hang(trang_thai_don_hang);
-		long now = new java.util.Date().getTime();
-		Date ngay_gio_nhan = new Date(now);
+		LocalDateTime now = LocalDateTime.now();
+        Timestamp ngay_gio_nhan = Timestamp.valueOf(now);
+		
 		don_hang_chi_tiet.setThoi_gian_nhan(ngay_gio_nhan);
 		
 		don_hang_chi_tiet_DAO.update(don_hang_chi_tiet);
@@ -159,8 +170,8 @@ public class Order_Service {
 		
 		don_hang_chi_tiet.setId_don_hang(id_don_hang);
 		don_hang_chi_tiet.setTrang_thai_don_hang(trang_thai_don_hang);
-		long now = new java.util.Date().getTime();
-		Date ngay_gio_nhan = new Date(now);
+		LocalDateTime now = LocalDateTime.now();
+        Timestamp ngay_gio_nhan = Timestamp.valueOf(now);
 		don_hang_chi_tiet.setThoi_gian_nhan(ngay_gio_nhan);
 		
 		don_hang_chi_tiet_DAO.updateKH(don_hang_chi_tiet);
@@ -201,6 +212,12 @@ public class Order_Service {
 		int id_don_hang = Integer.parseInt(req.getParameter("id_don_hang"));
 		
 		return don_hang_chi_tiet_DAO.findBySpacification(new FindDetailOrderByIDOrder(id_don_hang)).get(0);
+	}
+	
+	public Danh_gia_don_hang getEvaluateByIDOrder(HttpServletRequest req, HttpServletResponse resp) {
+		int id_don_hang = Integer.parseInt(req.getParameter("id_don_hang"));
+		
+		return danh_gia_san_pham_DAO.findBySpacification(new FindEvaluateByIDOrder(id_don_hang)).get(0);
 	}
 	
 	public List<Don_hang> get_order_by_state(HttpServletRequest req, HttpServletResponse resp){

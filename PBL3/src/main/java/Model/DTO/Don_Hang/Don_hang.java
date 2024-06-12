@@ -1,6 +1,7 @@
 package Model.DTO.Don_Hang;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.List;
 
 import DataStructures.Pair;
@@ -13,16 +14,16 @@ public class Don_hang{
 	protected int id_nhan_vien;
 	protected String ten_khach_hang;
 	protected int id_khach_hang;
-	protected Date thoi_gian_dat;
-	protected Date thoi_gian_nhan;
+	protected Timestamp thoi_gian_dat;
+	protected Timestamp thoi_gian_nhan;
 	protected String trang_thai_don_hang;
 	protected int so_luong;
 	protected int so_sao_danh_gia;
 	public Don_hang() {
 		
 	}
-	public Don_hang(int id_don_hang, int tong_tien, String ten_nhan_vien, String ten_khach_hang, Date thoi_gian_dat,
-			Date thoi_gian_nhan, String trang_thai_don_hang, int so_luong, int so_sao_danh_gia) {
+	public Don_hang(int id_don_hang, int tong_tien, String ten_nhan_vien, String ten_khach_hang, Timestamp thoi_gian_dat,
+			Timestamp thoi_gian_nhan, String trang_thai_don_hang, int so_luong, int so_sao_danh_gia) {
 		super();
 		this.id_don_hang = id_don_hang;
 		this.tong_tien = tong_tien;
@@ -58,16 +59,16 @@ public class Don_hang{
 	public void setTen_khach_hang(String ten_khach_hang) {
 		this.ten_khach_hang = ten_khach_hang;
 	}
-	public Date getThoi_gian_dat() {
+	public Timestamp getThoi_gian_dat() {
 		return thoi_gian_dat;
 	}
-	public void setThoi_gian_dat(Date thoi_gian_dat) {
+	public void setThoi_gian_dat(Timestamp thoi_gian_dat) {
 		this.thoi_gian_dat = thoi_gian_dat;
 	}
-	public Date getThoi_gian_nhan() {
+	public Timestamp getThoi_gian_nhan() {
 		return thoi_gian_nhan;
 	}
-	public void setThoi_gian_nhan(Date thoi_gian_nhan) {
+	public void setThoi_gian_nhan(Timestamp thoi_gian_nhan) {
 		this.thoi_gian_nhan = thoi_gian_nhan;
 	}
 	public String getTrang_thai_don_hang() {

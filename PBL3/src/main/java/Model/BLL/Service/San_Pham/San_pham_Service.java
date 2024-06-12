@@ -153,7 +153,17 @@ public class San_pham_Service {
 		danhmuc.LayTatCaDanhMuc();
 		List<Danh_muc_san_pham> list_dtkh = danhmuc.Lay_danh_muc_con();
 		List<Danh_muc_san_pham> list_ten_loai_san_pham = danhmuc.Lay_danh_muc_con(list_dtkh.get(0));
-		List<Danh_muc_san_pham> list_danh_muc_san_pham = danhmuc.Lay_danh_muc_con(list_ten_loai_san_pham.get(0));
+		List<Danh_muc_san_pham> list_danh_muc_san_pham = new ArrayList<>();
+		
+		if(list_ten_loai_san_pham != null && list_ten_loai_san_pham.size() != 0)
+			list_danh_muc_san_pham = danhmuc.Lay_danh_muc_con(list_ten_loai_san_pham.get(0));
+		else {
+			list_ten_loai_san_pham = new ArrayList<>(); 
+		}
+		
+		if(list_danh_muc_san_pham == null && list_danh_muc_san_pham.size() == 0) {
+			list_danh_muc_san_pham = new ArrayList<>();
+		}
 		
 		HttpSession session = req.getSession();
 		session.setMaxInactiveInterval(-1);

@@ -5,7 +5,9 @@ import java.util.List;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import DataStructures.RandomID;
 import Model.DAL.DAO.implemet.Danh_muc_DAO;
+import Model.DTO.Don_Hang.Danh_gia_don_hang;
 import Model.DTO.San_Pham.Danh_muc_san_pham;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -45,6 +47,7 @@ public class Danh_muc_Service {
 	}
 	
 	public List<Danh_muc_san_pham> Lay_danh_muc_con(Danh_muc_san_pham danh_muc_san_pham){
+		
 		return tree_danh_muc.getChild(danh_muc_san_pham);
 	}
 	
@@ -54,5 +57,25 @@ public class Danh_muc_Service {
 	
 	public Danh_muc_san_pham getDanh_muc_Id(int id) {
 		return tree_danh_muc.getDanhMucByID(id);
+	}
+	
+	public void addDanhMucSanPham(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		int id_muc_san_pham = new RandomID().ran();
+		int id_parent = -1;
+		if(req.getParameter("id_parent") != null && req.getParameter("id_parent").length() != 0) {
+			id_parent = Integer.parseInt(req.getParameter("id_parent"));
+		}
+		String ten_danh_muc = req.getParameter("ten");
+		
+		Danh_muc_san_pham danh_muc_san_pham = new Danh_muc_san_pham(id_muc_san_pham, id_parent, ten_danh_muc);
+		System.out.println(danh_muc_san_pham.toString());
+		danh_muc_DAO.add(danh_muc_san_pham);
+		
+		List<Danh_muc_san_pham> list_Danh_gia_don_hang = danh_muc_DAO.getDanhMucByID(id_parent);
+		ObjectMapper mapper = new ObjectMapper();
+	    String json = mapper.writeValueAsString(list_Danh_gia_don_hang);
+	    resp.setContentType("application/json");
+	    resp.setCharacterEncoding("UTF-8");
+	    resp.getWriter().write(json);
 	}
 }

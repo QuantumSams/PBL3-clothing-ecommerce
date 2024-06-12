@@ -22,7 +22,10 @@ public class Danh_muc_DAO extends AbstractDao implements Repository<Danh_muc_san
 	@Override
 	public void add(Danh_muc_san_pham t) {
 		String query = "INSERT INTO danh_muc_san_pham VALUES (?, ?, ?)";
-		insert(query, t.getId(), t.getParent_id(), t.getCategory());
+		if(t.getParent_id() != -1)
+			insert(query, t.getId(), t.getParent_id(), t.getCategory());
+		else
+			insert(query, t.getId(), "NULL", t.getCategory());
 	}
 
 	@Override
@@ -48,5 +51,19 @@ public class Danh_muc_DAO extends AbstractDao implements Repository<Danh_muc_san
 	public void remove(Danh_muc_san_pham t) {
 		String sql = "DELETE FROM danh_muc_san_pham WHERE id_muc_san_pham = ?";
 		update(sql, t.getId());
+	}
+	
+	
+	public List<Danh_muc_san_pham> getDanhMucByID(int id){
+		if(id != -1) {
+			String Query = "SELECT * FROM danh_muc_san_pham WHERE parent_id = ?";
+		
+			return query(Query, new Danh_muc_san_pham_Mapper(), id);
+		}
+		else {
+			String Query = "SELECT * FROM danh_muc_san_pham WHERE parent_id is NULL";
+			return query(Query, new Danh_muc_san_pham_Mapper());
+		}
+			
 	}
 }

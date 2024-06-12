@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -225,6 +226,8 @@ public class AbstractDao implements GenericDAO{
 						statement.setBoolean(index, (Boolean) parameter);
 					} else if (parameter instanceof Date) {
 						statement.setDate(index, (Date) parameter);
+					} else if (parameter instanceof Timestamp) {
+						statement.setTimestamp(index, (Timestamp) parameter);
 					}
 				}
 			}

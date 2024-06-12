@@ -6,8 +6,10 @@ import java.util.List;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import Model.BLL.Service.Danh_Muc.Danh_muc_Service;
 import Model.BLL.Service.Order.Order_Service;
 import Model.BLL.Service.San_Pham.Muc_san_pham_Service;
+import Model.DAL.DAO.implemet.Danh_muc_DAO;
 import Model.DAL.DAO.implemet.Gio_hang_DAO;
 //import Model.DAL.DAO.implemet.Chi_tiet_don_hang_DAO;
 import Model.DAL.DAO.implemet.Muc_san_pham_DAO;
@@ -18,6 +20,7 @@ import Model.DAL.Specification.Implements.Gio_hang.FindCartByID;
 import Model.DAL.Specification.Implements.Muc_san_pham.FindProductItemByID;
 import Model.DAL.Specification.Implements.Nguoi_dung.FindNguoiDungByID;
 import Model.DAL.Specification.Implements.San_pham.FindProductByID;
+import Model.DTO.Don_Hang.Danh_gia_don_hang;
 //import Model.DTO.Don_Hang.Chi_tiet_don_hang;
 import Model.DTO.Don_Hang.Don_hang;
 import Model.DTO.Don_Hang.Don_hang_chi_tiet;
@@ -36,7 +39,8 @@ import jakarta.servlet.http.HttpServletResponse;
 							"/nhan_vien_xac_nhan_don", "/khach_hang_nhan_don",
 							"/lich_su_don_tong_quat", "/lich_su_don_chi_tiet", 
 							"/xac_nhan_dat_don", "/nhan_duoc_don_hang", "/xem_don_hang_chi_tiet", 
-							"/xem_lich_su_don", "/load_don_hang_ajax", "/load_kho_ajax"})
+							"/xem_lich_su_don", "/load_don_hang_ajax", "/load_kho_ajax", 
+							"/them_danh_muc"})
 public class OrderController extends HttpServlet{
 
 	private static final long serialVersionUID = 6360439063345108716L;
@@ -44,6 +48,7 @@ public class OrderController extends HttpServlet{
 	Order_Service order_Service = new Order_Service();
 	Gio_hang_DAO gio_hang_DAO = new Gio_hang_DAO();
 	Muc_san_pham_Service muc_san_pham_Service = new Muc_san_pham_Service(new Muc_san_pham_DAO(), new San_pham_DAO());
+	Danh_muc_Service danh_muc_Service = new Danh_muc_Service(new Danh_muc_DAO());
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String action = req.getServletPath();
@@ -74,7 +79,9 @@ public class OrderController extends HttpServlet{
 		else if(action.equals("/xem_don_hang_chi_tiet")) {
 			Don_hang_chi_tiet chi_tiet_don_hang = order_Service.get_detail_order_by_ID(req, resp);
 			List<Muc_sp_don_hang> muc_san_pham = order_Service.get_item_order_by_id(req, resp);
+			Danh_gia_don_hang danh_gia_don_hang = order_Service.getEvaluateByIDOrder(req, resp);
 			
+			req.setAttribute("danh_gia", danh_gia_don_hang);
 			req.setAttribute("chi_tiet_don_hang", muc_san_pham);
 			req.setAttribute("don_hang", chi_tiet_don_hang);
 			req.getRequestDispatcher("orderDetail.jsp").forward(req, resp);
@@ -100,8 +107,6 @@ public class OrderController extends HttpServlet{
 		}
 		else if(action.equals("/load_kho_ajax")) {
 			List<Muc_san_pham> muc_san_pham = muc_san_pham_Service.getAllMucSanPham(); 
-			
-			System.out.println("load kho");
 			
 			ObjectMapper mapper = new ObjectMapper();
 		    String json = mapper.writeValueAsString(muc_san_pham);
@@ -135,6 +140,9 @@ public class OrderController extends HttpServlet{
 		else if(action.equals("/khach_hang_nhan_don")) {
 			order_Service.khach_hang_xac_nhan(req, resp);
 			postJsonMessage(resp,  "Xác nhận đã nhận đon hàng thành công!");
+		}
+		else if(action.equals("/them_danh_muc")) {
+			danh_muc_Service.addDanhMucSanPham(req, resp);
 		}
 		
 	}
