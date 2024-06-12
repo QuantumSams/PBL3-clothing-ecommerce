@@ -23,6 +23,7 @@
                 <table id = "table">
                     <thead>
                         <tr>
+                        	<th>Ảnh sản phẩm</th>
                             <th>Sản phẩm</th>
                             <th>Số lượng</th>
                             <th>Thành tiền</th>
@@ -30,24 +31,27 @@
                         </tr>
                     </thead>
                    <tbody id="list_san_pham">
-                   <c:forEach var="item" items="${muc_san_pham}">
+                   <input class="id_gio_hang" type="hidden" value="${gio_hang}">
+                   <c:forEach var="item" items="${chi_tiet_don_hang}">
                     	<tr>
-                    		<input class="id_muc" type="hidden" value="${item.id_muc_san_pham}"/>
-	                        <td>
+                    		<input class="so_luong" value="${item.so_luong}" type="hidden">
+                    		<input class="id_muc" value="${item.id_muc_san_pham}" type="hidden">
+                    		<td><img src="${item.anh}" width="50px"
+												alt=""></td>
+                    		<td>
 	                            <div class="name">
 	                                <h5>${item.ten_san_pham}</h5>
 	                            </div>
 	                            <div class="color">
-	                                    <h5>${item.mau_sac_san_pham.ten_mau} / ${item.kich_thuoc_san_pham.ten_size}</h5>
+	                                    <h5>${item.ten_mau} / ${item.ten_size}</h5>
 	                            </div>
 	                        </td>
-	                        <td><input class="so_luong" type="text" value="1"/></td>
-	                        <td class = "priceItems">${item.gia_tien}</td>
+	                        <td class = "priceItems">${item.so_luong}</td>
+	                        <td class = "priceItems">${item.gia}</td>
 	                        <td><Button class = "btnXoa" onclick="deleteR(this)"><i class="fa-solid fa-trash"></i></Button></td>
                     	</tr>          	  
 					</c:forEach>
                    </tbody>
-                    
                 </table>
             </div> 
             <div class="price">
@@ -87,7 +91,7 @@
                 </div>
                 <div class="User">
                     <h5>Địa chỉ giao hàng</h5>
-                    <input  id="dia_chi" class = "inf" type="text" disabled  value = "${acc.tinh}, ${acc.huyen}, ${acc.xa}, ${acc.dia_chi_cu_the} ">
+                    <input  id="dia_chi" class = "inf" type="text" disabled  value = "${acc.tinh}, ${acc.huyen}, ${acc.xa}, ${acc.dia_chi_cu_the} " style = "width: 100%; height: 100px;">
                 </div>
             </div>
             <div class="note">
@@ -103,9 +107,6 @@
 </body>
 
 <script>
-
-
-
 
 $(document).ready(function(){
 	
@@ -135,10 +136,12 @@ $(document).ready(function(){
 			    	  muc_san_pham: 	JSON.stringify(sanPhamValues),
 			    	  ghi_chu: 			$("#ghi_chu").val(),
 			    	  tong_tien: 		$("#thanhtien").text(),
+			    	  gio_hang:			$(".id_gio_hang").val()
 			      },
 			
 			      success: function(data) {
 					alert(data);
+					window.history.back();
 			      },
 			      error: function(data) {
 						alert(data);
@@ -168,7 +171,7 @@ $(document).ready(function(){
 
     let a = document.querySelectorAll('.priceItems');
     let sum = 0;
-    a.forEach((item)=> {sum += parseFloat(item.innerHTML)*1000});
+    a.forEach((item)=> {sum += parseFloat(item.innerHTML)});
     document.getElementById('tongtien').innerHTML = sum;
     thanhtien.innerHTML = sum - giamgia - phivanchuyen;
     const b = document.querySelectorAll('.btnXoa')
@@ -176,8 +179,7 @@ $(document).ready(function(){
             element.addEventListener('click',(e)=>{
             a = document.querySelectorAll('.priceItems');
             sum = 0;
-            console.log("haha");
-            a.forEach((item)=> {sum += parseFloat(item.innerHTML)*1000});
+            a.forEach((item)=> {sum += parseFloat(item.innerHTML)});
             document.getElementById('tongtien').innerHTML = sum;
             thanhtien.innerHTML = sum - giamgia - phivanchuyen;
         })   

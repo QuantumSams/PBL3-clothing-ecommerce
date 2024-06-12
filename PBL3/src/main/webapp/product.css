@@ -68,8 +68,9 @@ a{
     margin-top: 20px;
     height: 50px;
     width: 100%;
-    border: thin 0.1px;
+    border: 1px solid !important;
     background-color: white;
+    
 }
 .form-select{
     width: 20%;
@@ -89,6 +90,7 @@ a{
     gap:10px;
 }
 .buttonA{
+	border: 1px solid !important;
     width: 50%;
     background-color: white;
 }
@@ -96,24 +98,34 @@ a{
 	transform: translateY(92px);
 }
 .btnSize{
+	border: 1px solid;
 	width: 50px;
 	height: 50px;
 	
 }
 .selected{
-	width: 70px !important;
-	height: 70px !important;
-		
+	/* width: 70px !important;
+	height: 70px !important; */
+
+	border: 2px solid white !important;
 }
 .selected1{
-	width: 70px !important;
-	height: 70px !important;
+	border: 2px solid white !important;
+	background-color: black;
+	color: white;
 		
 }
 .btnColor{
+	transition: all 0.2s easy-in;
+	border: 1px solid 	;
 	width: 50px;
 	height: 50px;
 }
 .colorDiv{
 	display:none;
+}
+.so_luong{
+	padding: 10px;	
+	width: 15%;
+	height: 5%;
 }

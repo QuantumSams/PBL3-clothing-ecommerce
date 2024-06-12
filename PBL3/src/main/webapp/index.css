@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 *{
     padding: 0;
@@ -22,28 +23,7 @@ body{
 .search{
     width: 100%;
 }
-ul li{
-    display: inline-block;
-    position: relative;
-}
 
-ul li ul.dropdown{
-    width: 500px;
-    height: 500px;
-    background: white;
-    position: absolute;
-    z-index: 100;
-    display: none;
-}
-ul li ul.dropdown li{
-    gap:50px;
-    z-index:1000;
-    flex-direction: column;
-}
-ul li:hover ul.dropdown{
-    display: block;
-
-}
 .main-items{
     display: flex;
     max-width: 100%;
@@ -60,13 +40,24 @@ ul li:hover ul.dropdown{
     transform: translateY(-5px);
 }
 .card-img-top:hover{
-	transform: scale(0.9);
-	transition:0.2s;
+	transform: scale(0.95);
+	transition:0.25s ease-in-out 0.25s;
 }
+.card-body:hover{
+	background-color: #e4e4e4;
+	transition:0.25s ease-in-out;
+	font-weight: bold;
+	
+}
+
 .nav-item:hover{
 
 	color: orange;	
 }
 .header{
 	position: fixed;
+}
+button{
+	background-color: transparent;
+	border: none;
 }
