@@ -135,7 +135,7 @@ function tien() {
 			sum += parseFloat(a[i].innerHTML.split(' ', 1))*(parseFloat(b[i].innerHTML.split(' ', 1)));
 		}
 	}
-	document.querySelector('#sum').innerHTML = parseInt(sum).toLocaleString('vi-VN') + ' VNĐ'
+	document.querySelector('#sum').innerHTML = parseInt(sum).toLocaleString('vi-VN') + '.000 VNĐ'
 }
 $(document).ready(function() {
 	$("#lich_su").click(function() {
@@ -169,26 +169,46 @@ function load_lich_su_don(data) {
 
 		chuoi += '<tr>' +
 			'<td>' + day + "/" + month + "/" + year + '</td>' +
-			'<td>' + item.tong_tien + ' VNĐ</td>' +
+			'<td>' + parseInt(item.tong_tien).toLocaleString('vi-VN') + ' VNĐ</td>' +
 			'<td>' + item.so_luong + '</td>' +
 			'<td><button type="button" class="btn btn-primary submitDon" id = "' + item.id_don_hang + '">' + item.trang_thai_don_hang + '</button></td>' +
 			'<td>' + item.so_sao_danh_gia + '</td>' +
 			'<td>' +
 			'<form action="xem_lich_su_don" method="get">' +
 			'<input type="hidden" name="id_don_hang" value="' + item.id_don_hang + '">' +
-			'<button class="btn btn-primary">Xem chi tiết</button>' +
+			'<button class="btn btn-dark">Xem chi tiết</button>' +
 			'</form>' +
 			'</td>' +
 			'<td>' +
-			'<button class="huy_don_hang">' +
+			'<button class="huy_don_hang btn" disabled>' +
 			'<input class="vale" type="hidden" value="' + item.id_don_hang + '">Hủy đơn hàng' +
 			'</button>' +
 			'</td>' +
 			'</tr>';
 	});
-
+	
 	$("#san_pham").html(chuoi);
-
+	let checkDoi = document.querySelectorAll('.submitDon');
+	checkDoi.forEach(item =>{
+		if(item.textContent == "Đợi xác nhận đơn hàng"){
+			item.disabled = true;
+			item.classList.remove('btn-primary');
+			item.classList.add('btn-warning');
+			item.parentElement.parentElement.childNodes[6].childNodes[0].disabled = false;
+		}
+		else if(item.textContent == "Đang vận chuyển"){
+			
+		}
+		else if(item.textContent == "Đã nhận được đơn hàng"){
+			item.classList.remove('btn-primary');
+			item.classList.add('btn-success');
+		}
+		else{
+			item.classList.remove('btn-primary');
+			item.classList.add('btn-danger');
+			item.disabled = true;
+		}
+	})
 	let a = document.querySelectorAll('.huy_don_hang');
 	a.forEach(item => {
 		item.addEventListener('click', e => {

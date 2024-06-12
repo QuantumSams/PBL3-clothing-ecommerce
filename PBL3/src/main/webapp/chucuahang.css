@@ -51,6 +51,7 @@ body {
     padding: 5px 20px 5px 10px;
 }
 .inputSearch{
+	color: white;
     width: 90%;
     background-color: transparent;
     border: none;
@@ -76,6 +77,9 @@ body {
     color: white;
     border-radius: 10px;
     padding: 5px 5px 5px 5px;
+}
+.giaTienSanPham{
+	width: 130px;
 }
 .buttonSearch{
     border-radius: 5px;
@@ -107,8 +111,9 @@ body {
     gap:10px;
 }
 .mainform{
-    padding: 50px;
+    padding: 0px 20px 10px 10px;
 }
+
 .header3{
     padding: 40px 0px;
     display: flex;
@@ -225,4 +230,10 @@ body {
 	background-color: black;
 	color:white;
 	border-radius: 7px;	
+}
+.btnStatus{
+	width: 230px !important;
+}
+.content-table td{
+	font-weight: bold;
 }

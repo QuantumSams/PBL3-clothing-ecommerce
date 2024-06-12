@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="lishsudon.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+   
     <title>Document</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
@@ -48,7 +48,7 @@
 	                        </td>
 	                        <td class = "priceItems">${item.so_luong}</td>
 	                        <td class = "priceItems">${item.gia}</td>
-	                        <td><Button class = "btnXoa" onclick="deleteR(this)"><i class="fa-solid fa-trash"></i></Button></td>
+	                        
                     	</tr>          	  
 					</c:forEach>
                    </tbody>
@@ -107,14 +107,14 @@
                 </div>
                 <div class="User">
                     <h5>Trạng thái</h5>
-                    <h5><button type="button" class="btn btn-success">${don_hang.trang_thai_don_hang }</button></h5>
+                    <h5><button type="button" class="btn trangthai">${don_hang.trang_thai_don_hang }</button></h5>
                 </div>
             </div>
             <div class="note">
                 <h4>Ghi chú</h4>
                 <h5 style = "display: flex; align-items: center; justify-content: center; margin-top: 5%;">${don_hang.ghi_chu}</h5>
             </div>
-            <button id="xac_nhan_don" class="chinhsua xacnhan huy">Xác nhận thanh toán</button>
+            
         </div>
       
        </div>
@@ -123,6 +123,19 @@
 </body>
 <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
 <script>
+let a = document.querySelector('.trangthai');
+if(a.textContent == "Đã nhận được đơn hàng"){
+	a.classList.add('btn-success');
+}
+else if(a.textContent == "Đang vận chuyển"){
+	a.classList.add('btn-primary');
+}
+else if(a.textContent == "Đợi xác nhận đơn hàng"){
+	a.classList.add('btn-warning');
+}
+else{
+	a.classList.add('btn-danger');
+}
 $(document).ready(function(){
 	 $("#xac_nhan_don").click(function(){
 			$.ajax({

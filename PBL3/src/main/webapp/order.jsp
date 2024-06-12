@@ -91,7 +91,7 @@
                 </div>
                 <div class="User">
                     <h5>Địa chỉ giao hàng</h5>
-                    <input  id="dia_chi" class = "inf" type="text" disabled  value = "${acc.tinh}, ${acc.huyen}, ${acc.xa}, ${acc.dia_chi_cu_the} ">
+                    <input  id="dia_chi" class = "inf" type="text" disabled  value = "${acc.tinh}, ${acc.huyen}, ${acc.xa}, ${acc.dia_chi_cu_the} " style = "width: 100%; height: 100px;">
                 </div>
             </div>
             <div class="note">
@@ -179,7 +179,6 @@ $(document).ready(function(){
             element.addEventListener('click',(e)=>{
             a = document.querySelectorAll('.priceItems');
             sum = 0;
-            console.log("haha");
             a.forEach((item)=> {sum += parseFloat(item.innerHTML)});
             document.getElementById('tongtien').innerHTML = sum;
             thanhtien.innerHTML = sum - giamgia - phivanchuyen;

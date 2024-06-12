@@ -51,3 +51,6 @@ html:not(.dark-style) .account-settings-links .list-group-item.active {
 .material-style .account-settings-links .list-group-item.active {
     color: #4e5155 !important;
 }
+.form-control{
+	width: 80%;
+}

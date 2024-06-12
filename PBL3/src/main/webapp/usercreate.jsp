@@ -23,17 +23,14 @@
 
 			<div class="card overflow-hidden">
 				<div class="form" style="display: flex;">
-					<div class="sidebar col-md-3 pt-0">
+					<div class="sidebar col-md-2 pt-0">
 						<div class="list-group list-group-flush account-settings-links">
 							<a class="list-group-item list-group-item-action active"
-								data-toggle="list" href="#account-general">General</a> <a
-								class="list-group-item list-group-item-action"
-								data-toggle="list" href="#account-change-password">Change
-								password</a>
+								data-toggle="list" href="#account-general">Tổng quan</a>
 						</div>
 					</div>
 
-					<div class="infor col-md-9 pt-0">
+					<div class="infor col-md-10 pt-0">
 						<div class="tab-content">
 							<div class="tab-pane fade active show" id="account-general">
 								<div class="cardImage card-body">
@@ -50,7 +47,7 @@
 											value="" name="name">
 										<input id="id_khach_hang" type="text" class="form-control"
 											value="" name="id"
-											style="display: none">
+											style="display: none" >
 									</div>
 									<div class="phoneNum form">
 										<label for="" class="form-label">Số điện thoại</label> <input
@@ -117,37 +114,18 @@
 
 								</div>
 							</div>
-							<div class="tab-pane fade" id="account-change-password">
-								<div class="card-body pb-2">
-									<div class="form-group">
-										<label class="form-label">Mật khẩu hiện tại</label> <input
-											id="old_password" type="password"
-											class="form-control">
-									</div>
-									<div class="form-group">
-										<label class="form-label">Mật khẩu mới</label> <input
-											id="new_password" type="password" class="form-control">
-									</div>
-									<div class="form-group">
-										<label class="form-label">Nhập lại mật khẩu mới</label> <input
-											id="new_repassword" type="password" class="form-control">
-									</div>
-								</div>
-							</div>
+							
 						</div>
 					</div>
 				</div>
 
 			</div>
 
-			<div class="text-right mt-3">
-
-				<button id="save">OK</button>
-				<button type="button" class="btn btn-default"
-					onclick="history.back()">Cancel</button>
+			<div class="text-right mt-3 ">
+				<button id="save " class = "btn btn-success" style = "margin-bottom: 50px;">OK</button>
+				<button type="button" class="btn btn-light" onclick="history.back()" style = "margin-bottom: 50px;">Cancel</button>
 			</div>
 
-		<input type="button" id="doi_mat_khau" value='Thay đổi mật khẩu' />
 
 	</div>
 </body>

@@ -46,7 +46,7 @@
                     <input type="password" placeholder="Password" name = "password" required>
                     <a href="">Quên mật khẩu? </a>
                     <button type = "submit">Đăng nhập</button>
-  					<p style = "color: red"></p>
+  					<p style = "color: red">${message1 }</p>
                 </form>    
             </div>
             <div class="container-toggle">

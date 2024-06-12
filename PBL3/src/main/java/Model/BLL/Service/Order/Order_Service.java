@@ -43,7 +43,7 @@ import jakarta.servlet.http.HttpServletResponse;
 public class Order_Service {
 	public final String doi_xac_nhan = "Đợi xác nhận đơn hàng";
 	public final String dang_van_chuyen = "Đang vận chuyển";
-	public final String da_xac_nhan_don = "Đã nhận đươc đơn hàng";
+	public final String da_xac_nhan_don = "Đã nhận được đơn hàng";
 	public final String khach_huy_don = "Khách hàng đã hủy đơn";
 	public final String nhan_vien_huy_don = "Nhân viên đã hủy đơn";
 	
