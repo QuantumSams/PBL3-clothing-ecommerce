@@ -55,19 +55,21 @@
                     
                 </table>
             </div> 
+            <input id = "diemdanhgia" value = "-1" type = "hidden">
+            <input id = "diemsao" value = "3" type = "hidden">
             <div class="price">
                 <h3>Đánh giá đơn hàng</h3>
                 <div class="dform">
                     <h5>Đánh giá</h5>
                     <div class="star">
-                        <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                        <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                        <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                        <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                        <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <button class = "btnStar" value = "1"><i class="fa-solid fa-star" style="color: #FFD43B;"></i></button>
+                    <button class = "btnStar" value = "2"><i class="fa-solid fa-star" style="color: #FFD43B;"></i></button>
+                    <button class = "btnStar" value = "3"><i class="fa-solid fa-star" style="color: #FFD43B;"></i></button>
+                    <button class = "btnStar" value = "4"><i class="fa-solid fa-star" style="color: #FFD43B;"></i></button>
+                    <button class = "btnStar" value = "5"><i class="fa-solid fa-star" style="color: #FFD43B;"></i></button>
                     </div>
                 </div>
-                <div class="dform">
+                <div class="dform" style = "margin-top: 20px">
                     <h5>Bình luận</h5>
                     <div class="textarea">
                         <textarea name="" id="cmt" >Bình luận sẽ xuất hiện ở đây
@@ -114,7 +116,9 @@
                 <h4>Ghi chú</h4>
                 <h5 style = "display: flex; align-items: center; justify-content: center; margin-top: 5%;">${don_hang.ghi_chu}</h5>
             </div>
-            
+            <div class = "xacnhan">
+            	<button class = "btnXacnhan" disabled style = "width: 100%; background-color: orange; color: white; height: 50px; " >Xác nhận đánh giá</button>
+            </div>;
         </div>
       
        </div>
@@ -123,6 +127,34 @@
 </body>
 <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
 <script>
+let star = document.querySelectorAll('.btnStar');
+let diemdanhgia = document.querySelector('#diemdanhgia').value;
+if(diemdanhgia == -1){
+	star.forEach(item=>{
+		item.addEventListener('click', e=>{
+			let value = item.value;
+			if(item.childNodes[0].classList.contains('fa-2xl')){
+				for(let i = value - 1; i<5; ++i){
+					if(star[i].childNodes[0].classList.contains('fa-2xl')){
+						star[i].childNodes[0].classList.remove('fa-2xl')
+					}
+				}
+			}
+			for(let i = 0; i<item.value; ++i){
+				star[i].childNodes[0].classList.add('fa-2xl');
+			}
+		}) 
+	})
+	document.querySelector('.btnXacnhan').disabled = false;
+} 
+else{
+	
+	let sosao = document.querySelector('#diemsao').value;
+	for(let i = 0; i<sosao; ++i){
+		star[i].childNodes[0].classList.add('fa-2xl');
+	}
+	document.querySelector('#cmt').disabled = true;
+}
 let a = document.querySelector('.trangthai');
 if(a.textContent == "Đã nhận được đơn hàng"){
 	a.classList.add('btn-success');
@@ -136,6 +168,8 @@ else if(a.textContent == "Đợi xác nhận đơn hàng"){
 else{
 	a.classList.add('btn-danger');
 }
+
+
 $(document).ready(function(){
 	 $("#xac_nhan_don").click(function(){
 			$.ajax({

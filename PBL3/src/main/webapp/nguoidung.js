@@ -195,7 +195,7 @@ function load_lich_su_don(data) {
 		const formattedDate = day + '-' + month + '-' + year + ' ' + hours + ':' + minutes;
 
 		let kiemtra = null;
-		if(item.so_sao_danh_gia == 0){
+		if(item.so_sao_danh_gia == -1){
 			kiemtra = "Chưa có đánh giá";
 		}
 		else {
