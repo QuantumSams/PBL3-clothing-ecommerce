@@ -6,6 +6,7 @@ import java.util.List;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import Model.BLL.Service.Danh_Muc.Danh_muc_Service;
+import Model.BLL.Service.Danh_Muc.TreeDanhMuc;
 import Model.BLL.Service.Doanh_Thu.Doanh_thu_Service;
 import Model.BLL.Service.Nguoi_Dung.Nguoi_dung_Service;
 import Model.BLL.Service.Order.Order_Service;
@@ -37,7 +38,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 @WebServlet(urlPatterns = {"/trang_chu", "/trang_chu_cua_hang", "/nhan_vien", 
-							"/login", "/logout", "/sign_up"})
+							"/login", "/logout", "/sign_up", "/log_in"})
 public class HomeController extends HttpServlet{
 
 	private static final long serialVersionUID = -5225303616746645511L;
@@ -61,13 +62,17 @@ public class HomeController extends HttpServlet{
 			resp.sendRedirect("trang_chu");
 		}
 		
+		else if(action != null && action.equals("/log_in")) {
+			resp.sendRedirect("login.jsp");
+		}
+		
 		else if(action != null && action.equals("/trang_chu")) {
 			List<San_pham> list_san_pham = san_pham_Service.GetAllProducts(req, resp);
 			session.setAttribute("san_pham", list_san_pham);
 			
-			danh_muc_Service.load_category_by_session(req, resp);
+			List<TreeDanhMuc> danhMucs = danh_muc_Service.getTree();
 			session = req.getSession();
-			session.setAttribute("san_pham", list_san_pham);
+			session.setAttribute("tree", danhMucs);
 			
 			resp.sendRedirect("index.jsp");
 		}

@@ -1,6 +1,7 @@
 package Model.BLL.Service.Danh_Muc;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -77,5 +78,29 @@ public class Danh_muc_Service {
 	    resp.setContentType("application/json");
 	    resp.setCharacterEncoding("UTF-8");
 	    resp.getWriter().write(json);
+	}
+	
+	public List<TreeDanhMuc> getTree(){
+		List<Danh_muc_san_pham> danh_muc = Lay_danh_muc_con();
+		List<TreeDanhMuc> nodes = new ArrayList<>();
+		for(Danh_muc_san_pham dm : danh_muc) {
+			TreeDanhMuc tree = new TreeDanhMuc();
+			tree.setDanh_muc_san_pham(dm);
+			tree.setNode(getTree(tree.getDanh_muc_san_pham().getId()));
+			nodes.add(tree);
+		}
+		return nodes;
+	}
+	
+	public List<TreeDanhMuc> getTree(int id){
+		List<Danh_muc_san_pham> danh_muc = Lay_danh_muc_con(id);
+		List<TreeDanhMuc> nodes = new ArrayList<>();
+		for(Danh_muc_san_pham dm : danh_muc) {
+			TreeDanhMuc tree = new TreeDanhMuc();
+			tree.setDanh_muc_san_pham(dm);
+			tree.setNode(getTree(tree.getDanh_muc_san_pham().getId()));
+			nodes.add(tree);
+		}
+		return nodes;
 	}
 }

@@ -25,7 +25,8 @@ import jakarta.servlet.http.HttpSession;
 							"/update_product", "/load_product", 
 							"/remove_product", "/them_mau", "/them_size",
 							"/xoa_size", "/xoa_mau", "/tim_kiem_san_pham", 
-							"/sua_muc_san_pham", "/tim_kho_hang"})
+							"/sua_muc_san_pham", "/tim_kho_hang", 
+							"/tim_kiem_san_pham_bang_danh_muc"})
 public class ProductController extends HttpServlet {
 
 	private static final long serialVersionUID = -886812143546363698L;
@@ -68,6 +69,16 @@ public class ProductController extends HttpServlet {
 		
 		else if(action.equals("/tim_kiem_san_pham")) {
 			List<San_pham> san_pham = san_pham_Service.searchProductByName(req, resp);
+			
+			ObjectMapper mapper = new ObjectMapper();
+		    String json = mapper.writeValueAsString(san_pham);
+		    resp.setContentType("application/json");
+		    resp.setCharacterEncoding("UTF-8");
+		    resp.getWriter().write(json);
+		}
+		
+		else if(action.equals("/tim_kiem_san_pham_bang_danh_muc")) {
+			List<San_pham> san_pham = san_pham_Service.getProductByPropertyProduct(req, resp);
 			
 			ObjectMapper mapper = new ObjectMapper();
 		    String json = mapper.writeValueAsString(san_pham);

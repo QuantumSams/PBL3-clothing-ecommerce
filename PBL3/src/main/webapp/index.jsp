@@ -60,24 +60,26 @@
 					<img class="card-img-top" src="${item.anh_san_pham[0]}"
 						alt="Card image">
 					<div class="card-body">
-						<div style = "height: 20%;">
+						<div style="height: 20%;">
 							<h6>${item.danh_muc_san_pham}</h6>
 						</div>
-						<div style = "height: 40%;">
+						<div style="height: 40%;">
 							<h5 class="card-title" style="font-weight: bold;">
-							<form action="load_product" method="get">
-								<button id="${item.id_san_pham}">${item.ten_san_pham}
-								</button>
-								<input type="hidden" name="id_san_pham"
-									value="${item.id_san_pham}" />
-							</form>
+								<form action="load_product" method="get">
+									<button id="${item.id_san_pham}">${item.ten_san_pham}
+									</button>
+									<input type="hidden" name="id_san_pham"
+										value="${item.id_san_pham}" />
+								</form>
 							</h5>
 						</div>
-						<div style = "height: 20%;">
+						<div style="height: 20%;">
 							<p class="card-text">${item.ten_nhan_hang}</p>
 						</div>
-						<div style = "height: 20%;">
-							<h4 class = "giaTien" style="font-weight: bold; margin-bottom: 10px">${item.gia_tien} VND</h4>
+						<div style="height: 20%;">
+							<h4 class="giaTien"
+								style="font-weight: bold; margin-bottom: 10px">${item.gia_tien}
+								VND</h4>
 						</div>
 
 					</div>
@@ -89,6 +91,29 @@
 
 </body>
 <script>
+let a = document.querySelectorAll('.danh_muc_san_pham');
+a.forEach(item => {
+	item.addEventListener('click', e => {
+		let id =  item.childNodes[1].value;
+		$.ajax({
+			url: "tim_kiem_san_pham_bang_danh_muc", // URL of your Servlet
+			type: "GET",
+			dataType: 'json',
+			data: {
+				id_muc_san_pham: id
+			},
+
+			success: function(data) {
+				load_product(data);
+			},
+			
+			error: function() {
+				alert("Có lỗi phát sinh");
+			}
+		});
+	})
+})
+
 $(document).ready(function() {
 	$(".fa-magnifying-glass").click(function() {
 		$.ajax({
@@ -100,31 +125,7 @@ $(document).ready(function() {
 			},
 
 			success: function(data) {
-				let chuoi = "";
-				data.forEach(function(item) {
-					chuoi += '<label for="'+item.id_san_pham+'">'+
-								'<div class="card" style="width: 250px; height: 500px;">'+
-								'<img class="card-img-top" src="'+item.anh_san_pham[0]+'" alt="Card image">'
-								+'<div class="card-body">'
-								+'<div style = "height: 20%;">'+
-								'<h6>'+item.danh_muc_san_pham+'</h6></div>'+
-								'<div style = "height: 40%;">'+
-								'<h5 class="card-title" style="font-weight: bold;">'+
-								'<form action="load_product" method="get">'+
-								'<button style = "background-color: transparent;"id="'+item.id_san_pham+'">'+item.ten_san_pham+'</button>'+
-									'<input type="hidden" name="id_san_pham" value="'+item.id_san_pham+ '" />'
-								+'</form></h5></div>'+
-								'<div style = "height: 20%;">'+
-								'<p class="card-text">'+item.ten_nhan_hang+'</p></div>'+
-								'<div style = "height: 20%;">'+
-								'<h4 class = "giaTien" style="font-weight: bold; margin-bottom: 10px">' + parseInt(item.gia_tien).toLocaleString('vi-VN') +' VND</h4></div>'+
-							'</div>'+
-							'</div>'+
-					'</label>';
-
-				});
-
-				$(".main-items").html(chuoi);
+				load_product(data);
 			},
 			
 			error: function() {
@@ -133,6 +134,35 @@ $(document).ready(function() {
 		});
 	});
   })
+  
+function load_product(data){
+	let chuoi = "";
+	data.forEach(function(item) {
+		chuoi += '<label for="'+item.id_san_pham+'">'+
+					'<div class="card" style="width: 250px; height: 500px;">'+
+					'<img class="card-img-top" src="'+item.anh_san_pham[0]+'" alt="Card image">'
+					+'<div class="card-body">'
+					+'<div style = "height: 20%;">'+
+					'<h6>'+item.danh_muc_san_pham+'</h6></div>'+
+					'<div style = "height: 40%;">'+
+					'<h5 class="card-title" style="font-weight: bold;">'+
+					'<form action="load_product" method="get">'+
+					'<button style = "background-color: transparent;"id="'+item.id_san_pham+'">'+item.ten_san_pham+'</button>'+
+						'<input type="hidden" name="id_san_pham" value="'+item.id_san_pham+ '" />'
+					+'</form></h5></div>'+
+					'<div style = "height: 20%;">'+
+					'<p class="card-text">'+item.ten_nhan_hang+'</p></div>'+
+					'<div style = "height: 20%;">'+
+					'<h4 class = "giaTien" style="font-weight: bold; margin-bottom: 10px">' + parseInt(item.gia_tien).toLocaleString('vi-VN') +' VND</h4></div>'+
+				'</div>'+
+				'</div>'+
+		'</label>';
+
+	});
+
+	$(".main-items").html(chuoi);
+}
+  
 let tien = document.querySelectorAll('.giaTien')
 tien.forEach(item=>{
 	item.innerText = parseInt(item.innerText).toLocaleString('vi-VN') + " VNĐ"

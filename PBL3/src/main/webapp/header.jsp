@@ -53,37 +53,29 @@ header ul .dropdown li {
 		<nav class="navbar navbar-expand-sm">
 			<div class="col-4 center">
 				<ul class="navbar-nav list">
-					<a class="nav-item" href="index.jsp"><img
+					<a class="nav-item" href="trang_chu"><img
 						src="img/logoicqon.png" width=100; alt=""></a>
-					<li class="nav-item"><a class="nav-link" href="#">Nữ</a>
-						<ul class="dropdown">
-							<li><a href="#">Áo thun</a>
-								<ul class="dropdown-1">
-									<li><a class = "test" href="">Áo thun</a></li>
-									<li><a href="#">áo ấm</a></li>
-									<li><a href="#">Áo vest</a></li>
-									
-							</ul></li>
-							<li><a href="#">áo ấm</a></li>
-							<li><a href="#">Áo vest</a></li>
-							<li><a href="#">Áo len</a></li>
-							<li><a href="#">Áo dài</a></li>
-							<li><a href="#">Áo tắm</a></li>
-						</ul></li>
-					<li class="nav-item"></a> <a class="nav-link" href="#">Nam</a>
-						<ul class="dropdown">
-							<li><a href="#">Áo đá bóng</a></li>
-							<li><a href="#">áo ấm</a></li>
-							<li><a href="#">Áo vest</a></li>
-							<li><a href="#">Áo len</a></li>
-						</ul></li>
-					<li class="nav-item"><a class="nav-link" href="#">Trẻ em</a>
-						<ul class="dropdown">
-							<li><a href="#">Áo thun</a></li>
-							<li><a href="#">áo ấm</a></li>
-							<li><a href="#">Áo vest</a></li>
-							<li><a href="#">Áo len</a></li>
-						</ul></li>
+
+					<c:forEach var="doi_tuong" items="${tree}">
+						<li class="nav-item"><a class="nav-link" href="#">${doi_tuong.danh_muc_san_pham.category}</a>
+							<ul class="dropdown">
+								<c:forEach var="loai" items="${doi_tuong.node}">
+									<li class="nav-item"><a class="nav-link" href="#">${loai.danh_muc_san_pham.category}</a>
+										<ul class="dropdown-1">
+											<c:forEach var="danh_muc" items="${loai.node}">
+												<li class="nav-item">
+													<a class="nav-link danh_muc_san_pham"  href="#">
+														${danh_muc.danh_muc_san_pham.category}
+														<input value="${danh_muc.danh_muc_san_pham.id}" type="hidden">
+													</a>
+												</li>
+											</c:forEach>
+										</ul>
+									</li>
+								</c:forEach>
+							</ul>
+						</li>
+					</c:forEach>
 				</ul>
 			</div>
 			<div class="col-3 center">
@@ -121,7 +113,5 @@ header ul .dropdown li {
 	</div>
 </header>
 <script>
-	document.querySelector('.test').addEventListener('click', e=>{
-		alert('Test');
-	})
+	
 </script>
