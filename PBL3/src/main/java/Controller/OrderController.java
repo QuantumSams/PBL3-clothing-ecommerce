@@ -84,7 +84,7 @@ public class OrderController extends HttpServlet{
 			req.setAttribute("danh_gia", danh_gia_don_hang);
 			req.setAttribute("chi_tiet_don_hang", muc_san_pham);
 			req.setAttribute("don_hang", chi_tiet_don_hang);
-			req.getRequestDispatcher("orderDetail.jsp").forward(req, resp);
+			req.getRequestDispatcher("lishsudon.jsp").forward(req, resp);
 		}
 		
 		else if(action.equals("/xem_lich_su_don")) {
