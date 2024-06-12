@@ -70,7 +70,7 @@
                 <div class="dform">
                     <h5>Bình luận</h5>
                     <div class="textarea">
-                        <textarea name="" id="" >Bình luận sẽ xuất hiện ở đây
+                        <textarea name="" id="cmt" >Bình luận sẽ xuất hiện ở đây
                         </textarea>
                     </div>
                 </div>
